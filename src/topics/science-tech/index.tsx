@@ -34,6 +34,7 @@ export default function ScienceTechPage() {
                 { label: 'Chandrayaan-3 ✓', color: 'bg-teal-500/20 border-teal-500/40 text-teal-300' },
                 { label: 'SpaDeX 2024', color: 'bg-cyan-500/20 border-cyan-500/40 text-cyan-300' },
                 { label: 'Op. Sindoor 2025', color: 'bg-rose-500/20 border-rose-500/40 text-rose-300' },
+                { label: 'Tejas Mk 2 2026', color: 'bg-amber-500/20 border-amber-500/40 text-amber-300' },
                 { label: 'Confirmed PYQs inside', color: 'bg-green-500/20 border-green-500/40 text-green-300' },
               ].map(p => (
                 <span key={p.label} className={`text-xs font-semibold px-3 py-1 rounded-full border ${p.color}`}>
