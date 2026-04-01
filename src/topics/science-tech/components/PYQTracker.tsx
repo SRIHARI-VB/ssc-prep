@@ -15,13 +15,13 @@ export default function PYQTracker() {
         <p className="text-xs font-bold tracking-widest text-teal-600 uppercase mb-1">Section 05</p>
         <h2 className="text-3xl font-extrabold text-brand-900">PYQ &amp; Current Affairs Tracker</h2>
         <p className="mt-2 text-slate-500 text-sm max-w-2xl">
-          Confirmed SSC CGL questions (2023–2024) + key Current Affairs science facts likely to appear in 2025–26 exams.
+          Confirmed SSC CGL questions (2023–2024) + key Current Affairs science facts likely to appear in 2025–26 exams. Includes ISRO, defense, AI, nuclear, and Nobel Prize updates.
         </p>
       </div>
 
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         <div className="px-5 py-3 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
-          <p className="text-sm font-bold text-slate-700">S&amp;T PYQ + Current Affairs (2023–2025)</p>
+          <p className="text-sm font-bold text-slate-700">S&amp;T PYQ + Current Affairs (2023–2026)</p>
           <span className="text-xs font-semibold text-slate-400">{sciPyqHistory.length} recorded</span>
         </div>
         <div className="overflow-x-auto">
@@ -54,8 +54,8 @@ export default function PYQTracker() {
         </div>
         <div className="px-5 py-3 bg-teal-50 border-t border-teal-100">
           <p className="text-xs text-teal-700">
-            <strong>Key pattern:</strong> Chandrayaan-3, Aditya-L1 and SpaDeX are near-certain in upcoming exams.
-            Operation Sindoor (May 2025) will feature in CGL 2025 GA. Memorise the year + achievement for each.
+            <strong>Key pattern:</strong> Chandrayaan-3, Aditya-L1, SpaDeX, NISAR, Gaganyaan are near-certain in upcoming exams.
+            Operation Sindoor, Agni-5 MIRV (Divyastra), SHANTI Act, Nobel 2025, and IndiaAI Mission will feature in CGL 2025–26 GA. Memorise the year + achievement for each.
           </p>
         </div>
       </div>

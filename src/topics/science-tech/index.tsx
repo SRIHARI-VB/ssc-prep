@@ -24,7 +24,7 @@ export default function ScienceTechPage() {
             <p className="mt-4 text-slate-300 leading-relaxed text-sm md:text-base max-w-lg">
               <strong className="text-white">{sciData.length} high-priority facts</strong> across 5 subjects —
               Physics, Chemistry, Biology, Space &amp; Defense, Technology.
-              Verified PYQs from 2022–2024 + Current Affairs through 2025.
+              Verified PYQs from 2022–2024 + Current Affairs through 2026.
             </p>
 
             {/* Stat pills */}
