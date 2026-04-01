@@ -46,7 +46,7 @@ export default function Flashcard() {
           <h2 className="text-3xl font-extrabold text-white">Active Recall Flashcards</h2>
           <p className="mt-2 text-slate-400 text-sm max-w-xl mx-auto">
             Read the book title, guess the author, flip to reveal.
-            All 74 entries are in the deck, shuffled randomly.
+            All {booksData.length} entries are in the deck, shuffled randomly.
           </p>
         </div>
 

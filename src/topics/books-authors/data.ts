@@ -1439,4 +1439,16 @@ export const booksData: BookEntry[] = [
     context: 'Delhi Sultanate — Amir Khusrau is also asked as "Parrot of India"',
     examProb: 'Recurring',
   },
+  {
+    id: 114,
+    title: 'Thamiz Sirukathaiyin Thadangal',
+    author: 'Sa. Tamilselvan',
+    category: 'Literary Award',
+    award: 'Sahitya Akademi Award (Tamil)',
+    year: '2025',
+    theme: 'Tamil literary criticism — history & evolution of Tamil short stories',
+    mnemonic: 'TAMILSELVAN traces TAMIL short story\'s THADANGAL (tracks)',
+    context: 'Sahitya Akademi 2025 Tamil winner — literary criticism category; regional literature angle',
+    examProb: 'High',
+  },
 ]

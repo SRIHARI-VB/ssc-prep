@@ -22,7 +22,7 @@ export default function BooksAuthorsPage() {
               <span className="block text-indigo-400 text-3xl md:text-4xl mt-1">Complete Master Guide</span>
             </h1>
             <p className="mt-4 text-slate-300 leading-relaxed text-sm md:text-base max-w-lg">
-              <strong className="text-white">74 high-priority entries</strong> across 6 categories —
+              <strong className="text-white">{booksData.length} high-priority entries</strong> across 6 categories —
               Ancient/Medieval, Freedom Struggle, Sports, PYQ, Literary Awards,
               and Current Affairs up to early 2026. Powered by 6 years of PYQ analysis.
             </p>
