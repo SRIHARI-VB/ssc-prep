@@ -5,6 +5,7 @@ const FOOTER_MSG: Record<Page, { sub: string; quote: string }> = {
   'books-authors': { sub: 'Books & Authors', quote: '"Memory is a muscle. The Exam Loop is the workout."' },
   'science-tech':  { sub: 'Science & Technology', quote: '"Every equation is a story waiting to be recalled."' },
   'polity-constitution': { sub: 'Polity & Constitution', quote: '"Know the Article, own the answer. Constitution is the blueprint of India."' },
+  'govt-schemes': { sub: 'Government Schemes', quote: '"Scheme name + Launch year + Ministry + Key number = Guaranteed marks."' },
 }
 
 export default function Footer({ page }: { page: Page }) {

@@ -1,0 +1,767 @@
+export type SchemeCategory =
+  | 'Social Welfare'
+  | 'Financial Inclusion'
+  | 'Agriculture'
+  | 'Employment & Skill'
+  | 'Education'
+  | 'Health'
+  | 'Infrastructure'
+  | 'Women & Child'
+  | 'Digital India'
+  | 'New Schemes 2024-26'
+
+export type ExamProb = 'Hot' | 'High' | 'Confirmed' | 'Recurring'
+
+export interface SchemeEntry {
+  id: number
+  category: SchemeCategory
+  topic: string           // Scheme short name
+  question: string        // SSC-style question
+  answer: string          // direct answer
+  shortcut: string        // ONE-LINE memory trick / shortcut
+  detail: string          // brief explanation (2-3 lines max)
+  context: string         // PYQ date or 'SSC CGL standard'
+  examProb: ExamProb
+  tamilNote?: string      // Simple Tamil explanation for Hindi-named schemes
+}
+
+export interface SchemePYQEntry {
+  date: string
+  shift: string
+  question: string
+  answer: string
+  category: SchemeCategory
+}
+
+export const schemesData: SchemeEntry[] = [
+
+  // =====================================================================
+  // SOCIAL WELFARE SCHEMES
+  // =====================================================================
+  {
+    id: 1, category: 'Social Welfare', topic: 'PM Awas Yojana (PMAY)',
+    question: 'When was Pradhan Mantri Awas Yojana launched, and what is its objective?',
+    answer: 'Launched 25 June 2015 — "Housing for All" mission to provide pucca houses to every family',
+    shortcut: 'PMAY = 2015 | Urban = MoHUA | Rural (Gramin) = Ministry of Rural Development | Urban assistance up to Rs 2.50 lakh',
+    detail: 'Two components: PMAY-Urban (MoHUA) and PMAY-Gramin (Min of Rural Dev). PMAY-U sanctioned 119+ lakh houses across 4,331 towns. PMAY-G target: 4.95 crore rural houses. PMAY-U 2.0 launched Sep 2024 for additional 1 crore urban families. Slogan: "Housing for All".',
+    context: 'SSC CGL 2022-24', examProb: 'Hot',
+    tamilNote: 'ஆவாஸ் யோஜனா = வீட்டுத் திட்டம் (Awas = வீடு, Yojana = திட்டம்). எல்லா குடும்பத்திற்கும் பக்கா வீடு கட்டிக்கொடுக்கும் திட்டம்.',
+  },
+  {
+    id: 2, category: 'Social Welfare', topic: 'Ayushman Bharat (PM-JAY)',
+    question: 'What is the health cover provided under Ayushman Bharat PM-JAY per family per year?',
+    answer: 'Rs 5 lakh per family per year for secondary and tertiary care hospitalization',
+    shortcut: 'PM-JAY = 23 Sep 2018 | Rs 5 lakh cover | 12 crore families (55 cr beneficiaries) | World\'s LARGEST health scheme | Portal: beneficiary.nha.gov.in',
+    detail: 'Launched 23 Sep 2018 in Ranchi by PM Modi. Covers bottom 40% population based on SECC 2011. No waiting period for pre-existing diseases. 36.9 crore Ayushman cards created. 32,320 hospitals empanelled. Budget 2025-26: Rs 9,406 crore. Expanded in Oct 2024 to include all citizens aged 70+ (Ayushman Vaya Vandana).',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'ஆயுஷ்மான் பாரத் = ஆரோக்கிய இந்தியா. PM-JAY = பிரதான் மந்திரி ஜன் ஆரோக்ய யோஜனா = பிரதமரின் மக்கள் சுகாதாரத் திட்டம். ஒவ்வொரு குடும்பத்திற்கும் ₹5 லட்சம் மருத்துவ காப்பீடு.',
+  },
+  {
+    id: 3, category: 'Social Welfare', topic: 'Swachh Bharat Mission (SBM)',
+    question: 'When was Swachh Bharat Mission launched, and who initiated it?',
+    answer: 'Launched 2 October 2014 by PM Modi — campaign to eliminate open defecation and improve solid waste management',
+    shortcut: 'SBM = 2 Oct 2014 (Gandhi Jayanti) | 100+ million toilets built by 2019 | ODF declared | SBM-U 2.0 outlay: Rs 1,41,600 crore',
+    detail: 'Goal: ODF India + scientific solid waste management. By 2019, over 10 crore toilets built, 6 lakh+ villages declared ODF. WHO reported 3 lakh fewer diarrheal deaths. Open defecation fell to 7% nationally by 2024. SBM-U 2.0 approved till 2025-26 with Rs 1,41,600 crore outlay. Gramin: Min of Jal Shakti; Urban: MoHUA.',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+    tamilNote: 'ஸ்வச்ச் பாரத் = தூய்மை இந்தியா (Swachh = சுத்தம்/தூய்மை). திறந்தவெளி மலம் கழிப்பை ஒழிக்கும் தேசிய இயக்கம்.',
+  },
+  {
+    id: 4, category: 'Social Welfare', topic: 'PM Ujjwala Yojana (PMUY)',
+    question: 'What is the objective of Pradhan Mantri Ujjwala Yojana?',
+    answer: 'To provide free LPG connections to BPL women to replace unhealthy cooking fuels',
+    shortcut: 'PMUY = 1 May 2016 | Free LPG to BPL women | 10.33 crore beneficiaries | Min of Petroleum & Natural Gas | Ujjwala 2.0: free first refill + stove',
+    detail: 'Launched 1 May 2016. Initially targeted 5 crore, expanded to 8 crore, now 10.33 crore PMUY beneficiaries. Rs 300 subsidy per cylinder (up to 9 refills/yr) for 2025-26 at Rs 12,000 crore. IEA praised as "major achievement". Ujjwala 2.0 provides free first refill + stove.',
+    context: 'SSC CGL 2022-23', examProb: 'Hot',
+    tamilNote: 'உஜ்வலா = ஒளிமயமான/பிரகாசமான. BPL பெண்களுக்கு இலவச LPG சிலிண்டர் இணைப்பு வழங்கும் திட்டம். விறகு அடுப்பிலிருந்து விடுதலை.',
+  },
+  {
+    id: 5, category: 'Social Welfare', topic: 'PM Garib Kalyan Anna Yojana (PMGKAY)',
+    question: 'What does PMGKAY provide to beneficiaries?',
+    answer: '5 kg free rice/wheat per person per month + 1 kg dal per family via PDS to ration card holders',
+    shortcut: 'PMGKAY = 26 Mar 2020 (COVID) | World\'s LARGEST food scheme | 81.35 crore people | Extended till Dec 2028 | Budget: Rs 2,03,000 crore',
+    detail: 'Launched during COVID-19 on 26 March 2020. Covers 81.35 crore people (56.81% population). Extended till December 2028. Rs 11.80 lakh crore total spend over 5 years (2024-2028). Ministry of Consumer Affairs, Food & Public Distribution.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'கரீப் கல்யாண் அன்ன யோஜனா = ஏழைகள் நலன் உணவுத் திட்டம் (Garib = ஏழை, Kalyan = நலன், Anna = உணவு). கோவிட் காலத்தில் 81 கோடி மக்களுக்கு இலவச அரிசி/கோதுமை.',
+  },
+  {
+    id: 6, category: 'Social Welfare', topic: 'PM SVANidhi',
+    question: 'PM SVANidhi scheme provides micro-credit to whom?',
+    answer: 'Urban street vendors — working capital loans to restore livelihoods',
+    shortcut: 'SVANidhi = Street Vendor\'s AtmaNirbhar Nidhi | 1 Jun 2020 | MoHUA | Loans: Rs 10K → 20K → 50K | Extended till Mar 2030',
+    detail: 'Launched 1 June 2020 during COVID. Three tranches: Rs 10,000 then Rs 20,000 then Rs 50,000. Interest subsidy of 7% p.a. on timely repayment. Restructured Aug 2025 with UPI-linked RuPay Credit Card. Over 96 lakh loans disbursed worth Rs 13,797 crore. Portal: pmsvanidhi.mohua.gov.in.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'SVANidhi = Street Vendor\'s AtmaNirbhar Nidhi = தெரு வியாபாரிகளின் சுயசார்பு நிதி (Nidhi = நிதி). தெரு வியாபாரிகளுக்கு சிறு கடன் திட்டம்.',
+  },
+
+  // =====================================================================
+  // FINANCIAL INCLUSION SCHEMES
+  // =====================================================================
+  {
+    id: 7, category: 'Financial Inclusion', topic: 'PM Jan Dhan Yojana (PMJDY)',
+    question: 'When was PMJDY launched, and what is its main objective?',
+    answer: 'Launched 28 August 2014 — world\'s largest financial inclusion programme for universal banking access',
+    shortcut: 'PMJDY = 28 Aug 2014 | Zero-balance account | Free RuPay card (Rs 2 lakh accident cover) | 56+ crore accounts | 56% women | Min of Finance',
+    detail: 'Provides zero-balance bank accounts with free RuPay debit card (Rs 2 lakh accident insurance). Over 56.16 crore accounts by Aug 2025, 67% in rural/semi-urban areas. Deposits reached Rs 2,67,756 crore. 56% accounts belong to women. Enabled JAM trinity (Jan Dhan-Aadhaar-Mobile) for DBT.',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+    tamilNote: 'ஜன் தன் = மக்கள் செல்வம் (Jan = மக்கள், Dhan = செல்வம்). அனைவருக்கும் வங்கிக் கணக்கு திறக்கும் உலகின் மிகப்பெரிய நிதி உள்ளடக்கத் திட்டம்.',
+  },
+  {
+    id: 8, category: 'Financial Inclusion', topic: 'PM MUDRA Yojana (PMMY)',
+    question: 'What are the three loan categories under PM MUDRA Yojana?',
+    answer: 'Shishu (up to Rs 50,000), Kishore (Rs 50,000 to Rs 5 lakh), Tarun (Rs 5 lakh to Rs 10 lakh)',
+    shortcut: 'MUDRA = 8 Apr 2015 | Shishu-Kishore-Tarun | Non-farm micro enterprises | 68% women beneficiaries | MUDRA 2.0 (2025): limit raised to Rs 20 lakh',
+    detail: 'Launched 8 April 2015. Micro Units Development & Refinance Agency. Loans through banks, RRBs, SFBs, MFIs, NBFCs. By FY25: 4.79 crore loans worth Rs 5.02 lakh crore. 68% women beneficiaries. MUDRA 2.0 (Apr 2025): Tarun limit doubled to Rs 20 lakh for repeat borrowers. Website: mudra.org.in.',
+    context: 'SSC CGL 2022-24', examProb: 'Hot',
+    tamilNote: 'MUDRA = Micro Units Development & Refinance Agency. ஷிஷு = குழந்தை (₹50K வரை), கிஷோர் = இளைஞன் (₹5L வரை), தருண் = வாலிபன் (₹10L வரை). சிறு தொழில்களுக்கான கடன் திட்டம்.',
+  },
+  {
+    id: 9, category: 'Financial Inclusion', topic: 'Stand Up India',
+    question: 'What is the loan range and target group under Stand Up India?',
+    answer: 'Rs 10 lakh to Rs 1 crore for SC/ST and women entrepreneurs for greenfield enterprises',
+    shortcut: 'Stand Up India = 5 Apr 2016 | SC/ST + Women | Rs 10L-1Cr | Greenfield only | 1 SC/ST + 1 Woman per bank branch | Portal: standupmitra.in',
+    detail: 'Launched 5 April 2016. At least one SC/ST and one woman borrower per bank branch. Manufacturing, services, or trading sector. Total disbursement: Rs 61,020 crore by Mar 2025. Revamp 2025: loan limit doubled to Rs 2 crore. CGFSI provides collateral-free guarantee.',
+    context: 'SSC CGL 2022', examProb: 'High',
+  },
+  {
+    id: 10, category: 'Financial Inclusion', topic: 'Atal Pension Yojana (APY)',
+    question: 'What pension does APY guarantee, and who administers it?',
+    answer: 'Guaranteed pension of Rs 1,000 to Rs 5,000/month at age 60; administered by PFRDA',
+    shortcut: 'APY = 9 May 2015 | Age 18-40 | Rs 1K-5K pension | PFRDA administers | 7.65 crore subscribers | 48% women | Sec 80CCD tax benefit',
+    detail: 'Launched 9 May 2015. Targets unorganised sector workers. Five pension slabs: Rs 1,000/2,000/3,000/4,000/5,000 per month. Contribution: Rs 42 to Rs 1,454/month depending on age and pension choice. Minimum 20 years contribution. 7.65 crore subscribers, Rs 45,974 crore corpus. Tax benefit under Sec 80CCD.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'அடல் பென்ஷன் யோஜனா = அடல் ஓய்வூதியத் திட்டம். 60 வயதிற்குப் பின் ₹1,000 முதல் ₹5,000 வரை மாத ஓய்வூதியம்.',
+  },
+  {
+    id: 11, category: 'Financial Inclusion', topic: 'PM Jeevan Jyoti Bima (PMJJBY)',
+    question: 'What is the premium and coverage under PMJJBY?',
+    answer: 'Rs 436/year premium for Rs 2 lakh life insurance cover (death due to any cause)',
+    shortcut: 'PMJJBY = 9 May 2015 | Rs 436/yr | Rs 2 lakh death cover | Age 18-50 | Term life insurance | Jan Suraksha trio',
+    detail: 'One-year renewable term life insurance. Age 18-50 (continue to 55 on renewal). Auto-debit from bank account. 10.66 crore women enrolled. Part of Jan Suraksha trio (PMJJBY + PMSBY + APY). Ministry of Finance. Completed 10 years in May 2025 with 82 crore+ total beneficiaries across all three schemes.',
+    context: 'SSC CGL 2022-23', examProb: 'High',
+    tamilNote: 'ஜீவன் ஜோதி பீமா = உயிர் ஒளி காப்பீடு (Jeevan = உயிர்/வாழ்க்கை, Jyoti = ஒளி, Bima = காப்பீடு). ₹436/ஆண்டு செலுத்தி ₹2 லட்சம் ஆயுள் காப்பீடு.',
+  },
+  {
+    id: 12, category: 'Financial Inclusion', topic: 'PM Suraksha Bima Yojana (PMSBY)',
+    question: 'What is the premium and coverage under PMSBY?',
+    answer: 'Rs 20/year premium for Rs 2 lakh accidental death cover and Rs 1 lakh partial disability cover',
+    shortcut: 'PMSBY = 9 May 2015 | Rs 20/yr ONLY | Rs 2L accident death + Rs 1L partial disability | Age 18-70 | Cheapest insurance worldwide',
+    detail: 'One-year renewable personal accident insurance. Age 18-70. Auto-debit from bank. 51.06 crore enrolled by Apr 2025. Rs 3,121 crore paid for 1.57 lakh claims. Part of Jan Suraksha trio with PMJJBY and APY. World\'s cheapest government insurance at Rs 20/year.',
+    context: 'SSC CGL 2022-23', examProb: 'High',
+    tamilNote: 'சுரக்ஷா பீமா = பாதுகாப்பு காப்பீடு (Suraksha = பாதுகாப்பு). ₹20/ஆண்டு மட்டுமே — உலகின் மிகக் குறைந்த விலை அரசு காப்பீடு.',
+  },
+  {
+    id: 13, category: 'Financial Inclusion', topic: 'PM Shram Yogi Maandhan (PM-SYM)',
+    question: 'What pension does PM-SYM provide, and who is eligible?',
+    answer: 'Rs 3,000/month pension after age 60 for unorganised sector workers earning up to Rs 15,000/month',
+    shortcut: 'PM-SYM = 2019 | Rs 3,000/month pension | Age 18-40 | Income < Rs 15K/month | 50:50 Govt match | LIC manages | Min of Labour',
+    detail: 'Launched in 2019. Voluntary and contributory. Government matches 50:50. Contribution: Rs 55 to Rs 200/month based on entry age. Administered by Ministry of Labour & Employment. LIC manages pension fund. Spouse gets 50% pension on subscriber death. 46.12 million enrolled. Portal: maandhan.in.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'ஷ்ரம் யோகி மான்தன் = தொழிலாளர் யோகி ஓய்வூதியம் (Shram = உழைப்பு, Yogi = தொழிலாளி, Maandhan = ஓய்வூதியம்). அமைப்புசாரா தொழிலாளர்களுக்கு 60 வயதுக்குப் பின் ₹3,000 ஓய்வூதியம்.',
+  },
+  {
+    id: 14, category: 'Financial Inclusion', topic: 'Sukanya Samriddhi Yojana (SSY)',
+    question: 'What is Sukanya Samriddhi Yojana and what interest rate does it offer?',
+    answer: 'Small savings scheme for girl child under BBBP; interest rate 8.2% p.a. (Q2 FY 2025-26); EEE tax status',
+    shortcut: 'SSY = 22 Jan 2015 (under BBBP) | Girl child max age 10 | Min Rs 250, Max Rs 1.5 lakh/yr | 8.2% interest | EEE tax free | 50% withdrawal at 18',
+    detail: 'Part of Beti Bachao Beti Padhao. One account per girl, max 2 per family (3 if twins/triplets). Deposits for 15 years, matures in 21 years. 50% withdrawal at age 18 for education. EEE = Exempt-Exempt-Exempt (principal, interest, maturity all tax-free). Opened at post offices or designated banks.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'சுகன்யா சம்ரிதி = மகளின் செழிப்பு (Sukanya = நல்ல பெண்/மகள், Samriddhi = செழிப்பு/வளம்). பெண் குழந்தைக்கான சேமிப்புத் திட்டம். 8.2% வட்டி — மிக உயர்ந்த அரசு சேமிப்பு வட்டி.',
+  },
+
+  // =====================================================================
+  // AGRICULTURE SCHEMES
+  // =====================================================================
+  {
+    id: 15, category: 'Agriculture', topic: 'PM-KISAN Samman Nidhi',
+    question: 'How much financial support does PM-KISAN provide to farmers annually?',
+    answer: 'Rs 6,000 per year in 3 installments of Rs 2,000 each via Direct Benefit Transfer',
+    shortcut: 'PM-KISAN = 1 Feb 2019 (Interim Budget) | Rs 6,000/yr (3 x Rs 2K) | All landholding farmers | 100% Central | 11+ crore families | pmkisan.gov.in',
+    detail: 'Announced in Interim Budget 2019 by Piyush Goyal. Central Sector Scheme (100% funded by Centre). All landholding farmer families eligible (Aadhaar + bank mandatory). Excludes income tax payers, high officials, doctors, lawyers. 22nd installment released Mar 2026: Rs 18,640 crore to 9.32 crore farmers. Total disbursed: Rs 4.27 lakh crore. AI chatbot Kisan-eMitra launched Sep 2023.',
+    context: 'SSC CGL 2022-24', examProb: 'Hot',
+    tamilNote: 'கிசான் சம்மான் நிதி = விவசாயிகள் மரியாதை நிதி (Kisan = விவசாயி, Samman = மரியாதை, Nidhi = நிதி). ஒவ்வொரு விவசாயிக்கும் ₹6,000/ஆண்டு நேரடி பணப் பரிமாற்றம்.',
+  },
+  {
+    id: 16, category: 'Agriculture', topic: 'PM Fasal Bima Yojana (PMFBY)',
+    question: 'What is the farmer premium rate under PMFBY?',
+    answer: 'Kharif: 2%, Rabi: 1.5%, Commercial/Horticulture: 5% — rest paid by Government',
+    shortcut: 'PMFBY = 13 Jan 2016 | Crop insurance | Kharif 2%, Rabi 1.5%, Commercial 5% | Min of Agriculture | Portal: pmfby.gov.in | SECC-based selection',
+    detail: 'Launched 13 January 2016, replacing NAIS and MNAIS. Ministry of Agriculture & Farmers Welfare. Covers all food/oilseed/horticultural crops. Uses remote sensing, drones, AI for crop loss assessment. Budget: Rs 32,000 crore (first installment FY25). Targets 50 crore farmer applications. Farmer share is minimal; government subsidizes the rest.',
+    context: 'SSC CGL 2022-24', examProb: 'Hot',
+    tamilNote: 'ஃபசல் பீமா = பயிர் காப்பீடு (Fasal = பயிர்/விளைச்சல், Bima = காப்பீடு). விவசாயிகள் குறைந்த பிரீமியம் செலுத்தி பயிர் நஷ்டத்திற்கு காப்பீடு பெறும் திட்டம்.',
+  },
+  {
+    id: 17, category: 'Agriculture', topic: 'Soil Health Card Scheme',
+    question: 'What is the objective of the Soil Health Card Scheme?',
+    answer: 'To issue soil health cards to farmers with crop-wise nutrient recommendations for balanced fertilizer use',
+    shortcut: 'Soil Health Card = 19 Feb 2015 | Target: 14 crore cards | Min of Agriculture | Promotes balanced fertilizer use | Tested every 2 years',
+    detail: 'Launched 19 February 2015. Ministry of Agriculture & Farmers Welfare. Card contains soil nutrient status and fertilizer recommendation. Target: 14 crore farmers. Soil tested every 2 years. 12 parameters tested: pH, EC, OC, N, P, K, S, Zn, Fe, Cu, Mn, B. Reduced overuse of chemical fertilizers.',
+    context: 'SSC CGL 2022', examProb: 'High',
+  },
+  {
+    id: 18, category: 'Agriculture', topic: 'PM Matsya Sampada Yojana (PMMSY)',
+
+    question: 'PMMSY launched in September 2020 aims to bring which revolution?',
+    answer: 'Blue Revolution in fisheries and aquaculture sector',
+    shortcut: 'PMMSY = Sep 2020 | Blue Revolution | Rs 20,050 crore (2020-25) | Min of Fisheries | Target: 220 lakh MT fish production',
+    detail: 'Launched September 2020. Ministry of Fisheries, Animal Husbandry & Dairying. Investment: Rs 20,050 crore for 2020-25. Two components: Central Sector Scheme (CS) and Centrally Sponsored Scheme (CSS). Target: increase fish production to 220 lakh metric tons by 2024-25.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'மத்ஸ்ய சம்பதா = மீன் வளம் (Matsya = மீன், Sampada = வளம்/செல்வம்). நீல புரட்சி (Blue Revolution) — மீன்பிடி மற்றும் நீர்வாழ் வளர்ப்புத் துறை வளர்ச்சித் திட்டம்.',
+  },
+  {
+    id: 19, category: 'Agriculture', topic: 'e-NAM (National Agriculture Market)',
+    question: 'What is e-NAM and when was it launched?',
+    answer: 'Online trading portal for agricultural commodities connecting APMC mandis nationwide, launched April 2016',
+    shortcut: 'e-NAM = 14 Apr 2016 | Online mandi trading | Min of Agriculture | 1,361 mandis connected | Transparent price discovery | Portal: enam.gov.in',
+    detail: 'Launched 14 April 2016. Pan-India electronic trading portal linking existing APMC mandis. Ministry of Agriculture & Farmers Welfare. Over 1,361 mandis integrated. Promotes transparent price discovery, quality testing, and online payment. Aims to create one unified national market for agricultural commodities.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'e-NAM = மின்னணு தேசிய விவசாய சந்தை. மண்டி = சந்தை/நிலம். அனைத்து APMC சந்தைகளையும் இணையத்தில் இணைக்கும் தளம்.',
+  },
+
+  // =====================================================================
+  // EMPLOYMENT & SKILL SCHEMES
+  // =====================================================================
+  {
+    id: 20, category: 'Employment & Skill', topic: 'MGNREGA',
+    question: 'How many days of guaranteed wage employment does MGNREGA provide?',
+    answer: '100 days of guaranteed wage employment per rural household per financial year (125 days under VB-G RAM G Bill 2025)',
+    shortcut: 'MGNREGA = 2005 (UPA) | 100 days guaranteed | Rural unskilled work | Rs 30,000 crore budget 2026-27 | VB-G RAM G (2025): 125 days',
+    detail: 'Mahatma Gandhi National Rural Employment Guarantee Act, 2005. Guarantees 100 days wage employment to willing rural households. Ministry of Rural Development. Demand-driven scheme. Focuses on water conservation, drought proofing, land development. Budget 2026-27: Rs 30,000 crore. VB-G RAM G Bill 2025 increases guarantee to 125 days with 60:40 Centre-State funding.',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+  },
+  {
+    id: 21, category: 'Employment & Skill', topic: 'PM Kaushal Vikas Yojana (PMKVY)',
+
+    question: 'Which ministry implements PMKVY, and what is its current version?',
+    answer: 'Ministry of Skill Development & Entrepreneurship; currently PMKVY 4.0 (merged with PM-NAPS and JSS)',
+    shortcut: 'PMKVY = 2015 | MSDE | PMKVY 4.0 (2022-26) | Short-Term Training + RPL | 1.63 crore trained | NSQF aligned | Rs 8,800 crore approved Feb 2025',
+    detail: 'Launched 2015. Ministry of Skill Development & Entrepreneurship. PMKVY 4.0 merged with PM-NAPS (National Apprenticeship Promotion Scheme) and JSS (Jan Shikshan Sansthan). Short-Term Training (STT) for age 15-45. Recognition of Prior Learning (RPL) for existing workers. 1.63 crore candidates trained. Cabinet approved Rs 8,800 crore in Feb 2025 for restructuring.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'கௌஷல் விகாஸ் = திறன் வளர்ச்சி (Kaushal = திறமை/திறன், Vikas = வளர்ச்சி). இளைஞர்களுக்கு தொழில் பயிற்சி அளிக்கும் திட்டம்.',
+  },
+  {
+    id: 22, category: 'Employment & Skill', topic: 'Startup India',
+    question: 'When was Startup India launched, and what are its key benefits?',
+    answer: 'Launched 16 January 2016 — tax exemptions, self-certification, patent fee reduction, Fund of Funds',
+    shortcut: 'Startup India = 16 Jan 2016 | DPIIT, Min of Commerce | 3-year tax holiday (Sec 80-IAC) | Fund of Funds Rs 10,000 crore | Portal: startupindia.gov.in',
+    detail: 'Launched 16 January 2016. Department for Promotion of Industry and Internal Trade (DPIIT), Ministry of Commerce & Industry. Key benefits: 3-year income tax exemption under Sec 80-IAC, self-certification under 6 labour and 3 environmental laws, 80% rebate on patent filing, Fund of Funds of Rs 10,000 crore via SIDBI.',
+    context: 'SSC CGL 2022-23', examProb: 'High',
+  },
+  {
+    id: 23, category: 'Employment & Skill', topic: 'Make in India',
+    question: 'When was Make in India launched, and what are its four pillars?',
+    answer: 'Launched 25 September 2014; four pillars: New Processes, New Infrastructure, New Sectors, New Mindset',
+    shortcut: 'Make in India = 25 Sep 2014 | DPIIT | 4 pillars: Process-Infra-Sector-Mindset | 27 sectors under 2.0 | FDI grew 55% | PLI across 14 sectors',
+    detail: 'Led by DPIIT, Ministry of Commerce & Industry. Aims to increase manufacturing GDP to 25% (currently ~17%). Make in India 2.0 covers 27 sectors. PLI (Production Linked Incentive) scheme across 14 key sectors: Rs 1.23 lakh crore investment, 8 lakh jobs. India improved from 142nd to 63rd in Doing Business rankings (2014-2020).',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+  },
+
+  // =====================================================================
+  // EDUCATION SCHEMES
+  // =====================================================================
+  {
+    id: 24, category: 'Education', topic: 'National Education Policy 2020',
+    question: 'NEP 2020 replaced which policy, and what is the new school structure?',
+    answer: 'Replaced NEP 1986; new 5+3+3+4 structure (replacing 10+2); emphasis on foundational literacy by 2025',
+    shortcut: 'NEP 2020 = 29 Jul 2020 | 5+3+3+4 structure | Min of Education | Replace 10+2 | Multidisciplinary | Mother tongue till Class 5 | Board exams revised',
+    detail: 'Approved 29 July 2020. Third education policy after 1968 and 1986. 5+3+3+4 = Foundational (3-8 yrs) + Preparatory (8-11) + Middle (11-14) + Secondary (14-18). Teaching in mother tongue/regional language till Class 5. 6% GDP target for education. Academic Bank of Credits. National Digital University launched Jan 2025.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+  },
+  {
+    id: 25, category: 'Education', topic: 'Samagra Shiksha Abhiyan',
+
+    question: 'Samagra Shiksha Abhiyan merged which three schemes?',
+    answer: 'Sarva Shiksha Abhiyan (SSA), Rashtriya Madhyamik Shiksha Abhiyan (RMSA), and Teacher Education (TE)',
+    shortcut: 'Samagra Shiksha = 2018 | Merged SSA+RMSA+TE | Pre-school to Class XII | Rs 2,94,283 crore (2021-26) | 60:40 funding | Min of Education',
+    detail: 'Launched 2018. Ministry of Education (Dept of School Education & Literacy). Covers 11.6 lakh schools, 15.6 crore students, 57 lakh teachers. Aligned with NEP 2020. Funding: 60:40 (Centre:State), 90:10 for NE/Himalayan states, 100% for UTs. Total outlay: Rs 2,94,283 crore for 2021-26.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'சமக்ர ஷிக்ஷா அபியான் = முழுமையான கல்வி இயக்கம் (Samagra = முழுமையான, Shiksha = கல்வி, Abhiyan = இயக்கம்). SSA + RMSA + TE மூன்றையும் இணைத்த ஒருங்கிணைந்த பள்ளிக் கல்வித் திட்டம்.',
+  },
+  {
+    id: 26, category: 'Education', topic: 'PM POSHAN (Mid-Day Meal)',
+    question: 'PM POSHAN scheme replaced which earlier scheme?',
+    answer: 'Replaced the Mid-Day Meal Scheme; provides hot cooked meals to students of Classes I-VIII in government schools',
+    shortcut: 'PM POSHAN = Sep 2021 | Replaced Mid-Day Meal | Min of Education | Rs 1.31 lakh crore (2021-26) | 11.8 crore children | 11.2 lakh schools',
+    detail: 'PM Poshan Shakti Nirman, approved September 2021. Ministry of Education. Covers Classes I-VIII plus pre-school (Bal Vatika). 11.8 crore children in 11.2 lakh schools. Food grains: 100g/child/day (primary), 150g (upper primary) at NFSA rates. Promotes TithiBhojan (community meals) and Nutrition Gardens. Social audit mandatory.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'போஷண் = ஊட்டச்சத்து (POSHAN = Prime Minister\'s Overarching Scheme for Holistic Nutrition). அரசுப் பள்ளி மாணவர்களுக்கு சூடான சமைத்த உணவு — முன்னர் Mid-Day Meal என்று அறியப்பட்டது.',
+  },
+
+  // =====================================================================
+  // HEALTH SCHEMES
+  // =====================================================================
+  {
+    id: 27, category: 'Health', topic: 'Ayushman Bharat Health Infrastructure Mission',
+    question: 'What is the objective of PM-ABHIM (Ayushman Bharat Health Infrastructure Mission)?',
+    answer: 'To strengthen public health infrastructure from village to block to district level; establish Health & Wellness Centres and integrated labs',
+    shortcut: 'PM-ABHIM = Oct 2021 | Public health infra from village→district | 1.78 lakh Ayushman Arogya Mandirs | Rs 4,200 crore (2025-26) | Min of Health',
+    detail: 'Launched October 2021. Ministry of Health & Family Welfare. Outlay: Rs 64,180 crore for 5 years. Establishes Ayushman Arogya Mandirs (earlier Health & Wellness Centres) as upgraded Primary Health Centres. 1.78 lakh active AAMs by June 2025. Creates integrated public health laboratories at block/district level. Strengthens pandemic preparedness infrastructure.',
+    context: 'SSC CGL 2023', examProb: 'High',
+  },
+  {
+    id: 28, category: 'Health', topic: 'National Digital Health Mission (ABDM)',
+    question: 'What is the Ayushman Bharat Digital Mission (ABDM) about?',
+    answer: 'Creates unique Ayushman Bharat Health Account (ABHA) digital health ID for every citizen; enables interoperable digital health records',
+    shortcut: 'ABDM = 27 Sep 2021 | ABHA (14-digit health ID) | Digital health records | NHA implements | Portal: abdm.gov.in | Linked to Aadhaar',
+    detail: 'Launched 27 September 2021. National Health Authority (NHA) implements it. Four key pillars: Health ID (ABHA), Healthcare Professionals Registry, Health Facility Registry, Electronic Health Records. Each citizen gets 14-digit ABHA number. Enables sharing of health records across hospitals. Integrated with Ayushman Bharat PM-JAY.',
+    context: 'SSC CGL 2023', examProb: 'High',
+  },
+
+  // =====================================================================
+  // INFRASTRUCTURE SCHEMES
+  // =====================================================================
+  {
+    id: 29, category: 'Infrastructure', topic: 'Jal Jeevan Mission (JJM)',
+    question: 'What is the target of Jal Jeevan Mission?',
+    answer: 'Provide tap water supply (55 LPCD) to every rural household; extended till 2028',
+    shortcut: 'JJM = 15 Aug 2019 | Har Ghar Jal | 55 litres/person/day | 80% coverage (15 crore households) | Min of Jal Shakti | Extended to 2028',
+    detail: 'Launched 15 August 2019 (Independence Day). Ministry of Jal Shakti. Goal: Functional Household Tap Connections (FHTC) to all rural homes. From 3.23 crore (17%) connections in 2019 to 15 crore (80%) by 2025. Extended to 2028 in Budget 2025. Prioritizes quality-affected, drought-prone, and SC/ST habitations. Har Ghar Jal tagline.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'ஜல் ஜீவன் = நீர் உயிர் (Jal = நீர்/தண்ணீர், Jeevan = உயிர்/வாழ்க்கை). "ஹர் கர் ஜல்" = ஒவ்வொரு வீட்டிற்கும் குழாய் நீர். அனைத்து கிராமப்புற வீடுகளுக்கும் குழாய் தண்ணீர் இணைப்பு.',
+  },
+  {
+    id: 30, category: 'Infrastructure', topic: 'AMRUT 2.0',
+    question: 'What does AMRUT stand for, and what is its focus under 2.0?',
+    answer: 'Atal Mission for Rejuvenation and Urban Transformation; 2.0 focuses on making cities water-secure through circular economy of water',
+    shortcut: 'AMRUT = Jun 2015 (Atal = Vajpayee) | AMRUT 2.0 = 2021-26 | Rs 2,99,000 crore | 500 cities | Water supply + Sewerage | MoHUA',
+    detail: 'AMRUT 1.0 launched June 2015. Named after PM Atal Bihari Vajpayee. AMRUT 2.0 approved for 2021-26 with Rs 2,99,000 crore outlay (Central share Rs 76,760 crore). MoHUA. Focus: universal water supply via functional taps in all statutory towns + sewerage in 500 cities. Promotes circular economy of water: reuse, recycle, water body rejuvenation.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'AMRUT = அமிர்தம் (Atal Mission for Rejuvenation and Urban Transformation). அடல் பிஹாரி வாஜ்பாய் நினைவாக பெயரிடப்பட்டது. நகரங்களுக்கு நீர் பாதுகாப்பு + கழிவுநீர் மேலாண்மை.',
+  },
+  {
+    id: 31, category: 'Infrastructure', topic: 'Saubhagya (PM Sahaj Bijli Har Ghar)',
+    question: 'What was the objective of the Saubhagya scheme?',
+    answer: 'Universal household electrification by providing electricity connections to all un-electrified households',
+    shortcut: 'Saubhagya = Oct 2017 | "Sahaj Bijli Har Ghar" | Rs 16,320 crore | 2.86 crore households electrified | CLOSED 31 Mar 2022 | Min of Power',
+    detail: 'Launched October 2017. Ministry of Power. Outlay: Rs 16,320 crore. Free connection for households identified through SECC 2011; Rs 500 for others. 2.86 crore households electrified. Scheme closed on 31 March 2022 (all sanctioned work completed). Succeeded by RDSS (Revamped Distribution Sector Scheme) for remaining gaps.',
+    context: 'SSC CGL 2022', examProb: 'High',
+    tamilNote: 'சௌபாக்யா = நல்வாழ்வு/அதிர்ஷ்டம். "சஹஜ் பிஜ்லி ஹர் கர்" = எளிதான மின்சாரம் ஒவ்வொரு வீட்டிற்கும் (Sahaj = எளிய, Bijli = மின்சாரம், Har Ghar = ஒவ்வொரு வீடு).',
+  },
+
+  // =====================================================================
+  // WOMEN & CHILD WELFARE
+  // =====================================================================
+  {
+    id: 32, category: 'Women & Child', topic: 'Beti Bachao Beti Padhao (BBBP)',
+    question: 'When was Beti Bachao Beti Padhao launched, and which ministries implement it?',
+    answer: 'Launched 22 January 2015 in Panipat, Haryana; tri-ministerial: WCD + Health + Education',
+    shortcut: 'BBBP = 22 Jan 2015 | "Save Daughter, Educate Daughter" | Tri-ministry: WCD + Health + Education | 10th anniversary Jan 2025 | Integrated into Mission Shakti',
+    detail: 'Launched 22 January 2015 by PM Modi at Panipat, Haryana (worst CSR district). Addresses declining Child Sex Ratio. Three ministries: Women & Child Development, Health & Family Welfare, Education. Now integrated with Mission Shakti (2021-26). Budget 2025-26: Rs 26,890 crore for WCD ministry. Sukanya Samriddhi Yojana launched as part of BBBP.',
+    context: 'SSC CGL 2022-24', examProb: 'Hot',
+    tamilNote: 'பேட்டி பசாவோ பேட்டி படாவோ = பெண்ணைக் காப்போம் பெண்ணைப் படிக்க வைப்போம் (Beti = மகள்/பெண், Bachao = காப்பாற்று, Padhao = படிக்க வை). குழந்தை பாலின விகிதம் குறைவதை தடுக்கும் திட்டம்.',
+  },
+  {
+    id: 33, category: 'Women & Child', topic: 'Mission Shakti',
+    question: 'What are the two sub-schemes under Mission Shakti?',
+    answer: 'Sambal (safety and security: OSC, Women Helpline 181, BBBP) and Samarthya (empowerment: Ujjwala, Swadhar Greh, working women hostels)',
+    shortcut: 'Mission Shakti = 2021-26 | Sambal = Safety | Samarthya = Empowerment | Umbrella scheme for WCD | OSC + 181 Helpline under Sambal',
+    detail: 'Umbrella scheme of Ministry of WCD for 2021-22 to 2025-26. Sambal sub-scheme: One Stop Centres, 181 Women Helpline, BBBP. Samarthya sub-scheme: Ujjwala (anti-trafficking), Swadhar Greh (shelter for women in distress), working women hostels. Integrates all women safety and empowerment programmes.',
+    context: 'SSC CGL 2024', examProb: 'High',
+    tamilNote: 'ஷக்தி = சக்தி/ஆற்றல். சம்பல் = ஆதரவு/பாதுகாப்பு. சமர்த்யா = திறமை/வல்லமை. பெண்களின் பாதுகாப்பு + அதிகாரமளிப்பு என இரு உட்பிரிவுகள்.',
+  },
+  {
+    id: 34, category: 'Women & Child', topic: 'Mission Vatsalya & Mission Saksham Anganwadi',
+    question: 'What is Mission Vatsalya about?',
+    answer: 'Umbrella scheme for child protection including child welfare, adoption, juvenile justice, and anti-child-trafficking',
+    shortcut: 'Mission Vatsalya = Child protection | Mission Saksham = upgraded Anganwadis + POSHAN Abhiyaan + ICDS | Min of WCD | Poshan tracker app',
+    detail: 'Mission Vatsalya: child protection, juvenile justice, adoption (CARA), Child Welfare Committees, Childline 1098. Mission Saksham Anganwadi & POSHAN 2.0: upgrades ICDS Anganwadi Services + POSHAN Abhiyaan. Both under Ministry of WCD. Poshan Tracker app monitors nutritional outcomes. Target: reduce stunting, wasting, anaemia in children and women.',
+    context: 'SSC CGL 2024', examProb: 'High',
+    tamilNote: 'வாத்சல்யா = தாய்ப்பாசம்/அன்பு (குழந்தை பாதுகாப்பு). சக்ஷம் = திறமையான/வல்லமையான. அங்கன்வாடி = முற்றத்தில் உள்ள பாதுகாப்பு மையம் (Angan = முற்றம், Wadi = இடம்).',
+  },
+
+  // =====================================================================
+  // DIGITAL INDIA INITIATIVES
+  // =====================================================================
+  {
+    id: 35, category: 'Digital India', topic: 'Digital India Programme',
+    question: 'When was Digital India launched, and what are its three focus areas?',
+    answer: 'Launched 1 July 2015; three focus areas: Digital Infrastructure, Governance on Demand, Digital Empowerment of Citizens',
+    shortcut: 'Digital India = 1 Jul 2015 | MeitY | 3 pillars: Infra + Governance + Empowerment | BharatNet = 2.18 lakh GPs | DigiLocker = 53 cr users | UPI = Rs 24.77 lakh cr/month',
+    detail: 'Launched 1 July 2015. Ministry of Electronics & IT (MeitY). Completed 10 years on 1 Jul 2025. Key achievements: BharatNet connected 2.18 lakh Gram Panchayats. DigiLocker: 53.84 crore users. Internet connections: 25 crore (2014) to 96.96 crore (2024). Data cost: Rs 308/GB (2014) to Rs 9.34/GB (2022). UPI: 1,867 crore transactions worth Rs 24.77 lakh crore in Apr 2025.',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+  },
+  {
+    id: 36, category: 'Digital India', topic: 'JAM Trinity',
+    question: 'What is JAM Trinity, and why is it significant?',
+    answer: 'Jan Dhan + Aadhaar + Mobile — backbone for Direct Benefit Transfer (DBT) and financial inclusion',
+    shortcut: 'JAM = Jan Dhan + Aadhaar + Mobile | Enables DBT | Rs 6.9 lakh crore credited via DBT in FY25 | Reduces leakage & middlemen | Financial inclusion backbone',
+    detail: 'Jan Dhan (bank accounts for all) + Aadhaar (unique biometric ID) + Mobile (connectivity). Together they enable Direct Benefit Transfer eliminating middlemen. Rs 6.9 lakh crore credited to bank accounts via DBT in FY 2024-25. Saved Rs 2.73 lakh crore by reducing leakage. Every major welfare scheme now routes benefits through JAM.',
+    context: 'SSC CGL 2022-23', examProb: 'Recurring',
+  },
+
+  // =====================================================================
+  // NEW SCHEMES 2024-26
+  // =====================================================================
+  {
+    id: 37, category: 'New Schemes 2024-26', topic: 'PM Vishwakarma Yojana',
+    question: 'When was PM Vishwakarma Yojana launched, and who does it target?',
+    answer: 'Launched 17 September 2023 (Vishwakarma Jayanti); targets 18 types of traditional artisans and craftspeople',
+    shortcut: 'PM Vishwakarma = 17 Sep 2023 | 18 artisan trades | Training: Rs 500/day | Toolkit: Rs 15,000 | Loan: Rs 1L then Rs 2L | 30 lakh registered | pmvishwakarma.gov.in',
+    detail: 'Announced 15 Aug 2023, launched 17 Sep 2023. Covers 18 trades: carpenter, blacksmith, goldsmith, potter, cobbler, etc. Benefits: 5-7 day training (Rs 500/day stipend), Rs 15,000 toolkit grant, collateral-free loans (Rs 1 lakh then Rs 2 lakh). Over 30 lakh artisans registered by Aug 2025, 23 lakh trained, Rs 41,188 crore in loans sanctioned.',
+    context: 'SSC CGL 2024-25', examProb: 'Hot',
+    tamilNote: 'விஸ்வகர்மா = படைப்புக் கடவுள்/கம்மாளர் தெய்வம். 18 பாரம்பரிய கைவினைத் தொழில்களான தச்சர், கொல்லர், பொற்கொல்லர், குயவர் போன்றவர்களுக்கான திட்டம்.',
+  },
+  {
+    id: 38, category: 'New Schemes 2024-26', topic: 'PM Surya Ghar: Muft Bijli Yojana',
+    question: 'What is PM Surya Ghar scheme, and what is its target?',
+    answer: 'Rooftop solar scheme to provide 300 units free electricity per month to 1 crore households',
+    shortcut: 'PM Surya Ghar = 15 Feb 2024 | Rs 75,000 crore | 300 units free/month | 1 crore homes target by 2027 | 60% subsidy up to 2 KW | Min of New & Renewable Energy',
+    detail: 'Announced 15 February 2024. Rs 75,000 crore investment. Central Financial Assistance: 60% of system cost for 2 KW, 40% for 2-3 KW. Target: 1 crore solar-powered homes by March 2027. 10 lakh installations achieved by March 2025. World\'s largest residential solar scheme. Savings: Rs 15,000-18,000/household/year. Portal: pmsuryaghar.gov.in.',
+    context: 'SSC CGL 2025', examProb: 'Hot',
+    tamilNote: 'சூர்ய கர் = சூரிய வீடு. முஃப்த் பிஜ்லி = இலவச மின்சாரம் (Surya = சூரியன், Ghar = வீடு, Muft = இலவசம், Bijli = மின்சாரம்). கூரையில் சோலார் பேனல் வைத்து மாதம் 300 யூனிட் இலவச மின்சாரம்.',
+  },
+  {
+    id: 39, category: 'New Schemes 2024-26', topic: 'Agnipath Scheme (Agniveer)',
+    question: 'What is the Agnipath Scheme for military recruitment?',
+    answer: 'Tour-of-duty recruitment for 4 years into Army/Navy/Air Force; recruits called Agniveers; 25% retained for permanent cadre',
+    shortcut: 'Agnipath = 14 Jun 2022 | 4-year service | Age 17.5-21 | 45,000-50,000/yr recruited | 25% retained | Seva Nidhi Rs 11.71 lakh | Min of Defence',
+    detail: 'Approved 14 June 2022. Ministry of Defence. 4-year tenure (6 months training + 3.5 years active). 25% of each batch selected for permanent cadre. Seva Nidhi package: Rs 11.71 lakh on completion. Death in service: Rs 1 crore compensation. Agniveers get 10% reservation in CAPF/BSF/CISF/RPF. Played role in Operation Sindoor (2025 India-Pakistan border defense).',
+    context: 'SSC CGL 2024', examProb: 'Hot',
+    tamilNote: 'அக்னிபத் = நெருப்புப் பாதை (Agni = நெருப்பு/தீ, Path = பாதை/வழி). அக்னிவீர் = தீ வீரர். 4 ஆண்டு குறுகிய கால இராணுவ சேவை. சேவா நிதி = சேவை நிதி (₹11.71 லட்சம்).',
+  },
+  {
+    id: 40, category: 'New Schemes 2024-26', topic: 'PMAY-U 2.0',
+    question: 'When was PMAY-U 2.0 launched and what is its target?',
+    answer: 'Launched September 2024; targets additional 1 crore urban families with up to Rs 2.50 lakh assistance',
+    shortcut: 'PMAY-U 2.0 = Sep 2024 | 1 crore additional urban homes | EWS + LIG + MIG | Rs 2.50 lakh assistance | MoHUA',
+    detail: 'PMAY-U 2.0 launched September 2024 as continuation of PMAY-Urban. Targets 1 crore additional urban families. Financial assistance up to Rs 2.50 lakh per family. Covers EWS, LIG, and MIG categories. Uses AI/ML for fraud detection, e-KYC, Aadhaar-based DBT, geo-tagged verification. 13.61 lakh homes sanctioned under 2.0 so far.',
+    context: 'SSC CGL 2025', examProb: 'Hot',
+    tamilNote: 'ஆவாஸ் = வீடு. PMAY-U 2.0 = நகர்ப்புற வீட்டுத் திட்டம் இரண்டாம் கட்டம். கூடுதல் 1 கோடி நகர குடும்பங்களுக்கு ₹2.50 லட்சம் உதவி.',
+  },
+  {
+    id: 41, category: 'New Schemes 2024-26', topic: 'Ayushman Vaya Vandana (70+ expansion)',
+    question: 'What expansion of Ayushman Bharat was announced in October 2024?',
+    answer: 'All citizens aged 70 years and above get Rs 5 lakh health cover regardless of economic status',
+    shortcut: 'Ayushman Vaya Vandana = 29 Oct 2024 | All senior citizens 70+ covered | Rs 5 lakh cover | Regardless of income | ~4.5 crore families, 6 crore seniors',
+    detail: 'Launched 29 October 2024. Extends PM-JAY coverage to ALL citizens aged 70+, irrespective of income. Aims to support 4.5 crore families covering 6 crore senior citizens. Addresses healthcare needs of India\'s growing elderly population. Separate from regular PM-JAY which is income-based.',
+    context: 'SSC CGL 2025', examProb: 'Hot',
+    tamilNote: 'வய வந்தனா = வயது வணக்கம் (Vaya = வயது, Vandana = வணக்கம்/மரியாதை). 70+ வயதுடைய அனைத்து மூத்த குடிமக்களுக்கும் ₹5 லட்சம் சுகாதாரக் காப்பீடு — வருமானம் பொருட்படுத்தாமல்.',
+  },
+  {
+    id: 42, category: 'New Schemes 2024-26', topic: 'NPS Vatsalya',
+    question: 'What is NPS Vatsalya launched in September 2024?',
+    answer: 'NPS scheme for minors — parents can open pension account for children with minimum Rs 1,000/year contribution',
+    shortcut: 'NPS Vatsalya = Sep 2024 | NPS for children (minors) | Min Rs 1,000/yr | Converts to regular NPS at 18 | Min of Finance | Long-term savings for children',
+    detail: 'Launched September 2024 by Ministry of Finance. Parents/guardians can open NPS account for minor children. Minimum contribution Rs 1,000 per year. At age 18, seamlessly converts to regular NPS account. Promotes early financial planning and long-term savings culture. Managed by PFRDA under National Pension System framework.',
+    context: 'SSC CGL 2025', examProb: 'High',
+    tamilNote: 'வாத்சல்யா = தாய்ப்பாசம்/அன்பு. NPS Vatsalya = சிறுவர்களுக்கான தேசிய ஓய்வூதியத் திட்டம். பெற்றோர் குழந்தைகளுக்கு 18 வயதிற்கு முன்பே ஓய்வூதியக் கணக்கு தொடங்கலாம்.',
+  },
+  {
+    id: 43, category: 'New Schemes 2024-26', topic: 'PM SETU (ITI Modernization)',
+    question: 'What is PM SETU launched in Budget 2025?',
+    answer: 'Scheme to modernize 1,000 ITIs using hub-and-spoke model with Rs 60,000 crore outlay, focusing on AI, robotics, green energy',
+    shortcut: 'PM SETU = Budget 2025-26 | Rs 60,000 crore | 1,000 ITIs modernized | Hub-and-spoke model | AI + Robotics + Green Energy | Viksit Bharat workforce',
+    detail: 'Announced in Union Budget 2025-26. PM Skill Enhancement and Training Upgradation. Rs 60,000 crore outlay. Modernizes 1,000 Industrial Training Institutes using hub-and-spoke model. Focus areas: AI, robotics, green energy, advanced manufacturing. Aims to create future-ready skilled workforce aligned with Viksit Bharat 2047 vision.',
+    context: 'SSC CGL 2025-26', examProb: 'Hot',
+    tamilNote: 'SETU = பாலம்/இணைப்பு (Skill Enhancement and Training Upgradation). ITI = தொழிற்பயிற்சி நிறுவனங்கள். 1,000 ITI-களை AI, ரோபோடிக்ஸ், பசுமை ஆற்றல் துறைகளுக்காக நவீனமாக்கும் திட்டம்.',
+  },
+  {
+    id: 44, category: 'New Schemes 2024-26', topic: 'Employment-Linked Incentive (ELI) Scheme',
+    question: 'What is the ELI Scheme approved in July 2025?',
+    answer: 'Rs 99,446 crore scheme to incentivize job creation, targeting 3.5 crore new jobs especially in manufacturing',
+    shortcut: 'ELI = Jul 2025 | Rs 99,446 crore | 3.5 crore jobs in 2 years | Focus on manufacturing | Min of Labour | Incentive to employers for new hires',
+    detail: 'Union Cabinet approved July 2025. Total outlay Rs 99,446 crore. Incentivizes employers for creating new formal jobs. Target: 3.5 crore jobs in 2 years. Focuses on manufacturing sector. Part of government\'s broader employment generation strategy alongside MGNREGA, PMKVY, and Startup India.',
+    context: 'SSC CGL 2025-26', examProb: 'Hot',
+  },
+  {
+    id: 45, category: 'New Schemes 2024-26', topic: 'PM Vidya Lakshmi Yojana',
+    question: 'What is PM Vidya Lakshmi Yojana launched on 1 January 2025?',
+    answer: 'Unified digital platform for education loans enabling easy access for students',
+    shortcut: 'PM Vidya Lakshmi = 1 Jan 2025 | Digital education loan platform | Easy access for students | Single window for all education loans',
+    detail: 'Launched 1 January 2025. Provides a single digital platform for students to apply for education loans from multiple banks and financial institutions. Simplifies the education loan process. Part of the government\'s push to make higher education accessible and affordable for all students.',
+    context: 'SSC CGL 2025-26', examProb: 'High',
+  },
+  {
+    id: 46, category: 'New Schemes 2024-26', topic: 'One Nation One Subscription',
+    question: 'What is "One Nation One Subscription" launched on 1 January 2025?',
+    answer: 'Nationwide access to international academic journals and research publications for all higher education institutions',
+    shortcut: 'ONOS = 1 Jan 2025 | All institutions get access to international journals | Min of Education | Boosts research | Rs 6,000 crore (estimated)',
+    detail: 'Launched 1 January 2025. Government provides nationwide subscription to major international academic journal databases (Elsevier, Springer, etc.). Benefits students, researchers, and higher education institutions across India. Eliminates individual institutional subscription burden. Part of NEP 2020 implementation for boosting research output.',
+    context: 'SSC CGL 2025-26', examProb: 'High',
+  },
+  {
+    id: 47, category: 'Employment & Skill', topic: 'Atmanirbhar Bharat Abhiyan',
+    question: 'When was Atmanirbhar Bharat Abhiyan announced, and what is its total package?',
+    answer: 'Announced 12 May 2020 during COVID-19; Rs 20 lakh crore economic package (approx 10% of GDP)',
+    shortcut: 'Atmanirbhar Bharat = 12 May 2020 | Rs 20 lakh crore | "Self-Reliant India" | 5 pillars: Economy, Infra, System, Demography, Demand | COVID response',
+    detail: 'Announced 12 May 2020 by PM Modi during COVID-19 lockdown. Rs 20 lakh crore stimulus (10% of GDP). Five pillars: Economy, Infrastructure, Technology-driven System, Vibrant Demography, Demand. Included free food grains, PM Garib Kalyan Rojgar Abhiyaan, ECLGS for MSMEs, PLI schemes, agriculture reforms. Tagline: "Self-Reliant India".',
+    context: 'SSC CGL 2022-23', examProb: 'Hot',
+    tamilNote: 'ஆத்மநிர்பர் பாரத் = சுயசார்பு இந்தியா (Atma = சுய, Nirbhar = சார்பு/தங்குதல்). கோவிட்-19 ஊரடங்கின்போது ₹20 லட்ச கோடி பொருளாதார உதவித் தொகுப்பு.',
+  },
+
+  // =====================================================================
+  // ADDITIONAL IMPORTANT SCHEMES
+  // =====================================================================
+  {
+    id: 48, category: 'Social Welfare', topic: 'One District One Product (ODOP)',
+    question: 'ODOP approach is part of which government scheme?',
+    answer: 'Part of PM Formalization of Micro Food Processing Enterprises (PMFME) scheme under Atmanirbhar Bharat',
+    shortcut: 'ODOP = 2020 | Under PMFME/Atmanirbhar Bharat | Promote local products | Min of Food Processing | Each district identifies one product for development',
+    detail: 'One District One Product approach adopted under PM Formalization of Micro Food Processing Enterprises (PMFME) scheme. Ministry of Food Processing Industries. Each district identifies one food product for focused development. Provides credit-linked capital subsidy, capacity building, and branding support to micro food processing enterprises.',
+    context: 'SSC CGL 2023', examProb: 'High',
+  },
+  {
+    id: 49, category: 'Infrastructure', topic: 'PM Gati Shakti National Master Plan',
+    question: 'What is PM Gati Shakti, and when was it launched?',
+    answer: 'Launched 13 October 2021 — integrated multimodal infrastructure planning portal with 16 ministries on one GIS platform',
+    shortcut: 'PM Gati Shakti = 13 Oct 2021 | Rs 100 lakh crore (NIP) | 16 ministries | GIS-based planning | Reduces project delays | DPIIT coordinates',
+    detail: 'Launched 13 October 2021. National Master Plan for multimodal connectivity. GIS-based platform integrating 16 ministries for infrastructure planning. Part of National Infrastructure Pipeline (NIP) worth Rs 100+ lakh crore. Reduces time and cost overruns by coordinating road, rail, port, airport, waterway projects. DPIIT, Ministry of Commerce & Industry coordinates.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'கதி ஷக்தி = வேக சக்தி/இயக்க ஆற்றல் (Gati = வேகம்/இயக்கம், Shakti = சக்தி). 16 அமைச்சகங்களை GIS தளத்தில் இணைத்து சாலை, ரயில், துறைமுகம், விமானநிலையம் திட்டமிடல்.',
+  },
+  {
+    id: 50, category: 'Health', topic: 'National Health Mission (NHM)',
+    question: 'National Health Mission has which two sub-missions?',
+    answer: 'National Rural Health Mission (NRHM) and National Urban Health Mission (NUHM)',
+    shortcut: 'NHM = 2013 (merged NRHM 2005 + NUHM 2013) | Min of Health | ASHA workers under NRHM | Free drugs/diagnostics | JSY for institutional delivery',
+    detail: 'NHM launched 2013 by merging NRHM (2005) and adding NUHM (2013). Ministry of Health & Family Welfare. Key components: ASHA workers (Accredited Social Health Activists), Janani Suraksha Yojana (JSY) for institutional delivery, free drugs/diagnostics, mobile medical units. ASHA workers are the backbone of rural healthcare delivery.',
+    context: 'SSC CGL Recurring', examProb: 'Recurring',
+  },
+
+  // =====================================================================
+  // MISSING HIGH-PRIORITY SCHEMES (PYQ + Current Affairs)
+  // =====================================================================
+  {
+    id: 51, category: 'Infrastructure', topic: 'PM Gram Sadak Yojana (PMGSY)',
+    question: 'When was PMGSY launched, and what is its objective?',
+    answer: 'Launched 25 December 2000 by PM Vajpayee — all-weather road connectivity to unconnected rural habitations',
+    shortcut: 'PMGSY = 25 Dec 2000 | Min of Rural Dev | 500+ pop plains, 250+ hilly | PMGSY-IV (2024-29): Rs 70,125 crore | 7.87 lakh km completed',
+    detail: 'Launched 25 December 2000 by PM Atal Bihari Vajpayee. Ministry of Rural Development. Targets habitations with 500+ population (250+ in hilly/tribal/desert areas). PMGSY-IV (2024-29): Rs 70,125 crore for 62,500 km connecting 25,000 habitations. Over 7,87,520 km constructed (95% target). Funding: 60:40 Centre:State (90:10 for NE/hilly states). Portal: pmgsy.dord.gov.in.',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+    tamilNote: 'கிராம சடக் = கிராமப்புற சாலை (Gram = கிராமம், Sadak = சாலை). கிராமங்களுக்கு எல்லா காலத்திலும் பயணிக்கக்கூடிய சாலை அமைக்கும் திட்டம்.',
+  },
+  {
+    id: 52, category: 'Social Welfare', topic: 'National Food Security Act (NFSA) 2013',
+    question: 'NFSA 2013 provides subsidized food grains at what price?',
+    answer: 'Rice Rs 3/kg, Wheat Rs 2/kg, Coarse grains Rs 1/kg — 5 kg per person per month to ~67% population',
+    shortcut: 'NFSA = 2013 | Right to Food | Rice Rs 3, Wheat Rs 2, Coarse Rs 1 | 75% rural + 50% urban | AAY: 35 kg/family | Min of Consumer Affairs',
+    detail: 'Enacted 5 July 2013, signed 12 September 2013. Ministry of Consumer Affairs, Food & Public Distribution. Legal right to subsidized food grains for ~67% of population via Targeted PDS. Priority households: 5 kg/person/month. AAY (Antyodaya Anna Yojana): 35 kg/family/month. Covers maternity benefit (Rs 6,000) and MDMS.',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+    tamilNote: 'தேசிய உணவுப் பாதுகாப்புச் சட்டம். "உணவு உரிமை சட்டம்" என்றும் அறியப்படுகிறது. அந்த்யோதய அன்ன யோஜனா (AAY) = கடைசி நபரின் உணவுத் திட்டம்.',
+  },
+  {
+    id: 53, category: 'Employment & Skill', topic: 'Production Linked Incentive (PLI) Scheme',
+    question: 'PLI scheme covers how many sectors, and what is the total outlay?',
+    answer: '14 key sectors with total outlay of Rs 1.97 lakh crore to boost domestic manufacturing',
+    shortcut: 'PLI = Mar 2020 | 14 sectors | Rs 1.97 lakh crore | Rs 16.5 lakh crore sales | 12 lakh jobs | DPIIT coordinates | Part of Make in India',
+    detail: 'Started March 2020 with electronics; expanded to 14 sectors by November 2020. Coordinated by DPIIT. 14 sectors: Electronics, Pharma, Auto, Telecom, Textiles, Food Processing, Solar PV, White Goods, ACC Batteries, Specialty Steel, Drones, Medical Devices, Metals & Mining, IT Hardware. Rs 1.76 lakh crore investment realized. 806 applications approved. Budget 2025-26: Rs 19,500 crore.',
+    context: 'SSC CGL 2024-25', examProb: 'Hot',
+  },
+  {
+    id: 54, category: 'Infrastructure', topic: 'Smart Cities Mission',
+    question: 'How many cities were selected under the Smart Cities Mission?',
+    answer: '100 cities selected for smart city development with efficient services, robust infrastructure, and sustainable environment',
+    shortcut: 'Smart Cities = 25 Jun 2015 | MoHUA | 100 cities | Rs 47,652 crore (Centre) | 7,626 projects | ICCCs in all 100 cities | smartcities.gov.in',
+    detail: 'Launched 25 June 2015. Ministry of Housing & Urban Affairs. Budget: Rs 47,652 crore (Central share). 100 cities selected through competition. 7,626 projects completed (95%) worth Rs 1,53,900 crore. All 100 cities have Integrated Command and Control Centres (ICCCs). Extended to March 2025.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+  },
+  {
+    id: 55, category: 'Infrastructure', topic: 'Namami Gange Programme',
+    question: 'When was Namami Gange launched, and what is its objective?',
+    answer: 'Launched June 2014 — flagship programme for pollution abatement and rejuvenation of River Ganga',
+    shortcut: 'Namami Gange = Jun 2014 | Rs 22,500 crore | NMCG implements | Min of Jal Shakti | 502 projects | Gangetic dolphin doubled | UN top 10 restoration',
+    detail: 'Launched June 2014. Ministry of Jal Shakti, implemented by National Mission for Clean Ganga (NMCG). Rs 22,500 crore (extended to March 2026). 502 projects sanctioned, 323 completed. BOD load from polluting industries halved. Gangetic dolphin population doubled to 6,327. UN recognized as top 10 World Restoration Flagship at COP15 (December 2022).',
+    context: 'SSC CGL Recurring', examProb: 'Hot',
+    tamilNote: 'நமாமி கங்கே = கங்கையை வணங்குகிறேன் (Namami = வணங்குகிறேன், Gange = கங்கை நதி). கங்கை நதி மாசுக் குறைப்பு மற்றும் புத்துயிர் அளிக்கும் திட்டம்.',
+  },
+  {
+    id: 56, category: 'Social Welfare', topic: 'Deendayal Antyodaya Yojana (DAY-NULM/NRLM)',
+    question: 'DAY-NRLM aims to mobilize rural women into which organizational structure?',
+    answer: 'Self-Help Groups (SHGs) — 10.05 crore women mobilized into 90.90 lakh SHGs with Rs 11 lakh crore credit disbursed',
+    shortcut: 'DAY = 25 Sep 2014 | NULM (Urban, MoHUA) + NRLM (Rural, Min Rural Dev) | 10 crore women in SHGs | 98% repayment | Antyodaya = uplift of last person',
+    detail: 'Launched 25 September 2014 (Deendayal Upadhyaya birth anniversary). DAY-NRLM: Ministry of Rural Development — 10.05 crore women in 90.90 lakh SHGs, Rs 11 lakh crore credit, 98% repayment rate. DAY-NULM: MoHUA — covers 4,041 statutory towns. 7% interest subsidy for SHGs.',
+    context: 'SSC CGL 2022-24', examProb: 'Hot',
+    tamilNote: 'தீன்தயாள் அந்த்யோதயா = கடைசி நபரின் உயர்வு (Deen = ஏழை, Dayal = கருணை, Antyodaya = கடைசி நபரின் உயர்வு). கிராமப்புற பெண்களை சுய உதவிக் குழுக்களாக இணைக்கும் திட்டம்.',
+  },
+  {
+    id: 57, category: 'Social Welfare', topic: 'Sansad Adarsh Gram Yojana (SAGY)',
+    question: 'What is Sansad Adarsh Gram Yojana, and when was it launched?',
+    answer: 'Launched 11 October 2014 — each MP adopts a Gram Panchayat and guides its holistic development',
+    shortcut: 'SAGY = 11 Oct 2014 (JP Narayan b\'day) | MP adopts village | No separate funding (convergence) | Min of Rural Dev | 5 Adarsh Grams per MP target',
+    detail: 'Launched 11 October 2014 on Jai Prakash Narayan\'s birth anniversary. Ministry of Rural Development. Each MP adopts a Gram Panchayat for holistic development across 8 sectors. No separate funding — relies on convergence of existing schemes. Target: 5 Adarsh Grams per MP by 2024. Portal: saanjhi.gov.in.',
+    context: 'SSC CGL 2022-23', examProb: 'High',
+    tamilNote: 'சன்சத் ஆதர்ஷ் கிராம் = நாடாளுமன்ற உறுப்பினரின் முன்மாதிரி கிராமம் (Sansad = நாடாளுமன்றம், Adarsh = முன்மாதிரி, Gram = கிராமம்).',
+  },
+  {
+    id: 58, category: 'Infrastructure', topic: 'SVAMITVA Scheme',
+    question: 'What technology does SVAMITVA scheme use for rural property mapping?',
+    answer: 'Drone technology for mapping rural inhabited areas and providing legal property cards (Record of Rights) to village households',
+    shortcut: 'SVAMITVA = 24 Apr 2020 (pilot) | Drones for rural land survey | Min of Panchayati Raj | 3.10 lakh villages surveyed | 1.63 crore property cards',
+    detail: 'Survey of Villages Abadi and Mapping with Improvised Technology in Village Areas. Pilot: 24 April 2020; National rollout: 24 April 2021 (Panchayati Raj Day). Ministry of Panchayati Raj with Survey of India. 6.62 lakh villages to be surveyed. 3.10 lakh villages surveyed, 1.63 crore property cards issued. Portal: svamitva.nic.in.',
+    context: 'SSC CGL 2023-24', examProb: 'Hot',
+    tamilNote: 'SVAMITVA = சுவாமித்வ = உரிமை/சொந்தம் (Swami = உரிமையாளர்). ட்ரோன் மூலம் கிராமப்புற நில அளவீடு செய்து சட்டப்பூர்வ சொத்து அட்டை வழங்கும் திட்டம்.',
+  },
+  {
+    id: 59, category: 'Infrastructure', topic: 'UDAN (Regional Air Connectivity)',
+    question: 'What does UDAN stand for, and what is its objective?',
+    answer: 'Ude Desh ka Aam Naagrik — make air travel affordable for Tier-2/Tier-3 cities through subsidized regional flights',
+    shortcut: 'UDAN = 21 Oct 2016 | Min of Civil Aviation | 663 routes | 95 airports | 5 phases | Modified UDAN 2026: Rs 28,840 crore | "Hawai Chappal to Hawai Jahaz"',
+    detail: 'Launched 21 October 2016 under National Civil Aviation Policy. Ministry of Civil Aviation. 663 routes operationalized across 95 airports/heliports. 5 phases (UDAN 1.0 to 5.0). Modified UDAN 2026: Rs 28,840 crore total outlay, 100 new airports + 200 helipads. Tagline: "Hawai Chappal to Hawai Jahaz".',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'UDAN = உடே தேஷ் கா ஆம் நாக்ரிக் = நாட்டின் சாதாரண குடிமக்கள் பறக்கட்டும் (Ude = பறக்கும், Desh = நாடு, Aam Naagrik = சாமான்ய குடிமகன்). சிறிய நகரங்களுக்கு மலிவான விமான சேவை.',
+  },
+  {
+    id: 60, category: 'Infrastructure', topic: 'Sagarmala Programme',
+    question: 'What is the Sagarmala Programme about?',
+    answer: 'Port-led development — modernize ports, enhance coastal connectivity, develop coastal industrialization and inland waterways',
+    shortcut: 'Sagarmala = Mar 2015 | Min of Ports & Shipping | Rs 5.79 lakh crore projects | 272 completed | Inland waterway cargo up 700% | sagarmala.gov.in',
+    detail: 'Launched March 2015. Ministry of Ports, Shipping and Waterways. Rs 5.79 lakh crore identified projects. 272 projects completed worth Rs 1.41 lakh crore. Coastal shipping grew 118%. Inland waterway cargo up 700%. 5 pillars: Port modernization, Connectivity, Port-led industrialization, Coastal development, Inland waterways.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'சாகர்மாலா = கடல் மாலை (Sagar = கடல்/சமுத்திரம், Mala = மாலை). துறைமுகங்களை மையமாகக் கொண்ட பொருளாதார வளர்ச்சித் திட்டம்.',
+  },
+  {
+    id: 61, category: 'Infrastructure', topic: 'Bharatmala Pariyojana',
+    question: 'What is the target of Bharatmala Pariyojana Phase-I?',
+    answer: '34,800 km highway network with Rs 6,92,324 crore connecting 550 district headquarters through 50 corridors',
+    shortcut: 'Bharatmala = 2017 | MoRTH (Nitin Gadkari) | Phase-I: 34,800 km | Rs 6.92 lakh crore | 550 district HQs | Economic + inter corridors + feeder routes',
+    detail: 'Proposed 2015, launched 2017. Ministry of Road Transport and Highways. Phase-I: Rs 6,92,324 crore for 34,800 km. 26,425 km awarded, 18,714 km constructed (Oct 2024). Components: Economic corridors, Inter-corridors, Feeder routes, National corridor efficiency improvement, Border roads.',
+    context: 'SSC CGL 2023-24', examProb: 'High',
+    tamilNote: 'பாரதமாலா = இந்தியா மாலை (Bharat = இந்தியா, Mala = மாலை). தேசிய நெடுஞ்சாலை வலையமைப்பை 550 மாவட்டங்களுடன் இணைக்கும் பேரளவு சாலைத் திட்டம்.',
+  },
+  {
+    id: 62, category: 'Infrastructure', topic: 'Kavach (Train Collision Avoidance)',
+    question: 'What is Kavach in Indian Railways?',
+    answer: 'Indigenous automatic train protection system to prevent collisions, over-speeding, and signal-passing at danger — SIL-4 certified',
+    shortcut: 'Kavach = Jul 2020 (adopted) | RDSO developed | SIL-4 safety | Target: 30,000 km by 2027-28 | Rs 50 lakh/km | RFID + radio + onboard computer',
+    detail: 'Development began 2011; adopted as National ATP system July 2020. Ministry of Railways, developed by RDSO. Version 4.0 approved July 2024. Deployed on 1,543 km. Target: 17,000 km by 2025-26; 30,000 km by 2027-28. Cost: Rs 50 lakh/km (trackside). SIL-4 (highest safety integrity level) certified. Uses RFID + radio + onboard computer.',
+    context: 'SSC CGL 2024-25', examProb: 'Hot',
+    tamilNote: 'கவச் = கவசம்/பாதுகாப்பு உறை. ரயில் மோதலைத் தடுக்கும் இந்திய-வளர்ச்சி பாதுகாப்பு அமைப்பு.',
+  },
+  {
+    id: 63, category: 'Infrastructure', topic: 'Vande Bharat Express',
+    question: 'What is the maximum speed of Vande Bharat Express?',
+    answer: '160 kmph commercial speed (183 kmph in trials) — India\'s first indigenous semi-high-speed trainset manufactured at ICF Chennai',
+    shortcut: 'Vande Bharat = 15 Feb 2019 | ICF Chennai | 160 kmph | 164 services | 7.5 crore+ passengers | 90% localization | Sleeper version Jan 2026',
+    detail: 'First commercial service 15 February 2019 (New Delhi-Varanasi). Ministry of Railways. Manufactured at Integral Coach Factory (ICF), Chennai. 164 services across 274 districts (Dec 2025). 7.5 crore+ passengers. 90% localization — Make in India showcase. Variants: 8, 16, 20 coach. Vande Bharat Sleeper launched January 2026.',
+    context: 'SSC CGL 2024-25', examProb: 'Hot',
+    tamilNote: 'வந்தே பாரத் = இந்தியாவை வணங்குகிறேன். சென்னை ICF-ல் தயாரிக்கப்படும் இந்தியாவின் முதல் சொந்த அதிவேக ரயில்.',
+  },
+  {
+    id: 64, category: 'New Schemes 2024-26', topic: 'Unified Pension Scheme (UPS)',
+    question: 'What pension does UPS guarantee, and when does it take effect?',
+    answer: '50% of average basic pay (last 12 months) for 25+ years service; minimum Rs 10,000/month for 10+ years; effective 1 April 2025',
+    shortcut: 'UPS = Aug 2024 (announced) | 1 Apr 2025 (effective) | 50% of avg basic pay | Min Rs 10K/month | Employee 10% + Govt 18.5% | Family: 60% pension',
+    detail: 'Announced August 2024; effective 1 April 2025. Department of Financial Services, Ministry of Finance. Assured inflation-indexed pension for central govt employees under NPS. Employee contributes 10%, Government contributes 18.5% (10% + 8.5% additional). Family pension: 60% of employee\'s pension. Recommended by T.V. Somanathan committee.',
+    context: 'SSC CGL 2025-26', examProb: 'Hot',
+  },
+  {
+    id: 65, category: 'New Schemes 2024-26', topic: 'PM Internship Scheme (PMIS)',
+    question: 'What is the PM Internship Scheme launched in October 2024?',
+    answer: '1 crore internships in top 500 companies over 5 years for youth aged 21-24; Rs 5,000 monthly stipend + Rs 6,000 one-time grant',
+    shortcut: 'PMIS = 3 Oct 2024 | Budget 2024-25 | 1 crore internships | Top 500 companies | Rs 5K/month | Age 21-24 | Family income < Rs 8L | 12 months',
+    detail: 'Announced Budget 2024-25; launched 3 October 2024. Ministry of Corporate Affairs. Rs 800 crore pilot phase. Monthly stipend Rs 5,000 (Rs 4,500 from govt + Rs 500 from company). One-time grant Rs 6,000. 12-month duration. 1.25 lakh internships in pilot. 24 sectors covered. Family income cap: Rs 8 lakh. Portal: pminternshipscheme.com.',
+    context: 'SSC CGL 2025-26', examProb: 'Hot',
+  },
+  {
+    id: 66, category: 'New Schemes 2024-26', topic: 'National Green Hydrogen Mission',
+    question: 'What is the target of the National Green Hydrogen Mission?',
+    answer: 'Produce 5 MMT green hydrogen per year by 2030 with 125 GW renewable energy capacity; Rs 19,744 crore initial outlay',
+    shortcut: 'Green Hydrogen = Jan 2023 | MNRE | Rs 19,744 crore | 5 MMT/yr by 2030 | 125 GW RE | 6 lakh jobs | SIGHT programme: Rs 17,490 crore',
+    detail: 'Cabinet approved January 2023. Ministry of New & Renewable Energy (MNRE). Rs 19,744 crore initial outlay. Target: 5 MMT green hydrogen/year by 2030 with 125 GW renewable energy capacity. Expected Rs 8 lakh crore investment. 6 lakh jobs. 50 MMT CO2 reduction. Target cost: $1.5/kg by 2030. SIGHT programme: Rs 17,490 crore for electrolyser manufacturing.',
+    context: 'SSC CGL 2025-26', examProb: 'Hot',
+  },
+  {
+    id: 67, category: 'New Schemes 2024-26', topic: 'India Semiconductor Mission (ISM)',
+    question: 'What incentive does the India Semiconductor Mission provide?',
+    answer: 'Up to 50% of project cost as fiscal incentive for semiconductor fab, OSAT, and design companies; Rs 76,000 crore framework',
+    shortcut: 'ISM = Dec 2021 | MeitY | Rs 76,000 crore | 50% project cost subsidy | Tata $10B fab | Micron $2.75B ATMP | ISM 2.0 in Budget 2026-27',
+    detail: 'Launched December 2021 (ISM 1.0). Ministry of Electronics & IT (MeitY). Rs 76,000 crore incentive framework (up to 50% project cost). 10 projects worth Rs 1.60 lakh crore approved. Key projects: Tata Electronics $10B fab, Micron $2.75B ATMP plant. Market target: $100-110 billion by 2030. ISM 2.0 announced in Budget 2026-27.',
+    context: 'SSC CGL 2025-26', examProb: 'Hot',
+  },
+  {
+    id: 68, category: 'Employment & Skill', topic: 'PM MITRA Parks (Mega Textile)',
+    question: 'How many PM MITRA Parks are being set up, and what is the 5F vision?',
+    answer: '7 mega textile parks across India; 5F vision: Farm to Fibre to Factory to Fashion to Foreign',
+    shortcut: 'PM MITRA = Budget 2021-22 | Min of Textiles | 7 parks | Rs 4,445 crore | 5F: Farm→Fibre→Factory→Fashion→Foreign | TN, Telangana, Karnataka, Maha, Guj, MP, UP',
+    detail: 'Announced Budget 2021-22; notified October 2021. Ministry of Textiles. 7 mega textile parks in Tamil Nadu, Telangana, Karnataka, Maharashtra, Gujarat, MP, UP. Rs 4,445 crore total outlay. Rs 800 crore per Greenfield park. Rs 300 crore Competitiveness Incentive Support per park. 5F Vision: Farm to Fibre to Factory to Fashion to Foreign. Expected Rs 70,000 crore investment.',
+    context: 'SSC CGL 2024-25', examProb: 'High',
+  },
+  {
+    id: 69, category: 'Infrastructure', topic: 'Namami Gange — Arth Ganga',
+    question: 'What is Arth Ganga concept under Namami Gange?',
+    answer: 'Economic model linking river conservation with livelihood generation — monetizing treated wastewater for agriculture, tourism, biodiversity',
+    shortcut: 'Arth Ganga = PM Modi at COP26 | Arth = Economy | River-centric livelihood | Organic farming along Ganga | River tourism | Biodiversity corridors',
+    detail: 'PM Modi introduced the Arth Ganga concept at COP26 (Nov 2021). Arth = Economy/Meaning. Focuses on economic value generation from river conservation: organic farming along riverbanks, river-centric tourism, biodiversity corridors, treated wastewater for agriculture, riverfront development. Part of broader Namami Gange Programme.',
+    context: 'SSC CGL 2024', examProb: 'High',
+    tamilNote: 'அர்த் கங்கா = கங்கையின் பொருளாதாரம் (Arth = பொருள்/பொருளாதாரம்). நதி பாதுகாப்புடன் வாழ்வாதாரத்தை இணைக்கும் பொருளாதார மாதிரி.',
+  },
+  {
+    id: 70, category: 'Health', topic: 'PM Surakshit Matritva Abhiyan (PMSMA)',
+    question: 'On which date every month is free antenatal care provided under PMSMA?',
+    answer: '9th of every month — free quality antenatal care check-up for pregnant women in 2nd/3rd trimester at government facilities',
+    shortcut: 'PMSMA = 9 Jun 2016 | Min of Health | 9th of every month = free checkup | 6.19 crore women examined | MMR: 130 → 80 | Color-coded sticker system',
+    detail: 'Launched 9 June 2016. Ministry of Health & Family Welfare. Free quality antenatal care on 9th of every month at government health facilities. 6.19 crore pregnant women examined. MMR declined from 130 to 80 per lakh live births. Color-coded sticker system: Green (no risk) / Red (high risk). e-PMSMA launched January 2022.',
+    context: 'SSC CGL 2023', examProb: 'High',
+    tamilNote: 'சுரக்ஷித் மாத்ருத்வா அபியான் = பாதுகாப்பான தாய்மை இயக்கம் (Surakshit = பாதுகாப்பான, Matritva = தாய்மை, Abhiyan = இயக்கம்). ஒவ்வொரு மாதமும் 9-ம் தேதி கர்ப்பிணிப் பெண்களுக்கு இலவச பரிசோதனை.',
+  },
+  {
+    id: 71, category: 'Health', topic: 'PM Bharatiya Janaushadhi Pariyojana (PMBJP)',
+    question: 'What is the objective of Janaushadhi Kendras?',
+    answer: 'Provide quality generic medicines at 50-90% cheaper rates through dedicated Janaushadhi Kendras (10,000+ outlets)',
+    shortcut: 'PMBJP = 2008 (rebranded 2015) | Dept of Pharma | 10,000+ Kendras | 1,900+ medicines | 50-90% cheaper | 1 Kendra per block target | janaushadhi.gov.in',
+    detail: 'Started 2008, rebranded 2015 as PMBJP. Department of Pharmaceuticals, Ministry of Chemicals & Fertilizers. Over 10,000 Janaushadhi Kendras nationwide. 1,900+ medicines + 300 surgical devices at 50-90% cheaper prices. FY 2024-25 revenue: Rs 1,000+ crore. Target: one Kendra per block. Portal: janaushadhi.gov.in.',
+    context: 'SSC CGL 2023-24', examProb: 'High',
+    tamilNote: 'ஜனௌஷதி = மக்கள் மருந்து (Jan = மக்கள், Aushadhi = மருந்து). மலிவான தரமான ஜெனரிக் மாத்திரைகள் வழங்கும் அரசு மருந்தகங்கள்.',
+  },
+  {
+    id: 72, category: 'Social Welfare', topic: 'Aspirational Districts Programme (ADP)',
+    question: 'How many districts are covered under the Aspirational Districts Programme?',
+    answer: '112 most under-developed districts; anchored by NITI Aayog with 3Cs: Convergence, Collaboration, Competition',
+    shortcut: 'ADP = Jan 2018 | NITI Aayog | 112 districts | 49 KPIs | 5 themes | 3Cs: Convergence-Collaboration-Competition | Aspirational Blocks (Jan 2023): 500 blocks',
+    detail: 'Launched January 2018 by PM Modi. Anchored by NITI Aayog with State govts and district administrations. 112 districts, 49 KPIs across 5 themes: Health & Nutrition, Education, Agriculture & Water, Financial Inclusion & Skill, Infrastructure. Extended: Aspirational Blocks Programme (January 2023) — 500 blocks. Champions of Change dashboard.',
+    context: 'SSC CGL 2023-24', examProb: 'High',
+  },
+]
+
+export const schemePYQHistory: SchemePYQEntry[] = [
+  // SSC CGL 2024
+  { date: '2024 CGL', shift: 'Shift 1', question: 'PM-KISAN provides how much annual support to farmers?', answer: 'Rs 6,000 per year (3 installments of Rs 2,000)', category: 'Agriculture' },
+  { date: '2024 CGL', shift: 'Shift 2', question: 'Ayushman Bharat provides health cover of how much per family?', answer: 'Rs 5 lakh per family per year', category: 'Health' },
+  { date: '2024 CGL', shift: 'Various', question: 'PMJDY was launched on which date?', answer: '28 August 2014', category: 'Financial Inclusion' },
+  { date: '2024 CGL', shift: 'Various', question: 'Which scheme replaced the Mid-Day Meal Scheme in 2021?', answer: 'PM POSHAN (PM Poshan Shakti Nirman)', category: 'Education' },
+  { date: '2024 CGL', shift: 'Various', question: 'Stand Up India provides loans to which category of entrepreneurs?', answer: 'SC/ST and Women entrepreneurs (Rs 10 lakh to Rs 1 crore)', category: 'Financial Inclusion' },
+  // SSC CGL 2023
+  { date: '2023 CGL', shift: 'Shift 1', question: 'PM Ujjwala Yojana provides free LPG connections to whom?', answer: 'BPL (Below Poverty Line) women', category: 'Social Welfare' },
+  { date: '2023 CGL', shift: 'Shift 2', question: 'Swachh Bharat Mission was launched on which date?', answer: '2 October 2014 (Gandhi Jayanti)', category: 'Social Welfare' },
+  { date: '2023 CGL', shift: 'Various', question: 'What are the three categories of MUDRA loans?', answer: 'Shishu, Kishore, and Tarun', category: 'Financial Inclusion' },
+  { date: '2023 CGL', shift: 'Various', question: 'MGNREGA guarantees how many days of employment?', answer: '100 days per household per year', category: 'Employment & Skill' },
+  { date: '2023 CGL', shift: 'Shift 3', question: 'What is the premium under PMSBY?', answer: 'Rs 20 per annum (Rs 12 before revision)', category: 'Financial Inclusion' },
+  { date: '2023 CGL', shift: 'Various', question: 'NEP 2020 proposes which school structure?', answer: '5+3+3+4 structure', category: 'Education' },
+  // SSC CGL 2022
+  { date: '2022 CGL', shift: 'Various', question: 'Make in India was launched in which year?', answer: '25 September 2014', category: 'Employment & Skill' },
+  { date: '2022 CGL', shift: 'Various', question: 'Beti Bachao Beti Padhao was launched from which district?', answer: 'Panipat, Haryana (22 January 2015)', category: 'Women & Child' },
+  { date: '2022 CGL', shift: 'Shift 1', question: 'Atal Pension Yojana provides pension of up to how much?', answer: 'Rs 5,000 per month (5 slabs)', category: 'Financial Inclusion' },
+  { date: '2022 CGL', shift: 'Various', question: 'PMAY provides "Housing for All" by which year?', answer: 'Originally 2022, now extended with PMAY 2.0', category: 'Social Welfare' },
+  { date: '2022 CGL', shift: 'Various', question: 'Soil Health Card Scheme was launched in which year?', answer: '19 February 2015', category: 'Agriculture' },
+  // SSC CGL 2021
+  { date: '2021 CGL', shift: 'Various', question: 'Digital India was launched in which year?', answer: '1 July 2015', category: 'Digital India' },
+  { date: '2021 CGL', shift: 'Various', question: 'Startup India was launched on which date?', answer: '16 January 2016', category: 'Employment & Skill' },
+  { date: '2021 CGL', shift: 'Shift 2', question: 'PMJJBY provides life cover of how much?', answer: 'Rs 2 lakh for Rs 436 premium per year (was Rs 330 initially)', category: 'Financial Inclusion' },
+  // Current Affairs 2024-26
+  { date: 'Current 2025', shift: 'CA', question: 'PM SETU announced in Budget 2025 targets modernization of how many ITIs?', answer: '1,000 ITIs with Rs 60,000 crore outlay', category: 'New Schemes 2024-26' },
+  { date: 'Current 2025', shift: 'CA', question: 'Jal Jeevan Mission has been extended till which year?', answer: '2028 (announced in Budget 2025)', category: 'Infrastructure' },
+  { date: 'Current 2024', shift: 'CA', question: 'PM Surya Ghar targets how many households for rooftop solar?', answer: '1 crore households by March 2027 with Rs 75,000 crore', category: 'New Schemes 2024-26' },
+  { date: 'Current 2024', shift: 'CA', question: 'PM Vishwakarma covers how many artisan trades?', answer: '18 traditional artisan trades', category: 'New Schemes 2024-26' },
+  { date: 'Current 2024', shift: 'CA', question: 'MUDRA 2.0 increased Tarun loan limit to how much?', answer: 'Rs 20 lakh (from Rs 10 lakh)', category: 'Financial Inclusion' },
+  { date: 'Current 2024', shift: 'CA', question: 'Ayushman Vaya Vandana extends PM-JAY to citizens above which age?', answer: '70 years and above (regardless of income)', category: 'New Schemes 2024-26' },
+  { date: 'Current 2025', shift: 'CA', question: 'VB-G RAM G Bill 2025 increases MGNREGA guarantee to how many days?', answer: '125 days (up from 100)', category: 'Employment & Skill' },
+  { date: 'Current 2025', shift: 'CA', question: 'Employment-Linked Incentive (ELI) scheme outlay is how much?', answer: 'Rs 99,446 crore targeting 3.5 crore jobs', category: 'New Schemes 2024-26' },
+  // Additional PYQs & CA for newly added schemes
+  { date: '2022 CGL', shift: 'Various', question: 'PMGSY was launched by which Prime Minister?', answer: 'PM Atal Bihari Vajpayee on 25 December 2000', category: 'Infrastructure' },
+  { date: '2023 CGL', shift: 'Various', question: 'How many cities were selected under Smart Cities Mission?', answer: '100 cities (launched 25 June 2015)', category: 'Infrastructure' },
+  { date: '2022 CGL', shift: 'Shift 2', question: 'NFSA 2013 provides rice at what subsidized price?', answer: 'Rs 3 per kg', category: 'Social Welfare' },
+  { date: '2023 CGL', shift: 'Shift 1', question: 'Namami Gange programme is for rejuvenation of which river?', answer: 'River Ganga', category: 'Infrastructure' },
+  { date: '2024 CGL', shift: 'Various', question: 'SVAMITVA scheme uses which technology for rural mapping?', answer: 'Drone technology for property mapping', category: 'Infrastructure' },
+  { date: '2022 CGL', shift: 'Various', question: 'UDAN stands for what?', answer: 'Ude Desh ka Aam Naagrik (Regional air connectivity)', category: 'Infrastructure' },
+  { date: '2023 CGL', shift: 'Various', question: 'Sansad Adarsh Gram Yojana was launched on whose birth anniversary?', answer: 'Jai Prakash Narayan (11 October 2014)', category: 'Social Welfare' },
+  { date: '2022 CGL', shift: 'Various', question: 'DAY-NRLM mobilizes rural poor women into which groups?', answer: 'Self-Help Groups (SHGs)', category: 'Social Welfare' },
+  { date: '2024 CGL', shift: 'Various', question: 'PLI scheme covers how many sectors?', answer: '14 key manufacturing sectors', category: 'Employment & Skill' },
+  { date: 'Current 2025', shift: 'CA', question: 'Unified Pension Scheme (UPS) guarantees what % of basic pay?', answer: '50% of average basic pay (last 12 months) for 25+ years service', category: 'New Schemes 2024-26' },
+  { date: 'Current 2024', shift: 'CA', question: 'PM Internship Scheme provides how much monthly stipend?', answer: 'Rs 5,000 per month (Rs 4,500 govt + Rs 500 company)', category: 'New Schemes 2024-26' },
+  { date: 'Current 2025', shift: 'CA', question: 'National Green Hydrogen Mission targets how much production by 2030?', answer: '5 MMT per year with 125 GW renewable energy capacity', category: 'New Schemes 2024-26' },
+  { date: 'Current 2025', shift: 'CA', question: 'India Semiconductor Mission provides up to what % of project cost?', answer: 'Up to 50% of project cost (Rs 76,000 crore framework)', category: 'New Schemes 2024-26' },
+  { date: '2024 CGL', shift: 'Various', question: 'Kavach in Indian Railways is what type of system?', answer: 'Indigenous Automatic Train Protection (collision avoidance) system — SIL-4 certified', category: 'Infrastructure' },
+  { date: '2024 CGL', shift: 'Various', question: 'Vande Bharat Express is manufactured at which facility?', answer: 'Integral Coach Factory (ICF), Chennai', category: 'Infrastructure' },
+  { date: '2023 CGL', shift: 'Various', question: 'Aspirational Districts Programme is anchored by which body?', answer: 'NITI Aayog — covers 112 most under-developed districts', category: 'Social Welfare' },
+  { date: 'Current 2025', shift: 'CA', question: 'How many PM MITRA Parks are being set up for textiles?', answer: '7 mega textile parks across 7 states (5F: Farm to Foreign)', category: 'Employment & Skill' },
+  { date: '2023 CGL', shift: 'Various', question: 'Janaushadhi Kendras sell medicines at how much cheaper rates?', answer: '50-90% cheaper than branded medicines', category: 'Health' },
+]

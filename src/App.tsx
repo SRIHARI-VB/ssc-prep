@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import BooksAuthorsPage from './topics/books-authors'
 import ScienceTechPage from './topics/science-tech'
 import PolityConstitutionPage from './topics/polity-constitution'
+import GovtSchemesPage from './topics/govt-schemes'
 
 export default function App() {
   const [page, setPage] = useState<Page>('home')
@@ -18,6 +19,7 @@ export default function App() {
         {page === 'books-authors' && <BooksAuthorsPage />}
         {page === 'science-tech'  && <ScienceTechPage />}
         {page === 'polity-constitution' && <PolityConstitutionPage />}
+        {page === 'govt-schemes' && <GovtSchemesPage />}
       </main>
       <Footer page={page} />
     </div>

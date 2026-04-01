@@ -49,6 +49,19 @@ const PAGE_CONFIG: Record<Page, {
     ],
     cta: { href: '#pol-fast', label: '⚡ Fast Revision' },
   },
+  'govt-schemes': {
+    icon: '🏛️', accent: 'text-emerald-400', label: 'Government Schemes',
+    bg: 'bg-emerald-600',
+    links: [
+      { href: '#gs-overview', label: 'Overview' },
+      { href: '#gs-fast',     label: 'Fast Revision' },
+      { href: '#gs-matrix',   label: 'Scheme Matrix' },
+      { href: '#gs-flash',    label: 'Flashcards' },
+      { href: '#gs-loop',     label: 'MCQ Loop' },
+      { href: '#gs-pyq',      label: 'PYQ Tracker' },
+    ],
+    cta: { href: '#gs-fast', label: 'Fast Revision →' },
+  },
 }
 
 export default function Header({ page, setPage }: Props) {

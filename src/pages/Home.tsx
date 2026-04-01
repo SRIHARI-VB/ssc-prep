@@ -2,11 +2,13 @@ import type { Page } from '../types'
 import { booksData } from '../topics/books-authors/data'
 import { sciData } from '../topics/science-tech/data'
 import { polityData } from '../topics/polity-constitution/data'
+import { schemesData } from '../topics/govt-schemes/data'
 
-const _booksCount  = booksData.length
-const _sciCount    = sciData.length
-const _polityCount = polityData.length
-const _total       = _booksCount + _sciCount + _polityCount
+const _booksCount   = booksData.length
+const _sciCount     = sciData.length
+const _polityCount  = polityData.length
+const _schemesCount = schemesData.length
+const _total        = _booksCount + _sciCount + _polityCount + _schemesCount
 
 interface Props {
   setPage: (p: Page) => void
@@ -56,10 +58,24 @@ const TOPICS = [
     statusLabel: 'Live',
   },
   {
+    id: 'govt-schemes' as Page,
+    icon: '🏛️',
+    label: 'Government Schemes',
+    badge: 'Topic 04',
+    accent: 'from-emerald-600 to-teal-700',
+    border: 'border-emerald-500/30',
+    ring: 'ring-emerald-500/20',
+    badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+    stats: [`${_schemesCount} schemes`, '10 categories', 'PYQ 2021-2024'],
+    desc: 'PM Awas, Ayushman Bharat, Jan Dhan, MUDRA, PM-KISAN, Ujjwala, Swachh Bharat, PLI, Smart Cities, Kavach, Vande Bharat & latest 2024-26 schemes.',
+    status: 'live',
+    statusLabel: 'Live',
+  },
+  {
     id: 'home' as Page,
     icon: '🌍',
     label: 'Geography',
-    badge: 'Topic 04',
+    badge: 'Topic 05',
     accent: 'from-slate-600 to-slate-700',
     border: 'border-slate-600/30',
     ring: 'ring-slate-500/10',
@@ -73,7 +89,7 @@ const TOPICS = [
     id: 'home' as Page,
     icon: '📜',
     label: 'History',
-    badge: 'Topic 05',
+    badge: 'Topic 06',
     accent: 'from-slate-600 to-slate-700',
     border: 'border-slate-600/30',
     ring: 'ring-slate-500/10',
@@ -87,7 +103,7 @@ const TOPICS = [
     id: 'home' as Page,
     icon: '💰',
     label: 'Economy',
-    badge: 'Topic 06',
+    badge: 'Topic 07',
     accent: 'from-slate-600 to-slate-700',
     border: 'border-slate-600/30',
     ring: 'ring-slate-500/10',
@@ -128,7 +144,7 @@ export default function Home({ setPage }: Props) {
               { n: `${_total}+`, label: 'Total Facts' },
               { n: '6', label: 'Categories per Topic' },
               { n: '2021–25', label: 'PYQ Range' },
-              { n: '3', label: 'Live Topics' },
+              { n: '4', label: 'Live Topics' },
             ].map(s => (
               <div key={s.label} className="text-center px-5 py-3 bg-white/5 border border-white/10 rounded-2xl min-w-[90px]">
                 <p className="text-2xl font-extrabold text-white">{s.n}</p>
