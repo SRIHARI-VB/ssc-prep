@@ -4,6 +4,7 @@ const FOOTER_MSG: Record<Page, { sub: string; quote: string }> = {
   home:            { sub: 'SSC CGL Prep Hub', quote: '"Consistency beats intensity. One topic a day."' },
   'books-authors': { sub: 'Books & Authors', quote: '"Memory is a muscle. The Exam Loop is the workout."' },
   'science-tech':  { sub: 'Science & Technology', quote: '"Every equation is a story waiting to be recalled."' },
+  'polity-constitution': { sub: 'Polity & Constitution', quote: '"Know the Article, own the answer. Constitution is the blueprint of India."' },
 }
 
 export default function Footer({ page }: { page: Page }) {

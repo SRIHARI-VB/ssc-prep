@@ -77,7 +77,7 @@ export default function StudyMatrix() {
         <p className="text-xs font-bold tracking-widest text-indigo-500 uppercase mb-1">Section 02</p>
         <h2 className="text-3xl font-extrabold text-brand-900">Study Matrix</h2>
         <p className="mt-2 text-slate-500 text-sm max-w-2xl leading-relaxed">
-          All 74 entries across 6 categories. Theme is always visible. Filter by category or exam probability.
+          All {booksData.length} entries across 6 categories. Theme is always visible. Filter by category or exam probability.
           Click a row to expand the mnemonic shortcut.
         </p>
       </div>

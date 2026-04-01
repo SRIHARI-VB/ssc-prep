@@ -36,6 +36,19 @@ const PAGE_CONFIG: Record<Page, {
     ],
     cta: { href: '#st-loop', label: 'MCQ Loop →' },
   },
+  'polity-constitution': {
+    icon: '⚖️', accent: 'text-amber-400', label: 'Polity & Constitution',
+    bg: 'bg-amber-600',
+    links: [
+      { href: '#pol-overview', label: 'Overview' },
+      { href: '#pol-fast',     label: '⚡ Fast Revision' },
+      { href: '#pol-matrix',   label: 'Fact Matrix' },
+      { href: '#pol-flash',    label: 'Flashcards' },
+      { href: '#pol-loop',     label: 'MCQ Loop' },
+      { href: '#pol-pyq',      label: 'PYQ Tracker' },
+    ],
+    cta: { href: '#pol-fast', label: '⚡ Fast Revision' },
+  },
 }
 
 export default function Header({ page, setPage }: Props) {

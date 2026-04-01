@@ -1,4 +1,12 @@
 import type { Page } from '../types'
+import { booksData } from '../topics/books-authors/data'
+import { sciData } from '../topics/science-tech/data'
+import { polityData } from '../topics/polity-constitution/data'
+
+const _booksCount  = booksData.length
+const _sciCount    = sciData.length
+const _polityCount = polityData.length
+const _total       = _booksCount + _sciCount + _polityCount
 
 interface Props {
   setPage: (p: Page) => void
@@ -14,7 +22,7 @@ const TOPICS = [
     border: 'border-indigo-500/30',
     ring: 'ring-indigo-500/20',
     badgeColor: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20',
-    stats: ['98 high-priority entries', '6 categories', 'PYQ 2021–2024'],
+    stats: [`${_booksCount} entries`, '6 categories', 'PYQ 2021–2024'],
     desc: 'Ancient/Medieval texts, Freedom Struggle authors, Literary Awards (Booker, Jnanpith), Sports autobiographies & Current Affairs.',
     status: 'live',
     statusLabel: 'Live',
@@ -28,24 +36,24 @@ const TOPICS = [
     border: 'border-teal-500/30',
     ring: 'ring-teal-500/20',
     badgeColor: 'text-teal-400 bg-teal-500/10 border-teal-500/20',
-    stats: ['85 facts & PYQs', '5 subjects', 'ISRO/DRDO 2024–25'],
+    stats: [`${_sciCount} facts & PYQs`, '5 subjects', 'ISRO/DRDO 2024–25'],
     desc: 'Physics, Chemistry, Biology fundamentals + Space missions (Chandrayaan, Aditya-L1, SpaDeX) & Defence technology.',
     status: 'live',
     statusLabel: 'Live',
   },
   {
-    id: 'home' as Page, // placeholder, won't navigate
+    id: 'polity-constitution' as Page,
     icon: '⚖️',
     label: 'Polity & Constitution',
     badge: 'Topic 03',
-    accent: 'from-slate-600 to-slate-700',
-    border: 'border-slate-600/30',
-    ring: 'ring-slate-500/10',
-    badgeColor: 'text-slate-400 bg-slate-500/10 border-slate-500/20',
-    stats: ['Coming soon', '', ''],
-    desc: 'Fundamental Rights, DPSP, Constitutional bodies, Amendments, Parliament & Executive.',
-    status: 'coming',
-    statusLabel: 'Coming Soon',
+    accent: 'from-amber-600 to-orange-700',
+    border: 'border-amber-500/30',
+    ring: 'ring-amber-500/20',
+    badgeColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
+    stats: [`${_polityCount} entries`, '7 categories', 'PYQ 2021–2024'],
+    desc: 'Fundamental Rights, DPSP, Constitutional bodies, Amendments, Parliament & Executive, SC Judgments 2024-25.',
+    status: 'live',
+    statusLabel: 'Live',
   },
   {
     id: 'home' as Page,
@@ -117,10 +125,10 @@ export default function Home({ setPage }: Props) {
           {/* Stats row */}
           <div className="flex flex-wrap justify-center gap-4 mt-8">
             {[
-              { n: '183+', label: 'Total Facts' },
+              { n: `${_total}+`, label: 'Total Facts' },
               { n: '6', label: 'Categories per Topic' },
               { n: '2021–25', label: 'PYQ Range' },
-              { n: '2', label: 'Live Topics' },
+              { n: '3', label: 'Live Topics' },
             ].map(s => (
               <div key={s.label} className="text-center px-5 py-3 bg-white/5 border border-white/10 rounded-2xl min-w-[90px]">
                 <p className="text-2xl font-extrabold text-white">{s.n}</p>

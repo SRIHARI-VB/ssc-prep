@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react'
-import { booksData, type BookEntry, type Category } from '../data'
+import { booksData, type BookEntry, type Category, type ExamProb } from '../data'
 
 type Step  = 1 | 2 | 3
 type Phase = 'question' | 'correct' | 'wrong' | 'complete'
@@ -35,6 +35,26 @@ const STEPS: { step: Step; field: keyof BookEntry; question: string; icon: strin
 const ALL_CATEGORIES: Category[] = [
   'Ancient/Medieval', 'Freedom Struggle', 'Sports', 'PYQ', 'Literary Award', 'Current Affairs',
 ]
+
+const ALL_PROBS: ExamProb[] = ['Hot', 'High', 'Confirmed', 'Recurring', 'Medium']
+
+const PROB_CHIP: Record<ExamProb, string> = {
+  Hot:       'bg-red-100 text-red-800 border-red-300 hover:bg-red-200',
+  High:      'bg-orange-100 text-orange-800 border-orange-300 hover:bg-orange-200',
+  Confirmed: 'bg-emerald-100 text-emerald-800 border-emerald-300 hover:bg-emerald-200',
+  Recurring: 'bg-blue-100 text-blue-800 border-blue-300 hover:bg-blue-200',
+  Medium:    'bg-yellow-100 text-yellow-800 border-yellow-300 hover:bg-yellow-200',
+}
+const PROB_ACTIVE: Record<ExamProb, string> = {
+  Hot:       'bg-red-600 text-white border-red-600',
+  High:      'bg-orange-500 text-white border-orange-500',
+  Confirmed: 'bg-emerald-600 text-white border-emerald-600',
+  Recurring: 'bg-blue-600 text-white border-blue-600',
+  Medium:    'bg-yellow-500 text-white border-yellow-500',
+}
+const PROB_ICONS: Record<ExamProb, string> = {
+  Hot: '🔴', High: '🟠', Confirmed: '✅', Recurring: '🔁', Medium: '🟡',
+}
 
 const CAT_CHIP: Record<Category, string> = {
   'Ancient/Medieval': 'bg-amber-100 text-amber-800 border-amber-300 hover:bg-amber-200',
@@ -76,12 +96,22 @@ function pickFrom(pool: BookEntry[]): BookEntry {
   return pool[Math.floor(Math.random() * pool.length)]
 }
 
+function buildPool(cat: 'all' | Category, prob: 'all' | ExamProb): BookEntry[] {
+  const pool = booksData.filter(b => {
+    if (cat  !== 'all' && b.category !== cat)  return false
+    if (prob !== 'all' && b.examProb  !== prob) return false
+    return true
+  })
+  return pool.length > 0 ? pool : booksData  // fallback to full set if combo empty
+}
+
 export default function ExamLoop() {
-  const [filterCat, setFilterCat] = useState<'all' | Category>('all')
+  const [filterCat,  setFilterCat]  = useState<'all' | Category>('all')
+  const [filterProb, setFilterProb] = useState<'all' | ExamProb>('all')
 
   const filteredPool = useMemo(
-    () => filterCat === 'all' ? booksData : booksData.filter(b => b.category === filterCat),
-    [filterCat]
+    () => buildPool(filterCat, filterProb),
+    [filterCat, filterProb]
   )
 
   const [state, setState] = useState<QuizState>(() => ({
@@ -100,13 +130,21 @@ export default function ExamLoop() {
     [state.book, state.step, filteredPool]
   )
 
-  // ── filter change ──────────────────────────────────────────────────────────
+  // ── category filter change ─────────────────────────────────────────────────
   const handleFilterChange = useCallback((cat: 'all' | Category) => {
-    const pool = cat === 'all' ? booksData : booksData.filter(b => b.category === cat)
+    const pool = buildPool(cat, filterProb)
     setFilterCat(cat)
     setSelected(null)
     setState(s => ({ ...s, book: pickFrom(pool), step: 1, phase: 'question' }))
-  }, [])
+  }, [filterProb])
+
+  // ── prob filter change ─────────────────────────────────────────────────────
+  const handleProbChange = useCallback((prob: 'all' | ExamProb) => {
+    const pool = buildPool(filterCat, prob)
+    setFilterProb(prob)
+    setSelected(null)
+    setState(s => ({ ...s, book: pickFrom(pool), step: 1, phase: 'question' }))
+  }, [filterCat])
 
   // ── answer handler ─────────────────────────────────────────────────────────
   const handleAnswer = useCallback((opt: string) => {
@@ -173,42 +211,78 @@ export default function ExamLoop() {
           </p>
         </div>
 
-        {/* ── Category Filter Bar ── */}
-        <div className="bg-slate-50 rounded-2xl border border-slate-200 p-4 mb-8">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Filter by Category</span>
-            {filterCat !== 'all' && (
-              <span className="text-xs text-slate-400">
-                — {filteredPool.length} book{filteredPool.length !== 1 ? 's' : ''} in pool
-              </span>
-            )}
+        {/* ── Filter Bar ── */}
+        <div className="bg-slate-50 rounded-2xl border border-slate-200 p-4 mb-8 space-y-3">
+
+          {/* Row 1 — Category */}
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Category</span>
+              {(filterCat !== 'all' || filterProb !== 'all') && (
+                <span className="text-xs text-slate-400">
+                  — {filteredPool.length} book{filteredPool.length !== 1 ? 's' : ''} in pool
+                </span>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => handleFilterChange('all')}
+                className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${
+                  filterCat === 'all'
+                    ? 'bg-slate-800 text-white border-slate-800 shadow-sm'
+                    : 'bg-white text-slate-600 border-slate-300 hover:border-slate-500'
+                }`}
+              >
+                All ({booksData.length})
+              </button>
+              {ALL_CATEGORIES.map(cat => {
+                const count = booksData.filter(b => b.category === cat).length
+                const isActive = filterCat === cat
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => handleFilterChange(cat)}
+                    className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${
+                      isActive ? CAT_ACTIVE[cat] + ' shadow-md' : CAT_CHIP[cat]
+                    }`}
+                  >
+                    {CAT_ICONS[cat]} {cat} ({count})
+                  </button>
+                )
+              })}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => handleFilterChange('all')}
-              className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${
-                filterCat === 'all'
-                  ? 'bg-slate-800 text-white border-slate-800 shadow-sm'
-                  : 'bg-white text-slate-600 border-slate-300 hover:border-slate-500'
-              }`}
-            >
-              All ({booksData.length})
-            </button>
-            {ALL_CATEGORIES.map(cat => {
-              const count = booksData.filter(b => b.category === cat).length
-              const isActive = filterCat === cat
-              return (
-                <button
-                  key={cat}
-                  onClick={() => handleFilterChange(cat)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${
-                    isActive ? CAT_ACTIVE[cat] + ' shadow-md' : CAT_CHIP[cat]
-                  }`}
-                >
-                  {CAT_ICONS[cat]} {cat} ({count})
-                </button>
-              )
-            })}
+
+          {/* Row 2 — Exam Probability */}
+          <div className="border-t border-slate-200 pt-3">
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Exam Priority</span>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => handleProbChange('all')}
+                className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${
+                  filterProb === 'all'
+                    ? 'bg-slate-800 text-white border-slate-800 shadow-sm'
+                    : 'bg-white text-slate-600 border-slate-300 hover:border-slate-500'
+                }`}
+              >
+                All Priorities
+              </button>
+              {ALL_PROBS.map(prob => {
+                const count = booksData.filter(b => b.examProb === prob).length
+                const isActive = filterProb === prob
+                return (
+                  <button
+                    key={prob}
+                    onClick={() => handleProbChange(prob)}
+                    className={`px-4 py-1.5 rounded-full text-xs font-bold border transition-all ${
+                      isActive ? PROB_ACTIVE[prob] + ' shadow-md' : PROB_CHIP[prob]
+                    }`}
+                  >
+                    {PROB_ICONS[prob]} {prob} ({count})
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
 
@@ -218,10 +292,15 @@ export default function ExamLoop() {
           {/* Score Panel */}
           <div className="bg-brand-900 text-white rounded-2xl p-6 shadow-xl space-y-4">
 
-            {/* Active filter badge */}
+            {/* Active filter badges */}
             {filterCat !== 'all' && (
               <div className={`rounded-xl px-3 py-2 border text-xs font-bold text-center ${CAT_CHIP[filterCat]}`}>
-                {CAT_ICONS[filterCat]} Drilling: {filterCat}
+                {CAT_ICONS[filterCat]} {filterCat}
+              </div>
+            )}
+            {filterProb !== 'all' && (
+              <div className={`rounded-xl px-3 py-2 border text-xs font-bold text-center ${PROB_CHIP[filterProb]}`}>
+                {PROB_ICONS[filterProb]} {filterProb} Priority
               </div>
             )}
 
@@ -289,7 +368,7 @@ export default function ExamLoop() {
                   onClick={nextBook}
                   className="px-8 py-3 rounded-xl bg-white text-slate-800 font-extrabold shadow-lg hover:bg-slate-100 transition-all"
                 >
-                  Next{filterCat !== 'all' ? ` ${filterCat}` : ''} Book →
+                  Next{filterCat !== 'all' ? ` ${filterCat}` : filterProb !== 'all' ? ` ${filterProb}` : ''} Book →
                 </button>
               </div>
 

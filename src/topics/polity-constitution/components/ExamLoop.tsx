@@ -1,8 +1,8 @@
 import { useState, useCallback, useMemo } from 'react'
-import { sciData, type Subject, type ExamProb, type SciEntry } from '../data'
+import { polityData, type PolityCategory, type ExamProb, type PolityEntry } from '../data'
 
 type Phase = 'question' | 'correct' | 'wrong' | 'complete'
-const SUBJECTS: ('all' | Subject)[] = ['all', 'Physics', 'Chemistry', 'Biology', 'Space & Defense', 'Technology']
+const SUBJECTS: ('all' | PolityCategory)[] = ['all', 'Important Articles', 'Schedules', 'Amendments', 'Landmark Cases', 'Constitutional Bodies', 'Parliament & Executive', 'Fundamental Rights & DPSP']
 const PROBS: ('all' | ExamProb)[] = ['all', 'Hot', 'Confirmed', 'High', 'Recurring']
 
 const PROB_CHIP: Record<ExamProb, string> = {
@@ -21,44 +21,52 @@ const PROB_ICONS: Record<ExamProb, string> = {
   Hot: '🔴', High: '🟠', Confirmed: '✅', Recurring: '🔁',
 }
 
-const SUBJECT_ICON: Record<Subject, string> = {
-  'Physics': '⚛️', 'Chemistry': '🧪', 'Biology': '🧬', 'Space & Defense': '🚀', 'Technology': '💻',
+const SUBJECT_ICON: Record<PolityCategory, string> = {
+  'Important Articles':        '📖',
+  'Schedules':                 '📋',
+  'Amendments':                '✏️',
+  'Landmark Cases':            '⚖️',
+  'Constitutional Bodies':     '🏗️',
+  'Parliament & Executive':    '🏛️',
+  'Fundamental Rights & DPSP': '🛡️',
 }
-const SUBJECT_COLOR: Record<Subject, string> = {
-  'Physics':        'border-indigo-400 bg-indigo-50 text-indigo-700',
-  'Chemistry':      'border-teal-400 bg-teal-50 text-teal-700',
-  'Biology':        'border-green-400 bg-green-50 text-green-700',
-  'Space & Defense':'border-red-400 bg-red-50 text-red-700',
-  'Technology':     'border-amber-400 bg-amber-50 text-amber-700',
+const SUBJECT_COLOR: Record<PolityCategory, string> = {
+  'Important Articles':        'border-indigo-400 bg-indigo-50 text-indigo-700',
+  'Schedules':                 'border-teal-400 bg-teal-50 text-teal-700',
+  'Amendments':                'border-blue-400 bg-blue-50 text-blue-700',
+  'Landmark Cases':            'border-green-400 bg-green-50 text-green-700',
+  'Constitutional Bodies':     'border-red-400 bg-red-50 text-red-700',
+  'Parliament & Executive':    'border-violet-400 bg-violet-50 text-violet-700',
+  'Fundamental Rights & DPSP': 'border-amber-400 bg-amber-50 text-amber-700',
 }
 
 function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5)
 }
 
-function pickFrom(pool: SciEntry[]): SciEntry {
+function pickFrom(pool: PolityEntry[]): PolityEntry {
   return pool[Math.floor(Math.random() * pool.length)]
 }
 
-function buildPool(sub: 'all' | Subject, prob: 'all' | ExamProb): SciEntry[] {
-  const pool = sciData.filter(e => {
-    if (sub  !== 'all' && e.subject  !== sub)  return false
+function buildPool(sub: 'all' | PolityCategory, prob: 'all' | ExamProb): PolityEntry[] {
+  const pool = polityData.filter(e => {
+    if (sub  !== 'all' && e.category  !== sub)  return false
     if (prob !== 'all' && e.examProb !== prob) return false
     return true
   })
-  return pool.length > 0 ? pool : sciData
+  return pool.length > 0 ? pool : polityData
 }
 
-function getOptions(correct: SciEntry, pool: SciEntry[], count = 4): string[] {
+function getOptions(correct: PolityEntry, pool: PolityEntry[], count = 4): string[] {
   const distractors = shuffle(
-    (pool.length >= count ? pool : sciData)
+    (pool.length >= count ? pool : polityData)
       .filter(e => e.id !== correct.id && e.answer !== correct.answer)
   ).slice(0, count - 1).map(e => e.answer)
   return shuffle([correct.answer, ...distractors])
 }
 
 interface LoopState {
-  card: SciEntry
+  card: PolityEntry
   options: string[]
   phase: Phase
   score: number
@@ -66,7 +74,7 @@ interface LoopState {
 }
 
 export default function ExamLoop() {
-  const [filterSub,  setFilterSub]  = useState<'all' | Subject>('all')
+  const [filterSub,  setFilterSub]  = useState<'all' | PolityCategory>('all')
   const [filterProb, setFilterProb] = useState<'all' | ExamProb>('all')
 
   const filteredPool = useMemo(
@@ -75,13 +83,13 @@ export default function ExamLoop() {
   )
 
   const [state, setState] = useState<LoopState>(() => {
-    const card = pickFrom(sciData)
-    return { card, options: getOptions(card, sciData), phase: 'question', score: 0, total: 0 }
+    const card = pickFrom(polityData)
+    return { card, options: getOptions(card, polityData), phase: 'question', score: 0, total: 0 }
   })
   const [selected, setSelected] = useState<string | null>(null)
   const [shake, setShake] = useState(false)
 
-  const handleFilter = useCallback((sub: 'all' | Subject) => {
+  const handleFilter = useCallback((sub: 'all' | PolityCategory) => {
     const pool = buildPool(sub, filterProb)
     const card = pickFrom(pool)
     setFilterSub(sub)
@@ -123,12 +131,12 @@ export default function ExamLoop() {
   const accuracy = total > 0 ? Math.round((score / total) * 100) : 0
 
   return (
-    <section id="st-loop" className="py-16 bg-white">
+    <section id="pol-loop" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="mb-8">
-          <p className="text-xs font-bold tracking-widest text-teal-600 uppercase mb-1">Section 04</p>
+          <p className="text-xs font-bold tracking-widest text-amber-600 uppercase mb-1">Section 04</p>
           <h2 className="text-3xl font-extrabold text-brand-900">MCQ Exam Loop</h2>
           <p className="mt-1 text-slate-500 text-sm">Single-step MCQ — select the correct answer instantly.</p>
         </div>
@@ -139,7 +147,7 @@ export default function ExamLoop() {
           {/* Row 1 — Subject */}
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Subject</span>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Category</span>
               {(filterSub !== 'all' || filterProb !== 'all') && (
                 <span className="text-xs text-slate-400">
                   — {filteredPool.length} question{filteredPool.length !== 1 ? 's' : ''} in pool
@@ -148,15 +156,15 @@ export default function ExamLoop() {
             </div>
             <div className="flex flex-wrap gap-2">
               {SUBJECTS.map(s => {
-                const count = s === 'all' ? sciData.length : sciData.filter(e => e.subject === s).length
+                const count = s === 'all' ? polityData.length : polityData.filter(e => e.category === s).length
                 return (
                   <button key={s} onClick={() => handleFilter(s)}
                     className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${
                       filterSub === s
-                        ? 'bg-teal-600 text-white border-teal-600'
-                        : 'bg-white text-slate-600 border-slate-200 hover:border-teal-400'
+                        ? 'bg-amber-600 text-white border-amber-600'
+                        : 'bg-white text-slate-600 border-slate-200 hover:border-amber-400'
                     }`}>
-                    {s === 'all' ? `🌐 All (${count})` : `${SUBJECT_ICON[s as Subject]} ${s} (${count})`}
+                    {s === 'all' ? `🌐 All (${count})` : `${SUBJECT_ICON[s as PolityCategory]} ${(s as string).split(' ')[0]}... (${count})`}
                   </button>
                 )
               })}
@@ -168,7 +176,7 @@ export default function ExamLoop() {
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Exam Priority</span>
             <div className="flex flex-wrap gap-2">
               {PROBS.map(p => {
-                const count = p === 'all' ? sciData.length : sciData.filter(e => e.examProb === p).length
+                const count = p === 'all' ? polityData.length : polityData.filter(e => e.examProb === p).length
                 const isActive = filterProb === p
                 return (
                   <button key={p} onClick={() => handleProbFilter(p)}
@@ -190,8 +198,8 @@ export default function ExamLoop() {
           {(filterSub !== 'all' || filterProb !== 'all') && (
             <div className="flex flex-wrap gap-2 mb-4">
               {filterSub !== 'all' && (
-                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${SUBJECT_COLOR[filterSub as Subject]}`}>
-                  {SUBJECT_ICON[filterSub as Subject]} Drilling: {filterSub}
+                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${SUBJECT_COLOR[filterSub as PolityCategory]}`}>
+                  {SUBJECT_ICON[filterSub as PolityCategory]} Drilling: {filterSub}
                 </span>
               )}
               {filterProb !== 'all' && (
@@ -205,11 +213,11 @@ export default function ExamLoop() {
           {/* Score bar */}
           <div className="flex items-center gap-4 mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-200">
             <div className="text-center">
-              <p className="text-2xl font-extrabold text-teal-600">{score}</p>
+              <p className="text-2xl font-extrabold text-amber-600">{score}</p>
               <p className="text-xs text-slate-400">Correct</p>
             </div>
             <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
-              <div className="h-full bg-teal-500 rounded-full transition-all duration-500"
+              <div className="h-full bg-amber-500 rounded-full transition-all duration-500"
                 style={{ width: `${accuracy}%` }} />
             </div>
             <div className="text-center">
@@ -230,8 +238,8 @@ export default function ExamLoop() {
 
             {/* Subject + context */}
             <div className="flex items-center justify-between mb-4">
-              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${SUBJECT_COLOR[card.subject]}`}>
-                {SUBJECT_ICON[card.subject]} {card.subject}
+              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${SUBJECT_COLOR[card.category]}`}>
+                {SUBJECT_ICON[card.category]} {card.category}
               </span>
               <span className="text-xs text-slate-400 font-medium">{card.topic}</span>
             </div>
@@ -242,13 +250,13 @@ export default function ExamLoop() {
             </h3>
 
             {/* Options grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 gap-3">
               {options.map((opt, i) => {
                 const isCorrect = opt === card.answer
                 const isSelected = opt === selected
                 let cls = 'text-left w-full px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all '
                 if (phase === 'question') {
-                  cls += 'border-slate-200 bg-slate-50 hover:border-teal-400 hover:bg-teal-50 hover:text-teal-700 cursor-pointer'
+                  cls += 'border-slate-200 bg-slate-50 hover:border-amber-400 hover:bg-amber-50 hover:text-amber-700 cursor-pointer'
                 } else if (isCorrect) {
                   cls += 'border-green-500 bg-green-50 text-green-800 font-bold'
                 } else if (isSelected && !isCorrect) {
@@ -273,9 +281,9 @@ export default function ExamLoop() {
                 <p className={`text-sm font-bold mb-1 ${phase === 'correct' ? 'text-green-700' : 'text-red-700'}`}>
                   {phase === 'correct' ? '✅ Correct!' : '❌ Incorrect'}
                 </p>
-                <p className="text-xs text-slate-600 leading-relaxed">{card.explanation}</p>
-                {card.mnemonic && (
-                  <p className="font-mnemonic text-xs text-amber-700 italic mt-2">💡 &quot;{card.mnemonic}&quot;</p>
+                <p className="text-xs text-slate-600 leading-relaxed">{card.detail}</p>
+                {card.shortcut && (
+                  <p className="font-mnemonic text-xs text-amber-700 italic mt-2">💡 &quot;{card.shortcut}&quot;</p>
                 )}
                 <p className="text-xs text-slate-400 mt-1">📅 {card.context}</p>
               </div>
@@ -285,7 +293,7 @@ export default function ExamLoop() {
           {/* Next button */}
           {phase !== 'question' && (
             <button onClick={nextQuestion}
-              className="w-full py-3 rounded-2xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-sm transition-colors shadow-lg animate-pop-in">
+              className="w-full py-3 rounded-2xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm transition-colors shadow-lg animate-pop-in">
               Next Question →
             </button>
           )}

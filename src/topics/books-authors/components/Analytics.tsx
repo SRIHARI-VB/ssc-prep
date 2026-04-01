@@ -48,7 +48,7 @@ export default function Analytics() {
         <p className="text-xs font-bold tracking-widest text-indigo-500 uppercase mb-1">Section 01</p>
         <h2 className="text-3xl font-extrabold text-brand-900">Syllabus Overview</h2>
         <p className="mt-2 text-slate-500 text-sm max-w-2xl leading-relaxed">
-          Strategic breakdown of 74 entries across 6 categories. Filter by exam probability
+          Strategic breakdown of {booksData.length} entries across 6 categories. Filter by exam probability
           to prioritise your study time — <span className="text-red-600 font-bold">🔴 Hot</span> entries
           are from 2025–26 with highest appearance probability.
         </p>
