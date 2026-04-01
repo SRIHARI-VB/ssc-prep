@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, Fragment } from 'react'
 import { schemesData, type SchemeCategory, type ExamProb } from '../data'
 
 const SUBJECTS: ('all' | SchemeCategory)[] = ['all', 'Social Welfare', 'Financial Inclusion', 'Agriculture', 'Employment & Skill', 'Education', 'Health', 'Infrastructure', 'Women & Child', 'Digital India', 'New Schemes 2024-26']
@@ -108,8 +108,8 @@ export default function FactMatrix() {
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
                 {filtered.map(e => (
-                  <>
-                    <tr key={e.id}
+                  <Fragment key={e.id}>
+                    <tr
                       className="hover:bg-slate-50 cursor-pointer transition-colors"
                       onClick={() => setExpanded(expanded === e.id ? null : e.id)}>
                       <td className="py-3 px-4">
@@ -128,7 +128,7 @@ export default function FactMatrix() {
                       <td className="py-3 px-4 text-slate-400 text-xs truncate max-w-[80px]">{e.context.split(' ').slice(0,3).join(' ')}</td>
                     </tr>
                     {expanded === e.id && (
-                      <tr key={`${e.id}-exp`}>
+                      <tr>
                         <td colSpan={6} className="px-4 py-3 bg-emerald-50/60 animate-fade-slide">
                           <p className="text-sm text-emerald-800 leading-relaxed mb-1">
                             <strong>Details:</strong> {e.detail}
@@ -147,7 +147,7 @@ export default function FactMatrix() {
                         </td>
                       </tr>
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </tbody>
             </table>
