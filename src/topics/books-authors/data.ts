@@ -31,6 +31,10 @@ export interface PYQEntry {
 
 // ─── PYQ SHIFT HISTORY ────────────────────────────────────────────────────────
 export const pyqHistory: PYQEntry[] = [
+  { date: '26 Sep 2024', shift: 'Shift 2', bookOrQuestion: 'Who wrote "Tuhfat-ul-Muwahhidin" (Gift to Monotheists)?', answer: 'Raja Ram Mohan Roy', category: 'Freedom Struggle' },
+  { date: '23 Sep 2024', shift: 'Shift 1', bookOrQuestion: 'Nobel Prize in Literature 2023 winner', answer: 'Jon Fosse', category: 'Literary Award' },
+  { date: '17 Sep 2024', shift: 'Shift 2', bookOrQuestion: '"Arthashastra" is associated with which ancient scholar?', answer: 'Kautilya (Chanakya)', category: 'Ancient/Medieval' },
+  { date: '11 Sep 2024', shift: 'Shift 1', bookOrQuestion: 'Who is the author of "Rihla"?', answer: 'Ibn Battuta', category: 'Ancient/Medieval' },
   { date: '09 Sep 2024', shift: 'Shift 1', bookOrQuestion: 'Related to the play "Neel Darpan"', answer: 'Dinabandhu Mitra', category: 'Ancient/Medieval' },
   { date: 'Sep 2024', shift: 'Multiple Shifts', bookOrQuestion: 'Books & Authors was a major GK focus area — Easy to Moderate level', answer: 'Current Affairs + Static GK mix', category: 'Literary Award' },
   { date: '24 Jul 2023', shift: 'All Shifts', bookOrQuestion: 'International Booker Prize 2022 winner', answer: 'Geetanjali Shree — Tomb of Sand', category: 'Literary Award' },
@@ -1092,18 +1096,6 @@ export const booksData: BookEntry[] = [
   // Current Affairs 2024-2025 — added
   {
     id: 85,
-    title: 'Operation Sindhu',
-    author: 'Kanwaljit Singh Dhillon',
-    category: 'Current Affairs',
-    award: 'Military Affairs',
-    year: '2025',
-    theme: 'Strategic response after Pahalgam terror attack — military narrative',
-    mnemonic: 'DHILLON\'s SINDHU flows after Pahalgam\'s tragedy',
-    context: 'Post-Pahalgam attack context — 2025; extremely HOT for CGL 2026',
-    examProb: 'Hot',
-  },
-  {
-    id: 86,
     title: 'M.S. Swaminathan: The Man Who Fed India',
     author: 'Priyambara Jayakumar',
     category: 'Current Affairs',
@@ -1115,7 +1107,7 @@ export const booksData: BookEntry[] = [
     examProb: 'Hot',
   },
   {
-    id: 87,
+    id: 86,
     title: 'Janata Ki Kahani: Meri Atmakatha',
     author: 'Bandaru Dattatreya',
     category: 'Current Affairs',
@@ -1127,7 +1119,7 @@ export const booksData: BookEntry[] = [
     examProb: 'Medium',
   },
   {
-    id: 88,
+    id: 87,
     title: 'Believer\'s Dilemma',
     author: 'Abhishek Choudhary',
     category: 'Current Affairs',
@@ -1139,7 +1131,7 @@ export const booksData: BookEntry[] = [
     examProb: 'High',
   },
   {
-    id: 89,
+    id: 88,
     title: 'PMO: Prime Minister\'s Office Through the Years',
     author: 'Himanshu Roy',
     category: 'Current Affairs',
@@ -1151,7 +1143,7 @@ export const booksData: BookEntry[] = [
     examProb: 'High',
   },
   {
-    id: 90,
+    id: 89,
     title: 'India: 5000 Years of History',
     author: 'Audrey Truschke',
     category: 'Current Affairs',
@@ -1163,7 +1155,7 @@ export const booksData: BookEntry[] = [
     examProb: 'High',
   },
   {
-    id: 91,
+    id: 90,
     title: 'India\'s Finance Ministers (1998–2014)',
     author: 'A. K. Bhattacharya',
     category: 'Current Affairs',
@@ -1175,7 +1167,7 @@ export const booksData: BookEntry[] = [
     examProb: 'Medium',
   },
   {
-    id: 92,
+    id: 91,
     title: 'The Man Who Became Cinema: Dilip Kumar',
     author: 'Ashok Chopra',
     category: 'Current Affairs',
@@ -1187,7 +1179,7 @@ export const booksData: BookEntry[] = [
     examProb: 'Medium',
   },
   {
-    id: 93,
+    id: 92,
     title: 'Ramanujan: Journey of a Great Mathematician',
     author: 'Arun Singhal',
     category: 'Current Affairs',
@@ -1199,7 +1191,7 @@ export const booksData: BookEntry[] = [
     examProb: 'High',
   },
   {
-    id: 94,
+    id: 93,
     title: 'A Different Kind of Power',
     author: 'Jacinda Ardern',
     category: 'Current Affairs',
@@ -1211,7 +1203,7 @@ export const booksData: BookEntry[] = [
     examProb: 'Medium',
   },
   {
-    id: 95,
+    id: 94,
     title: 'The Great Conciliator',
     author: 'Sanjeev Chopra',
     category: 'Current Affairs',
@@ -1223,7 +1215,7 @@ export const booksData: BookEntry[] = [
     examProb: 'High',
   },
   {
-    id: 96,
+    id: 95,
     title: 'Parliament: Power, Function and Privileges',
     author: 'K. S. Chauhan',
     category: 'Current Affairs',
@@ -1235,7 +1227,7 @@ export const booksData: BookEntry[] = [
     examProb: 'Medium',
   },
   {
-    id: 97,
+    id: 96,
     title: 'The World After Gaza: A History',
     author: 'Pankaj Mishra',
     category: 'Current Affairs',
@@ -1247,7 +1239,7 @@ export const booksData: BookEntry[] = [
     examProb: 'Medium',
   },
   {
-    id: 98,
+    id: 97,
     title: 'Speaking with Nature',
     author: 'Ramachandra Guha',
     category: 'Current Affairs',
@@ -1259,21 +1251,47 @@ export const booksData: BookEntry[] = [
     examProb: 'Medium',
   },
 
-  // ── LITERARY AWARDS 2025 (NEW FROM RESEARCH) ─────────────────────────────────
+  // ── NOBEL PRIZE IN LITERATURE ───────────────────────────────────────────────
+  {
+    id: 98,
+    title: 'The Vegetarian / Human Acts (Oeuvre)',
+    author: 'Han Kang',
+    category: 'Literary Award',
+    award: 'Nobel Prize in Literature',
+    year: '2024',
+    theme: 'First South Korean & first Asian woman Nobel Literature laureate',
+    mnemonic: 'HAN KANG\'s VEGETARIAN soul confronts Korea\'s traumas',
+    context: 'Nobel Literature 2024 — "intense poetic prose confronting historical traumas"',
+    examProb: 'Hot',
+  },
   {
     id: 99,
-    title: 'Satantango (Nobel Laureate\'s work)',
+    title: 'Satantango / The Melancholy of Resistance (Oeuvre)',
     author: 'Laszlo Krasznahorkai',
     category: 'Literary Award',
     award: 'Nobel Prize in Literature',
     year: '2025',
-    theme: 'Hungarian novelist — apocalyptic vision, dense philosophical prose; 2nd Hungarian Nobel in Literature after Imre Kertesz',
-    mnemonic: 'KRASZ dances the SATAN TANGO to Nobel glory',
-    context: 'Nobel Prize in Literature 2025 — "compelling and visionary oeuvre that reaffirms the power of art"; extremely HOT for 2026 CGL',
+    theme: 'Hungarian author — apocalyptic, visionary philosophical novels',
+    mnemonic: 'KRASZNAHORKAI dances SATAN\'s TANGO through apocalypse',
+    context: 'Nobel Literature 2025 — "compelling visionary oeuvre reaffirming the power of art"',
     examProb: 'Hot',
   },
+
+  // ── PULITZER PRIZE ──────────────────────────────────────────────────────────
   {
     id: 100,
+    title: 'Night Watch',
+    author: 'Jayne Anne Phillips',
+    category: 'Literary Award',
+    award: 'Pulitzer Prize for Fiction',
+    year: '2024',
+    theme: 'American Civil War aftermath — women in a psychiatric institution',
+    mnemonic: 'PHILLIPS keeps NIGHT WATCH after the Civil War',
+    context: 'Pulitzer Fiction 2024 — international literary awards for SSC',
+    examProb: 'High',
+  },
+  {
+    id: 101,
     title: 'James',
     author: 'Percival Everett',
     category: 'Literary Award',
