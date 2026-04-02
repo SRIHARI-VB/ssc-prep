@@ -33,7 +33,7 @@ export default function GovtSchemesPage() {
             <div className="flex flex-wrap gap-2 mt-5">
               {[
                 { label: `${hotCount} Hot facts`, color: 'bg-red-500/20 border-red-500/40 text-red-300' },
-                { label: '70+ Schemes', color: 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300' },
+                { label: '95+ Schemes & Incentives', color: 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300' },
                 { label: '10 Categories', color: 'bg-violet-500/20 border-violet-500/40 text-violet-300' },
                 { label: 'Budget 2025-26', color: 'bg-amber-500/20 border-amber-500/40 text-amber-300' },
                 { label: 'New Schemes 2024-26', color: 'bg-rose-500/20 border-rose-500/40 text-rose-300' },

@@ -3,12 +3,14 @@ import { booksData } from '../topics/books-authors/data'
 import { sciData } from '../topics/science-tech/data'
 import { polityData } from '../topics/polity-constitution/data'
 import { schemesData } from '../topics/govt-schemes/data'
+import { budgetData } from '../topics/union-budget/data'
 
 const _booksCount   = booksData.length
 const _sciCount     = sciData.length
 const _polityCount  = polityData.length
 const _schemesCount = schemesData.length
-const _total        = _booksCount + _sciCount + _polityCount + _schemesCount
+const _budgetCount  = budgetData.length
+const _total        = _booksCount + _sciCount + _polityCount + _schemesCount + _budgetCount
 
 interface Props {
   setPage: (p: Page) => void
@@ -72,10 +74,24 @@ const TOPICS = [
     statusLabel: 'Live',
   },
   {
+    id: 'union-budget' as Page,
+    icon: '💰',
+    label: 'Union Budget 2025-26 & 2026-27',
+    badge: 'Topic 05',
+    accent: 'from-amber-600 to-orange-700',
+    border: 'border-amber-500/30',
+    ring: 'ring-amber-500/20',
+    badgeColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
+    stats: [`${_budgetCount} facts`, '11 categories', 'PYQ 2021-2026'],
+    desc: 'Both FY 2025-26 & 2026-27 budgets — tax slabs, fiscal deficit, Rs 53.47L Cr expenditure, new schemes (VB-G RAM G, Bharat VISTAAR), defence, infrastructure & budget terminology with Tamil notes.',
+    status: 'live',
+    statusLabel: 'Live',
+  },
+  {
     id: 'home' as Page,
     icon: '🌍',
     label: 'Geography',
-    badge: 'Topic 05',
+    badge: 'Topic 06',
     accent: 'from-slate-600 to-slate-700',
     border: 'border-slate-600/30',
     ring: 'ring-slate-500/10',
@@ -89,7 +105,7 @@ const TOPICS = [
     id: 'home' as Page,
     icon: '📜',
     label: 'History',
-    badge: 'Topic 06',
+    badge: 'Topic 07',
     accent: 'from-slate-600 to-slate-700',
     border: 'border-slate-600/30',
     ring: 'ring-slate-500/10',
@@ -101,9 +117,9 @@ const TOPICS = [
   },
   {
     id: 'home' as Page,
-    icon: '💰',
-    label: 'Economy',
-    badge: 'Topic 07',
+    icon: '📈',
+    label: 'Economy (Advanced)',
+    badge: 'Topic 08',
     accent: 'from-slate-600 to-slate-700',
     border: 'border-slate-600/30',
     ring: 'ring-slate-500/10',
@@ -144,7 +160,7 @@ export default function Home({ setPage }: Props) {
               { n: `${_total}+`, label: 'Total Facts' },
               { n: '6', label: 'Categories per Topic' },
               { n: '2021–25', label: 'PYQ Range' },
-              { n: '4', label: 'Live Topics' },
+              { n: '5', label: 'Live Topics' },
             ].map(s => (
               <div key={s.label} className="text-center px-5 py-3 bg-white/5 border border-white/10 rounded-2xl min-w-[90px]">
                 <p className="text-2xl font-extrabold text-white">{s.n}</p>

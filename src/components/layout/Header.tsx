@@ -62,6 +62,19 @@ const PAGE_CONFIG: Record<Page, {
     ],
     cta: { href: '#gs-fast', label: 'Fast Revision →' },
   },
+  'union-budget': {
+    icon: '💰', accent: 'text-amber-400', label: 'Union Budget 2025-27',
+    bg: 'bg-amber-600',
+    links: [
+      { href: '#ub-overview', label: 'Overview' },
+      { href: '#ub-fast',     label: 'Fast Revision' },
+      { href: '#ub-matrix',   label: 'Fact Matrix' },
+      { href: '#ub-flash',    label: 'Flashcards' },
+      { href: '#ub-loop',     label: 'MCQ Loop' },
+      { href: '#ub-pyq',      label: 'PYQ Tracker' },
+    ],
+    cta: { href: '#ub-fast', label: 'Fast Revision →' },
+  },
 }
 
 export default function Header({ page, setPage }: Props) {

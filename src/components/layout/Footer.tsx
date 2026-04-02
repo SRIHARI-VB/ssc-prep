@@ -6,6 +6,7 @@ const FOOTER_MSG: Record<Page, { sub: string; quote: string }> = {
   'science-tech':  { sub: 'Science & Technology', quote: '"Every equation is a story waiting to be recalled."' },
   'polity-constitution': { sub: 'Polity & Constitution', quote: '"Know the Article, own the answer. Constitution is the blueprint of India."' },
   'govt-schemes': { sub: 'Government Schemes', quote: '"Scheme name + Launch year + Ministry + Key number = Guaranteed marks."' },
+  'union-budget': { sub: 'Union Budget 2025-26', quote: '"Budget size + Fiscal deficit + Tax slabs + New schemes = 3-4 guaranteed marks in GK."' },
 }
 
 export default function Footer({ page }: { page: Page }) {
