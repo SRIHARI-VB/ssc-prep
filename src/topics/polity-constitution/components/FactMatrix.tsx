@@ -33,15 +33,19 @@ export default function FactMatrix() {
   const [search, setSearch]               = useState('')
   const [expanded, setExpanded]           = useState<number | null>(null)
 
+  // Exclude SSC CGL format questions (multi-statement, assertion-reason, match-following)
+  // — those are practice-only and should not appear in the reference matrix
+  const studyEntries = useMemo(() => polityData.filter(e => !e.questionType), [])
+
   const filtered = useMemo(() => {
     const q = search.toLowerCase()
-    return polityData.filter(e => {
+    return studyEntries.filter(e => {
       if (filterSubject !== 'all' && e.category !== filterSubject) return false
       if (filterProb    !== 'all' && e.examProb !== filterProb)   return false
       if (q && !e.question.toLowerCase().includes(q) && !e.answer.toLowerCase().includes(q) && !e.topic.toLowerCase().includes(q)) return false
       return true
     })
-  }, [filterSubject, filterProb, search])
+  }, [studyEntries, filterSubject, filterProb, search])
 
   return (
     <section id="pol-matrix" className="py-14 bg-slate-50">
@@ -65,7 +69,7 @@ export default function FactMatrix() {
                     ? 'bg-amber-600 text-white border-amber-600'
                     : 'bg-white text-slate-600 border-slate-200 hover:border-amber-400'
                 }`}>
-                {s === 'all' ? `All (${polityData.length})` : `${s.split(' ')[0]}... (${polityData.filter(e => e.category === s).length})`}
+                {s === 'all' ? `All (${studyEntries.length})` : `${s.split(' ')[0]}... (${studyEntries.filter(e => e.category === s).length})`}
               </button>
             ))}
           </div>
@@ -93,7 +97,7 @@ export default function FactMatrix() {
               className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
             />
           </div>
-          <p className="text-xs text-slate-400">{filtered.length} of {polityData.length} entries</p>
+          <p className="text-xs text-slate-400">{filtered.length} of {studyEntries.length} entries</p>
         </div>
 
         {/* Table */}

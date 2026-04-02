@@ -1,321 +1,160 @@
-import { useState, useCallback, useMemo } from 'react'
-import { polityData, type PolityCategory, type ExamProb, type PolityEntry } from '../data'
+/**
+ * Polity & Constitution — Exam Loop
+ *
+ * Uses the shared ExamEngine. This file owns:
+ *   • Category config (icons + colours)
+ *   • Filter bar UI (category + difficulty + SSC Format)
+ *   • Filtered question computation
+ *   • Passes key={filterKey} so ExamEngine resets on every filter change
+ */
 
-type Phase = 'question' | 'correct' | 'wrong' | 'complete'
-const SUBJECTS: ('all' | PolityCategory)[] = ['all', 'Important Articles', 'Schedules', 'Amendments', 'Landmark Cases', 'Constitutional Bodies', 'Parliament & Executive', 'Fundamental Rights & DPSP']
-const PROBS: ('all' | ExamProb)[] = ['all', 'Hot', 'Confirmed', 'High', 'Recurring']
+import { useState, useMemo } from 'react'
+import { polityData, type PolityCategory, type ExamProb } from '../data'
+import ExamEngine from '../../../engine/ExamEngine'
+import type { EngineQuestion, CategoryMap, AccentPalette } from '../../../engine/types'
 
+// ── Category config ──────────────────────────────────────────────────────────
+
+const CATEGORY_DEF: CategoryMap = {
+  'Important Articles':        { icon: '📜', color: 'border-blue-400 bg-blue-50 text-blue-700' },
+  'Schedules':                 { icon: '📋', color: 'border-indigo-400 bg-indigo-50 text-indigo-700' },
+  'Amendments':                { icon: '✏️', color: 'border-orange-400 bg-orange-50 text-orange-700' },
+  'Landmark Cases':            { icon: '⚖️', color: 'border-red-400 bg-red-50 text-red-700' },
+  'Constitutional Bodies':     { icon: '🏛️', color: 'border-violet-400 bg-violet-50 text-violet-700' },
+  'Parliament & Executive':    { icon: '🏟️', color: 'border-emerald-400 bg-emerald-50 text-emerald-700' },
+  'Fundamental Rights & DPSP': { icon: '🛡️', color: 'border-rose-400 bg-rose-50 text-rose-700' },
+}
+
+const ACCENT: AccentPalette = {
+  chipActive: 'bg-indigo-600 text-white border-indigo-600',
+  optHover:   'hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-700',
+  bar:        'bg-indigo-400',
+  scoreText:  'text-indigo-600',
+  nextBtn:    'bg-indigo-600 hover:bg-indigo-500 text-white',
+  text:       'text-indigo-600',
+}
+
+const CATEGORIES: PolityCategory[] = [
+  'Important Articles', 'Schedules', 'Amendments', 'Landmark Cases',
+  'Constitutional Bodies', 'Parliament & Executive', 'Fundamental Rights & DPSP',
+]
+const PROBS: ExamProb[] = ['Hot', 'Confirmed', 'High', 'Recurring']
 const PROB_CHIP: Record<ExamProb, string> = {
-  Hot:       'bg-red-100 text-red-800 border-red-300',
-  High:      'bg-orange-100 text-orange-800 border-orange-300',
-  Confirmed: 'bg-green-100 text-green-800 border-green-300',
-  Recurring: 'bg-violet-100 text-violet-800 border-violet-300',
-}
-const PROB_ACTIVE: Record<ExamProb, string> = {
-  Hot:       'bg-red-600 text-white border-red-600',
-  High:      'bg-orange-500 text-white border-orange-500',
-  Confirmed: 'bg-green-600 text-white border-green-600',
-  Recurring: 'bg-violet-600 text-white border-violet-600',
-}
-const PROB_ICONS: Record<ExamProb, string> = {
-  Hot: '🔴', High: '🟠', Confirmed: '✅', Recurring: '🔁',
+  Hot: 'bg-red-100 text-red-800 border-red-200', High: 'bg-orange-100 text-orange-800 border-orange-200',
+  Confirmed: 'bg-green-100 text-green-800 border-green-200', Recurring: 'bg-violet-100 text-violet-800 border-violet-200',
 }
 
-const SUBJECT_ICON: Record<PolityCategory, string> = {
-  'Important Articles':        '📖',
-  'Schedules':                 '📋',
-  'Amendments':                '✏️',
-  'Landmark Cases':            '⚖️',
-  'Constitutional Bodies':     '🏗️',
-  'Parliament & Executive':    '🏛️',
-  'Fundamental Rights & DPSP': '🛡️',
-}
-const SUBJECT_COLOR: Record<PolityCategory, string> = {
-  'Important Articles':        'border-indigo-400 bg-indigo-50 text-indigo-700',
-  'Schedules':                 'border-teal-400 bg-teal-50 text-teal-700',
-  'Amendments':                'border-blue-400 bg-blue-50 text-blue-700',
-  'Landmark Cases':            'border-green-400 bg-green-50 text-green-700',
-  'Constitutional Bodies':     'border-red-400 bg-red-50 text-red-700',
-  'Parliament & Executive':    'border-violet-400 bg-violet-50 text-violet-700',
-  'Fundamental Rights & DPSP': 'border-amber-400 bg-amber-50 text-amber-700',
-}
-
-function shuffle<T>(arr: T[]): T[] {
-  return [...arr].sort(() => Math.random() - 0.5)
-}
-
-function buildPool(sub: 'all' | PolityCategory, prob: 'all' | ExamProb): PolityEntry[] {
-  const pool = polityData.filter(e => {
-    if (sub  !== 'all' && e.category  !== sub)  return false
-    if (prob !== 'all' && e.examProb !== prob) return false
-    return true
-  })
-  return pool.length > 0 ? pool : polityData
-}
-
-function getOptions(correct: PolityEntry, pool: PolityEntry[], count = 4): string[] {
-  const distractors = shuffle(
-    (pool.length >= count ? pool : polityData)
-      .filter(e => e.id !== correct.id && e.answer !== correct.answer)
-  ).slice(0, count - 1).map(e => e.answer)
-  return shuffle([correct.answer, ...distractors])
-}
-
-interface LoopState {
-  card: PolityEntry
-  options: string[]
-  phase: Phase
-  score: number
-  total: number
-  queue: PolityEntry[]
-  cycleNum: number
-}
+// ── Component ────────────────────────────────────────────────────────────────
 
 export default function ExamLoop() {
-  const [filterSub,  setFilterSub]  = useState<'all' | PolityCategory>('all')
+  const [filterSub,  setFilterSub]  = useState<'all' | PolityCategory | 'SSC Format'>('all')
   const [filterProb, setFilterProb] = useState<'all' | ExamProb>('all')
 
-  const filteredPool = useMemo(
-    () => buildPool(filterSub, filterProb),
-    [filterSub, filterProb]
-  )
-
-  const [state, setState] = useState<LoopState>(() => {
-    const shuffled = shuffle([...polityData])
-    const card = shuffled[0]
-    return { card, options: getOptions(card, polityData), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 }
-  })
-  const [selected, setSelected] = useState<string | null>(null)
-  const [shake, setShake] = useState(false)
-
-  const handleFilter = useCallback((sub: 'all' | PolityCategory) => {
-    const pool = buildPool(sub, filterProb)
-    const shuffled = shuffle([...pool])
-    setFilterSub(sub)
-    setSelected(null)
-    setState({ card: shuffled[0], options: getOptions(shuffled[0], pool), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 })
-  }, [filterProb])
-
-  const handleProbFilter = useCallback((prob: 'all' | ExamProb) => {
-    const pool = buildPool(filterSub, prob)
-    const shuffled = shuffle([...pool])
-    setFilterProb(prob)
-    setSelected(null)
-    setState({ card: shuffled[0], options: getOptions(shuffled[0], pool), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 })
-  }, [filterSub])
-
-  const nextQuestion = useCallback(() => {
-    setSelected(null)
-    setState(s => {
-      const newQueue = s.queue.length > 0 ? s.queue : shuffle([...filteredPool])
-      const newCycle = s.queue.length > 0 ? s.cycleNum : s.cycleNum + 1
-      const card = newQueue[0]
-      return { ...s, card, options: getOptions(card, filteredPool), phase: 'question', queue: newQueue.slice(1), cycleNum: newCycle }
+  const filtered = useMemo<EngineQuestion[]>(() => {
+    const list = polityData.filter(q => {
+      if (filterSub === 'SSC Format') return !!q.questionType
+      if (filterSub !== 'all' && q.category !== filterSub) return false
+      if (filterProb !== 'all' && q.examProb !== filterProb) return false
+      return true
     })
-  }, [filteredPool])
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (list.length > 0 ? list : polityData) as any as EngineQuestion[]
+  }, [filterSub, filterProb])
 
-  const handleSelect = useCallback((opt: string) => {
-    if (state.phase !== 'question') return
-    const isCorrect = opt === state.card.answer
-    setSelected(opt)
-    if (!isCorrect) {
-      setShake(true)
-      setTimeout(() => setShake(false), 600)
-    }
-    setState(s => ({
-      ...s,
-      phase: isCorrect ? 'correct' : 'wrong',
-      score: isCorrect ? s.score + 1 : s.score,
-      total: s.total + 1,
-    }))
-  }, [state])
-
-  const { card, options, phase, score, total } = state
-  const accuracy = total > 0 ? Math.round((score / total) * 100) : 0
+  const sscCount = polityData.filter(q => !!q.questionType).length
 
   return (
-    <section id="pol-loop" className="py-16 bg-white">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
+        {/* Section header */}
         <div className="mb-8">
-          <p className="text-xs font-bold tracking-widest text-amber-600 uppercase mb-1">Section 04</p>
-          <h2 className="text-3xl font-extrabold text-brand-900">MCQ Exam Loop</h2>
-          <p className="mt-1 text-slate-500 text-sm">Single-step MCQ — select the correct answer instantly.</p>
+          <p className="text-xs font-bold tracking-widest text-indigo-600 uppercase mb-1">Section 04</p>
+          <h2 className="text-3xl font-extrabold text-brand-900">Polity &amp; Constitution — Exam Loop</h2>
+          <p className="mt-1 text-slate-500 text-sm">
+            Every question has <strong>4 hand-picked, topically relevant options</strong>.
+            Use <span className="text-violet-600 font-bold">📋 SSC Format</span> to drill
+            Multi-Statement, A-R, Match &amp; Sequence questions.
+          </p>
         </div>
 
-        {/* Filters */}
+        {/* Filter bar */}
         <div className="bg-slate-50 rounded-2xl border border-slate-200 p-4 mb-8 space-y-3">
 
-          {/* Row 1 — Subject */}
+          {/* Category row */}
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Category</span>
               {(filterSub !== 'all' || filterProb !== 'all') && (
-                <span className="text-xs text-slate-400">
-                  — {filteredPool.length} question{filteredPool.length !== 1 ? 's' : ''} in pool
-                </span>
+                <span className="text-xs text-slate-400">— {filtered.length} questions</span>
               )}
             </div>
             <div className="flex flex-wrap gap-2">
-              {SUBJECTS.map(s => {
-                const count = s === 'all' ? polityData.length : polityData.filter(e => e.category === s).length
-                return (
-                  <button key={s} onClick={() => handleFilter(s)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${
-                      filterSub === s
-                        ? 'bg-amber-600 text-white border-amber-600'
-                        : 'bg-white text-slate-600 border-slate-200 hover:border-amber-400'
-                    }`}>
-                    {s === 'all' ? `🌐 All (${count})` : `${SUBJECT_ICON[s as PolityCategory]} ${(s as string).split(' ')[0]}... (${count})`}
-                  </button>
-                )
-              })}
+              <button onClick={() => setFilterSub('all')}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${filterSub === 'all' ? ACCENT.chipActive : 'bg-white text-slate-600 border-slate-200 hover:border-indigo-400'}`}>
+                🌐 All ({polityData.length})
+              </button>
+              <button onClick={() => setFilterSub('SSC Format')}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${filterSub === 'SSC Format' ? 'bg-violet-600 text-white border-violet-600 shadow-md' : 'bg-violet-50 text-violet-700 border-violet-300 hover:bg-violet-100'}`}>
+                📋 SSC Format ({sscCount})
+              </button>
+              {CATEGORIES.map(s => (
+                <button key={s} onClick={() => setFilterSub(s)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${filterSub === s ? ACCENT.chipActive : 'bg-white text-slate-600 border-slate-200 hover:border-indigo-400'}`}>
+                  {CATEGORY_DEF[s].icon} {s} ({polityData.filter(q => q.category === s).length})
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Row 2 — Exam Priority */}
+          {/* Difficulty row */}
           <div className="border-t border-slate-200 pt-3">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest block mb-2">Exam Priority</span>
             <div className="flex flex-wrap gap-2">
-              {PROBS.map(p => {
-                const count = p === 'all' ? polityData.length : polityData.filter(e => e.examProb === p).length
-                const isActive = filterProb === p
-                return (
-                  <button key={p} onClick={() => handleProbFilter(p)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${
-                      isActive
-                        ? p === 'all' ? 'bg-slate-800 text-white border-slate-800' : PROB_ACTIVE[p as ExamProb]
-                        : p === 'all' ? 'bg-white text-slate-600 border-slate-200 hover:border-slate-400' : PROB_CHIP[p as ExamProb] + ' hover:opacity-80'
-                    }`}>
-                    {p === 'all' ? `All Priorities (${count})` : `${PROB_ICONS[p as ExamProb]} ${p} (${count})`}
-                  </button>
-                )
-              })}
+              <button onClick={() => setFilterProb('all')}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${filterProb === 'all' ? 'bg-slate-800 text-white border-slate-800' : 'bg-white text-slate-600 border-slate-200 hover:border-slate-400'}`}>
+                All Priorities ({polityData.length})
+              </button>
+              {PROBS.map(p => (
+                <button key={p} onClick={() => setFilterProb(p)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${filterProb === p ? 'bg-slate-700 text-white border-slate-700' : PROB_CHIP[p] + ' hover:opacity-80'}`}>
+                  {p} ({polityData.filter(q => q.examProb === p).length})
+                </button>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          {/* Active filter chips */}
-          {(filterSub !== 'all' || filterProb !== 'all') && (
-            <div className="flex flex-wrap gap-2 mb-4">
-              {filterSub !== 'all' && (
-                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${SUBJECT_COLOR[filterSub as PolityCategory]}`}>
-                  {SUBJECT_ICON[filterSub as PolityCategory]} Drilling: {filterSub}
-                </span>
-              )}
-              {filterProb !== 'all' && (
-                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${PROB_CHIP[filterProb as ExamProb]}`}>
-                  {PROB_ICONS[filterProb as ExamProb]} {filterProb} Priority only
-                </span>
-              )}
-            </div>
-          )}
-
-          {/* Cycle progress */}
-          <div className="flex items-center justify-between mb-3 px-1">
-            <span className="text-xs font-bold text-amber-600">
-              Q {filteredPool.length - state.queue.length} / {filteredPool.length}
-            </span>
-            <span className="text-xs font-semibold text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
-              Cycle {state.cycleNum}
-            </span>
-          </div>
-          {/* Cycle progress bar */}
-          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden mb-5">
-            <div className="h-full bg-amber-400 rounded-full transition-all duration-300"
-              style={{ width: `${((filteredPool.length - state.queue.length) / filteredPool.length) * 100}%` }} />
-          </div>
-
-          {/* Score bar */}
-          <div className="flex items-center gap-4 mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-200">
-            <div className="text-center">
-              <p className="text-2xl font-extrabold text-amber-600">{score}</p>
-              <p className="text-xs text-slate-400">Correct</p>
-            </div>
-            <div className="flex-1 h-2 bg-slate-200 rounded-full overflow-hidden">
-              <div className="h-full bg-amber-500 rounded-full transition-all duration-500"
-                style={{ width: `${accuracy}%` }} />
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-extrabold text-slate-700">{accuracy}%</p>
-              <p className="text-xs text-slate-400">Accuracy</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-extrabold text-slate-500">{total}</p>
-              <p className="text-xs text-slate-400">Attempted</p>
-            </div>
-          </div>
-
-          {/* Question card */}
-          <div className={`bg-white rounded-2xl border-2 p-6 shadow-lg mb-4 ${
-            phase === 'correct' ? 'border-green-400' :
-            phase === 'wrong'   ? 'border-red-400'   : 'border-slate-200'
-          } ${shake ? 'animate-[shake_0.5s_ease-in-out]' : ''}`}>
-
-            {/* Subject + context */}
-            <div className="flex items-center justify-between mb-4">
-              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${SUBJECT_COLOR[card.category]}`}>
-                {SUBJECT_ICON[card.category]} {card.category}
+        {/* Active filter badges */}
+        {(filterSub !== 'all' || filterProb !== 'all') && (
+          <div className="flex flex-wrap gap-2 mb-4 max-w-2xl mx-auto">
+            {filterSub === 'SSC Format' && (
+              <span className="text-xs font-bold px-3 py-1 rounded-full border bg-violet-100 text-violet-700 border-violet-300">
+                📋 SSC Format only
               </span>
-              <span className="text-xs text-slate-400 font-medium">{card.topic}</span>
-            </div>
-
-            {/* Question */}
-            <h3 className="text-base font-bold text-slate-800 leading-relaxed mb-5">
-              {card.question}
-            </h3>
-
-            {/* Options grid */}
-            <div className="grid grid-cols-1 gap-3">
-              {options.map((opt, i) => {
-                const isCorrect = opt === card.answer
-                const isSelected = opt === selected
-                let cls = 'text-left w-full px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all '
-                if (phase === 'question') {
-                  cls += 'border-slate-200 bg-slate-50 hover:border-amber-400 hover:bg-amber-50 hover:text-amber-700 cursor-pointer'
-                } else if (isCorrect) {
-                  cls += 'border-green-500 bg-green-50 text-green-800 font-bold'
-                } else if (isSelected && !isCorrect) {
-                  cls += 'border-red-400 bg-red-50 text-red-700'
-                } else {
-                  cls += 'border-slate-100 bg-slate-50 text-slate-400'
-                }
-                return (
-                  <button key={i} className={cls} onClick={() => handleSelect(opt)} disabled={phase !== 'question'}>
-                    <span className="text-slate-400 mr-2">{String.fromCharCode(65 + i)}.</span>
-                    {opt}
-                    {phase !== 'question' && isCorrect && ' ✓'}
-                    {phase !== 'question' && isSelected && !isCorrect && ' ✗'}
-                  </button>
-                )
-              })}
-            </div>
-
-            {/* Feedback */}
-            {phase !== 'question' && (
-              <div className={`mt-4 p-4 rounded-xl ${phase === 'correct' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
-                <p className={`text-sm font-bold mb-1 ${phase === 'correct' ? 'text-green-700' : 'text-red-700'}`}>
-                  {phase === 'correct' ? '✅ Correct!' : '❌ Incorrect'}
-                </p>
-                <p className="text-xs text-slate-600 leading-relaxed">{card.detail}</p>
-                {card.shortcut && (
-                  <p className="font-mnemonic text-xs text-amber-700 italic mt-2">💡 &quot;{card.shortcut}&quot;</p>
-                )}
-                <p className="text-xs text-slate-400 mt-1">📅 {card.context}</p>
-              </div>
+            )}
+            {filterSub !== 'all' && filterSub !== 'SSC Format' && (
+              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${CATEGORY_DEF[filterSub as PolityCategory]?.color ?? ''}`}>
+                {CATEGORY_DEF[filterSub as PolityCategory]?.icon} Drilling: {filterSub}
+              </span>
+            )}
+            {filterProb !== 'all' && (
+              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${PROB_CHIP[filterProb as ExamProb]}`}>
+                {filterProb} priority only
+              </span>
             )}
           </div>
+        )}
 
-          {/* Next button */}
-          {phase !== 'question' && (
-            <button onClick={nextQuestion}
-              className="w-full py-3 rounded-2xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-sm transition-colors shadow-lg animate-pop-in">
-              Next Question →
-            </button>
-          )}
-        </div>
+        {/* Engine — key forces full state reset on every filter change */}
+        <ExamEngine
+          key={`polity-${filterSub}-${filterProb}`}
+          questions={filtered}
+          getCat={q => (q as unknown as { category: string }).category}
+          catDef={CATEGORY_DEF}
+          accent={ACCENT}
+          sectionId="polity-loop"
+        />
       </div>
     </section>
   )

@@ -1,3 +1,5 @@
+import { MULTI_STATEMENT_OPTIONS as MULTI_STATEMENT_2_OPTIONS, ASSERTION_REASON_OPTIONS, type QuestionType } from '../../engine/types'
+
 export type Category =
   | 'Ancient/Medieval'
   | 'Freedom Struggle'
@@ -12,13 +14,27 @@ export interface BookEntry {
   id: number
   title: string
   author: string
-  category: Category
-  award: string
-  year: string
   theme: string
-  mnemonic: string
-  context: string
+  award: string
+  category: Category
   examProb: ExamProb
+  mnemonic: string
+  year?: string
+  context?: string
+  // Per-step explicit option pools (REQUIRED for regular entries)
+  authorOptions: [string, string, string, string]
+  themeOptions:  [string, string, string, string]
+  awardOptions:  [string, string, string, string]
+  // SSC CGL format override (single-step, optional)
+  questionType?: QuestionType
+  question?: string
+  options?: [string, string, string, string]
+  answer?: string
+  statements?: string[]
+  assertion?: string
+  reason?: string
+  matchLeft?: string[]
+  matchRight?: string[]
 }
 
 export interface PYQEntry {
@@ -62,6 +78,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CHANAKYA rules with ARTHA (wealth)',
     context: 'Repeated across 2020–2025 PYQs; Mauryan Empire context',
     examProb: 'Recurring',
+    authorOptions: ['Kautilya (Chanakya)', 'Megasthenes', 'Panini', 'Patanjali'],
+    themeOptions: ['Mauryan statecraft, economics & military strategy', 'Sanskrit grammar & linguistics', 'Greek traveler\'s account of India', 'Buddhist philosophy & meditation'],
+    awardOptions: ['Classical Treatise', 'Sanskrit Drama', 'Greek Account', 'Devotional Sanskrit Poem'],
   },
   {
     id: 2,
@@ -74,6 +93,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BANA writes the story of HARSH king',
     context: 'SSC CGL 02 Dec 2022 — "Who wrote Harsha Charita?"',
     examProb: 'Confirmed',
+    authorOptions: ['Banabhatta', 'Kalhana', 'Somadeva', 'Jayadeva'],
+    themeOptions: ['Biography of King Harsha Vardhana', 'Chronicle of the Kings of Kashmir', 'Ocean of stories — Indian folk tales collection', 'Devotional poem — Radha-Krishna love'],
+    awardOptions: ['Classical Sanskrit Prose', 'Historical Chronicle', 'Classical Sanskrit', 'Devotional Sanskrit Poem'],
   },
   {
     id: 3,
@@ -86,6 +108,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KALHANA keeps the RANI (queen) chronicle',
     context: 'Frequently asked — Kashmir history angle',
     examProb: 'Recurring',
+    authorOptions: ['Kalhana', 'Banabhatta', 'Somadeva', 'Bilhana'],
+    themeOptions: ['Chronicle of the Kings of Kashmir', 'Biography of King Harsha Vardhana', 'Ocean of stories — Indian folk tales collection', 'Historical poem on Vikramaditya'],
+    awardOptions: ['Historical Chronicle', 'Classical Sanskrit Prose', 'Classical Sanskrit', 'Sanskrit Epic Poem'],
   },
   {
     id: 4,
@@ -98,6 +123,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'VISHAKA dramatises MUDRA (seal) politics',
     context: 'Questions on Mauryan empire political history',
     examProb: 'Recurring',
+    authorOptions: ['Visakhadatta', 'Sudraka', 'Bhasa', 'Kalidasa'],
+    themeOptions: ['Rise of Chandragupta Maurya — historical play', 'Sanskrit social comedy — love story across caste lines', 'Sanskrit play — Shakuntala & King Dushyanta', 'Foundational guide to performing arts'],
+    awardOptions: ['Sanskrit Drama', 'Sanskrit Comedy-Drama', 'Sanskrit Classic Drama', 'Foundational Treatise'],
   },
   {
     id: 5,
@@ -110,6 +138,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SOMA collects SEA (sagar) of stories',
     context: 'Asked in context of Sanskrit literary tradition',
     examProb: 'Recurring',
+    authorOptions: ['Somadeva', 'Kalhana', 'Banabhatta', 'Hemachandra'],
+    themeOptions: ['Ocean of stories — Indian folk tales collection', 'Chronicle of the Kings of Kashmir', 'Biography of King Harsha Vardhana', 'Ancient treatise on human behaviour & relationships'],
+    awardOptions: ['Classical Sanskrit', 'Historical Chronicle', 'Classical Sanskrit Prose', 'Ancient Sanskrit Text'],
   },
   {
     id: 6,
@@ -122,6 +153,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'VATSA (calf) follows KAMA (desire)',
     context: 'Context: Ancient Indian social literature',
     examProb: 'Recurring',
+    authorOptions: ['Vatsayana', 'Patanjali', 'Manu', 'Panini'],
+    themeOptions: ['Ancient treatise on human behaviour & relationships', 'Sanskrit grammar & linguistics', 'Ancient social law & dharma', 'Philosophy of yoga & meditation'],
+    awardOptions: ['Ancient Sanskrit Text', 'Classical Treatise', 'Foundational Treatise', 'Sanskrit Epic Poem'],
   },
   {
     id: 7,
@@ -134,6 +168,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ASHVA (horse) gallops through BUDDHA\'s life',
     context: 'Buddhist literature — Kushana period',
     examProb: 'Recurring',
+    authorOptions: ['Asvaghosa', 'Nagarjuna', 'Vasubandhu', 'Dignaga'],
+    themeOptions: ['Epic poem on the life of Gautama Buddha', 'Buddhist philosophy of emptiness', 'Commentary on Abhidharma texts', 'Devotional poem — Radha-Krishna love'],
+    awardOptions: ['Sanskrit Epic Poem', 'Classical Treatise', 'Devotional Sanskrit Poem', 'Ancient Sanskrit Text'],
   },
   {
     id: 8,
@@ -146,6 +183,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BHARAT\'s NATYA (drama) is the shastric base',
     context: 'Asked in culture & arts questions',
     examProb: 'Recurring',
+    authorOptions: ['Bharata Muni', 'Vatsayana', 'Panini', 'Patanjali'],
+    themeOptions: ['Foundational guide to performing arts — drama, music, dance', 'Ancient treatise on human behaviour & relationships', 'Sanskrit grammar & linguistics', 'Philosophy of yoga & meditation'],
+    awardOptions: ['Foundational Treatise', 'Ancient Sanskrit Text', 'Classical Treatise', 'Sanskrit Epic Poem'],
   },
   {
     id: 9,
@@ -158,6 +198,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'MEGA Greek writes INDICA of India',
     context: 'Foreign accounts of India — Chandragupta era',
     examProb: 'Recurring',
+    authorOptions: ['Megasthenes', 'Ptolemy', 'Strabo', 'Arrian'],
+    themeOptions: ['Greek traveler\'s account of Mauryan India', 'Greek geographical survey of Asia', 'Roman account of Indian trade routes', 'Macedonian account of Alexander\'s campaigns'],
+    awardOptions: ['Greek Account', 'Classical Treatise', 'Historical Chronicle', 'Medieval Travel Account'],
   },
   {
     id: 10,
@@ -170,6 +213,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'JAYA (victory) to GITA of GOVINDA',
     context: 'Medieval devotional literature',
     examProb: 'Recurring',
+    authorOptions: ['Jayadeva', 'Bilhana', 'Somadeva', 'Kalhana'],
+    themeOptions: ['Devotional poem — Radha-Krishna love (12th century)', 'Historical poem on Vikramaditya', 'Ocean of stories — Indian folk tales collection', 'Chronicle of the Kings of Kashmir'],
+    awardOptions: ['Devotional Sanskrit Poem', 'Classical Sanskrit', 'Historical Chronicle', 'Sanskrit Epic Poem'],
   },
   {
     id: 11,
@@ -182,6 +228,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KALI\'s greatest SAKUNTala play',
     context: 'Gupta Golden Age — Kalidasa\'s trilogy',
     examProb: 'Recurring',
+    authorOptions: ['Kalidasa', 'Visakhadatta', 'Bhasa', 'Sudraka'],
+    themeOptions: ['Sanskrit play — Shakuntala & King Dushyanta (Gupta era)', 'Rise of Chandragupta Maurya — historical play', 'Sanskrit social comedy — love story across caste lines', 'Epic poem on the life of Gautama Buddha'],
+    awardOptions: ['Sanskrit Classic Drama', 'Sanskrit Drama', 'Sanskrit Comedy-Drama', 'Sanskrit Epic Poem'],
   },
   {
     id: 12,
@@ -194,6 +243,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'AL BIRUNI\'s KITAB is an Indian encyclopaedia',
     context: 'SSC CGL 13 Aug 2021 & 21 Jul 2023 — Repeated! Mahmud of Ghazni',
     examProb: 'Confirmed',
+    authorOptions: ['Al-Biruni', 'Ibn Battuta', 'Amir Khusrau', 'Al-Masudi'],
+    themeOptions: ['Encyclopedic account of Indian science, religion & philosophy', 'Moroccan traveler\'s account of India under Muhammad bin Tughlaq', 'Historical poem on the reign of Ghiyasuddin Tughlaq', 'Persian account of Arab geography'],
+    awardOptions: ['Medieval Islamic Scholarship', 'Medieval Travel Account', 'Medieval Poetry', 'Mughal Chronicle'],
   },
   {
     id: 13,
@@ -206,6 +258,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ABUL FAZL records AIN (rules) of AKBAR',
     context: 'Mughal history — administrative system',
     examProb: 'Recurring',
+    authorOptions: ['Abul Fazl', 'Badauni', 'Ferishta', 'Nizamuddin Ahmad'],
+    themeOptions: ['Detailed account of Mughal administration under Akbar', 'Critical history of Mughal emperors', 'General history of India from early times', 'Official history of Akbar\'s reign'],
+    awardOptions: ['Mughal Chronicle', 'Medieval Islamic Scholarship', 'Medieval Poetry', 'Historical Chronicle'],
   },
   {
     id: 14,
@@ -218,6 +273,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SUDRA wrote a CLAY CART (mriccha) play',
     context: 'SSC CGL 14 Jul 2023 — "Author of Mricchakatika?"',
     examProb: 'Confirmed',
+    authorOptions: ['Sudraka', 'Kalidasa', 'Visakhadatta', 'Bhasa'],
+    themeOptions: ['Sanskrit social comedy — love story across caste lines', 'Sanskrit play — Shakuntala & King Dushyanta', 'Rise of Chandragupta Maurya — historical play', 'Epic poem on the life of Gautama Buddha'],
+    awardOptions: ['Sanskrit Comedy-Drama', 'Sanskrit Classic Drama', 'Sanskrit Drama', 'Sanskrit Epic Poem'],
   },
   {
     id: 15,
@@ -230,6 +288,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'DINA shows the NEEL (blue) mirror to empire',
     context: 'SSC CGL 09 Sep 2024 Shift 1 — Indigo Revolt context',
     examProb: 'Confirmed',
+    authorOptions: ['Dinabandhu Mitra', 'Bankim Chandra Chatterjee', 'Michael Madhusudan Dutt', 'Rabindranath Tagore'],
+    themeOptions: ['Indigo Revolt — brutality of British indigo planters', 'Sanyasi Rebellion — source of national song Vande Mataram', 'Epic poem on Ravana — Bengali Meghnad Badh', 'Devotional poetry — first Indian Nobel Prize winner'],
+    awardOptions: ['Colonial Era Drama', 'Historical Novel', 'Bengali Epic Poem', 'Nobel Prize in Literature'],
   },
   {
     id: 16,
@@ -242,6 +303,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'PRASAD pours KAMA (desire) into Hindi epic',
     context: 'SSC CGL 20 Apr 2022 Shift 1 — Confirmed PYQ',
     examProb: 'Confirmed',
+    authorOptions: ['Jay Shankar Prasad', 'Maithili Sharan Gupt', 'Sumitranandan Pant', 'Suryakant Tripathi Nirala'],
+    themeOptions: ['Hindi epic poem — mythological allegory of Manu & Shraddha', 'Hindi patriotic verse — Bharat Bharati', 'Hindi nature poetry — Pallav', 'Hindi modernist poetry — revolutionary verse'],
+    awardOptions: ['Mangala Prasad Paritoshik', 'Sahitya Akademi Award', 'Jnanpith Award', 'Padma Bhushan (Author)'],
   },
 
   // ── FREEDOM STRUGGLE ────────────────────────────────────────────────────────
@@ -256,6 +320,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GANDHI experiments with TRUTH daily',
     context: 'Most repeated autobiography in SSC CGL history',
     examProb: 'Confirmed',
+    authorOptions: ['M. K. Gandhi', 'Jawaharlal Nehru', 'B. R. Ambedkar', 'Maulana Abul Kalam Azad'],
+    themeOptions: ['Gandhi\'s autobiography — philosophy of truth & non-violence', 'India\'s history & civilisation — written in Ahmednagar prison', 'Personal narrative of untouchability & caste discrimination', 'Political memoir — Independence & Partition tragedy'],
+    awardOptions: ['Autobiography / Bharat Ratna (Author)', 'Bharat Ratna (Author)', 'Political Memoir', 'Revolutionary Essay'],
   },
   {
     id: 18,
@@ -268,6 +335,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'NEHRU DISCOVERS India while imprisoned',
     context: 'SSC CGL 2019, Tier 1 — prison + civilisation angle',
     examProb: 'Confirmed',
+    authorOptions: ['Jawaharlal Nehru', 'M. K. Gandhi', 'Maulana Abul Kalam Azad', 'Subhas Chandra Bose'],
+    themeOptions: ['India\'s history & civilisation — written in Ahmednagar prison', 'Gandhi\'s autobiography — philosophy of truth & non-violence', 'Political memoir — Independence & Partition tragedy', 'History of Indian independence movement from Bose\'s perspective'],
+    awardOptions: ['Bharat Ratna (Author)', 'Autobiography / Bharat Ratna (Author)', 'Political History', 'Political Memoir'],
   },
   {
     id: 19,
@@ -280,6 +350,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BANKIM\'s MATH gave us Vande Mataram',
     context: 'Source of Vande Mataram — Sanyasi Rebellion context',
     examProb: 'Recurring',
+    authorOptions: ['Bankim Chandra Chatterjee', 'Dinabandhu Mitra', 'Rabindranath Tagore', 'Michael Madhusudan Dutt'],
+    themeOptions: ['Sanyasi Rebellion — source of national song Vande Mataram', 'Indigo Revolt — brutality of British indigo planters', 'Devotional poetry — first Indian Nobel Prize winner', 'Epic poem on Ravana — Bengali literary tradition'],
+    awardOptions: ['Historical Novel', 'Colonial Era Drama', 'Nobel Prize in Literature', 'Bengali Epic Poem'],
   },
   {
     id: 20,
@@ -292,6 +365,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'TAGORE\'s GEET (song) wins ANJALI (Nobel)',
     context: 'First Indian Nobel Prize (Literature) 1913',
     examProb: 'Recurring',
+    authorOptions: ['Rabindranath Tagore', 'Bankim Chandra Chatterjee', 'Sarojini Naidu', 'Subramania Bharati'],
+    themeOptions: ['Devotional poetry — first Indian Nobel Prize winner', 'Sanyasi Rebellion — source of national song Vande Mataram', 'Lyric poetry — Nightingale of India\'s independence movement', 'Tamil patriotic poetry — freedom struggle'],
+    awardOptions: ['Nobel Prize in Literature', 'Historical Novel', 'Poetry Collection', 'Sahitya Akademi Award'],
   },
   {
     id: 21,
@@ -304,6 +380,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BHAGAT (devotee) asks why he has no BHAGWAN',
     context: 'Revolutionary literature — written in prison before execution',
     examProb: 'Recurring',
+    authorOptions: ['Bhagat Singh', 'Subhas Chandra Bose', 'Lala Lajpat Rai', 'Bal Gangadhar Tilak'],
+    themeOptions: ['Revolutionary ideology — Bhagat Singh\'s philosophical argument', 'History of Indian independence movement from Bose\'s perspective', 'Extremist nationalism — role of Shivaji in Hindu revival', 'Economic critique of British rule'],
+    awardOptions: ['Revolutionary Essay', 'Political History', 'Political Memoir', 'Economic Treatise'],
   },
   {
     id: 22,
@@ -316,6 +395,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'AMBEDKAR waits for VISA denied by caste',
     context: 'Dalit rights literature — essential for social justice questions',
     examProb: 'Recurring',
+    authorOptions: ['B. R. Ambedkar', 'M. K. Gandhi', 'Jawaharlal Nehru', 'Periyar E. V. Ramasamy'],
+    themeOptions: ['Personal narrative of untouchability & caste discrimination', 'Gandhi\'s autobiography — philosophy of truth & non-violence', 'India\'s history & civilisation — written in Ahmednagar prison', 'Social reform & self-respect movement in Tamil Nadu'],
+    awardOptions: ['Bharat Ratna (Author)', 'Autobiography / Bharat Ratna (Author)', 'Political Memoir', 'Economic Treatise'],
   },
   {
     id: 23,
@@ -328,6 +410,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SAROJINI\'s WING is broken but her voice soars',
     context: 'Nightingale of India — poetry & freedom struggle',
     examProb: 'Recurring',
+    authorOptions: ['Sarojini Naidu', 'Rabindranath Tagore', 'Subramania Bharati', 'Annie Besant'],
+    themeOptions: ['Lyric poetry — Nightingale of India\'s independence movement', 'Devotional poetry — first Indian Nobel Prize winner', 'Tamil patriotic poetry — freedom struggle', 'Theosophical writings on Indian spirituality'],
+    awardOptions: ['Poetry Collection', 'Nobel Prize in Literature', 'Historical Novel', 'Political Memoir'],
   },
   {
     id: 24,
@@ -340,6 +425,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'AZAD (Free) wins FREEDOM for India',
     context: 'SSC CGL 2020 Shift 3 — Partition history angle',
     examProb: 'Confirmed',
+    authorOptions: ['Maulana Abul Kalam Azad', 'Jawaharlal Nehru', 'M. K. Gandhi', 'Rajendra Prasad'],
+    themeOptions: ['Political memoir — Independence & Partition tragedy', 'India\'s history & civilisation — written in Ahmednagar prison', 'Gandhi\'s autobiography — philosophy of truth & non-violence', 'Autobiography of India\'s first President'],
+    awardOptions: ['Bharat Ratna (Author)', 'Autobiography / Bharat Ratna (Author)', 'Political History', 'Political Memoir'],
   },
 
   // ── SPORTS & CELEBRITY ──────────────────────────────────────────────────────
@@ -354,6 +442,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SACHIN plays his own WAY',
     context: 'SSC CGL 01 Dec 2022 — Confirmed PYQ',
     examProb: 'Confirmed',
+    authorOptions: ['Sachin Tendulkar', 'Sourav Ganguly', 'Rahul Dravid', 'Kapil Dev'],
+    themeOptions: ['Autobiography of a cricketing legend — 100 international centuries', 'Cricket autobiography — BCCI President & India\'s turnaround', 'Cricket — 1983 World Cup captain\'s autobiography', 'Cricket memoir — the Wall of Indian batting'],
+    awardOptions: ['Bharat Ratna (Author)', 'Padma Sri (Author)', 'Padma Bhushan (Author)', 'Sports Memoir'],
   },
   {
     id: 26,
@@ -366,6 +457,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'MARY KOM is UNBREAKABLE in the ring',
     context: 'SSC CGL 2021, Tier 1 — women sports icon',
     examProb: 'Confirmed',
+    authorOptions: ['Mary Kom', 'Saina Nehwal', 'P. V. Sindhu', 'Deepa Karmakar'],
+    themeOptions: ['Boxing autobiography — six-time world champion from Manipur', 'Badminton autobiography — Olympic bronze winner', 'Badminton autobiography — Olympic silver winner', 'Gymnastics — first Indian woman to qualify for Olympics vault final'],
+    awardOptions: ['Padma Bhushan (Author)', 'Padma Sri (Author)', 'Rajiv Gandhi Khel Ratna', 'Sports Memoir'],
   },
   {
     id: 27,
@@ -378,6 +472,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BINDRA takes a SHOT at HISTORY (first gold)',
     context: 'First individual Olympic gold for India — Beijing 2008',
     examProb: 'High',
+    authorOptions: ['Abhinav Bindra', 'Gagan Narang', 'Rajyavardhan Singh Rathore', 'Jaspal Rana'],
+    themeOptions: ['Shooting — India\'s first individual Olympic gold medal', 'Shooting — Olympic bronze at Athens 2004', 'Shooting — double trap silver at Sydney 2000', 'Career of India\'s premier pistol shooter'],
+    awardOptions: ['Padma Bhushan (Author)', 'Padma Sri (Author)', 'Bharat Ratna (Author)', 'Sports Memoir'],
   },
   {
     id: 28,
@@ -390,6 +487,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SANIA hits an ACE against all ODDS',
     context: 'Grand Slam doubles champion autobiography',
     examProb: 'High',
+    authorOptions: ['Sania Mirza', 'Leander Paes', 'Mahesh Bhupathi', 'Somdev Devvarman'],
+    themeOptions: ['Tennis autobiography — Grand Slam achievements & challenges', 'Tennis — Davis Cup warrior & doubles legend', 'Tennis — doubles Grand Slam champion autobiography', 'Tennis — first Indian to reach Grand Slam singles quarterfinal'],
+    awardOptions: ['Padma Bhushan (Author)', 'Padma Sri (Author)', 'Arjuna Award', 'Sports Memoir'],
   },
   {
     id: 29,
@@ -402,6 +502,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'MILKHA runs the RACE of his LIFE',
     context: 'Partition + athletics context; film adaptation boosted visibility',
     examProb: 'High',
+    authorOptions: ['Milkha Singh', 'P. T. Usha', 'Shiny Wilson', 'Anju Bobby George'],
+    themeOptions: ['Athletics — Flying Sikh, Partition survivor & Rome 1960 tragedy', 'Athletics — Payyoli Express & Asian Games queen', 'Athletics — first Indian woman to win a world athletics medal', 'Athletics — long jump bronze at Paris World Championships'],
+    awardOptions: ['Padma Sri (Author)', 'Padma Bhushan (Author)', 'Arjuna Award', 'Sports Memoir'],
   },
   {
     id: 30,
@@ -414,6 +517,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GAVASKAR\'s SUNNY DAYS on the pitch',
     context: 'Classic cricket autobiography — frequently in PYQ pool',
     examProb: 'High',
+    authorOptions: ['Sunil Gavaskar', 'Kapil Dev', 'Bishan Singh Bedi', 'Gundappa Viswanath'],
+    themeOptions: ['Cricket memoir — Little Master\'s early international career', 'Cricket — 1983 World Cup captain\'s autobiography', 'Cricket — left-arm spin legend\'s memoir', 'Cricket — gentle genius of Indian batting'],
+    awardOptions: ['Padma Bhushan (Author)', 'Padma Sri (Author)', 'Bharat Ratna (Author)', 'Sports Memoir'],
   },
   {
     id: 31,
@@ -426,6 +532,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'DADA needs more than a CENTURY',
     context: 'SSC CGL 2020 Tier 1 — confirmed PYQ',
     examProb: 'Confirmed',
+    authorOptions: ['Sourav Ganguly', 'Sachin Tendulkar', 'Rahul Dravid', 'VVS Laxman'],
+    themeOptions: ['Cricket autobiography — BCCI President & India\'s turnaround', 'Autobiography of a cricketing legend — 100 international centuries', 'Cricket — the Wall of Indian batting', 'Cricket — the Very Very Special innings that changed Test history'],
+    awardOptions: ['Padma Sri (Author)', 'Bharat Ratna (Author)', 'Padma Bhushan (Author)', 'Sports Memoir'],
   },
   {
     id: 32,
@@ -438,6 +547,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KAPIL speaks STRAIGHT from the HEART',
     context: '1983 Cricket World Cup — 40th anniversary coverage boosted visibility',
     examProb: 'High',
+    authorOptions: ['Kapil Dev', 'Sunil Gavaskar', 'Imran Khan', 'Ian Botham'],
+    themeOptions: ['Cricket — 1983 World Cup captain\'s autobiography', 'Cricket memoir — Little Master\'s early international career', 'Cricket — Pakistan\'s World Cup 1992 winning captain', 'Cricket — England\'s all-rounder and maverick personality'],
+    awardOptions: ['Padma Bhushan (Author)', 'Padma Sri (Author)', 'Bharat Ratna (Author)', 'Sports Memoir'],
   },
   {
     id: 33,
@@ -450,6 +562,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'YUVI\'s TEST is not on pitch but with cancer',
     context: '2011 World Cup hero — cancer survivor memoir',
     examProb: 'High',
+    authorOptions: ['Yuvraj Singh', 'Sourav Ganguly', 'MS Dhoni', 'Virender Sehwag'],
+    themeOptions: ['Cricket — battle with cancer & comeback to 2011 World Cup', 'Cricket autobiography — BCCI President & India\'s turnaround', 'Cricket — from Ranchi to World Cup captain', 'Cricket — Najafgarh\'s explosive batsman autobiography'],
+    awardOptions: ['Padma Bhushan (Author)', 'Padma Sri (Author)', 'Sports Memoir', 'Arjuna Award'],
   },
   {
     id: 34,
@@ -462,6 +577,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'WARNE never gives NO SPIN on anything',
     context: 'SSC CGL 02 Dec 2022 — Confirmed PYQ; linked to his passing in 2022',
     examProb: 'Confirmed',
+    authorOptions: ['Shane Warne', 'Glenn McGrath', 'Ricky Ponting', 'Steve Waugh'],
+    themeOptions: ['Cricket — leg-spin legend\'s life & controversies', 'Cricket — pace bowler\'s journey from New South Wales', 'Cricket — Ashes warrior and Australian captain', 'Cricket — never-say-die Australian Test captain'],
+    awardOptions: ['Sports Memoir', 'Padma Bhushan (Author)', 'Padma Sri (Author)', 'Sports Biography'],
   },
 
   // ── PYQ (MODERN LITERARY / POLITICAL) ──────────────────────────────────────
@@ -476,6 +594,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'VIKRAM finds a SUITABLE match for his daughter',
     context: 'SSC CGL 2022 Tier 1 Shift 2',
     examProb: 'Confirmed',
+    authorOptions: ['Vikram Seth', 'Amitav Ghosh', 'Arundhati Roy', 'Salman Rushdie'],
+    themeOptions: ['Post-independence India — family saga & arranged marriage', 'Partition — a family divided by history and geography', 'Caste system & forbidden love in Kerala', 'Midnight of independence — magical realism & identity'],
+    awardOptions: ['WH Smith Literary Award', 'Booker Prize', 'Jnanpith Award (Author, 2018)', 'International Booker Prize'],
   },
   {
     id: 36,
@@ -488,6 +609,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ADIGA hunts the WHITE TIGER of corruption',
     context: 'SSC CGL 2022 Tier 1; also a Netflix film',
     examProb: 'Confirmed',
+    authorOptions: ['Aravind Adiga', 'Vikram Seth', 'Kiran Desai', 'Hari Kunzru'],
+    themeOptions: ['Class struggle — dark side of India\'s economic boom', 'Post-independence India — family saga & arranged marriage', 'Colonial India — identity & partition', 'Immigration & identity in modern Britain'],
+    awardOptions: ['Booker Prize', 'WH Smith Literary Award', 'International Booker Prize', 'Sahitya Akademi Award'],
   },
   {
     id: 37,
@@ -500,6 +624,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'Shashi sheds LIGHT on DARKNESS of empire',
     context: 'SSC CGL 2020 Tier 1 — colonial history angle',
     examProb: 'Confirmed',
+    authorOptions: ['Shashi Tharoor', 'Ramachandra Guha', 'Pankaj Mishra', 'William Dalrymple'],
+    themeOptions: ['Critique of British colonial rule in India', 'Environmental history of South Asia', 'Geopolitics and modern history', 'History of Mughal India through the eyes of an envoy'],
+    awardOptions: ['Sahitya Akademi Award', 'British Academy Book Prize', 'International Affairs', 'Historical Non-fiction'],
   },
   {
     id: 38,
@@ -512,6 +639,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KHUSH (happy) boards the unhappy PARTITION train',
     context: 'SSC CGL 2021, Repeated — Partition literature',
     examProb: 'Confirmed',
+    authorOptions: ['Khushwant Singh', 'Manto', 'Ismat Chughtai', 'Bhisham Sahni'],
+    themeOptions: ['Horrors of Partition 1947 — communal violence at the border', 'Partition — short stories on trauma and displacement', 'Partition — women\'s experiences of violence', 'Partition — Tamas, a novel on communal violence'],
+    awardOptions: ['Padma Bhushan (Author)', 'Sahitya Akademi Award', 'Political Memoir', 'Historical Novel'],
   },
   {
     id: 39,
@@ -524,6 +654,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ROYal family crushed by SMALL caste rules',
     context: 'SSC CGL 2022 Shift 2 — Booker + Kerala angle',
     examProb: 'Confirmed',
+    authorOptions: ['Arundhati Roy', 'Vikram Seth', 'Kiran Desai', 'Aravind Adiga'],
+    themeOptions: ['Caste system & forbidden love in Kerala', 'Post-independence India — family saga & arranged marriage', 'Colonial India — identity & partition', 'Class struggle — dark side of India\'s economic boom'],
+    awardOptions: ['Booker Prize', 'WH Smith Literary Award', 'International Booker Prize', 'Sahitya Akademi Award'],
   },
   {
     id: 40,
@@ -536,6 +669,9 @@ export const booksData: BookEntry[] = [
     mnemonic: "KALAM's WINGS ignite India's missile FIRE",
     context: 'SSC CGL 2018 — Most frequently repeated; presidential + science angle',
     examProb: 'Confirmed',
+    authorOptions: ['A. P. J. Abdul Kalam', 'Vikram Sarabhai', 'Homi J. Bhabha', 'Satish Dhawan'],
+    themeOptions: ['Autobiography of India\'s Missile Man & President', 'Autobiography of India\'s space programme pioneer', 'Biography of India\'s nuclear energy architect', 'Journey of India\'s satellite launch vehicle programme'],
+    awardOptions: ['Bharat Ratna (Author)', 'Padma Bhushan (Author)', 'Padma Vibhushan (Author)', 'Scientific Biography'],
   },
   {
     id: 41,
@@ -548,6 +684,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'INDIRA speaks MY TRUTH boldly',
     context: 'SSC CGL 2022 Tier 1',
     examProb: 'Confirmed',
+    authorOptions: ['Indira Gandhi', 'Jawaharlal Nehru', 'Rajiv Gandhi', 'Maulana Abul Kalam Azad'],
+    themeOptions: ['Political autobiography — Emergency, governance & personal life', 'India\'s history & civilisation — written in Ahmednagar prison', 'Political memoir — Rajiv Gandhi\'s tech-driven governance', 'Political memoir — Independence & Partition tragedy'],
+    awardOptions: ['Political Memoir', 'Bharat Ratna (Author)', 'Autobiography / Bharat Ratna (Author)', 'Political History'],
   },
   {
     id: 42,
@@ -560,6 +699,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SHETTY the ex-MONK thinks differently',
     context: 'Direct attribution questions — "Who authored Think Like a Monk?"',
     examProb: 'High',
+    authorOptions: ['Jay Shetty', 'Deepak Chopra', 'Sadhguru', 'Robin Sharma'],
+    themeOptions: ['Self-help — mindfulness wisdom from monk philosophy', 'Self-help — quantum healing & spiritual wellness', 'Self-help — inner engineering & consciousness', 'Self-help — the monk who sold his Ferrari'],
+    awardOptions: ['Global Bestseller', 'Motivational Memoir', 'Political Non-fiction', 'Economic Vision'],
   },
 
   // ── LITERARY AWARDS ─────────────────────────────────────────────────────────
@@ -574,6 +716,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GEET (song) buried in SAND — first Hindi winner',
     context: 'SSC CGL 2023 / Highly important — "first Hindi-translated novel"',
     examProb: 'Confirmed',
+    authorOptions: ['Geetanjali Shree', 'Mamta Kalia', 'Alka Saraogi', 'Mrinal Pande'],
+    themeOptions: ['First Hindi novel to win Int. Booker — Partition & elderly women', 'Memoir — city of Allahabad through personal memory', 'Hindi fiction — identity & family in post-liberalisation India', 'Hindi journalism & women\'s narrative'],
+    awardOptions: ['International Booker Prize', 'Sahitya Akademi Award (Hindi)', 'Booker Prize', 'Jnanpith Award'],
   },
   {
     id: 44,
@@ -586,6 +731,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SHEHAN\'s SEVEN moons haunt Sri Lanka',
     context: 'Booker 2022 — Sri Lankan civil war context',
     examProb: 'High',
+    authorOptions: ['Shehan Karunatilaka', 'Damon Galgut', 'Douglas Stuart', 'Richard Powers'],
+    themeOptions: ['Sri Lanka civil war — ghost photographer solves his own murder', 'South African family saga across four decades of post-apartheid', 'Scottish working class — addiction & family bonds in Glasgow', 'Climate crisis & the disappearance of trees'],
+    awardOptions: ['Booker Prize', 'International Booker Prize', 'Pulitzer Prize for Fiction', 'National Book Award'],
   },
   {
     id: 45,
@@ -598,6 +746,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GALGUT promises a South African saga',
     context: 'Booker 2021 — South Africa angle',
     examProb: 'Medium',
+    authorOptions: ['Damon Galgut', 'Shehan Karunatilaka', 'Douglas Stuart', 'Bernardine Evaristo'],
+    themeOptions: ['South African family saga across four decades of post-apartheid', 'Sri Lanka civil war — ghost photographer solves his own murder', 'Scottish working class — addiction & family bonds in Glasgow', 'Multiple narratives of Black British identity'],
+    awardOptions: ['Booker Prize', 'International Booker Prize', 'National Book Award', 'Pulitzer Prize for Fiction'],
   },
   {
     id: 46,
@@ -610,6 +761,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ERPEN\'s KAIROS captures East Germany\'s end',
     context: 'Int. Booker 2024 — high probability for 2025 exams',
     examProb: 'High',
+    authorOptions: ['Jenny Erpenbeck', 'Banu Mushtaq', 'Geetanjali Shree', 'Olga Tokarczuk'],
+    themeOptions: ['East Germany — forbidden love & political collapse', 'Kannada short stories — women\'s lives in conservative society', 'First Hindi novel to win Int. Booker — Partition & elderly women', 'Polish novel — migration, borders & human restlessness'],
+    awardOptions: ['International Booker Prize', 'Nobel Prize in Literature', 'Booker Prize', 'Sahitya Akademi Award'],
   },
   {
     id: 47,
@@ -622,6 +776,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BANU\'s HEART LAMP lights Kannada women\'s stories',
     context: 'Int. Booker 2025 (Translated by Deepa Bhasthi) — extremely HOT for 2026',
     examProb: 'Hot',
+    authorOptions: ['Banu Mushtaq', 'Jenny Erpenbeck', 'Geetanjali Shree', 'Easterine Kire'],
+    themeOptions: ['Kannada short stories — women\'s lives in conservative society', 'East Germany — forbidden love & political collapse', 'First Hindi novel to win Int. Booker — Partition & elderly women', 'Naga folklore & supernatural — northeast India oral tradition'],
+    awardOptions: ['International Booker Prize', 'Sahitya Akademi Award (English)', 'Booker Prize', 'Jnanpith Award'],
   },
   {
     id: 48,
@@ -634,6 +791,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SZALAY puts FLESH on Europe\'s bones',
     context: 'Booker Prize 2025 — very high probability for 2026 CGL',
     examProb: 'Hot',
+    authorOptions: ['David Szalay', 'Percival Everett', 'Jayne Anne Phillips', 'Samantha Harvey'],
+    themeOptions: ['Interconnected lives across Europe — human connection & fragility', 'Reimagining of Huckleberry Finn from Jim\'s perspective — race & freedom', 'American Civil War aftermath — women in a psychiatric institution', 'Six astronauts orbiting Earth — meditative fiction on time & beauty'],
+    awardOptions: ['Booker Prize', 'Pulitzer Prize for Fiction', 'International Booker Prize', 'Nobel Prize in Literature'],
   },
   {
     id: 49,
@@ -646,6 +806,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'EASTERINE brings Naga SPIRIT to English nights',
     context: 'Sahitya Akademi 2024 English winner — regional + northeast angle',
     examProb: 'High',
+    authorOptions: ['Easterine Kire', 'Temsula Ao', 'Mamang Dai', 'Anjum Hasan'],
+    themeOptions: ['Naga folklore & supernatural — northeast India oral tradition', 'Naga oral history and memory', 'Arunachal Pradesh — nature, myth & mountain communities', 'Northeast India — urban identity & generational conflict'],
+    awardOptions: ['Sahitya Akademi Award (English)', 'Sahitya Akademi Award (Hindi)', 'International Booker Prize', 'Jnanpith Award'],
   },
   {
     id: 50,
@@ -658,6 +821,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'MAMTA lives in ALLAHABAD while ALIVE',
     context: 'Sahitya Akademi 2025 Hindi — city-as-memoir angle',
     examProb: 'Hot',
+    authorOptions: ['Mamta Kalia', 'Gagan Gill', 'Vinod Kumar Shukla', 'Krishna Sobti'],
+    themeOptions: ['Memoir — city of Allahabad through personal memory', 'Hindi poetry — existential verse on time, memory & nature', 'Hindi fiction & poetry — magical realism of rural life', 'Hindi fiction — women\'s voices & partition memories'],
+    awardOptions: ['Sahitya Akademi Award (Hindi)', 'Jnanpith Award', 'Sahitya Akademi Award (English)', 'International Booker Prize'],
   },
   {
     id: 51,
@@ -670,6 +836,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GAGAN (sky) waits for BAHAR (spring) to arrive',
     context: 'Sahitya Akademi 2024 Hindi poetry winner',
     examProb: 'High',
+    authorOptions: ['Gagan Gill', 'Mamta Kalia', 'Vinod Kumar Shukla', 'Kedarnath Singh'],
+    themeOptions: ['Hindi poetry — existential verse on time, memory & nature', 'Memoir — city of Allahabad through personal memory', 'Hindi fiction & poetry — magical realism of rural life', 'Hindi poetry — landscape, longing & rural verse'],
+    awardOptions: ['Sahitya Akademi Award (Hindi)', 'Jnanpith Award', 'Mangala Prasad Paritoshik', 'Sahitya Akademi Award (English)'],
   },
   {
     id: 52,
@@ -682,6 +851,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'VAIRA (diamond) MUTHU (pearl) shines in Jnanpith',
     context: 'Jnanpith 2025 (Tamil) — very high for 2026 exam',
     examProb: 'Hot',
+    authorOptions: ['Vairamuthu', 'Vinod Kumar Shukla', 'Rambhadracharya', 'Gulzar'],
+    themeOptions: ['Tamil lyrical poetry — celebrated film lyricist & poet', 'Hindi fiction & poetry — magical realism of rural life', 'Sanskrit scholarship & devotional verse', 'Urdu-Hindi verse — songs of love & longing'],
+    awardOptions: ['Jnanpith Award', 'Sahitya Akademi Award (Hindi)', 'Sahitya Akademi Award (English)', 'Nobel Prize in Literature'],
   },
   {
     id: 53,
@@ -694,6 +866,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'VINOD\'s SHUKLA (white) world wins Jnanpith',
     context: 'Jnanpith 2024 (Hindi) — high for Tier 1 & 2 2025-26',
     examProb: 'High',
+    authorOptions: ['Vinod Kumar Shukla', 'Vairamuthu', 'Rambhadracharya', 'Gulzar'],
+    themeOptions: ['Hindi fiction & poetry — magical realism of rural life', 'Tamil lyrical poetry — celebrated film lyricist & poet', 'Sanskrit scholarship & devotional verse', 'Urdu-Hindi verse — songs of love & longing'],
+    awardOptions: ['Jnanpith Award', 'Sahitya Akademi Award (Hindi)', 'Sahitya Akademi Award (English)', 'International Booker Prize'],
   },
   {
     id: 54,
@@ -706,6 +881,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'RAM & GULZAR share the garden of Jnanpith',
     context: 'Dual Jnanpith 2023 — Sanskrit & Urdu winners, two languages angle',
     examProb: 'High',
+    authorOptions: ['Rambhadracharya & Gulzar', 'Vinod Kumar Shukla', 'Vairamuthu', 'Amitav Ghosh'],
+    themeOptions: ['Sanskrit scholarship (Rambhadracharya) & Urdu-Hindi verse (Gulzar)', 'Hindi fiction & poetry — magical realism of rural life', 'Tamil lyrical poetry — celebrated film lyricist & poet', 'First English-language Jnanpith Award winner'],
+    awardOptions: ['Jnanpith Award', 'Sahitya Akademi Award', 'Nobel Prize in Literature', 'International Booker Prize'],
   },
 
   // ── CURRENT AFFAIRS 2024 ────────────────────────────────────────────────────
@@ -720,6 +898,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'JAI (victory) of SHANKAR explains why BHARAT matters',
     context: 'By External Affairs Minister — diplomacy & foreign policy context',
     examProb: 'High',
+    authorOptions: ['S. Jaishankar', 'Neerja Chowdhury', 'Pankaj Mishra', 'Ramachandra Guha'],
+    themeOptions: ['India\'s foreign policy & geopolitical vision by EAM', 'Decision-making of Indian PMs — behind-the-scenes governance', 'Geopolitics and modern history in the context of the Gaza crisis', 'Origins of Indian environmentalism — nature, ecology & Indian thought'],
+    awardOptions: ['Political Non-fiction', 'Economic Vision', 'International Affairs', 'Environmental History'],
   },
   {
     id: 56,
@@ -732,6 +913,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KVS maps INDIA at 100 years young',
     context: 'Viksit Bharat 2047 context — Former CEA\'s vision document',
     examProb: 'High',
+    authorOptions: ['Prof. K. V. Subramanian', 'Abhijit Banerjee', 'Urjit Patel', 'A. K. Bhattacharya'],
+    themeOptions: ['Economic blueprint for India\'s centenary — Viksit Bharat 2047', 'Food, economics & society through the lens of a Nobel laureate', 'Global sanctions & their economic bypass mechanisms', 'Profiles and economic policies of India\'s Finance Ministers'],
+    awardOptions: ['Economic Vision', 'Nobel Laureate Work', 'Economic Policy', 'Political Economy'],
   },
   {
     id: 57,
@@ -744,6 +928,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'RAVI shows the TURNING point of KARGIL',
     context: '25 years of Kargil Vijay Diwas — July 2024 defence context',
     examProb: 'High',
+    authorOptions: ['Late Col. M. B. Ravindranath', 'Gen. Anil Chauhan (CDS)', 'Lt Gen K. J. S. Dhillon', 'Vikram Sampath'],
+    themeOptions: ['Kargil War 25th anniversary — tactical account of 1999 conflict', 'Future of Indian armed forces — defence modernisation vision', 'India\'s surgical strikes inside Pakistan — 2025 military operation', 'Biography of Tipu Sultan — Mysore wars & British conflict'],
+    awardOptions: ['Military History', 'Defence Strategy', 'Military Operations Account', 'Historical Biography'],
   },
   {
     id: 58,
@@ -756,6 +943,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'VIKRAM SAMPS the TIPU saga of Mysore',
     context: 'Historical biography — December 2024 release',
     examProb: 'High',
+    authorOptions: ['Vikram Sampath', 'Audrey Truschke', 'Ramachandra Guha', 'William Dalrymple'],
+    themeOptions: ['Biography of Tipu Sultan — Mysore wars & British conflict', 'Comprehensive history of the Indian subcontinent across 5000 years', 'Environmental history of India — nation-building & ecology', 'History of the last Mughal emperor Bahadur Shah Zafar'],
+    awardOptions: ['Historical Biography', 'Historical Non-fiction', 'Environmental History', 'Political Biography'],
   },
   {
     id: 59,
@@ -768,6 +958,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BANERJEE adds CHHAUNK (tempering) to economics',
     context: 'Nobel Prize in Economics winner — December 2024',
     examProb: 'High',
+    authorOptions: ['Abhijit Banerjee', 'Prof. K. V. Subramanian', 'Urjit Patel', 'Neerja Chowdhury'],
+    themeOptions: ['Food, economics & society through the lens of a Nobel laureate', 'Economic blueprint for India\'s centenary — Viksit Bharat 2047', 'Global sanctions & their economic bypass mechanisms', 'Decision-making of Indian PMs — behind-the-scenes governance'],
+    awardOptions: ['Nobel Laureate Work', 'Economic Vision', 'Economic Policy', 'Political Non-fiction'],
   },
   {
     id: 60,
@@ -780,6 +973,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SAKSHI is a WITNESS to wrestling injustice',
     context: 'WFI protest controversy — October 2024; women in sports angle',
     examProb: 'High',
+    authorOptions: ['Sakshi Malik', 'Deepa Malik', 'Vinesh Phogat', 'Mary Kom'],
+    themeOptions: ['Wrestling autobiography — protest against WFI & women\'s rights', 'Para-athlete memoir — first Indian woman to win Paralympic silver medal', 'Wrestling — Commonwealth Games gold & Olympic aspirations', 'Boxing autobiography — six-time world champion from Manipur'],
+    awardOptions: ['Sports Memoir', 'Padma Shri (Author)', 'Padma Bhushan (Author)', 'Sports Biography'],
   },
   {
     id: 61,
@@ -792,6 +988,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'LACHIT the BRAVEHEART repels Mughal BARRAGE',
     context: 'National hero centenary celebrations — Assam history',
     examProb: 'Medium',
+    authorOptions: ['Arup Kumar Dutta', 'Biswabhusan Harichandan', 'Priyambara Jayakumar', 'Himanshu Roy'],
+    themeOptions: ['Ahom general who defeated Mughal forces at Battle of Saraighat', 'Hero of Odisha\'s Paika Rebellion against British rule', 'Biography of M.S. Swaminathan — Father of India\'s Green Revolution', 'Historical evolution of the Prime Minister\'s Office — governance'],
+    awardOptions: ['Regional Historical Biography', 'Regional History', 'Biography', 'Institutional History'],
   },
 
   // ── CURRENT AFFAIRS 2025 ────────────────────────────────────────────────────
@@ -806,6 +1005,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'DHILLON leads the SINDOOR operation inside Pakistan',
     context: 'September 2025 — extremely high for 2026 CGL due to current significance',
     examProb: 'Hot',
+    authorOptions: ['Lt Gen K. J. S. Dhillon', 'Gen. Anil Chauhan (CDS)', 'Late Col. M. B. Ravindranath', 'Vikram Sampath'],
+    themeOptions: ['India\'s surgical strikes inside Pakistan — 2025 military operation', 'Future of Indian armed forces — defence modernisation vision', 'Kargil War 25th anniversary — tactical account of 1999 conflict', 'Biography of Tipu Sultan — Mysore wars & British conflict'],
+    awardOptions: ['Military Operations Account', 'Defence Strategy', 'Military History', 'Historical Biography'],
   },
   {
     id: 63,
@@ -818,6 +1020,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CHANDRACHUD (moon) shines light on CONSTITUTION',
     context: 'By former Chief Justice — July 2025; Polity + constitutional angle',
     examProb: 'Hot',
+    authorOptions: ['Former CJI D. Y. Chandrachud', 'K. S. Chauhan', 'Arjun Ram Meghwal (Minister)', 'Shashi Tharoor'],
+    themeOptions: ['Constitutional values & democratic foundations of India', 'Analysis of Indian Parliamentary system — powers, functions, privileges', 'Bridge between medicine and law — forensic & legal medicine', 'Critique of British colonial rule in India'],
+    awardOptions: ['Constitutional Law', 'Constitutional Reference', 'Legal-Medical Reference', 'Sahitya Akademi Award'],
   },
   {
     id: 64,
@@ -830,6 +1035,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'MURMU gives WINGS to tribal HOPES',
     context: 'Launched by President — June 2025; tribal & presidential angle',
     examProb: 'Hot',
+    authorOptions: ['President Droupadi Murmu', 'Gen. Anil Chauhan (CDS)', 'Vijay Goel', 'Shashi Tharoor'],
+    themeOptions: ['Compilation of speeches — India\'s first tribal woman president', 'Future of Indian armed forces — defence modernisation vision', 'Biography of former PM Vajpayee — statesman & poet', 'Legacy of Sree Narayana Guru — social reformer of Kerala'],
+    awardOptions: ['Presidential Speeches Compilation', 'Defence Strategy', 'Biography (Launched by VP)', 'Religious Biography (Launched by VP)'],
   },
   {
     id: 65,
@@ -842,6 +1050,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CDS CHAUHAN is READY and RESURGENT',
     context: 'By Chief of Defence Staff — October 2025; defence strategy',
     examProb: 'Hot',
+    authorOptions: ['Gen. Anil Chauhan (CDS)', 'Lt Gen K. J. S. Dhillon', 'Late Col. M. B. Ravindranath', 'President Droupadi Murmu'],
+    themeOptions: ['Future of Indian armed forces — defence modernisation vision', 'India\'s surgical strikes inside Pakistan — 2025 military operation', 'Kargil War 25th anniversary — tactical account of 1999 conflict', 'Compilation of speeches — India\'s first tribal woman president'],
+    awardOptions: ['Defence Strategy', 'Military Operations Account', 'Military History', 'Presidential Speeches Compilation'],
   },
   {
     id: 66,
@@ -854,6 +1065,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KHER is DIFFERENT but no less a star',
     context: 'July 2025 — motivational/social angle',
     examProb: 'High',
+    authorOptions: ['Anupam Kher', 'Jay Shetty', 'Deepak Chopra', 'Robin Sharma'],
+    themeOptions: ['Social inclusion, mental health & overcoming self-doubt', 'Self-help — mindfulness wisdom from monk philosophy', 'Self-help — quantum healing & spiritual wellness', 'Self-help — the monk who sold his Ferrari'],
+    awardOptions: ['Motivational Memoir', 'Global Bestseller', 'Sports Memoir', 'Film Biography'],
   },
   {
     id: 67,
@@ -866,6 +1080,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'PATEL HACKS through global SANCTIONS',
     context: 'Former RBI Governor — November 2025; economics angle',
     examProb: 'High',
+    authorOptions: ['Urjit Patel', 'Abhijit Banerjee', 'Prof. K. V. Subramanian', 'A. K. Bhattacharya'],
+    themeOptions: ['Global sanctions & their economic bypass mechanisms', 'Food, economics & society through the lens of a Nobel laureate', 'Economic blueprint for India\'s centenary — Viksit Bharat 2047', 'Profiles and economic policies of India\'s Finance Ministers'],
+    awardOptions: ['Economic Policy', 'Nobel Laureate Work', 'Economic Vision', 'Political Economy'],
   },
   {
     id: 68,
@@ -878,6 +1095,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GABBAR (Dhawan) is THE ONE who opens with style',
     context: 'December 2025 — retirement news adds exam probability',
     examProb: 'High',
+    authorOptions: ['Shikhar Dhawan', 'Rohit Sharma', 'KL Rahul', 'Cheteshwar Pujara'],
+    themeOptions: ['Cricket autobiography — Gabbar\'s journey & retirement reflections', 'Biography of Rohit Sharma — from Bandra to becoming Test captain', 'Cricket — the Wall at number three', 'Cricket — from Rajkot to becoming India\'s Test opener'],
+    awardOptions: ['Sports Memoir', 'Sports Biography', 'Padma Sri (Author)', 'Padma Bhushan (Author)'],
   },
   {
     id: 69,
@@ -890,6 +1110,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ROY meets MARY in KOCHI — two books, one Booker author',
     context: 'September 2025 — by Booker Prize winner Arundhati Roy',
     examProb: 'High',
+    authorOptions: ['Arundhati Roy', 'Shashi Tharoor', 'Vikram Seth', 'Amitav Ghosh'],
+    themeOptions: ['Contemporary Kerala society — faith, politics & personal memory', 'Legacy of Sree Narayana Guru — social reformer of Kerala', 'Post-independence India — family saga & arranged marriage', 'First English-language Jnanpith Award winner'],
+    awardOptions: ['Modern Literary Fiction', 'Religious Biography (Launched by VP)', 'Booker Prize', 'Jnanpith Award (Author, 2018)'],
   },
 
   // ── CURRENT AFFAIRS 2026 ────────────────────────────────────────────────────
@@ -904,6 +1127,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GOEL\'s VAJPAYEE is ETERNAL like his poetry',
     context: 'Launched by VP Jagdeep Dhankhar — 23 Feb 2026; HOT for Tier 2',
     examProb: 'Hot',
+    authorOptions: ['Vijay Goel', 'Shashi Tharoor', 'Sanjeev Chopra', 'Abhishek Choudhary'],
+    themeOptions: ['Biography of former PM Vajpayee — statesman & poet', 'Legacy of Sree Narayana Guru — social reformer of Kerala', 'Lal Bahadur Shastri and India\'s transformation — statesman biography', 'Vajpayee and the Hindu Right (1977–2018) — political history'],
+    awardOptions: ['Biography (Launched by VP)', 'Religious Biography (Launched by VP)', 'Political Biography', 'Political Analysis'],
   },
   {
     id: 71,
@@ -916,6 +1142,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'THAROOR\'s SAGE reimagines HINDUISM for modernity',
     context: 'Launched by VP — 20 Feb 2026; social reform + Kerala angle',
     examProb: 'Hot',
+    authorOptions: ['Shashi Tharoor', 'Vijay Goel', 'Ramachandra Guha', 'Pankaj Mishra'],
+    themeOptions: ['Legacy of Sree Narayana Guru — social reformer of Kerala', 'Biography of former PM Vajpayee — statesman & poet', 'Environmental history of India — nation-building & ecology', 'Geopolitics and modern history in the context of the Gaza crisis'],
+    awardOptions: ['Religious Biography (Launched by VP)', 'Biography (Launched by VP)', 'Environmental History', 'International Affairs'],
   },
   {
     id: 72,
@@ -928,6 +1157,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'JAGABANDHU the GREAT commands the Paika REBELLION',
     context: '10 Feb 2026 — Paika Rebellion 200th year; Odisha history',
     examProb: 'Hot',
+    authorOptions: ['Biswabhusan Harichandan', 'Arup Kumar Dutta', 'Priyambara Jayakumar', 'Himanshu Roy'],
+    themeOptions: ['Hero of Odisha\'s Paika Rebellion against British rule', 'Ahom general who defeated Mughal forces at Battle of Saraighat', 'Biography of M.S. Swaminathan — Father of India\'s Green Revolution', 'Historical evolution of the Prime Minister\'s Office — governance'],
+    awardOptions: ['Regional History', 'Regional Historical Biography', 'Biography', 'Institutional History'],
   },
   {
     id: 73,
@@ -940,6 +1172,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'MEGHWAL bridges MEDICO (medicine) and LEGAL worlds',
     context: 'Launched by Law Minister — 09 Feb 2026',
     examProb: 'Hot',
+    authorOptions: ['Arjun Ram Meghwal (Minister)', 'Former CJI D. Y. Chandrachud', 'K. S. Chauhan', 'Neerja Chowdhury'],
+    themeOptions: ['Bridge between medicine and law — forensic & legal medicine', 'Constitutional values & democratic foundations of India', 'Analysis of Indian Parliamentary system — powers, functions, privileges', 'Decision-making of Indian PMs — behind-the-scenes governance'],
+    awardOptions: ['Legal-Medical Reference', 'Constitutional Law', 'Constitutional Reference', 'Political Non-fiction'],
   },
   {
     id: 74,
@@ -952,11 +1187,12 @@ export const booksData: BookEntry[] = [
     mnemonic: 'NITI AAYOG presents AI-PRENEURS of INDIA',
     context: 'NITI Aayog / MeitY — Feb 2026; AI + startup + governance angle',
     examProb: 'Hot',
+    authorOptions: ['AIM, NITI Aayog', 'Prof. K. V. Subramanian', 'Abhijit Banerjee', 'Urjit Patel'],
+    themeOptions: ['Journeys of 45 AI startups — India\'s AI ecosystem', 'Economic blueprint for India\'s centenary — Viksit Bharat 2047', 'Food, economics & society through the lens of a Nobel laureate', 'Global sanctions & their economic bypass mechanisms'],
+    awardOptions: ['Technology Report', 'Economic Vision', 'Nobel Laureate Work', 'Economic Policy'],
   },
 
-  // ── NEW ADDITIONS (from updated CSV analysis) ──────────────────────────────
-
-  // Literary Awards — added
+  // ── NEW ADDITIONS ──────────────────────────────────────────────────────────
   {
     id: 75,
     title: 'Orbital',
@@ -968,6 +1204,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'HARVEY sends six souls into ORBIT for Booker',
     context: 'Booker Prize 2024 — high probability for 2025-26 CGL',
     examProb: 'Hot',
+    authorOptions: ['Samantha Harvey', 'Jayne Anne Phillips', 'Percival Everett', 'David Szalay'],
+    themeOptions: ['Six astronauts orbiting Earth — meditative fiction on time & beauty', 'American Civil War aftermath — women in a psychiatric institution', 'Reimagining of Huckleberry Finn from Jim\'s perspective — race & freedom', 'Interconnected lives across Europe — human connection & fragility'],
+    awardOptions: ['Booker Prize', 'Pulitzer Prize for Fiction', 'International Booker Prize', 'National Book Award'],
   },
   {
     id: 76,
@@ -980,6 +1219,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'AMRITH watches the BURNING EARTH\'s 500-year history',
     context: 'British Academy Book Prize 2025 — environment + history angle',
     examProb: 'High',
+    authorOptions: ['Sunil Amrith', 'Ramachandra Guha', 'Pankaj Mishra', 'Audrey Truschke'],
+    themeOptions: ['Environmental history of South Asia over the last 500 years', 'Origins of Indian environmentalism — nature, ecology & Indian thought', 'Geopolitics and modern history in the context of the Gaza crisis', 'Comprehensive history of the Indian subcontinent across 5000 years'],
+    awardOptions: ['British Academy Book Prize', 'Environmental History', 'International Affairs', 'Historical Non-fiction'],
   },
   {
     id: 77,
@@ -992,6 +1234,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'TIRKEY\'s PHIR UGNA (grow again) rises from Jharkhand soil',
     context: 'Sahitya Akademi Yuva Puraskar 2025 — regional + tribal angle; HOT',
     examProb: 'Hot',
+    authorOptions: ['Parvati Tirkey', 'Easterine Kire', 'Mamta Kalia', 'Gagan Gill'],
+    themeOptions: ['Contemporary Indian literature — tribal voice, resilience & rebirth', 'Naga folklore & supernatural — northeast India oral tradition', 'Memoir — city of Allahabad through personal memory', 'Hindi poetry — existential verse on time, memory & nature'],
+    awardOptions: ['Sahitya Akademi Yuva Puraskar', 'Sahitya Akademi Award (English)', 'Sahitya Akademi Award (Hindi)', 'Jnanpith Award'],
   },
   {
     id: 78,
@@ -1004,6 +1249,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GHOSH writes WILD FICTIONS about nature\'s revenge',
     context: 'By Jnanpith & Commonwealth Prize winner — environmental literature',
     examProb: 'High',
+    authorOptions: ['Amitav Ghosh', 'Vikram Seth', 'Salman Rushdie', 'Arundhati Roy'],
+    themeOptions: ['Essays on climate crisis, nature & modern environmental literature', 'Post-independence India — family saga & arranged marriage', 'Midnight of independence — magical realism & identity', 'Caste system & forbidden love in Kerala'],
+    awardOptions: ['Jnanpith Award (Author, 2018)', 'WH Smith Literary Award', 'Booker Prize', 'International Booker Prize'],
   },
 
   // Sports — added
@@ -1018,6 +1266,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'DEEPA MALIK says BRING IT ON to every obstacle',
     context: 'First Indian woman Paralympic medalist — sports + disability angle',
     examProb: 'High',
+    authorOptions: ['Deepa Malik', 'Sakshi Malik', 'Mary Kom', 'Sania Mirza'],
+    themeOptions: ['Para-athlete memoir — first Indian woman to win Paralympic silver medal', 'Wrestling autobiography — protest against WFI & women\'s rights', 'Boxing autobiography — six-time world champion from Manipur', 'Tennis autobiography — Grand Slam achievements & challenges'],
+    awardOptions: ['Padma Shri (Author)', 'Padma Bhushan (Author)', 'Sports Memoir', 'Padma Sri (Author)'],
   },
   {
     id: 80,
@@ -1030,6 +1281,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CUMMINS is TESTED as captain and human being',
     context: 'Australia cricket captain memoir — international sports figure',
     examProb: 'Medium',
+    authorOptions: ['Pat Cummins', 'Ricky Ponting', 'Steve Waugh', 'Shane Warne'],
+    themeOptions: ['Resilience & leadership in cricket — Australia captain\'s philosophy', 'Cricket — Ashes warrior and Australian captain', 'Cricket — never-say-die Australian Test captain', 'Cricket — leg-spin legend\'s life & controversies'],
+    awardOptions: ['Sports Memoir', 'Padma Bhushan (Author)', 'Sports Biography', 'Padma Sri (Author)'],
   },
   {
     id: 81,
@@ -1042,6 +1296,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KAUSHIK writes ROHIT\'s RISE as India\'s HITMAN',
     context: 'Rohit Sharma biography — runs + ODI World Cup + captaincy angle',
     examProb: 'High',
+    authorOptions: ['R. Kaushik', 'K. Arumugam', 'Syed Kirmani', 'Ashok Chopra'],
+    themeOptions: ['Biography of Rohit Sharma — from Bandra to becoming Test captain', 'India\'s 1975 Hockey World Cup triumph — Ajit Pal Singh\'s team', 'Memoir of India\'s legendary 1983 World Cup wicketkeeper', 'Biography of Dilip Kumar — the tragedy king who became Indian cinema'],
+    awardOptions: ['Sports Biography', 'Sports History', 'Padma Sri (Author)', 'Film Biography'],
   },
   {
     id: 82,
@@ -1054,6 +1311,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ARUMUGAM records India\'s GLORY MARCH to 1975 Hockey gold',
     context: '50th anniversary of 1975 Hockey World Cup — national sport history',
     examProb: 'High',
+    authorOptions: ['K. Arumugam', 'R. Kaushik', 'Syed Kirmani', 'Kapil Dev'],
+    themeOptions: ['India\'s 1975 Hockey World Cup triumph — Ajit Pal Singh\'s team', 'Biography of Rohit Sharma — from Bandra to becoming Test captain', 'Memoir of India\'s legendary 1983 World Cup wicketkeeper', 'Cricket — 1983 World Cup captain\'s autobiography'],
+    awardOptions: ['Sports History', 'Sports Biography', 'Padma Sri (Author)', 'Padma Bhushan (Author)'],
   },
   {
     id: 83,
@@ -1066,6 +1326,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KIRMANI is STUMPED by how far cricket took him',
     context: '1983 World Cup hero memoir — Kapil Dev\'s team angle',
     examProb: 'Medium',
+    authorOptions: ['Syed Kirmani', 'Kapil Dev', 'Sunil Gavaskar', 'Yuvraj Singh'],
+    themeOptions: ['Memoir of India\'s legendary 1983 World Cup wicketkeeper', 'Cricket — 1983 World Cup captain\'s autobiography', 'Cricket memoir — Little Master\'s early international career', 'Cricket — battle with cancer & comeback to 2011 World Cup'],
+    awardOptions: ['Padma Sri (Author)', 'Padma Bhushan (Author)', 'Sports Memoir', 'Sports Biography'],
   },
 
   // PYQ / Historical Fiction — added
@@ -1080,6 +1343,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'AMISH\'s CHOLA TIGERS roar for Somnath revenge',
     context: 'Amish Tripathi (former Nehru Centre Director — SSC PYQ Apr 2021)',
     examProb: 'High',
+    authorOptions: ['Amish Tripathi', 'Ashwin Sanghi', 'Vikram Seth', 'Devdutt Pattanaik'],
+    themeOptions: ['Historical fiction — Chola Dynasty avenging the Somnath invasion', 'Historical thriller — Chanakya\'s Chant', 'Post-independence India — family saga & arranged marriage', 'Mythological retelling of Indian epics'],
+    awardOptions: ['Popular Historical Fiction', 'WH Smith Literary Award', 'Booker Prize', 'Sahitya Akademi Award'],
   },
 
   // Current Affairs 2024-2025 — added
@@ -1094,6 +1360,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'JAYAKUMAR writes how SWAMINATHAN FED a billion Indians',
     context: 'Green Revolution + agriculture angle; Swaminathan received Bharat Ratna 2024',
     examProb: 'Hot',
+    authorOptions: ['Priyambara Jayakumar', 'Biswabhusan Harichandan', 'Arup Kumar Dutta', 'Himanshu Roy'],
+    themeOptions: ['Biography of M.S. Swaminathan — Father of India\'s Green Revolution', 'Hero of Odisha\'s Paika Rebellion against British rule', 'Ahom general who defeated Mughal forces at Battle of Saraighat', 'Historical evolution of the Prime Minister\'s Office — governance'],
+    awardOptions: ['Biography', 'Regional History', 'Regional Historical Biography', 'Institutional History'],
   },
   {
     id: 86,
@@ -1106,6 +1375,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'DATTATREYA tells JANATA\'s KAHANI in his atmakatha',
     context: 'Former Governor autobiography — Governor + politics angle',
     examProb: 'Medium',
+    authorOptions: ['Bandaru Dattatreya', 'Vijay Goel', 'Sanjeev Chopra', 'Himanshu Roy'],
+    themeOptions: ['Autobiography of Bandaru Dattatreya — former Governor of Himachal Pradesh', 'Biography of former PM Vajpayee — statesman & poet', 'Lal Bahadur Shastri and India\'s transformation — statesman biography', 'Historical evolution of the Prime Minister\'s Office — governance'],
+    awardOptions: ['Autobiography', 'Biography (Launched by VP)', 'Political Biography', 'Institutional History'],
   },
   {
     id: 87,
@@ -1118,6 +1390,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CHOUDHARY\'s BELIEVER faces VAJPAYEE\'s political DILEMMA',
     context: 'Vajpayee centenary year 2024-25 — BJP political history angle',
     examProb: 'High',
+    authorOptions: ['Abhishek Choudhary', 'Vijay Goel', 'Sanjeev Chopra', 'Neerja Chowdhury'],
+    themeOptions: ['Vajpayee and the Hindu Right (1977–2018) — political history', 'Biography of former PM Vajpayee — statesman & poet', 'Lal Bahadur Shastri and India\'s transformation — statesman biography', 'Decision-making of Indian PMs — behind-the-scenes governance'],
+    awardOptions: ['Political Analysis', 'Biography (Launched by VP)', 'Political Biography', 'Political Non-fiction'],
   },
   {
     id: 88,
@@ -1130,6 +1405,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ROY traces the PMO\'s power through Indian history',
     context: 'Governance + polity angle — PMO institutional history',
     examProb: 'High',
+    authorOptions: ['Himanshu Roy', 'Neerja Chowdhury', 'A. K. Bhattacharya', 'K. S. Chauhan'],
+    themeOptions: ['Historical evolution of the Prime Minister\'s Office — governance', 'Decision-making of Indian PMs — behind-the-scenes governance', 'Profiles and economic policies of India\'s Finance Ministers', 'Analysis of Indian Parliamentary system — powers, functions, privileges'],
+    awardOptions: ['Institutional History', 'Political Non-fiction', 'Political Economy', 'Constitutional Reference'],
   },
   {
     id: 89,
@@ -1142,6 +1420,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'TRUSCHKE tracks INDIA\'s 5000-year civilisational march',
     context: 'International scholar on India — history + Mughal period angle',
     examProb: 'High',
+    authorOptions: ['Audrey Truschke', 'Vikram Sampath', 'Ramachandra Guha', 'Pankaj Mishra'],
+    themeOptions: ['Comprehensive history of the Indian subcontinent across 5000 years', 'Biography of Tipu Sultan — Mysore wars & British conflict', 'Environmental history of India — nation-building & ecology', 'Geopolitics and modern history in the context of the Gaza crisis'],
+    awardOptions: ['Historical Non-fiction', 'Historical Biography', 'Environmental History', 'International Affairs'],
   },
   {
     id: 90,
@@ -1154,6 +1435,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BHATTACHARYA profiles the FINANCE MINISTERS of India',
     context: 'Economic history + governance — FM profiles from Vajpayee era',
     examProb: 'Medium',
+    authorOptions: ['A. K. Bhattacharya', 'Prof. K. V. Subramanian', 'Urjit Patel', 'Neerja Chowdhury'],
+    themeOptions: ['Profiles and economic policies of India\'s Finance Ministers 1998–2014', 'Economic blueprint for India\'s centenary — Viksit Bharat 2047', 'Global sanctions & their economic bypass mechanisms', 'Decision-making of Indian PMs — behind-the-scenes governance'],
+    awardOptions: ['Political Economy', 'Economic Vision', 'Economic Policy', 'Political Non-fiction'],
   },
   {
     id: 91,
@@ -1166,6 +1450,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CHOPRA captures DILIP becoming CINEMA itself',
     context: 'Padma Vibhushan & Dadasaheb Phalke awardee biography',
     examProb: 'Medium',
+    authorOptions: ['Ashok Chopra', 'R. Kaushik', 'K. Arumugam', 'Arun Singhal'],
+    themeOptions: ['Biography of Dilip Kumar — the tragedy king who became Indian cinema', 'Biography of Rohit Sharma — from Bandra to becoming Test captain', 'India\'s 1975 Hockey World Cup triumph — Ajit Pal Singh\'s team', 'Biography of Srinivasa Ramanujan — self-taught mathematical genius'],
+    awardOptions: ['Film Biography', 'Sports Biography', 'Sports History', 'Scientific Biography'],
   },
   {
     id: 92,
@@ -1178,6 +1465,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SINGHAL charts RAMANUJAN\'s journey from Kumbakonam to Cambridge',
     context: 'National Mathematics Day (Dec 22) context — recurring topic in GK',
     examProb: 'High',
+    authorOptions: ['Arun Singhal', 'Ashok Chopra', 'Priyambara Jayakumar', 'Arup Kumar Dutta'],
+    themeOptions: ['Biography of Srinivasa Ramanujan — self-taught mathematical genius', 'Biography of Dilip Kumar — the tragedy king who became Indian cinema', 'Biography of M.S. Swaminathan — Father of India\'s Green Revolution', 'Ahom general who defeated Mughal forces at Battle of Saraighat'],
+    awardOptions: ['Scientific Biography', 'Film Biography', 'Biography', 'Regional Historical Biography'],
   },
   {
     id: 93,
@@ -1190,6 +1480,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ARDERN leads with a DIFFERENT KIND of power — empathy',
     context: 'International political leader — women leadership angle',
     examProb: 'Medium',
+    authorOptions: ['Jacinda Ardern', 'Angela Merkel', 'Hillary Clinton', 'Christine Lagarde'],
+    themeOptions: ['Memoir of Jacinda Ardern — empathetic leadership & New Zealand politics', 'Memoir of Germany\'s first woman Chancellor — science & politics', 'Memoir of America\'s first woman presidential nominee', 'International finance & women\'s leadership'],
+    awardOptions: ['Political Memoir', 'Political Non-fiction', 'Political Analysis', 'International Affairs'],
   },
   {
     id: 94,
@@ -1202,6 +1495,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CHOPRA\'s SHASTRI is India\'s GREAT CONCILIATOR',
     context: 'Lal Bahadur Shastri centenary — "Jai Jawan Jai Kisan" angle',
     examProb: 'High',
+    authorOptions: ['Sanjeev Chopra', 'Vijay Goel', 'Abhishek Choudhary', 'Neerja Chowdhury'],
+    themeOptions: ['Lal Bahadur Shastri and India\'s transformation — statesman biography', 'Biography of former PM Vajpayee — statesman & poet', 'Vajpayee and the Hindu Right (1977–2018) — political history', 'Decision-making of Indian PMs — behind-the-scenes governance'],
+    awardOptions: ['Political Biography', 'Biography (Launched by VP)', 'Political Analysis', 'Political Non-fiction'],
   },
   {
     id: 95,
@@ -1214,6 +1510,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'CHAUHAN unlocks PARLIAMENT\'s POWER, FUNCTIONS and PRIVILEGES',
     context: 'Polity + constitutional law — high value for GA + descriptive paper',
     examProb: 'Medium',
+    authorOptions: ['K. S. Chauhan', 'Former CJI D. Y. Chandrachud', 'Arjun Ram Meghwal (Minister)', 'Himanshu Roy'],
+    themeOptions: ['Analysis of Indian Parliamentary system — powers, functions, privileges', 'Constitutional values & democratic foundations of India', 'Bridge between medicine and law — forensic & legal medicine', 'Historical evolution of the Prime Minister\'s Office — governance'],
+    awardOptions: ['Constitutional Reference', 'Constitutional Law', 'Legal-Medical Reference', 'Institutional History'],
   },
   {
     id: 96,
@@ -1226,6 +1525,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'MISHRA envisions the WORLD AFTER GAZA\'s ruins',
     context: 'International affairs — geopolitics angle for Current Affairs section',
     examProb: 'Medium',
+    authorOptions: ['Pankaj Mishra', 'Ramachandra Guha', 'Shashi Tharoor', 'Sunil Amrith'],
+    themeOptions: ['Geopolitics and modern history in the context of the Gaza crisis', 'Origins of Indian environmentalism — nature, ecology & Indian thought', 'Critique of British colonial rule in India', 'Environmental history of South Asia over the last 500 years'],
+    awardOptions: ['International Affairs', 'Environmental History', 'Sahitya Akademi Award', 'British Academy Book Prize'],
   },
   {
     id: 97,
@@ -1238,6 +1540,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GUHA SPEAKS with NATURE through India\'s green conscience',
     context: 'By notable Indian historian & environmentalist — ecology + history',
     examProb: 'Medium',
+    authorOptions: ['Ramachandra Guha', 'Pankaj Mishra', 'Shashi Tharoor', 'Audrey Truschke'],
+    themeOptions: ['Origins of Indian environmentalism — nature, ecology & Indian thought', 'Geopolitics and modern history in the context of the Gaza crisis', 'Critique of British colonial rule in India', 'Comprehensive history of the Indian subcontinent across 5000 years'],
+    awardOptions: ['Environmental History', 'International Affairs', 'Sahitya Akademi Award', 'Historical Non-fiction'],
   },
 
   // ── NOBEL PRIZE IN LITERATURE ───────────────────────────────────────────────
@@ -1252,6 +1557,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'HAN KANG\'s VEGETARIAN soul confronts Korea\'s traumas',
     context: 'Nobel Literature 2024 — "intense poetic prose confronting historical traumas"',
     examProb: 'Hot',
+    authorOptions: ['Han Kang', 'Laszlo Krasznahorkai', 'Peter Handke', 'Olga Tokarczuk'],
+    themeOptions: ['First South Korean & first Asian woman Nobel Literature laureate', 'Hungarian author — apocalyptic, visionary philosophical novels', 'Austrian drama — language & power', 'Polish novel — migration, borders & human restlessness'],
+    awardOptions: ['Nobel Prize in Literature', 'Booker Prize', 'International Booker Prize', 'Pulitzer Prize for Fiction'],
   },
   {
     id: 99,
@@ -1264,6 +1572,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KRASZNAHORKAI dances SATAN\'s TANGO through apocalypse',
     context: 'Nobel Literature 2025 — "compelling visionary oeuvre reaffirming the power of art"',
     examProb: 'Hot',
+    authorOptions: ['Laszlo Krasznahorkai', 'Han Kang', 'Olga Tokarczuk', 'Peter Handke'],
+    themeOptions: ['Hungarian author — apocalyptic, visionary philosophical novels', 'First South Korean & first Asian woman Nobel Literature laureate', 'Polish novel — migration, borders & human restlessness', 'Austrian drama — language & power'],
+    awardOptions: ['Nobel Prize in Literature', 'Booker Prize', 'International Booker Prize', 'Pulitzer Prize for Fiction'],
   },
 
   // ── PULITZER PRIZE ──────────────────────────────────────────────────────────
@@ -1278,6 +1589,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'PHILLIPS keeps NIGHT WATCH after the Civil War',
     context: 'Pulitzer Fiction 2024 — international literary awards for SSC',
     examProb: 'High',
+    authorOptions: ['Jayne Anne Phillips', 'Percival Everett', 'Samantha Harvey', 'David Szalay'],
+    themeOptions: ['American Civil War aftermath — women in a psychiatric institution', 'Reimagining of Huckleberry Finn from Jim\'s perspective — race & freedom', 'Six astronauts orbiting Earth — meditative fiction on time & beauty', 'Interconnected lives across Europe — human connection & fragility'],
+    awardOptions: ['Pulitzer Prize for Fiction', 'Booker Prize', 'International Booker Prize', 'National Book Award'],
   },
   {
     id: 101,
@@ -1290,6 +1604,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'EVERETT gives JAMES (Jim) his own voice at last',
     context: 'Pulitzer Fiction 2025 — retelling classic American literature',
     examProb: 'High',
+    authorOptions: ['Percival Everett', 'Jayne Anne Phillips', 'Toni Morrison', 'Jhumpa Lahiri'],
+    themeOptions: ['Reimagining of Huckleberry Finn from Jim\'s perspective — race & freedom', 'American Civil War aftermath — women in a psychiatric institution', 'African-American experience — slavery & trauma', 'Indian-American diaspora — cultural displacement & identity'],
+    awardOptions: ['Pulitzer Prize for Fiction', 'Booker Prize', 'Nobel Prize in Literature', 'National Book Award'],
   },
 
   // ── SAHITYA AKADEMI 2025 — ENGLISH ─────────────────────────────────────────
@@ -1304,6 +1621,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SARNA paints Jallianwala\'s CRIMSON SPRING in English',
     context: 'Sahitya Akademi 2025 English — former ambassador; Jallianwala Bagh + freedom struggle',
     examProb: 'Hot',
+    authorOptions: ['Navtej Sarna', 'Easterine Kire', 'Anjum Hasan', 'Perumal Murugan'],
+    themeOptions: ['Historical novel on Jallianwala Bagh massacre — diplomat-turned-novelist', 'Naga folklore & supernatural — northeast India oral tradition', 'Northeast India — urban identity & generational conflict', 'Tamil rural life — caste & social change'],
+    awardOptions: ['Sahitya Akademi Award (English)', 'Sahitya Akademi Award (Hindi)', 'Jnanpith Award', 'International Booker Prize'],
   },
 
   // ── CURRENT AFFAIRS 2025-2026 (additional verified entries) ─────────────────
@@ -1318,6 +1638,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'PACHAURI fills the CHALICE of AMBROSIA from Ayodhya\'s history',
     context: 'Released by VP Radhakrishnan — Jan 2026; Ayodhya + Ram Temple angle',
     examProb: 'Hot',
+    authorOptions: ['Surendra Kumar Pachauri', 'Biswabhusan Harichandan', 'Vijay Goel', 'Arjun Ram Meghwal (Minister)'],
+    themeOptions: ['Ram Janmabhoomi movement — centuries-old struggle for Ayodhya', 'Hero of Odisha\'s Paika Rebellion against British rule', 'Biography of former PM Vajpayee — statesman & poet', 'Bridge between medicine and law — forensic & legal medicine'],
+    awardOptions: ['Historical Non-fiction', 'Regional History', 'Biography (Launched by VP)', 'Legal-Medical Reference'],
   },
   {
     id: 104,
@@ -1330,6 +1653,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'NEERJA reveals HOW PMs DECIDE behind closed doors',
     context: 'Indian political governance — PM decision-making process',
     examProb: 'High',
+    authorOptions: ['Neerja Chowdhury', 'Himanshu Roy', 'S. Jaishankar', 'A. K. Bhattacharya'],
+    themeOptions: ['Decision-making of Indian PMs — behind-the-scenes governance', 'Historical evolution of the Prime Minister\'s Office — governance', 'India\'s foreign policy & geopolitical vision by EAM', 'Profiles and economic policies of India\'s Finance Ministers'],
+    awardOptions: ['Political Non-fiction', 'Institutional History', 'Economic Vision', 'Political Economy'],
   },
   {
     id: 105,
@@ -1342,6 +1668,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'PACHNANDA & DEBROY ENERGISE Modi\'s GREEN future',
     context: 'Launched by Bhupender Yadav — Pentagon Press; environment + governance',
     examProb: 'High',
+    authorOptions: ['Edited by R. K. Pachnanda & Bibek Debroy', 'Prof. K. V. Subramanian', 'Ramachandra Guha', 'Sunil Amrith'],
+    themeOptions: ['India\'s green energy transformation under PM Modi\'s leadership', 'Economic blueprint for India\'s centenary — Viksit Bharat 2047', 'Origins of Indian environmentalism — nature, ecology & Indian thought', 'Environmental history of South Asia over the last 500 years'],
+    awardOptions: ['Policy Document', 'Economic Vision', 'Environmental History', 'British Academy Book Prize'],
   },
   {
     id: 106,
@@ -1354,6 +1683,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'SOMANATH\'s LIONS drink MOONLIGHT after Chandrayaan lands',
     context: 'ISRO Chairman autobiography — Chandrayaan-3 + space science angle',
     examProb: 'Hot',
+    authorOptions: ['S. Somanath (ISRO Chairman)', 'A. P. J. Abdul Kalam', 'Arun Singhal', 'Priyambara Jayakumar'],
+    themeOptions: ['Autobiography of ISRO Chairman — Chandrayaan-3 success story', 'Autobiography of India\'s Missile Man & President', 'Biography of Srinivasa Ramanujan — self-taught mathematical genius', 'Biography of M.S. Swaminathan — Father of India\'s Green Revolution'],
+    awardOptions: ['Autobiography', 'Bharat Ratna (Author)', 'Scientific Biography', 'Biography'],
   },
   {
     id: 107,
@@ -1366,6 +1698,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'GANDHI demands HIND (India) SWARAJ (self-rule) from the West',
     context: 'First book by Gandhi — frequently asked "which was Gandhi\'s first book?"',
     examProb: 'Recurring',
+    authorOptions: ['M. K. Gandhi', 'Bal Gangadhar Tilak', 'Lala Lajpat Rai', 'Gopal Krishna Gokhale'],
+    themeOptions: ['Critique of Western civilisation & vision of Indian self-rule', 'Extremist nationalism — Swaraj & Bal Gangadhar Tilak\'s vision', 'Moderate reformism — Gokhale\'s political thought', 'Punjab Kesari\'s call for Indian self-determination'],
+    awardOptions: ['Political Treatise', 'Revolutionary Essay', 'Historical Novel', 'Economic Treatise'],
   },
   {
     id: 108,
@@ -1378,6 +1713,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'NAOROJI drains POVERTY from UN-BRITISH colonial rule',
     context: 'Drain of Wealth theory — economic history of colonialism; frequently asked',
     examProb: 'Recurring',
+    authorOptions: ['Dadabhai Naoroji', 'Romesh Chunder Dutt', 'Gopal Krishna Gokhale', 'M. K. Gandhi'],
+    themeOptions: ['Drain of Wealth theory — economic critique of British imperialism', 'Economic history of India under British rule', 'Moderate nationalist — constitutional reform in India', 'Critique of Western civilisation & vision of Indian self-rule'],
+    awardOptions: ['Economic Treatise', 'Political Treatise', 'Political History', 'Historical Novel'],
   },
   {
     id: 109,
@@ -1390,6 +1728,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'BOSE documents the INDIAN STRUGGLE for freedom',
     context: 'Netaji\'s political analysis of independence movement — frequently asked',
     examProb: 'Recurring',
+    authorOptions: ['Subhas Chandra Bose', 'Bhagat Singh', 'Lala Lajpat Rai', 'Jawaharlal Nehru'],
+    themeOptions: ['History of Indian independence movement (1920-1934) from Bose\'s perspective', 'Revolutionary ideology — Bhagat Singh\'s philosophical argument', 'Extremist nationalism — Punjab Kesari\'s political writings', 'India\'s history & civilisation — written in Ahmednagar prison'],
+    awardOptions: ['Political History', 'Revolutionary Essay', 'Economic Treatise', 'Bharat Ratna (Author)'],
   },
   {
     id: 110,
@@ -1402,6 +1743,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'RAM MOHAN ROY gifts MONOTHEISM in Persian to reformers',
     context: 'SSC CGL 26 Jul 2023 Shift 3 — "Who wrote Gift to Monotheists in Persian?"',
     examProb: 'Confirmed',
+    authorOptions: ['Raja Ram Mohan Roy', 'Dayananda Saraswati', 'Swami Vivekananda', 'Bal Gangadhar Tilak'],
+    themeOptions: ['Written in Persian — denounced polytheism, advocated monotheism', 'Vedic religious reform — back to the Vedas movement', 'Neo-Vedanta — synthesis of Hinduism & Western thought', 'Extremist nationalism — Swaraj & Hindu revival'],
+    awardOptions: ['Religious Reform Treatise', 'Political Treatise', 'Revolutionary Essay', 'Political History'],
   },
   {
     id: 111,
@@ -1414,6 +1758,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'IBN BATTUTA travels (RIHLA) through Tughlaq\'s India',
     context: 'Foreign accounts of medieval India — Delhi Sultanate period',
     examProb: 'Recurring',
+    authorOptions: ['Ibn Battuta', 'Al-Biruni', 'Amir Khusrau', 'Al-Masudi'],
+    themeOptions: ['Moroccan traveler\'s account of India under Muhammad bin Tughlaq', 'Encyclopedic account of Indian science, religion & philosophy', 'Historical poem on the reign of Ghiyasuddin Tughlaq', 'Arab geographer\'s account of India in the 10th century'],
+    awardOptions: ['Medieval Travel Account', 'Medieval Islamic Scholarship', 'Medieval Poetry', 'Greek Account'],
   },
   {
     id: 112,
@@ -1426,6 +1773,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'ABUL FAZL writes the NAMA (story) of AKBAR',
     context: 'Mughal history — paired with Ain-i-Akbari in questions',
     examProb: 'Recurring',
+    authorOptions: ['Abul Fazl', 'Badauni', 'Ferishta', 'Amir Khusrau'],
+    themeOptions: ['Official history of Akbar\'s reign — companion volume to Ain-i-Akbari', 'Critical history of Mughal emperors', 'General history of India from early times', 'Historical poem on the reign of Ghiyasuddin Tughlaq'],
+    awardOptions: ['Mughal Chronicle', 'Medieval Islamic Scholarship', 'Medieval Poetry', 'Historical Chronicle'],
   },
   {
     id: 113,
@@ -1438,6 +1788,9 @@ export const booksData: BookEntry[] = [
     mnemonic: 'KHUSRAU writes the NAMA of TUGHLAQ dynasty',
     context: 'Delhi Sultanate — Amir Khusrau is also asked as "Parrot of India"',
     examProb: 'Recurring',
+    authorOptions: ['Amir Khusrau', 'Ibn Battuta', 'Al-Biruni', 'Ziauddin Barani'],
+    themeOptions: ['Historical poem on the reign of Ghiyasuddin Tughlaq', 'Moroccan traveler\'s account of India under Muhammad bin Tughlaq', 'Encyclopedic account of Indian science, religion & philosophy', 'Historical chronicle of Delhi Sultanate rulers'],
+    awardOptions: ['Medieval Poetry', 'Medieval Travel Account', 'Medieval Islamic Scholarship', 'Mughal Chronicle'],
   },
   {
     id: 114,
@@ -1450,5 +1803,501 @@ export const booksData: BookEntry[] = [
     mnemonic: 'TAMILSELVAN traces TAMIL short story\'s THADANGAL (tracks)',
     context: 'Sahitya Akademi 2025 Tamil winner — literary criticism category; regional literature angle',
     examProb: 'High',
+    authorOptions: ['Sa. Tamilselvan', 'Vairamuthu', 'Parvati Tirkey', 'Navtej Sarna'],
+    themeOptions: ['Tamil literary criticism — history & evolution of Tamil short stories', 'Tamil lyrical poetry — celebrated film lyricist & poet', 'Contemporary Indian literature — tribal voice, resilience & rebirth', 'Historical novel on Jallianwala Bagh massacre — diplomat-turned-novelist'],
+    awardOptions: ['Sahitya Akademi Award (Tamil)', 'Jnanpith Award', 'Sahitya Akademi Yuva Puraskar', 'Sahitya Akademi Award (English)'],
+  },
+
+  // ── SSC CGL FORMAT — MATCH / MULTI-STATEMENT QUESTIONS ────────────────────────
+  {
+    id: 115,
+    title: 'Freedom Struggle Books — Match the Following',
+    author: '1-c, 2-a, 3-d, 4-b',
+    category: 'Freedom Struggle',
+    award: 'SSC CGL Format',
+    year: 'Various',
+    theme: 'Author-Book Match',
+    mnemonic: 'Gandhi=My Experiments | Nehru=Discovery | Ambedkar=Annihilation | Tagore=Gitanjali',
+    context: 'SSC CGL 2022–24 Recurring',
+    examProb: 'Hot',
+    authorOptions: ['1-c, 2-a, 3-d, 4-b', '1-a, 2-c, 3-d, 4-b', '1-c, 2-d, 3-a, 4-b', '1-d, 2-a, 3-c, 4-b'],
+    themeOptions: ['Author-Book Match', 'Sports Autobiography Match', 'Award Verification Multi-Statement', 'Ancient Books Match'],
+    awardOptions: ['SSC CGL Format', 'Multi-Statement', 'Assertion-Reason', 'Match-Following'],
+    questionType: 'match-following',
+    matchLeft: ['Mahatma Gandhi', 'Jawaharlal Nehru', 'B.R. Ambedkar', 'Rabindranath Tagore'],
+    matchRight: [
+      'Discovery of India',
+      'Gitanjali (Song Offerings)',
+      'My Experiments with Truth',
+      'Annihilation of Caste',
+    ],
+    question: 'Match the authors (Column A) with their famous works (Column B):',
+    options: ['1-c, 2-a, 3-d, 4-b', '1-a, 2-c, 3-d, 4-b', '1-c, 2-d, 3-a, 4-b', '1-d, 2-a, 3-c, 4-b'],
+  },
+  {
+    id: 116,
+    title: 'Sports Autobiographies — Match the Following',
+    author: '1-b, 2-a, 3-d, 4-c',
+    category: 'Sports',
+    award: 'SSC CGL Format',
+    year: 'Various',
+    theme: 'Sports Autobiography Match',
+    mnemonic: 'Mary Kom=Unbreakable | Sachin=Playing It My Way | Ganguly=A Century Not Enough | Bindra=A Shot at History',
+    context: 'SSC CGL 2022–24 Recurring',
+    examProb: 'Hot',
+    authorOptions: ['1-b, 2-a, 3-d, 4-c', '1-a, 2-b, 3-c, 4-d', '1-b, 2-d, 3-a, 4-c', '1-c, 2-a, 3-d, 4-b'],
+    themeOptions: ['Sports Autobiography Match', 'Author-Book Match', 'Award Verification Multi-Statement', 'Ancient Books Match'],
+    awardOptions: ['SSC CGL Format', 'Multi-Statement', 'Assertion-Reason', 'Match-Following'],
+    questionType: 'match-following',
+    matchLeft: ['Mary Kom', 'Sachin Tendulkar', 'Sourav Ganguly', 'Abhinav Bindra'],
+    matchRight: [
+      'Playing It My Way',
+      'Unbreakable',
+      'A Shot at History (Olympic gold — shooting)',
+      'A Century Is Not Enough',
+    ],
+    question: 'Match the sports personalities (Column A) with their autobiographies (Column B):',
+    options: ['1-b, 2-a, 3-d, 4-c', '1-a, 2-b, 3-c, 4-d', '1-b, 2-d, 3-a, 4-c', '1-c, 2-a, 3-d, 4-b'],
+  },
+  {
+    id: 117,
+    title: 'Historical Books & Authors — Multi-Statement',
+    author: 'Both Statement 1 and Statement 2 are correct',
+    category: 'Ancient/Medieval',
+    award: 'SSC CGL Format',
+    year: 'Various',
+    theme: 'Multi-Statement Verification',
+    mnemonic: 'Wings of Fire = Kalam | Discovery of India = Nehru (Ahmednagar Fort 1942-46)',
+    context: 'SSC CGL 2022–24 Recurring',
+    examProb: 'Hot',
+    authorOptions: ['Both Statement 1 and Statement 2 are correct', 'Only Statement 1 is correct', 'Only Statement 2 is correct', 'Neither Statement 1 nor Statement 2 is correct'],
+    themeOptions: ['Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification', 'SSC CGL Format'],
+    awardOptions: ['SSC CGL Format', 'Multi-Statement', 'Assertion-Reason', 'Sequence'],
+    questionType: 'multi-statement',
+    statements: [
+      '"Wings of Fire" is the autobiography of Dr. A.P.J. Abdul Kalam, written with Arun Tiwari, describing his childhood and rise to become a scientist.',
+      '"The Discovery of India" was written by Jawaharlal Nehru during his imprisonment at Ahmednagar Fort between 1942 and 1946.',
+    ],
+    question: 'Which of the above statement(s) is/are correct?',
+    options: MULTI_STATEMENT_2_OPTIONS,
+  },
+  {
+    id: 118,
+    title: 'Ancient Books — Match Author & Work',
+    author: '1-d, 2-c, 3-b, 4-a',
+    category: 'Ancient/Medieval',
+    award: 'SSC CGL Format',
+    year: 'Various',
+    theme: 'Ancient Books Match',
+    mnemonic: 'Arthashastra=Kautilya | Indica=Megasthenes | Kitab-ul-Hind=Al-Biruni | Rihla=Ibn Battuta',
+    context: 'SSC CGL 2022–24 Recurring',
+    examProb: 'Hot',
+    authorOptions: ['1-d, 2-c, 3-b, 4-a', '1-a, 2-b, 3-c, 4-d', '1-d, 2-b, 3-c, 4-a', '1-c, 2-d, 3-b, 4-a'],
+    themeOptions: ['Ancient Books Match', 'Author-Book Match', 'Sports Autobiography Match', 'Multi-Statement Verification'],
+    awardOptions: ['SSC CGL Format', 'Multi-Statement', 'Match-Following', 'Sequence'],
+    questionType: 'match-following',
+    matchLeft: ['Arthashastra', 'Indica', 'Kitab-ul-Hind', 'Rihla'],
+    matchRight: [
+      'Ibn Battuta — Moroccan traveller\'s account of 14th century India',
+      'Al-Biruni — 11th century Persian scholar\'s study of India',
+      'Megasthenes — Greek ambassador\'s account of Mauryan India',
+      'Kautilya (Chanakya) — treatise on statecraft (~300 BCE)',
+    ],
+    question: 'Match the ancient books (Column A) with their author/description (Column B):',
+    options: ['1-d, 2-c, 3-b, 4-a', '1-a, 2-b, 3-c, 4-d', '1-d, 2-b, 3-c, 4-a', '1-c, 2-d, 3-b, 4-a'],
+  },
+  {
+    id: 119,
+    title: 'Literary Awards — Multi-Statement',
+    author: 'Both Statement 1 and Statement 2 are correct',
+    category: 'Literary Award',
+    award: 'SSC CGL Format',
+    year: 'Various',
+    theme: 'Award Verification Multi-Statement',
+    mnemonic: 'Geetanjali Shree 2022 Booker | International Booker splits prize author+translator equally',
+    context: 'SSC CGL 2023–24',
+    examProb: 'High',
+    authorOptions: ['Both Statement 1 and Statement 2 are correct', 'Only Statement 1 is correct', 'Only Statement 2 is correct', 'Neither Statement 1 nor Statement 2 is correct'],
+    themeOptions: ['Award Verification Multi-Statement', 'Multi-Statement Verification', 'Jnanpith Award Verification', 'SSC CGL Format'],
+    awardOptions: ['SSC CGL Format', 'Multi-Statement', 'Assertion-Reason', 'Sequence'],
+    questionType: 'multi-statement',
+    statements: [
+      'Geetanjali Shree\'s "Tomb of Sand" (translated from Hindi "Ret Samadhi" by Daisy Rockwell) won the International Booker Prize 2022, becoming the first Hindi-language novel to win this award.',
+      'The International Booker Prize is awarded to both the author and the translator of the winning book, with the prize money split equally between them.',
+    ],
+    question: 'Which of the above statement(s) is/are correct?',
+    options: MULTI_STATEMENT_2_OPTIONS,
+  },
+  {
+    id: 120,
+    title: 'Jnanpith Award — Multi-Statement',
+    author: 'Only Statement 1 is correct',
+    category: 'Literary Award',
+    award: 'SSC CGL Format',
+    year: 'Various',
+    theme: 'Jnanpith Award Verification',
+    mnemonic: 'Jnanpith = India\'s highest literary honour | For ANY of the 22 Scheduled languages (NOT classical only)',
+    context: 'SSC CGL 2023–24',
+    examProb: 'High',
+    authorOptions: ['Only Statement 1 is correct', 'Both Statement 1 and Statement 2 are correct', 'Only Statement 2 is correct', 'Neither Statement 1 nor Statement 2 is correct'],
+    themeOptions: ['Jnanpith Award Verification', 'Award Verification Multi-Statement', 'Multi-Statement Verification', 'SSC CGL Format'],
+    awardOptions: ['SSC CGL Format', 'Multi-Statement', 'Assertion-Reason', 'Sequence'],
+    questionType: 'multi-statement',
+    statements: [
+      'The Jnanpith Award is India\'s highest literary honour, given annually to an outstanding author for a creative contribution to Indian literature.',
+      'The Jnanpith Award is given only for works written in classical Indian languages like Sanskrit, Tamil, Telugu, and Kannada.',
+    ],
+    question: 'Which of the above statement(s) is/are correct?',
+    options: MULTI_STATEMENT_2_OPTIONS,
+  },
+
+  // ── SSC CGL FORMAT — NEW ENTRIES (IDs 121–135) ──────────────────────────────
+
+  // ── MULTI-STATEMENT (4 entries) ─────────────────────────────────────────────
+  {
+    id: 121,
+    title: 'Tagore & Rabindranath — Multi-Statement',
+    author: 'Both Statement 1 and Statement 2 are correct',
+    category: 'Freedom Struggle',
+    award: 'Multi-Statement',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Tagore renounced knighthood 1919 after Jallianwala | Gitanjali 1913 Nobel — first non-European',
+    context: 'SSC CGL recurring — Tagore Nobel Prize & Jallianwala Bagh connection',
+    examProb: 'Hot',
+    authorOptions: ['Both Statement 1 and Statement 2 are correct', 'Only Statement 1 is correct', 'Only Statement 2 is correct', 'Neither Statement 1 nor Statement 2 is correct'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Multi-Statement', 'SSC CGL Format', 'Assertion-Reason', 'Sequence'],
+    questionType: 'multi-statement',
+    statements: [
+      'Rabindranath Tagore was the first non-European to win the Nobel Prize in Literature, awarded in 1913 for his collection of poems "Gitanjali".',
+      'Rabindranath Tagore renounced his British knighthood in 1919 as a protest against the Jallianwala Bagh massacre.',
+    ],
+    question: 'Which of the above statement(s) is/are correct?',
+    options: MULTI_STATEMENT_2_OPTIONS,
+  },
+  {
+    id: 122,
+    title: 'Arundhati Roy & Booker Prize — Multi-Statement',
+    author: 'Only Statement 1 is correct',
+    category: 'PYQ',
+    award: 'Multi-Statement',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'God of Small Things 1997 Booker = Roy\'s FIRST novel | Second novel "The Ministry of Utmost Happiness" 2017',
+    context: 'SSC CGL 2022–24 — Arundhati Roy Booker Prize facts',
+    examProb: 'High',
+    authorOptions: ['Only Statement 1 is correct', 'Both Statement 1 and Statement 2 are correct', 'Only Statement 2 is correct', 'Neither Statement 1 nor Statement 2 is correct'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Multi-Statement', 'SSC CGL Format', 'Assertion-Reason', 'Sequence'],
+    questionType: 'multi-statement',
+    statements: [
+      '"The God of Small Things" (1997) by Arundhati Roy won the Booker Prize and was her debut novel, set against the backdrop of caste discrimination in Kerala.',
+      'Arundhati Roy has won the Booker Prize twice — for "The God of Small Things" (1997) and "The Ministry of Utmost Happiness" (2017).',
+    ],
+    question: 'Which of the above statement(s) is/are correct?',
+    options: MULTI_STATEMENT_2_OPTIONS,
+  },
+  {
+    id: 123,
+    title: 'Arthashastra & Manusmriti — Multi-Statement',
+    author: 'Only Statement 1 is correct',
+    category: 'Ancient/Medieval',
+    award: 'Multi-Statement',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Arthashastra = Kautilya (statecraft) | Manusmriti = Manu (social law, NOT Kautilya)',
+    context: 'SSC CGL recurring — ancient texts frequently confused',
+    examProb: 'Hot',
+    authorOptions: ['Only Statement 1 is correct', 'Both Statement 1 and Statement 2 are correct', 'Only Statement 2 is correct', 'Neither Statement 1 nor Statement 2 is correct'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Multi-Statement', 'SSC CGL Format', 'Assertion-Reason', 'Sequence'],
+    questionType: 'multi-statement',
+    statements: [
+      '"Arthashastra", authored by Kautilya (Chanakya), is an ancient Indian treatise on statecraft, economic policy, and military strategy, composed around 300 BCE during the Mauryan period.',
+      '"Manusmriti", the ancient text on social law and dharma, was also authored by Kautilya (Chanakya) and is considered a companion volume to the Arthashastra.',
+    ],
+    question: 'Which of the above statement(s) is/are correct?',
+    options: MULTI_STATEMENT_2_OPTIONS,
+  },
+  {
+    id: 124,
+    title: 'Amitav Ghosh & Vikram Seth — Multi-Statement',
+    author: 'Both Statement 1 and Statement 2 are correct',
+    category: 'PYQ',
+    award: 'Multi-Statement',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Ghosh = Jnanpith 2018 (first English-language winner) | Seth = A Suitable Boy 1993 WH Smith',
+    context: 'SSC CGL 2022–24 — Indian English authors and awards',
+    examProb: 'High',
+    authorOptions: ['Both Statement 1 and Statement 2 are correct', 'Only Statement 1 is correct', 'Only Statement 2 is correct', 'Neither Statement 1 nor Statement 2 is correct'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Multi-Statement', 'SSC CGL Format', 'Assertion-Reason', 'Sequence'],
+    questionType: 'multi-statement',
+    statements: [
+      'Amitav Ghosh became the first English-language writer to receive the Jnanpith Award, India\'s highest literary honour, in 2018.',
+      'Vikram Seth\'s novel "A Suitable Boy" (1993) is one of the longest novels ever published in the English language and won the WH Smith Literary Award.',
+    ],
+    question: 'Which of the above statement(s) is/are correct?',
+    options: MULTI_STATEMENT_2_OPTIONS,
+  },
+
+  // ── ASSERTION-REASON (4 entries) ─────────────────────────────────────────────
+  {
+    id: 125,
+    title: 'Salman Rushdie Midnight\'s Children — Assertion-Reason',
+    author: 'Both A and R are true, and R is the correct explanation of A',
+    category: 'PYQ',
+    award: 'Assertion-Reason',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Midnight\'s Children = Booker 1981 + "Booker of Bookers" 1993 & 2008 — born at midnight of independence',
+    context: 'SSC CGL 2022–24 — Rushdie Booker Prize significance',
+    examProb: 'High',
+    authorOptions: ['Both A and R are true, and R is the correct explanation of A', 'Both A and R are true, but R is NOT the correct explanation of A', 'A is true but R is false', 'A is false but R is true'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Assertion-Reason', 'Multi-Statement', 'SSC CGL Format', 'Sequence'],
+    questionType: 'assertion-reason',
+    assertion: 'Salman Rushdie\'s novel "Midnight\'s Children" is considered one of the greatest novels of the 20th century and won the Booker Prize in 1981.',
+    reason: '"Midnight\'s Children" narrates the story of Saleem Sinai, born at the exact moment of India\'s independence at midnight on 15 August 1947, symbolically linking his life to the fate of post-independence India.',
+    question: 'Read the Assertion (A) and Reason (R) and choose the correct option:',
+    options: ASSERTION_REASON_OPTIONS,
+  },
+  {
+    id: 126,
+    title: 'Gabriel García Márquez Nobel Prize — Assertion-Reason',
+    author: 'Both A and R are true, and R is the correct explanation of A',
+    category: 'Literary Award',
+    award: 'Assertion-Reason',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Márquez 1982 Nobel = magical realism pioneer | One Hundred Years of Solitude = Macondo saga',
+    context: 'SSC CGL 2022–24 — International Nobel Literature winners',
+    examProb: 'High',
+    authorOptions: ['Both A and R are true, and R is the correct explanation of A', 'Both A and R are true, but R is NOT the correct explanation of A', 'A is true but R is false', 'A is false but R is true'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Assertion-Reason', 'Multi-Statement', 'SSC CGL Format', 'Sequence'],
+    questionType: 'assertion-reason',
+    assertion: 'Gabriel García Márquez of Colombia was awarded the Nobel Prize in Literature in 1982.',
+    reason: 'García Márquez pioneered the literary style known as "magical realism", best exemplified in his masterpiece "One Hundred Years of Solitude" (1967), blending realistic narrative with magical elements.',
+    question: 'Read the Assertion (A) and Reason (R) and choose the correct option:',
+    options: ASSERTION_REASON_OPTIONS,
+  },
+  {
+    id: 127,
+    title: 'Toni Morrison Nobel Prize — Assertion-Reason',
+    author: 'Both A and R are true, but R is NOT the correct explanation of A',
+    category: 'Literary Award',
+    award: 'Assertion-Reason',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Morrison 1993 Nobel = Beloved won Pulitzer 1988 | Nobel for ENTIRE oeuvre, not just Beloved',
+    context: 'SSC CGL 2022–24 — Toni Morrison Nobel and Pulitzer',
+    examProb: 'High',
+    authorOptions: ['Both A and R are true, but R is NOT the correct explanation of A', 'Both A and R are true, and R is the correct explanation of A', 'A is true but R is false', 'A is false but R is true'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Assertion-Reason', 'Multi-Statement', 'SSC CGL Format', 'Sequence'],
+    questionType: 'assertion-reason',
+    assertion: 'Toni Morrison became the first African-American woman to win the Nobel Prize in Literature, awarded in 1993.',
+    reason: 'Toni Morrison\'s novel "Beloved" (1987), which won the Pulitzer Prize for Fiction in 1988, is based on the true story of an enslaved woman, Margaret Garner, who escaped slavery.',
+    question: 'Read the Assertion (A) and Reason (R) and choose the correct option:',
+    options: ASSERTION_REASON_OPTIONS,
+  },
+  {
+    id: 128,
+    title: 'Jhumpa Lahiri Pulitzer Prize — Assertion-Reason',
+    author: 'Both A and R are true, and R is the correct explanation of A',
+    category: 'Literary Award',
+    award: 'Assertion-Reason',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Lahiri Pulitzer 2000 = Interpreter of Maladies — debut short story collection on Indian diaspora',
+    context: 'SSC CGL 2022–24 — Indian diaspora writers and Pulitzer',
+    examProb: 'High',
+    authorOptions: ['Both A and R are true, and R is the correct explanation of A', 'Both A and R are true, but R is NOT the correct explanation of A', 'A is true but R is false', 'A is false but R is true'],
+    themeOptions: ['SSC CGL Format', 'Multi-Statement Verification', 'Award Verification Multi-Statement', 'Jnanpith Award Verification'],
+    awardOptions: ['Assertion-Reason', 'Multi-Statement', 'SSC CGL Format', 'Sequence'],
+    questionType: 'assertion-reason',
+    assertion: 'Jhumpa Lahiri won the Pulitzer Prize for Fiction in 2000 for her debut short story collection "Interpreter of Maladies".',
+    reason: '"Interpreter of Maladies" explores the lives of Indian and Indian-American characters navigating cultural displacement and identity, themes drawn from Lahiri\'s own experience as a child of Bengali immigrants in the United States.',
+    question: 'Read the Assertion (A) and Reason (R) and choose the correct option:',
+    options: ASSERTION_REASON_OPTIONS,
+  },
+
+  // ── MATCH-FOLLOWING (4 entries) ──────────────────────────────────────────────
+  {
+    id: 129,
+    title: 'Indian Authors & Famous Books — Match the Following',
+    author: '1-c, 2-d, 3-a, 4-b',
+    category: 'PYQ',
+    award: 'Match-Following',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'R.K. Narayan=Malgudi Days | Amitav Ghosh=The Shadow Lines | Vikram Seth=A Suitable Boy | Arundhati Roy=The God of Small Things',
+    context: 'SSC CGL 2022–24 — Indian English authors match',
+    examProb: 'Hot',
+    authorOptions: ['1-c, 2-d, 3-b, 4-a', '1-c, 2-d, 3-a, 4-b', '1-d, 2-c, 3-a, 4-b', '1-a, 2-b, 3-c, 4-d'],
+    themeOptions: ['SSC CGL Format', 'Author-Book Match', 'Sports Autobiography Match', 'Ancient Books Match'],
+    awardOptions: ['Match-Following', 'Multi-Statement', 'Assertion-Reason', 'Sequence'],
+    questionType: 'match-following',
+    matchLeft: ['R.K. Narayan', 'Amitav Ghosh', 'Vikram Seth', 'Arundhati Roy'],
+    matchRight: [
+      'The God of Small Things',
+      'A Suitable Boy',
+      'Malgudi Days',
+      'The Shadow Lines',
+    ],
+    question: 'Match the Indian authors (Column A) with their famous works (Column B):',
+    options: ['1-c, 2-d, 3-b, 4-a', '1-c, 2-d, 3-a, 4-b', '1-d, 2-c, 3-a, 4-b', '1-a, 2-b, 3-c, 4-d'],
+  },
+  {
+    id: 130,
+    title: 'Books & Literary Awards — Match the Following',
+    author: '1-b, 2-d, 3-a, 4-c',
+    category: 'Literary Award',
+    award: 'Match-Following',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Gitanjali=Nobel | God of Small Things=Booker | Interpreter of Maladies=Pulitzer | Tomb of Sand=Int. Booker',
+    context: 'SSC CGL 2022–24 — Books and their major awards',
+    examProb: 'Hot',
+    authorOptions: ['1-b, 2-d, 3-a, 4-c', '1-a, 2-b, 3-c, 4-d', '1-b, 2-a, 3-d, 4-c', '1-d, 2-c, 3-a, 4-b'],
+    themeOptions: ['SSC CGL Format', 'Author-Book Match', 'Sports Autobiography Match', 'Ancient Books Match'],
+    awardOptions: ['Match-Following', 'Multi-Statement', 'Assertion-Reason', 'Sequence'],
+    questionType: 'match-following',
+    matchLeft: ['Gitanjali', 'The God of Small Things', 'Interpreter of Maladies', 'Tomb of Sand (Ret Samadhi)'],
+    matchRight: [
+      'Pulitzer Prize for Fiction',
+      'Nobel Prize in Literature',
+      'International Booker Prize',
+      'Booker Prize',
+    ],
+    question: 'Match the books (Column A) with the literary award they won (Column B):',
+    options: ['1-b, 2-d, 3-a, 4-c', '1-a, 2-b, 3-c, 4-d', '1-b, 2-a, 3-d, 4-c', '1-d, 2-c, 3-a, 4-b'],
+  },
+  {
+    id: 131,
+    title: 'International Authors & Nationality — Match the Following',
+    author: '1-c, 2-a, 3-d, 4-b',
+    category: 'Literary Award',
+    award: 'Match-Following',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Márquez=Colombian | Toni Morrison=American | Salman Rushdie=British-Indian | Jhumpa Lahiri=American (Indian origin)',
+    context: 'SSC CGL 2022–24 — International authors and their nationalities',
+    examProb: 'High',
+    authorOptions: ['1-c, 2-a, 3-d, 4-b', '1-a, 2-b, 3-c, 4-d', '1-c, 2-d, 3-a, 4-b', '1-b, 2-a, 3-d, 4-c'],
+    themeOptions: ['SSC CGL Format', 'Author-Book Match', 'Sports Autobiography Match', 'Ancient Books Match'],
+    awardOptions: ['Match-Following', 'Multi-Statement', 'Assertion-Reason', 'Sequence'],
+    questionType: 'match-following',
+    matchLeft: ['Gabriel García Márquez', 'Toni Morrison', 'Salman Rushdie', 'Jhumpa Lahiri'],
+    matchRight: [
+      'American (Indian origin)',
+      'British-Indian',
+      'Colombian',
+      'American',
+    ],
+    question: 'Match the international authors (Column A) with their nationality (Column B):',
+    options: ['1-c, 2-a, 3-d, 4-b', '1-a, 2-b, 3-c, 4-d', '1-c, 2-d, 3-a, 4-b', '1-b, 2-a, 3-d, 4-c'],
+  },
+  {
+    id: 132,
+    title: 'Ancient Indian Texts & Authors — Match the Following',
+    author: '1-b, 2-d, 3-c, 4-a',
+    category: 'Ancient/Medieval',
+    award: 'Match-Following',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Mahabharata=Vyasa | Manusmriti=Manu | Natyashastra=Bharata Muni | Arthashastra=Kautilya',
+    context: 'SSC CGL recurring — ancient Indian texts authorship',
+    examProb: 'Hot',
+    authorOptions: ['1-b, 2-d, 3-c, 4-a', '1-a, 2-b, 3-c, 4-d', '1-d, 2-c, 3-b, 4-a', '1-b, 2-c, 3-d, 4-a'],
+    themeOptions: ['SSC CGL Format', 'Ancient Books Match', 'Author-Book Match', 'Sports Autobiography Match'],
+    awardOptions: ['Match-Following', 'Multi-Statement', 'Assertion-Reason', 'Sequence'],
+    questionType: 'match-following',
+    matchLeft: ['Mahabharata', 'Manusmriti', 'Natyashastra', 'Arthashastra'],
+    matchRight: [
+      'Kautilya (Chanakya)',
+      'Vyasa',
+      'Bharata Muni',
+      'Manu',
+    ],
+    question: 'Match the ancient Indian texts (Column A) with their traditional authors (Column B):',
+    options: ['1-b, 2-d, 3-c, 4-a', '1-a, 2-b, 3-c, 4-d', '1-d, 2-c, 3-b, 4-a', '1-b, 2-c, 3-d, 4-a'],
+  },
+
+  // ── SEQUENCE (3 entries) ─────────────────────────────────────────────────────
+  {
+    id: 133,
+    title: 'Booker Prize Winners — Chronological Sequence',
+    author: 'P → Q → R → S',
+    category: 'Literary Award',
+    award: 'Sequence',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Midnight\'s Children 1981 → God of Small Things 1997 → White Tiger 2008 → Tomb of Sand 2022',
+    context: 'SSC CGL — sequence of Booker Prize winners by year',
+    examProb: 'High',
+    authorOptions: ['P → Q → R → S', 'Q → P → S → R', 'P → R → Q → S', 'R → P → Q → S'],
+    themeOptions: ['SSC CGL Format', 'Author-Book Match', 'Multi-Statement Verification', 'Ancient Books Match'],
+    awardOptions: ['Sequence', 'Multi-Statement', 'Assertion-Reason', 'Match-Following'],
+    questionType: 'sequence',
+    statements: [
+      'P: "Midnight\'s Children" by Salman Rushdie — Booker Prize 1981',
+      'Q: "The God of Small Things" by Arundhati Roy — Booker Prize 1997',
+      'R: "The White Tiger" by Aravind Adiga — Booker Prize 2008',
+      'S: "Tomb of Sand" by Geetanjali Shree — International Booker Prize 2022',
+    ],
+    question: 'Arrange the following books in chronological order of receiving the Booker/International Booker Prize:',
+    options: ['P → Q → R → S', 'Q → P → S → R', 'P → R → Q → S', 'R → P → Q → S'],
+  },
+  {
+    id: 134,
+    title: 'Indian Authors — Chronological Birth Year Sequence',
+    author: 'R → P → S → Q',
+    category: 'PYQ',
+    award: 'Sequence',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Tagore 1861 → R.K. Narayan 1906 → Vikram Seth 1952 → Arundhati Roy 1961',
+    context: 'SSC CGL — Indian authors birth year sequence',
+    examProb: 'High',
+    authorOptions: ['R → P → S → Q', 'P → R → Q → S', 'R → S → P → Q', 'P → Q → R → S'],
+    themeOptions: ['SSC CGL Format', 'Author-Book Match', 'Multi-Statement Verification', 'Ancient Books Match'],
+    awardOptions: ['Sequence', 'Multi-Statement', 'Assertion-Reason', 'Match-Following'],
+    questionType: 'sequence',
+    statements: [
+      'P: R.K. Narayan — born 1906',
+      'Q: Arundhati Roy — born 1961',
+      'R: Rabindranath Tagore — born 1861',
+      'S: Vikram Seth — born 1952',
+    ],
+    question: 'Arrange the following Indian authors in chronological order of their birth year (earliest first):',
+    options: ['R → P → S → Q', 'P → R → Q → S', 'R → S → P → Q', 'P → Q → R → S'],
+  },
+  {
+    id: 135,
+    title: 'Ancient Indian Texts — Publication Era Sequence',
+    author: 'Q → R → P → S',
+    category: 'Ancient/Medieval',
+    award: 'Sequence',
+    year: 'Various',
+    theme: 'SSC CGL Format',
+    mnemonic: 'Mahabharata ~400BCE → Arthashastra ~300BCE → Natyashastra ~200BCE-200CE → Gita Govinda 12th CE',
+    context: 'SSC CGL recurring — ancient texts chronological order',
+    examProb: 'High',
+    authorOptions: ['Q → R → P → S', 'R → Q → P → S', 'P → Q → R → S', 'Q → P → R → S'],
+    themeOptions: ['SSC CGL Format', 'Ancient Books Match', 'Author-Book Match', 'Multi-Statement Verification'],
+    awardOptions: ['Sequence', 'Multi-Statement', 'Assertion-Reason', 'Match-Following'],
+    questionType: 'sequence',
+    statements: [
+      'P: Natyashastra by Bharata Muni — ~200 BCE to 200 CE',
+      'Q: Mahabharata by Vyasa — ~400 BCE',
+      'R: Arthashastra by Kautilya — ~300 BCE',
+      'S: Gita Govinda by Jayadeva — 12th Century CE',
+    ],
+    question: 'Arrange the following ancient Indian texts in chronological order of their approximate composition (earliest first):',
+    options: ['Q → R → P → S', 'R → Q → P → S', 'P → Q → R → S', 'Q → P → R → S'],
   },
 ]

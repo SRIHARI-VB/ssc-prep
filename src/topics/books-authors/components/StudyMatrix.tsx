@@ -53,20 +53,24 @@ export default function StudyMatrix() {
   const [probFilter, setProb]  = useState<FilterProb>('all')
   const [expanded, setExpanded] = useState<number | null>(null)
 
+  // Only regular book entries — SSC CGL format questions (match-following, multi-statement, etc.)
+  // are practice-only and should not appear in the study reference table
+  const studyEntries = useMemo(() => booksData.filter(b => !b.questionType), [])
+
   const filtered = useMemo(() =>
-    booksData.filter(b => {
+    studyEntries.filter(b => {
       const q = search.toLowerCase()
       const matchSearch =
         b.title.toLowerCase().includes(q)   ||
         b.author.toLowerCase().includes(q)  ||
         b.theme.toLowerCase().includes(q)   ||
         b.award.toLowerCase().includes(q)   ||
-        b.context.toLowerCase().includes(q)
+        (b.context ?? '').toLowerCase().includes(q)
       const matchCat  = catFilter  === 'all' || b.category === catFilter
       const matchProb = probFilter === 'all' || b.examProb === probFilter
       return matchSearch && matchCat && matchProb
     }),
-    [search, catFilter, probFilter]
+    [studyEntries, search, catFilter, probFilter]
   )
 
   return (
@@ -77,7 +81,7 @@ export default function StudyMatrix() {
         <p className="text-xs font-bold tracking-widest text-indigo-500 uppercase mb-1">Section 02</p>
         <h2 className="text-3xl font-extrabold text-brand-900">Study Matrix</h2>
         <p className="mt-2 text-slate-500 text-sm max-w-2xl leading-relaxed">
-          All {booksData.length} entries across 6 categories. Theme is always visible. Filter by category or exam probability.
+          All {studyEntries.length} book entries across 6 categories. Theme is always visible. Filter by category or exam probability.
           Click a row to expand the mnemonic shortcut.
         </p>
       </div>
@@ -103,7 +107,7 @@ export default function StudyMatrix() {
               )}
             </div>
             <span className="text-xs font-semibold text-slate-400 shrink-0">
-              {filtered.length} / {booksData.length} entries
+              {filtered.length} / {studyEntries.length} entries
             </span>
           </div>
 
@@ -175,7 +179,7 @@ export default function StudyMatrix() {
                       <p className="font-semibold text-slate-800 group-hover:text-indigo-700 transition-colors leading-snug">
                         {highlight(b.title, search)}
                       </p>
-                      <p className="text-xs text-slate-400 mt-0.5 italic">{highlight(b.context, search)}</p>
+                      <p className="text-xs text-slate-400 mt-0.5 italic">{highlight(b.context ?? '', search)}</p>
                     </td>
                     <td className="py-3 px-4">
                       <p className="text-xs text-slate-600 leading-relaxed">{highlight(b.theme, search)}</p>

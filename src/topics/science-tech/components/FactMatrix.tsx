@@ -31,15 +31,19 @@ export default function FactMatrix() {
   const [search, setSearch]               = useState('')
   const [expanded, setExpanded]           = useState<number | null>(null)
 
+  // Exclude SSC CGL format questions (multi-statement, assertion-reason, match-following)
+  // — those are practice-only and should not appear in the reference matrix
+  const studyEntries = useMemo(() => sciData.filter(e => !e.questionType), [])
+
   const filtered = useMemo(() => {
     const q = search.toLowerCase()
-    return sciData.filter(e => {
+    return studyEntries.filter(e => {
       if (filterSubject !== 'all' && e.subject !== filterSubject) return false
       if (filterProb    !== 'all' && e.examProb !== filterProb)   return false
       if (q && !e.question.toLowerCase().includes(q) && !e.answer.toLowerCase().includes(q) && !e.topic.toLowerCase().includes(q)) return false
       return true
     })
-  }, [filterSubject, filterProb, search])
+  }, [studyEntries, filterSubject, filterProb, search])
 
   return (
     <section id="st-matrix" className="py-14 bg-slate-50">
@@ -63,7 +67,7 @@ export default function FactMatrix() {
                     ? 'bg-teal-600 text-white border-teal-600'
                     : 'bg-white text-slate-600 border-slate-200 hover:border-teal-400'
                 }`}>
-                {s === 'all' ? `🌐 All (${sciData.length})` : `${s} (${sciData.filter(e => e.subject === s).length})`}
+                {s === 'all' ? `🌐 All (${studyEntries.length})` : `${s} (${studyEntries.filter(e => e.subject === s).length})`}
               </button>
             ))}
           </div>
@@ -91,7 +95,7 @@ export default function FactMatrix() {
               className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
             />
           </div>
-          <p className="text-xs text-slate-400">{filtered.length} of {sciData.length} entries</p>
+          <p className="text-xs text-slate-400">{filtered.length} of {studyEntries.length} entries</p>
         </div>
 
         {/* Table */}

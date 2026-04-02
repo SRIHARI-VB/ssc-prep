@@ -45,16 +45,20 @@ export default function FactMatrix() {
   const [search, setSearch]               = useState('')
   const [expanded, setExpanded]           = useState<number | null>(null)
 
+  // Exclude SSC CGL format questions (multi-statement, assertion-reason, match-following)
+  // — those are practice-only and should not appear in the reference matrix
+  const studyEntries = useMemo(() => budgetData.filter(e => !e.questionType), [])
+
   const filtered = useMemo(() => {
     const q = search.toLowerCase()
-    return budgetData.filter(e => {
+    return studyEntries.filter(e => {
       if (filterSubject !== 'all' && e.category !== filterSubject) return false
       if (filterProb    !== 'all' && e.examProb !== filterProb)   return false
       if (filterYear    !== 'all' && e.budgetYear !== filterYear) return false
       if (q && !e.question.toLowerCase().includes(q) && !e.answer.toLowerCase().includes(q) && !e.topic.toLowerCase().includes(q)) return false
       return true
     })
-  }, [filterSubject, filterProb, filterYear, search])
+  }, [studyEntries, filterSubject, filterProb, filterYear, search])
 
   return (
     <section id="ub-matrix" className="py-14 bg-slate-50">
@@ -71,7 +75,7 @@ export default function FactMatrix() {
           <div className="flex flex-wrap gap-2 items-center">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest mr-1">Budget Year</span>
             {YEARS.map(y => {
-              const count = y === 'all' ? budgetData.length : budgetData.filter(e => e.budgetYear === y).length
+              const count = y === 'all' ? studyEntries.length : studyEntries.filter(e => e.budgetYear === y).length
               return (
                 <button key={y} onClick={() => setFilterYear(y)}
                   className={`px-3 py-1.5 rounded-full text-xs font-bold border transition-all ${
@@ -97,7 +101,7 @@ export default function FactMatrix() {
                     ? 'bg-amber-600 text-white border-amber-600'
                     : 'bg-white text-slate-600 border-slate-200 hover:border-amber-400'
                 }`}>
-                {s === 'all' ? `All (${budgetData.length})` : `${s.split(' ')[0]}... (${budgetData.filter(e => e.category === s).length})`}
+                {s === 'all' ? `All (${studyEntries.length})` : `${s.split(' ')[0]}... (${studyEntries.filter(e => e.category === s).length})`}
               </button>
             ))}
           </div>
@@ -122,7 +126,7 @@ export default function FactMatrix() {
               className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
             />
           </div>
-          <p className="text-xs text-slate-400">{filtered.length} of {budgetData.length} entries</p>
+          <p className="text-xs text-slate-400">{filtered.length} of {studyEntries.length} entries</p>
         </div>
 
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
