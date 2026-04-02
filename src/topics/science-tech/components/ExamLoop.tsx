@@ -36,10 +36,6 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5)
 }
 
-function pickFrom(pool: SciEntry[]): SciEntry {
-  return pool[Math.floor(Math.random() * pool.length)]
-}
-
 function buildPool(sub: 'all' | Subject, prob: 'all' | ExamProb): SciEntry[] {
   const pool = sciData.filter(e => {
     if (sub  !== 'all' && e.subject  !== sub)  return false
@@ -63,6 +59,8 @@ interface LoopState {
   phase: Phase
   score: number
   total: number
+  queue: SciEntry[]
+  cycleNum: number
 }
 
 export default function ExamLoop() {
@@ -75,32 +73,37 @@ export default function ExamLoop() {
   )
 
   const [state, setState] = useState<LoopState>(() => {
-    const card = pickFrom(sciData)
-    return { card, options: getOptions(card, sciData), phase: 'question', score: 0, total: 0 }
+    const shuffled = shuffle([...sciData])
+    const card = shuffled[0]
+    return { card, options: getOptions(card, sciData), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 }
   })
   const [selected, setSelected] = useState<string | null>(null)
   const [shake, setShake] = useState(false)
 
   const handleFilter = useCallback((sub: 'all' | Subject) => {
     const pool = buildPool(sub, filterProb)
-    const card = pickFrom(pool)
+    const shuffled = shuffle([...pool])
     setFilterSub(sub)
     setSelected(null)
-    setState({ card, options: getOptions(card, pool), phase: 'question', score: 0, total: 0 })
+    setState({ card: shuffled[0], options: getOptions(shuffled[0], pool), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 })
   }, [filterProb])
 
   const handleProbFilter = useCallback((prob: 'all' | ExamProb) => {
     const pool = buildPool(filterSub, prob)
-    const card = pickFrom(pool)
+    const shuffled = shuffle([...pool])
     setFilterProb(prob)
     setSelected(null)
-    setState({ card, options: getOptions(card, pool), phase: 'question', score: 0, total: 0 })
+    setState({ card: shuffled[0], options: getOptions(shuffled[0], pool), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 })
   }, [filterSub])
 
   const nextQuestion = useCallback(() => {
-    const card = pickFrom(filteredPool)
     setSelected(null)
-    setState(s => ({ ...s, card, options: getOptions(card, filteredPool), phase: 'question' }))
+    setState(s => {
+      const newQueue = s.queue.length > 0 ? s.queue : shuffle([...filteredPool])
+      const newCycle = s.queue.length > 0 ? s.cycleNum : s.cycleNum + 1
+      const card = newQueue[0]
+      return { ...s, card, options: getOptions(card, filteredPool), phase: 'question', queue: newQueue.slice(1), cycleNum: newCycle }
+    })
   }, [filteredPool])
 
   const handleSelect = useCallback((opt: string) => {
@@ -201,6 +204,21 @@ export default function ExamLoop() {
               )}
             </div>
           )}
+
+          {/* Cycle progress */}
+          <div className="flex items-center justify-between mb-3 px-1">
+            <span className="text-xs font-bold text-teal-600">
+              Q {filteredPool.length - state.queue.length} / {filteredPool.length}
+            </span>
+            <span className="text-xs font-semibold text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
+              Cycle {state.cycleNum}
+            </span>
+          </div>
+          {/* Cycle progress bar */}
+          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden mb-5">
+            <div className="h-full bg-teal-400 rounded-full transition-all duration-300"
+              style={{ width: `${((filteredPool.length - state.queue.length) / filteredPool.length) * 100}%` }} />
+          </div>
 
           {/* Score bar */}
           <div className="flex items-center gap-4 mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-200">

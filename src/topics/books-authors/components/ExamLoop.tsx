@@ -12,6 +12,8 @@ interface QuizState {
   streak: number
   totalAnswered: number
   correct: number
+  queue: BookEntry[]
+  cycleNum: number
 }
 
 function shuffle<T>(arr: T[]): T[] {
@@ -92,10 +94,6 @@ const CAT_ICONS: Record<Category, string> = {
   'Current Affairs':  '🗞️',
 }
 
-function pickFrom(pool: BookEntry[]): BookEntry {
-  return pool[Math.floor(Math.random() * pool.length)]
-}
-
 function buildPool(cat: 'all' | Category, prob: 'all' | ExamProb): BookEntry[] {
   const pool = booksData.filter(b => {
     if (cat  !== 'all' && b.category !== cat)  return false
@@ -114,10 +112,10 @@ export default function ExamLoop() {
     [filterCat, filterProb]
   )
 
-  const [state, setState] = useState<QuizState>(() => ({
-    book: pickFrom(booksData), step: 1, phase: 'question',
-    score: 0, streak: 0, totalAnswered: 0, correct: 0,
-  }))
+  const [state, setState] = useState<QuizState>(() => {
+    const shuffled = shuffle([...booksData])
+    return { book: shuffled[0], step: 1, phase: 'question', score: 0, streak: 0, totalAnswered: 0, correct: 0, queue: shuffled.slice(1), cycleNum: 1 }
+  })
   const [selected, setSelected] = useState<string | null>(null)
   const [shaking, setShaking]   = useState(false)
 
@@ -133,17 +131,19 @@ export default function ExamLoop() {
   // ── category filter change ─────────────────────────────────────────────────
   const handleFilterChange = useCallback((cat: 'all' | Category) => {
     const pool = buildPool(cat, filterProb)
+    const shuffled = shuffle([...pool])
     setFilterCat(cat)
     setSelected(null)
-    setState(s => ({ ...s, book: pickFrom(pool), step: 1, phase: 'question' }))
+    setState(s => ({ ...s, book: shuffled[0], step: 1, phase: 'question', score: 0, streak: 0, totalAnswered: 0, correct: 0, queue: shuffled.slice(1), cycleNum: 1 }))
   }, [filterProb])
 
   // ── prob filter change ─────────────────────────────────────────────────────
   const handleProbChange = useCallback((prob: 'all' | ExamProb) => {
     const pool = buildPool(filterCat, prob)
+    const shuffled = shuffle([...pool])
     setFilterProb(prob)
     setSelected(null)
-    setState(s => ({ ...s, book: pickFrom(pool), step: 1, phase: 'question' }))
+    setState(s => ({ ...s, book: shuffled[0], step: 1, phase: 'question', score: 0, streak: 0, totalAnswered: 0, correct: 0, queue: shuffled.slice(1), cycleNum: 1 }))
   }, [filterCat])
 
   // ── answer handler ─────────────────────────────────────────────────────────
@@ -184,7 +184,11 @@ export default function ExamLoop() {
   // ── next book ──────────────────────────────────────────────────────────────
   const nextBook = useCallback(() => {
     setSelected(null)
-    setState(s => ({ ...s, book: pickFrom(filteredPool), step: 1, phase: 'question' }))
+    setState(s => {
+      const newQueue = s.queue.length > 0 ? s.queue : shuffle([...filteredPool])
+      const newCycle = s.queue.length > 0 ? s.cycleNum : s.cycleNum + 1
+      return { ...s, book: newQueue[0], step: 1, phase: 'question', queue: newQueue.slice(1), cycleNum: newCycle }
+    })
   }, [filteredPool])
 
   // ── option styling ─────────────────────────────────────────────────────────
@@ -304,7 +308,16 @@ export default function ExamLoop() {
               </div>
             )}
 
-            <h3 className="font-bold text-slate-300 text-xs uppercase tracking-widest">Live Stats</h3>
+            <div className="flex items-center justify-between">
+              <h3 className="font-bold text-slate-300 text-xs uppercase tracking-widest">Live Stats</h3>
+              <span className="text-xs text-slate-400 bg-white/10 px-2 py-0.5 rounded-full">
+                {filteredPool.length - state.queue.length}/{filteredPool.length} · C{state.cycleNum}
+              </span>
+            </div>
+            <div className="h-1 bg-white/10 rounded-full overflow-hidden">
+              <div className="h-full bg-indigo-400 rounded-full transition-all duration-300"
+                style={{ width: `${((filteredPool.length - state.queue.length) / filteredPool.length) * 100}%` }} />
+            </div>
             {[
               { label: 'Score',      value: state.score,          color: 'text-indigo-400' },
               { label: '🔥 Streak',  value: state.streak,         color: 'text-amber-400' },

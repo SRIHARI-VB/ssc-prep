@@ -46,10 +46,6 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5)
 }
 
-function pickFrom(pool: BudgetEntry[]): BudgetEntry {
-  return pool[Math.floor(Math.random() * pool.length)]
-}
-
 function buildPool(sub: 'all' | BudgetCategory, prob: 'all' | ExamProb, year: 'all' | BudgetYear): BudgetEntry[] {
   const pool = budgetData.filter(e => {
     if (sub  !== 'all' && e.category  !== sub)  return false
@@ -74,6 +70,8 @@ interface LoopState {
   phase: Phase
   score: number
   total: number
+  queue: BudgetEntry[]
+  cycleNum: number
 }
 
 export default function ExamLoop() {
@@ -87,37 +85,42 @@ export default function ExamLoop() {
   )
 
   const [state, setState] = useState<LoopState>(() => {
-    const card = pickFrom(budgetData)
-    return { card, options: getOptions(card, budgetData), phase: 'question', score: 0, total: 0 }
+    const shuffled = shuffle([...budgetData])
+    const card = shuffled[0]
+    return { card, options: getOptions(card, budgetData), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 }
   })
   const [selected, setSelected] = useState<string | null>(null)
   const [shake, setShake] = useState(false)
 
-  const resetQuiz = useCallback((pool: BudgetEntry[]) => {
-    const card = pickFrom(pool)
+  const resetWithPool = useCallback((pool: BudgetEntry[]) => {
+    const shuffled = shuffle([...pool])
     setSelected(null)
-    setState({ card, options: getOptions(card, pool), phase: 'question', score: 0, total: 0 })
+    setState({ card: shuffled[0], options: getOptions(shuffled[0], pool), phase: 'question', score: 0, total: 0, queue: shuffled.slice(1), cycleNum: 1 })
   }, [])
 
   const handleFilter = useCallback((sub: 'all' | BudgetCategory) => {
     setFilterSub(sub)
-    resetQuiz(buildPool(sub, filterProb, filterYear))
-  }, [filterProb, filterYear, resetQuiz])
+    resetWithPool(buildPool(sub, filterProb, filterYear))
+  }, [filterProb, filterYear, resetWithPool])
 
   const handleProbFilter = useCallback((prob: 'all' | ExamProb) => {
     setFilterProb(prob)
-    resetQuiz(buildPool(filterSub, prob, filterYear))
-  }, [filterSub, filterYear, resetQuiz])
+    resetWithPool(buildPool(filterSub, prob, filterYear))
+  }, [filterSub, filterYear, resetWithPool])
 
   const handleYearFilter = useCallback((year: 'all' | BudgetYear) => {
     setFilterYear(year)
-    resetQuiz(buildPool(filterSub, filterProb, year))
-  }, [filterSub, filterProb, resetQuiz])
+    resetWithPool(buildPool(filterSub, filterProb, year))
+  }, [filterSub, filterProb, resetWithPool])
 
   const nextQuestion = useCallback(() => {
-    const card = pickFrom(filteredPool)
     setSelected(null)
-    setState(s => ({ ...s, card, options: getOptions(card, filteredPool), phase: 'question' }))
+    setState(s => {
+      const newQueue = s.queue.length > 0 ? s.queue : shuffle([...filteredPool])
+      const newCycle = s.queue.length > 0 ? s.cycleNum : s.cycleNum + 1
+      const card = newQueue[0]
+      return { ...s, card, options: getOptions(card, filteredPool), phase: 'question', queue: newQueue.slice(1), cycleNum: newCycle }
+    })
   }, [filteredPool])
 
   const handleSelect = useCallback((opt: string) => {
@@ -244,6 +247,20 @@ export default function ExamLoop() {
               )}
             </div>
           )}
+
+          {/* Cycle progress */}
+          <div className="flex items-center justify-between mb-3 px-1">
+            <span className="text-xs font-bold text-amber-600">
+              Q {filteredPool.length - state.queue.length} / {filteredPool.length}
+            </span>
+            <span className="text-xs font-semibold text-slate-400 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">
+              Cycle {state.cycleNum}
+            </span>
+          </div>
+          <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden mb-5">
+            <div className="h-full bg-amber-400 rounded-full transition-all duration-300"
+              style={{ width: `${((filteredPool.length - state.queue.length) / filteredPool.length) * 100}%` }} />
+          </div>
 
           <div className="flex items-center gap-4 mb-6 p-4 bg-slate-50 rounded-2xl border border-slate-200">
             <div className="text-center">
