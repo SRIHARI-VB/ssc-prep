@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { booksData, type Category, type ExamProb } from '../data'
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -47,11 +47,14 @@ const ALL_PROBS: ExamProb[] = ['Hot', 'High', 'Confirmed', 'Recurring', 'Medium'
 
 // ── Component ────────────────────────────────────────────────────────────────
 
+const PAGE_SIZE = 10
+
 export default function StudyMatrix() {
   const [search, setSearch]    = useState('')
   const [catFilter, setCat]    = useState<FilterCat>('all')
   const [probFilter, setProb]  = useState<FilterProb>('all')
   const [expanded, setExpanded] = useState<number | null>(null)
+  const [page, setPage]         = useState(1)
 
   // Only regular book entries — SSC CGL format questions (match-following, multi-statement, etc.)
   // are practice-only and should not appear in the study reference table
@@ -72,6 +75,13 @@ export default function StudyMatrix() {
     }),
     [studyEntries, search, catFilter, probFilter]
   )
+
+  // Reset to page 1 whenever filters/search change
+  useEffect(() => { setPage(1); setExpanded(null) }, [filtered])
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+  const safePage   = Math.min(page, totalPages)
+  const paginated  = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
 
   return (
     <section id="matrix" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -148,9 +158,9 @@ export default function StudyMatrix() {
         </div>
 
         {/* ── DESKTOP TABLE ── */}
-        <div className="hidden md:block overflow-x-auto" style={{ maxHeight: 620 }}>
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full text-left min-w-[1050px]">
-            <thead className="bg-slate-50 sticky top-0 z-10 shadow-[0_1px_0_0_#e2e8f0]">
+            <thead className="bg-slate-50 border-b border-slate-100">
               <tr className="text-xs font-bold uppercase tracking-wider text-slate-500">
                 <th className="py-3 px-4 w-[24%]">Book Title</th>
                 <th className="py-3 px-4 w-[22%]">Theme</th>
@@ -161,14 +171,14 @@ export default function StudyMatrix() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm">
-              {filtered.length === 0 ? (
+              {paginated.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="text-center py-16 text-slate-400">
                     <span className="text-3xl block mb-2">😕</span>
                     No entries match your filters.
                   </td>
                 </tr>
-              ) : filtered.map(b => (
+              ) : paginated.map(b => (
                 <>
                   <tr
                     key={b.id}
@@ -222,12 +232,12 @@ export default function StudyMatrix() {
         </div>
 
         {/* ── MOBILE CARDS ── */}
-        <div className="md:hidden divide-y divide-slate-100" style={{ maxHeight: 600, overflowY: 'auto' }}>
-          {filtered.length === 0 ? (
+        <div className="md:hidden divide-y divide-slate-100">
+          {paginated.length === 0 ? (
             <div className="text-center py-12 text-slate-400">
               <span className="text-3xl block mb-2">😕</span>No entries found.
             </div>
-          ) : filtered.map(b => (
+          ) : paginated.map(b => (
             <div
               key={b.id}
               onClick={() => setExpanded(expanded === b.id ? null : b.id)}
@@ -257,6 +267,28 @@ export default function StudyMatrix() {
             </div>
           ))}
         </div>
+
+        {/* ── PAGINATION ── */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-between px-4 py-3 border-t border-slate-100 bg-slate-50">
+            <span className="text-xs text-slate-500">
+              {(safePage - 1) * PAGE_SIZE + 1}–{Math.min(safePage * PAGE_SIZE, filtered.length)} of {filtered.length} entries
+            </span>
+            <div className="flex items-center gap-1.5">
+              <button onClick={() => { setPage(p => p - 1); setExpanded(null) }} disabled={safePage === 1}
+                className="px-3 py-1.5 text-xs font-semibold rounded-lg border bg-white border-slate-200 hover:border-indigo-400 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                ← Prev
+              </button>
+              <span className="text-xs font-bold text-slate-700 px-2">
+                {safePage} / {totalPages}
+              </span>
+              <button onClick={() => { setPage(p => p + 1); setExpanded(null) }} disabled={safePage === totalPages}
+                className="px-3 py-1.5 text-xs font-semibold rounded-lg border bg-white border-slate-200 hover:border-indigo-400 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                Next →
+              </button>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

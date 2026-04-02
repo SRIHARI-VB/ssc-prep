@@ -1,4 +1,4 @@
-import { useState, useMemo, Fragment } from 'react'
+import { useState, useMemo, useEffect, Fragment } from 'react'
 import { geoData, type GeoCategory, type ExamProb } from '../data'
 
 const SUBJECTS: ('all' | GeoCategory)[] = [
@@ -37,11 +37,14 @@ function highlight(text: string, query: string) {
   return <>{parts.map((p, i) => i % 2 === 1 ? <mark key={i} className="bg-yellow-200 rounded-sm">{p}</mark> : p)}</>
 }
 
+const PAGE_SIZE = 10
+
 export default function FactMatrix() {
   const [filterSubject, setFilterSubject] = useState<'all' | GeoCategory>('all')
   const [filterProb, setFilterProb]       = useState<'all' | ExamProb>('all')
   const [search, setSearch]               = useState('')
   const [expanded, setExpanded]           = useState<number | null>(null)
+  const [page, setPage]                   = useState(1)
 
   // Exclude SSC CGL format questions (multi-statement, assertion-reason, match-following)
   // — those are practice-only and should not appear in the reference matrix
@@ -56,6 +59,12 @@ export default function FactMatrix() {
       return true
     })
   }, [studyEntries, filterSubject, filterProb, search])
+
+  useEffect(() => { setPage(1); setExpanded(null) }, [filtered])
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
+  const safePage   = Math.min(page, totalPages)
+  const paginated  = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE)
 
   return (
     <section id="geo-matrix" className="py-14 bg-slate-50">
@@ -119,7 +128,9 @@ export default function FactMatrix() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
-                {filtered.map(e => (
+                {paginated.length === 0 ? (
+                  <tr><td colSpan={6} className="text-center py-10 text-slate-400 text-sm">No entries match your filters.</td></tr>
+                ) : paginated.map(e => (
                   <Fragment key={e.id}>
                     <tr
                       className="hover:bg-slate-50 cursor-pointer transition-colors"
@@ -164,8 +175,23 @@ export default function FactMatrix() {
               </tbody>
             </table>
           </div>
-          {filtered.length === 0 && (
-            <p className="text-center py-10 text-slate-400 text-sm">No entries match your filters.</p>
+          {totalPages > 1 && (
+            <div className="flex items-center justify-between px-4 py-3 border-t border-slate-100 bg-slate-50">
+              <span className="text-xs text-slate-500">
+                {(safePage - 1) * PAGE_SIZE + 1}–{Math.min(safePage * PAGE_SIZE, filtered.length)} of {filtered.length} entries
+              </span>
+              <div className="flex items-center gap-1.5">
+                <button onClick={() => { setPage(p => p - 1); setExpanded(null) }} disabled={safePage === 1}
+                  className="px-3 py-1.5 text-xs font-semibold rounded-lg border bg-white border-slate-200 hover:border-emerald-400 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                  ← Prev
+                </button>
+                <span className="text-xs font-bold text-slate-700 px-2">{safePage} / {totalPages}</span>
+                <button onClick={() => { setPage(p => p + 1); setExpanded(null) }} disabled={safePage === totalPages}
+                  className="px-3 py-1.5 text-xs font-semibold rounded-lg border bg-white border-slate-200 hover:border-emerald-400 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                  Next →
+                </button>
+              </div>
+            </div>
           )}
         </div>
       </div>
