@@ -159,15 +159,15 @@ export default function StudyMatrix() {
 
         {/* ── DESKTOP TABLE ── */}
         <div className="hidden md:block overflow-x-auto">
-          <table className="w-full text-left min-w-[1050px]">
+          <table className="text-left min-w-[1150px] w-full">
             <thead className="bg-slate-50 border-b border-slate-100">
               <tr className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                <th className="py-3 px-4 w-[24%]">Book Title</th>
-                <th className="py-3 px-4 w-[22%]">Theme</th>
-                <th className="py-3 px-4 w-[14%]">Author</th>
-                <th className="py-3 px-4 w-[10%] text-center">Category</th>
-                <th className="py-3 px-4 w-[15%]">Award / Year</th>
-                <th className="py-3 px-4 w-[10%] text-center">Exam Prob</th>
+                <th className="py-3 px-4 min-w-[240px]">Book Title</th>
+                <th className="py-3 px-4 min-w-[230px]">Theme</th>
+                <th className="py-3 px-4 min-w-[150px] whitespace-nowrap">Author</th>
+                <th className="py-3 px-4 min-w-[110px] text-center whitespace-nowrap">Category</th>
+                <th className="py-3 px-4 min-w-[180px]">Award / Year</th>
+                <th className="py-3 px-4 min-w-[110px] text-center whitespace-nowrap">Exam Prob</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm">

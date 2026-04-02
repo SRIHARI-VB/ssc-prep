@@ -112,15 +112,15 @@ export default function FactMatrix() {
         {/* Table */}
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left min-w-[700px]">
+            <table className="text-left min-w-[1100px] w-full">
               <thead className="bg-slate-50 text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-100">
                 <tr>
-                  <th className="py-3 px-4 w-[10%]">Category</th>
-                  <th className="py-3 px-4 w-[14%]">Topic</th>
-                  <th className="py-3 px-4 w-[36%]">Question</th>
-                  <th className="py-3 px-4 w-[26%]">Answer</th>
-                  <th className="py-3 px-4 w-[8%]">Priority</th>
-                  <th className="py-3 px-4 w-[6%]">Context</th>
+                  <th className="py-3 px-4 min-w-[100px] whitespace-nowrap">Category</th>
+                  <th className="py-3 px-4 min-w-[150px] whitespace-nowrap">Topic</th>
+                  <th className="py-3 px-4 min-w-[320px]">Question</th>
+                  <th className="py-3 px-4 min-w-[280px]">Answer</th>
+                  <th className="py-3 px-4 min-w-[90px] whitespace-nowrap">Priority</th>
+                  <th className="py-3 px-4 min-w-[110px] whitespace-nowrap">Context</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-sm">
@@ -144,7 +144,7 @@ export default function FactMatrix() {
                           {e.examProb}
                         </span>
                       </td>
-                      <td className="py-3 px-4 text-slate-400 text-xs truncate max-w-[80px]">{e.context.split(' ').slice(0,3).join(' ')}</td>
+                      <td className="py-3 px-4 text-slate-400 text-xs whitespace-nowrap">{e.context}</td>
                     </tr>
                     {expanded === e.id && (
                       <tr key={`${e.id}-exp`}>
