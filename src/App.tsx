@@ -8,6 +8,7 @@ import ScienceTechPage from './topics/science-tech'
 import PolityConstitutionPage from './topics/polity-constitution'
 import GovtSchemesPage from './topics/govt-schemes'
 import UnionBudgetPage from './topics/union-budget'
+import GeographyPage from './topics/geography'
 
 export default function App() {
   const [page, setPage] = useState<Page>('home')
@@ -22,6 +23,7 @@ export default function App() {
         {page === 'polity-constitution' && <PolityConstitutionPage />}
         {page === 'govt-schemes' && <GovtSchemesPage />}
         {page === 'union-budget' && <UnionBudgetPage />}
+        {page === 'geography' && <GeographyPage />}
       </main>
       <Footer page={page} />
     </div>

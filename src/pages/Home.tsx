@@ -4,13 +4,15 @@ import { sciData } from '../topics/science-tech/data'
 import { polityData } from '../topics/polity-constitution/data'
 import { schemesData } from '../topics/govt-schemes/data'
 import { budgetData } from '../topics/union-budget/data'
+import { geoData } from '../topics/geography/data'
 
 const _booksCount   = booksData.length
 const _sciCount     = sciData.length
 const _polityCount  = polityData.length
 const _schemesCount = schemesData.length
 const _budgetCount  = budgetData.length
-const _total        = _booksCount + _sciCount + _polityCount + _schemesCount + _budgetCount
+const _geoCount     = geoData.length
+const _total        = _booksCount + _sciCount + _polityCount + _schemesCount + _budgetCount + _geoCount
 
 interface Props {
   setPage: (p: Page) => void
@@ -88,18 +90,18 @@ const TOPICS = [
     statusLabel: 'Live',
   },
   {
-    id: 'home' as Page,
+    id: 'geography' as Page,
     icon: '🌍',
     label: 'Geography',
     badge: 'Topic 06',
-    accent: 'from-slate-600 to-slate-700',
-    border: 'border-slate-600/30',
-    ring: 'ring-slate-500/10',
-    badgeColor: 'text-slate-400 bg-slate-500/10 border-slate-500/20',
-    stats: ['Coming soon', '', ''],
-    desc: 'Physical Geography, Indian rivers, soils, climate, World Geography & Economic Geography.',
-    status: 'coming',
-    statusLabel: 'Coming Soon',
+    accent: 'from-emerald-600 to-teal-700',
+    border: 'border-emerald-500/30',
+    ring: 'ring-emerald-500/20',
+    badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+    stats: [`${_geoCount} entries`, '12 categories', 'PYQ 2019-2024'],
+    desc: 'Indian Rivers, Mountains & Passes, Soils, National Parks, Agriculture, Minerals, Dams, World Geography, Straits, Transport, Population & Current Affairs.',
+    status: 'live',
+    statusLabel: 'Live',
   },
   {
     id: 'home' as Page,
@@ -160,7 +162,7 @@ export default function Home({ setPage }: Props) {
               { n: `${_total}+`, label: 'Total Facts' },
               { n: '6', label: 'Categories per Topic' },
               { n: '2021–25', label: 'PYQ Range' },
-              { n: '5', label: 'Live Topics' },
+              { n: '6', label: 'Live Topics' },
             ].map(s => (
               <div key={s.label} className="text-center px-5 py-3 bg-white/5 border border-white/10 rounded-2xl min-w-[90px]">
                 <p className="text-2xl font-extrabold text-white">{s.n}</p>

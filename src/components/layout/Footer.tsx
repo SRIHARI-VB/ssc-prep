@@ -7,6 +7,7 @@ const FOOTER_MSG: Record<Page, { sub: string; quote: string }> = {
   'polity-constitution': { sub: 'Polity & Constitution', quote: '"Know the Article, own the answer. Constitution is the blueprint of India."' },
   'govt-schemes': { sub: 'Government Schemes', quote: '"Scheme name + Launch year + Ministry + Key number = Guaranteed marks."' },
   'union-budget': { sub: 'Union Budget 2025-26', quote: '"Budget size + Fiscal deficit + Tax slabs + New schemes = 3-4 guaranteed marks in GK."' },
+  'geography': { sub: 'Geography', quote: '"River + Origin + Tributary + Dam = Geography questions decoded. Map is memory."' },
 }
 
 export default function Footer({ page }: { page: Page }) {

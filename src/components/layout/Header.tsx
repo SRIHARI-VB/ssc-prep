@@ -75,6 +75,20 @@ const PAGE_CONFIG: Record<Page, {
     ],
     cta: { href: '#ub-fast', label: 'Fast Revision →' },
   },
+  'geography': {
+    icon: '🌍', accent: 'text-emerald-400', label: 'Geography',
+    bg: 'bg-emerald-600',
+    links: [
+      { href: '#geo-overview', label: 'Overview' },
+      { href: '#geo-fast',     label: 'Fast Revision' },
+      { href: '#geo-matrix',   label: 'Fact Matrix' },
+      { href: '#geo-atlas',    label: 'Geo Atlas' },
+      { href: '#geo-flash',    label: 'Flashcards' },
+      { href: '#geo-loop',     label: 'MCQ Loop' },
+      { href: '#geo-pyq',      label: 'PYQ Tracker' },
+    ],
+    cta: { href: '#geo-fast', label: 'Fast Revision →' },
+  },
 }
 
 export default function Header({ page, setPage }: Props) {
