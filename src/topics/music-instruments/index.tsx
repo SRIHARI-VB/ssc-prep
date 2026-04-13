@@ -1,0 +1,82 @@
+import Analytics    from './components/Analytics'
+import FastRevision from './components/FastRevision'
+import FactMatrix   from './components/FactMatrix'
+import MusicMap     from './components/MusicMap'
+import Flashcard    from './components/Flashcard'
+import ExamLoop     from './components/ExamLoop'
+import PYQTracker   from './components/PYQTracker'
+import { miData, miPYQHistory } from './data'
+
+const hotCount = miData.filter(e => e.examProb === 'Hot').length
+const categories = [...new Set(miData.map(e => e.category))].length
+
+export default function MusicInstrumentsPage() {
+  return (
+    <>
+      {/* Hero */}
+      <div className="bg-gradient-to-br from-brand-900 via-rose-950 to-pink-950 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+          <div className="max-w-2xl">
+            <span className="inline-block text-xs font-bold tracking-widest uppercase text-rose-400 bg-rose-500/10 border border-rose-500/20 px-3 py-1 rounded-full mb-4">
+              Topic 10 &middot; General Awareness &middot; Music &amp; Instruments
+            </span>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+              Indian Music &amp; Instruments
+              <span className="block text-rose-400 text-2xl md:text-3xl mt-1">SSC CGL Complete Guide</span>
+            </h1>
+            <p className="mt-4 text-slate-300 leading-relaxed text-sm md:text-base max-w-lg">
+              <strong className="text-white">{miData.length} music facts</strong> across{' '}
+              <strong className="text-rose-400">{categories} categories</strong> &mdash;
+              Tata, Sushira, Avanaddha &amp; Ghana Vadya, Hindustani &amp; Carnatic Classical, Musicians &amp; Awards.
+              Plus <strong className="text-pink-400">{miPYQHistory.length} PYQ entries</strong> from 2019-2024.
+            </p>
+
+            {/* Stat pills */}
+            <div className="flex flex-wrap gap-2 mt-5">
+              {[
+                { label: `${miData.length} Music Facts`, color: 'bg-rose-500/20 border-rose-500/40 text-rose-300' },
+                { label: `${hotCount} Hot Priority`, color: 'bg-red-500/20 border-red-500/40 text-red-300' },
+                { label: `${categories} Categories`, color: 'bg-violet-500/20 border-violet-500/40 text-violet-300' },
+                { label: `${miPYQHistory.length} PYQ Records`, color: 'bg-cyan-500/20 border-cyan-500/40 text-cyan-300' },
+                { label: 'Natyashastra Classification', color: 'bg-pink-500/20 border-pink-500/40 text-pink-300' },
+                { label: 'Gharana System', color: 'bg-blue-500/20 border-blue-500/40 text-blue-300' },
+                { label: 'Bharat Ratna Musicians', color: 'bg-amber-500/20 border-amber-500/40 text-amber-300' },
+              ].map(p => (
+                <span key={p.label} className={`text-xs font-semibold px-3 py-1 rounded-full border ${p.color}`}>
+                  {p.label}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3 mt-7">
+              <a href="#mi-fast" className="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-sm font-bold transition-all shadow-lg shadow-rose-900/40">
+                Fast Revision &rarr;
+              </a>
+              <a href="#mi-loop" className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-bold transition-all border border-white/10">
+                MCQ Loop
+              </a>
+              <a href="#mi-matrix" className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-bold transition-all border border-white/10">
+                Full Matrix
+              </a>
+              <a href="#mi-map" className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-bold transition-all border border-white/10">
+                Music Map
+              </a>
+              <a href="#mi-pyq" className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-sm font-bold transition-all border border-white/10">
+                PYQ Tracker
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Sections */}
+      <Analytics    />
+      <FastRevision />
+      <FactMatrix   />
+      <MusicMap     />
+      <Flashcard    />
+      <ExamLoop     />
+      <PYQTracker   />
+    </>
+  )
+}

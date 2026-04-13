@@ -1,4 +1,5 @@
 import Analytics       from './components/Analytics'
+import FastRevision    from './components/FastRevision'
 import StudyMatrix     from './components/StudyMatrix'
 import Flashcard       from './components/Flashcard'
 import ExamLoop        from './components/ExamLoop'
@@ -58,6 +59,7 @@ export default function BooksAuthorsPage() {
 
       {/* ── Sections ────────────────────────────────────────────────────── */}
       <Analytics  />
+      <FastRevision />
       <StudyMatrix />
       <Flashcard   />
       <ExamLoop    />

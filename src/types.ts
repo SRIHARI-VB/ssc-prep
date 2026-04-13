@@ -1,1 +1,1 @@
-export type Page = 'home' | 'books-authors' | 'science-tech' | 'polity-constitution' | 'govt-schemes' | 'union-budget' | 'geography' | 'geography'
+export type Page = 'home' | 'learn' | 'books-authors' | 'science-tech' | 'polity-constitution' | 'govt-schemes' | 'union-budget' | 'geography' | 'history' | 'economics' | 'reports-indices' | 'music-instruments' | 'dances' | 'sports' | 'quantitative-aptitude' | 'logical-reasoning' | 'english'

@@ -1,3 +1,4 @@
+import FastRevision from './components/FastRevision'
 import Analytics   from './components/Analytics'
 import FactMatrix  from './components/FactMatrix'
 import Flashcard   from './components/Flashcard'
@@ -59,6 +60,7 @@ export default function ScienceTechPage() {
       </div>
 
       {/* ── Sections ─────────────────────────────────────────────────────── */}
+      <FastRevision />
       <Analytics  />
       <FactMatrix />
       <Flashcard  />

@@ -1685,6 +1685,308 @@ export const budgetData: BudgetEntry[] = [
     detail: 'Capital expenditure growth (ascending): Rs 2 lakh crore (FY 2014-15, starting point) → Rs 10.18 lakh crore (RE FY 2024-25) → Rs 11.21 lakh crore (BE FY 2025-26, +10.1%) → Rs 12.22 lakh crore (BE FY 2026-27, +11.5%). This represents a 6x increase in government capital expenditure over 12 years, reflecting the Modi government\'s infrastructure investment push. Effective capex (including grants for capital creation): Rs 15.48L cr (FY26) → Rs 17.14L cr (FY27).',
     context: 'SSC CGL 2026-27', examProb: 'Hot',
   },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: DEFENCE
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 167, category: 'Defence', budgetYear: '2026-27', topic: 'Defence Budget Breakdown',
+    question: 'What is the share of capital expenditure in the total defence budget for FY 2026-27?',
+    answer: 'Approximately 27% of total defence budget',
+    options: ['Approximately 15% of total defence budget', 'Approximately 27% of total defence budget', 'Approximately 40% of total defence budget', 'Approximately 50% of total defence budget'],
+    shortcut: 'Defence capex ~27% | Revenue (salaries/pensions) ~73% | Total Rs 7.85L cr | Capital = Rs 2.1L cr approx',
+    detail: 'Defence budget FY 2026-27: Rs 7.85 lakh crore (15.19% increase). Revenue expenditure (salaries, pensions, maintenance) consumes ~73%. Capital expenditure (modernization, new equipment) ~27% at Rs 2.1 lakh crore. Defence pensions alone exceed Rs 1.5 lakh crore. India is 3rd largest military spender globally.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 168, category: 'Defence', budgetYear: '2026-27', topic: 'Agnipath Financial Allocation',
+    question: 'The Agnipath scheme for military recruitment was launched in which year?',
+    answer: '2022',
+    options: ['2020', '2021', '2022', '2023'],
+    shortcut: 'Agnipath = 2022 | 4-year service | Seva Nidhi Rs 11.71 lakh | 25% retained as Agniveers | Reduced pension liability',
+    detail: 'Agnipath scheme launched June 2022 for short-term military recruitment (4 years). Agniveers receive Seva Nidhi of Rs 11.71 lakh on completion. 25% retained as regular cadre. Reduces long-term pension burden — defence pensions are the largest non-plan expenditure item. Budget 2026-27 allocated Rs 3,200 crore for Agniveer corpus.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 169, category: 'Defence', budgetYear: '2026-27', topic: 'Border Infrastructure',
+    question: 'The Border Roads Organisation (BRO) constructed the Sela Tunnel in which state?',
+    answer: 'Arunachal Pradesh',
+    options: ['Sikkim', 'Arunachal Pradesh', 'Ladakh', 'Uttarakhand'],
+    shortcut: 'Sela Tunnel = Arunachal (9.5 km, all-weather access to Tawang) | BRO budget Rs 6,500+ cr',
+    detail: 'Sela Tunnel (9.5 km, world\'s longest bi-lane tunnel above 13,000 ft) in Arunachal Pradesh inaugurated 2024. Provides all-weather connectivity to Tawang (China border). BRO allocation in Budget 2026-27: Rs 6,500+ crore for border road infrastructure. 75+ strategic bridges and tunnels under construction.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 170, category: 'Defence', budgetYear: '2026-27', topic: 'DRDO Allocations',
+    question: 'DRDO\'s budget allocation for FY 2026-27 is approximately?',
+    answer: 'Rs 25,000+ crore',
+    options: ['Rs 10,000 crore', 'Rs 18,000 crore', 'Rs 25,000+ crore', 'Rs 35,000 crore'],
+    shortcut: 'DRDO FY27 = Rs 25,000+ cr | Key projects: Tejas Mk2, AMCA, BrahMos-NG, Agni-5 MIRV',
+    detail: 'DRDO received Rs 25,000+ crore in FY 2026-27 for R&D in defence technology. Key projects: Tejas Mk2 fighter, Advanced Medium Combat Aircraft (AMCA), BrahMos-NG missile, Agni-5 MIRV tested 2024. DRDO operates 50+ labs. Target: 25% of defence procurement budget for indigenous R&D.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 171, category: 'Defence', budgetYear: '2026-27', topic: 'Indigenous Procurement',
+    question: 'What percentage of defence capital procurement is reserved for domestic industry in FY 2026-27?',
+    answer: '75%',
+    options: ['50%', '60%', '68%', '75%'],
+    shortcut: 'Domestic defence procurement = 75% of capex (FY27) | Atmanirbhar in defence | Defence exports Rs 21,000+ cr',
+    detail: 'FY 2026-27: 75% of defence capital procurement reserved for domestic industry (up from 68% in FY24). Categories: Buy (Indian), Buy & Make (Indian), Make. Defence exports crossed Rs 21,000 crore in FY 2024-25 (target: Rs 50,000 crore by 2029). Top exports: BrahMos, Dornier aircraft, Pinaka rockets.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 172, category: 'Defence', budgetYear: '2026-27', topic: 'Defence PSU Disinvestment',
+    question: 'Which defence PSU was listed on the stock exchange for the first time via IPO in 2024?',
+    answer: 'Cochin Shipyard (already listed; Mazagon Dock saw record market cap)',
+    options: ['HAL', 'BEL', 'Cochin Shipyard (already listed; Mazagon Dock saw record market cap)', 'Bharat Dynamics Limited'],
+    shortcut: 'Defence PSUs: HAL, BEL, BDL, MDL — all saw 200-400% stock gains 2022-25 | Govt retains majority',
+    detail: 'Major defence PSUs: HAL, BEL, BDL, Mazagon Dock (MDL), Cochin Shipyard (CSL), GRSE. All are listed and saw massive market cap growth. HAL market cap crossed Rs 3 lakh crore in 2025. Government retains majority stake. DPSU order book exceeded Rs 4 lakh crore by 2025-26. Selective disinvestment via OFS route.',
+    context: 'Current Affairs 2025-26', examProb: 'High',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: DIGITAL & TECHNOLOGY
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 173, category: 'Digital & Technology', budgetYear: '2026-27', topic: 'AI Mission Allocation',
+    question: 'The India AI Mission announced in Budget 2024-25 has a total outlay of?',
+    answer: 'Rs 10,372 crore',
+    options: ['Rs 5,000 crore', 'Rs 7,500 crore', 'Rs 10,372 crore', 'Rs 15,000 crore'],
+    shortcut: 'India AI Mission = Rs 10,372 cr | 10,000 GPU compute capacity | AI for agriculture, health, education',
+    detail: 'India AI Mission approved March 2024 with Rs 10,372 crore outlay over 5 years. Components: AI compute capacity (10,000+ GPUs), AI datasets platform, application development, AI skilling, AI startup funding. Aims to develop sovereign AI capabilities. Budget 2026-27 allocated Rs 3,000 crore for AI compute infrastructure.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 174, category: 'Digital & Technology', budgetYear: '2026-27', topic: 'Semiconductor Incentive',
+    question: 'Under the India Semiconductor Mission, which company is setting up India\'s first semiconductor fabrication unit?',
+    answer: 'Tata Electronics in Dholera, Gujarat',
+    options: ['Samsung in Noida, UP', 'Intel in Bengaluru, Karnataka', 'Tata Electronics in Dholera, Gujarat', 'TSMC in Chennai, Tamil Nadu'],
+    shortcut: 'Tata fab = Dholera Gujarat | Micron ATMP = Sanand Gujarat | Total ISM = Rs 76,000 cr',
+    detail: 'Tata Electronics is building India\'s first semiconductor fab in Dholera SIR, Gujarat (28nm and above). Micron Technology setting up ATMP (Assembly, Test, Marking, Packaging) in Sanand, Gujarat. CG Power OSAT plant also in Sanand. Total India Semiconductor Mission outlay: Rs 76,000 crore. First chips expected 2026-27.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 175, category: 'Digital & Technology', budgetYear: '2026-27', topic: 'BharatNet',
+    question: 'BharatNet aims to connect all gram panchayats with broadband. The revised cost of the project is?',
+    answer: 'Rs 1.39 lakh crore',
+    options: ['Rs 50,000 crore', 'Rs 80,000 crore', 'Rs 1.39 lakh crore', 'Rs 2 lakh crore'],
+    shortcut: 'BharatNet = Rs 1.39L cr | 6.4 lakh villages | Optical fibre + satellite | PPP model phase 3',
+    detail: 'BharatNet revised cost: Rs 1.39 lakh crore to connect all 6.4 lakh villages with broadband by 2025-26. Phase 3 uses PPP model (BSNL lead). Over 6 lakh km of optical fibre laid. Satellite-based connectivity for remote areas. Budget 2026-27: Rs 12,000 crore allocation for BharatNet.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 176, category: 'Digital & Technology', budgetYear: '2026-27', topic: 'Space Economy Budget',
+    question: 'The Indian Space Policy 2023 opened the space sector to which participants?',
+    answer: 'Private sector (IN-SPACe as single-window agency)',
+    options: ['Only ISRO subsidiaries', 'Only government agencies', 'Private sector (IN-SPACe as single-window agency)', 'Only foreign companies via JVs'],
+    shortcut: 'Space Policy 2023: Private sector via IN-SPACe | Skyroot, Agnikul = first private launches | Space budget Rs 16,000+ cr',
+    detail: 'Indian Space Policy 2023 allows private participation with IN-SPACe (Indian National Space Promotion and Authorization Centre) as single-window agency. Skyroot Aerospace (Vikram-S) and Agnikul Cosmos achieved first private launches. Space sector budget FY 2026-27: Rs 16,000+ crore. Target: $50 billion space economy by 2040.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 177, category: 'Digital & Technology', budgetYear: '2026-27', topic: 'Digital India Programme',
+    question: 'Digital India programme was launched in which year?',
+    answer: '2015',
+    options: ['2013', '2014', '2015', '2016'],
+    shortcut: 'Digital India = 2015 (3 pillars: infra, governance, empowerment) | Budget FY27 = Rs 14,600 cr',
+    detail: 'Digital India launched July 1, 2015. Three pillars: Digital Infrastructure, Digital Governance, Digital Empowerment. Key achievements by 2026: 95 crore+ internet users, 120 crore+ Aadhaar, UPI dominance, DigiLocker, UMANG app. Budget 2026-27 allocated Rs 14,600 crore for Digital India programmes.',
+    context: 'SSC CGL 2024, 2022 PYQ', examProb: 'Confirmed',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: EDUCATION & HEALTH
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 178, category: 'Education & Health', budgetYear: '2026-27', topic: 'Education Allocation Trends',
+    question: 'The combined allocation for Education Ministry in Budget 2026-27 is approximately?',
+    answer: 'Rs 1.28 lakh crore',
+    options: ['Rs 80,000 crore', 'Rs 1 lakh crore', 'Rs 1.28 lakh crore', 'Rs 1.5 lakh crore'],
+    shortcut: 'Education FY27 = Rs 1.28L cr (MoE) | ~3.1% of total budget | NEP target = 6% of GDP',
+    detail: 'Ministry of Education allocation: Rs 1,28,650 crore in FY 2026-27 (~3.1% of total expenditure). NEP 2020 target: 6% of GDP for education. Higher education: Rs 49,800 crore. School education: Rs 78,850 crore. 5 university townships, IIT expansion, and PM Vidyalaxmi scheme included.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 179, category: 'Education & Health', budgetYear: '2026-27', topic: 'AIIMS Expansion',
+    question: 'How many new AIIMS have been announced/established under the Pradhan Mantri Swasthya Suraksha Yojana (PMSSY)?',
+    answer: '22 new AIIMS (including original Delhi AIIMS, total 23)',
+    options: ['10 new AIIMS', '15 new AIIMS', '22 new AIIMS (including original Delhi AIIMS, total 23)', '30 new AIIMS'],
+    shortcut: '22 new AIIMS announced since 2003 (6 under PMSSY Phase I) | Total 23 AIIMS | Health budget Rs 99,000+ cr',
+    detail: '22 new AIIMS announced since 2003 under PMSSY across various phases. Total AIIMS: 23 (including original Delhi, est. 1956). Budget 2026-27: Health Ministry allocation Rs 99,000+ crore. PM-ABHIM scheme for health infrastructure. Additionally, 75,000 new medical seats over 5 years (Budget 2025-26 announcement).',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 180, category: 'Education & Health', budgetYear: '2026-27', topic: 'Skill Development',
+    question: 'PM Kaushal Vikas Yojana 4.0 (PMKVY 4.0) aims to skill how many youth?',
+    answer: '20 lakh youth with industry-aligned training',
+    options: ['5 lakh youth', '10 lakh youth', '20 lakh youth with industry-aligned training', '50 lakh youth'],
+    shortcut: 'PMKVY 4.0 = 20 lakh youth | AI, drones, EV, green skills added | MSDE budget Rs 5,000+ cr',
+    detail: 'PMKVY 4.0 targets skilling 20 lakh youth with industry-aligned training in new-age skills: AI, drones, EV maintenance, green energy, semiconductor assembly. Ministry of Skill Development & Entrepreneurship budget FY 2026-27: Rs 5,000+ crore. ITI upgradation with Rs 60,000 crore over 5 years.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 181, category: 'Education & Health', budgetYear: '2026-27', topic: 'NEP Implementation Budget',
+    question: 'National Education Policy (NEP) was approved in which year?',
+    answer: '2020',
+    options: ['2018', '2019', '2020', '2021'],
+    shortcut: 'NEP = 2020 | 5+3+3+4 structure | Target: 50% GER by 2035 | Replaces 1986 policy',
+    detail: 'NEP 2020 approved July 2020 replacing NEP 1986. Key features: 5+3+3+4 school structure, multidisciplinary colleges, Academic Bank of Credits, mother tongue instruction till Class 5, 50% GER in higher education by 2035. Budget 2026-27 allocated Rs 7,500 crore specifically for NEP implementation.',
+    context: 'SSC CGL 2025, 2024, 2022 PYQ', examProb: 'Confirmed',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: FISCAL NUMBERS
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 182, category: 'Fiscal Numbers', budgetYear: '2025-26', topic: 'Fiscal Deficit 2025-26',
+    question: 'What was the fiscal deficit target for FY 2025-26?',
+    answer: '4.4% of GDP',
+    options: ['4.1% of GDP', '4.4% of GDP', '4.8% of GDP', '5.1% of GDP'],
+    shortcut: 'FD 2025-26 = 4.4% GDP | Down from 4.9% in FY25 RE | Glide path: 5.6→4.9→4.4→4.3',
+    detail: 'Fiscal deficit target FY 2025-26: 4.4% of GDP (Rs 16.13 lakh crore). Fiscal consolidation glide path: FY24 (5.6%) → FY25 (4.9% RE) → FY26 (4.4% BE) → FY27 (4.3% BE). Revenue deficit: 1.5%. Primary deficit: 1.1%. FRBM Act target: 3% by 2025-26 (postponed).',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 183, category: 'Fiscal Numbers', budgetYear: '2026-27', topic: 'Revenue Deficit 2026-27',
+    question: 'What is the revenue deficit target for FY 2026-27?',
+    answer: '1.5% of GDP',
+    options: ['0.8% of GDP', '1.2% of GDP', '1.5% of GDP', '2.0% of GDP'],
+    shortcut: 'Revenue deficit FY27 = 1.5% GDP | Revenue deficit = Revenue exp - Revenue receipts',
+    detail: 'Revenue deficit FY 2026-27: 1.5% of GDP. Revenue deficit means government\'s revenue expenditure exceeds revenue receipts — i.e., government is borrowing to meet current consumption. Effective Revenue Deficit (Revenue Deficit minus grants for capital creation) is lower at 0.6% of GDP.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 184, category: 'Fiscal Numbers', budgetYear: '2026-27', topic: 'Primary Deficit 2026-27',
+    question: 'Primary Deficit is equal to?',
+    answer: 'Fiscal Deficit minus Interest Payments',
+    options: ['Revenue Deficit minus Capital Expenditure', 'Fiscal Deficit minus Interest Payments', 'Total Expenditure minus Total Revenue', 'Revenue Deficit minus Subsidies'],
+    shortcut: 'Primary Deficit = FD - Interest Payments | FY27: ~1% of GDP | Shows borrowing excluding past obligations',
+    detail: 'Primary Deficit = Fiscal Deficit - Interest Payments. FY 2026-27 primary deficit: ~1% of GDP. Primary deficit indicates the government\'s borrowing needs excluding interest obligations on past debt. A zero primary deficit means the government is only borrowing to pay interest on past debt.',
+    context: 'SSC CGL 2024, 2023 PYQ', examProb: 'Hot',
+  },
+  {
+    id: 185, category: 'Fiscal Numbers', budgetYear: '2026-27', topic: 'Effective Revenue Deficit',
+    question: 'Effective Revenue Deficit excludes which component from Revenue Deficit?',
+    answer: 'Grants for creation of capital assets',
+    options: ['Interest payments', 'Defence expenditure', 'Grants for creation of capital assets', 'Subsidies'],
+    shortcut: 'Effective RD = RD - Grants for capital assets | FY27: 0.6% GDP | Better fiscal metric',
+    detail: 'Effective Revenue Deficit = Revenue Deficit - Grants for creation of capital assets. Introduced in Budget 2012 to provide a clearer picture of productive spending. FY 2026-27: 0.6% of GDP. This metric shows that some revenue expenditure classified as grants actually creates capital assets in states.',
+    context: 'SSC CGL 2025 concept', examProb: 'High',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: TAX CHANGES
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 186, category: 'Tax Changes', budgetYear: '2026-27', topic: 'Budget 2026-27 Tax Changes',
+    question: 'Which major tax reform was announced in Budget 2026-27 regarding the Income Tax Act?',
+    answer: 'New Income Tax Act 2025 replaces the 1961 Act from April 2026',
+    options: ['GST rates were unified to single rate', 'New Income Tax Act 2025 replaces the 1961 Act from April 2026', 'Corporate tax abolished for MSMEs', 'Wealth tax reintroduced'],
+    shortcut: 'IT Act 2025 = replaces 1961 Act | Tax Year replaces FY/AY | Simplified language | April 2026',
+    detail: 'Budget 2026-27 implemented the Income Tax Act 2025 (effective April 1, 2026) replacing the 65-year-old IT Act 1961. Key changes: "Tax Year" replaces Financial Year and Assessment Year concepts. Simplified provisions, reduced litigation. No change in tax rates/slabs. Revised return deadline extended to March 31.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 187, category: 'Tax Changes', budgetYear: '2025-26', topic: 'New Income Tax Bill 2025',
+    question: 'Under the new tax regime in Budget 2025-26, income up to what amount is effectively tax-free?',
+    answer: 'Rs 12 lakh (Rs 12.75 lakh for salaried with standard deduction)',
+    options: ['Rs 7 lakh', 'Rs 10 lakh', 'Rs 12 lakh (Rs 12.75 lakh for salaried with standard deduction)', 'Rs 15 lakh'],
+    shortcut: 'Tax-free up to Rs 12L | Rs 12.75L for salaried (Rs 75K std deduction) | Section 87A rebate Rs 60,000',
+    detail: 'Budget 2025-26: Under new tax regime, no income tax payable up to Rs 12 lakh (Rs 12.75 lakh for salaried persons with Rs 75,000 standard deduction). Section 87A rebate increased to Rs 60,000 (from Rs 25,000). This was unchanged in Budget 2026-27.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 188, category: 'Tax Changes', budgetYear: '2026-27', topic: 'Capital Gains Rationalization',
+    question: 'Budget 2024 rationalized capital gains tax. What is the LTCG tax rate on equity after July 2024?',
+    answer: '12.5% (on gains above Rs 1.25 lakh)',
+    options: ['10% on gains above Rs 1 lakh', '12.5% (on gains above Rs 1.25 lakh)', '15% on all gains', '20% with indexation'],
+    shortcut: 'LTCG equity = 12.5% (>Rs 1.25L) | STCG equity = 20% | Budget 2024 change | Indexation removed for all except pre-2001 property',
+    detail: 'Budget 2024 (July): LTCG on equity/equity mutual funds raised to 12.5% (from 10%) with exemption threshold Rs 1.25 lakh (from Rs 1 lakh). STCG on equity raised to 20% (from 15%). Indexation benefit removed for all asset classes except pre-2001 property. These rates continued in Budget 2026-27.',
+    context: 'SSC CGL 2025-26', examProb: 'Hot',
+  },
+  {
+    id: 189, category: 'Tax Changes', budgetYear: '2026-27', topic: 'Customs Duty Changes 2026-27',
+    question: 'Budget 2026-27 reduced basic customs duty on which sector to boost domestic manufacturing?',
+    answer: 'Critical minerals and EV battery components',
+    options: ['Gold and silver', 'Petroleum products', 'Critical minerals and EV battery components', 'Agricultural imports'],
+    shortcut: 'Customs FY27: Critical minerals/EV battery = reduced | Gold customs: 6% (cut in Budget 2024)',
+    detail: 'Budget 2026-27 reduced customs duty on critical minerals (lithium, cobalt, rare earths) and EV battery components to encourage domestic manufacturing. Also extended concessional customs for IGST on aircraft leases. Gold customs had been reduced to 6% in Budget 2024 (from 15%). Electronics components for semiconductor ecosystem given nil duty.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: SOCIAL WELFARE
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 190, category: 'Social Welfare', budgetYear: '2026-27', topic: 'PM Awas Allocation',
+    question: 'PM Awas Yojana (Urban + Rural) total allocation in Budget 2026-27 is approximately?',
+    answer: 'Rs 80,000+ crore',
+    options: ['Rs 40,000 crore', 'Rs 60,000 crore', 'Rs 80,000+ crore', 'Rs 1 lakh crore'],
+    shortcut: 'PMAY FY27: Urban Rs 18,625 cr + Rs 3,000 cr (PMAY-U 2.0) + Rural Rs 59,000+ cr | 3 crore houses target',
+    detail: 'PMAY total allocation FY 2026-27: Rs 80,000+ crore (Urban: Rs 18,625 crore + Rs 3,000 crore for PMAY-U 2.0; Rural: Rs 59,000+ crore). PMAY-U 2.0 launched 2024 targeting 1 crore additional urban houses. Total houses built under PMAY: 4.5 crore+. Budget 2026-27 target: 3 crore additional houses by 2029.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+  {
+    id: 191, category: 'Social Welfare', budgetYear: '2026-27', topic: 'Food Subsidy Trends',
+    question: 'Which act provides the legal framework for India\'s food subsidy programme?',
+    answer: 'National Food Security Act (NFSA) 2013',
+    options: ['Essential Commodities Act 1955', 'National Food Security Act (NFSA) 2013', 'Consumer Protection Act 2019', 'Food Safety Act 2006'],
+    shortcut: 'NFSA 2013 = 67% population covered | 81.35 cr beneficiaries | Free 5 kg/person/month | Food subsidy FY27: Rs 2.2L cr',
+    detail: 'NFSA 2013 covers 67% of population (81.35 crore beneficiaries). Free 5 kg foodgrains per person per month under PMGKAY (made permanent from Jan 2024). Food subsidy FY 2026-27: Rs 2.2 lakh crore. Antyodaya Anna Yojana provides 35 kg/family/month to poorest of poor.',
+    context: 'SSC CGL 2026-27', examProb: 'Confirmed',
+  },
+  {
+    id: 192, category: 'Social Welfare', budgetYear: '2026-27', topic: 'MGNREGA 2025-27',
+    question: 'What replaced MGNREGA in Budget 2026-27?',
+    answer: 'VB-G RAM G (Viksit Bharat-Guarantee For Rozgar And Ajeevika Mission Gramin)',
+    options: ['PM Rozgar Yojana', 'National Rural Employment Mission', 'VB-G RAM G (Viksit Bharat-Guarantee For Rozgar And Ajeevika Mission Gramin)', 'Gram Swaraj Abhiyan'],
+    shortcut: 'VB-G RAM G = MGNREGA replacement | 125 days (from 100) | 60:40 Centre:State | 90:10 NER',
+    detail: 'VB-G RAM G (Viksit Bharat-Guarantee For Rozgar And Ajeevika Mission Gramin) replaced MGNREGA in Budget 2026-27. Key improvements: 125 days guaranteed employment (from 100), skill-linked wages, asset creation focus. Fund sharing: 60:40 (Centre:State), 90:10 for NER and Himalayan states. Allocation: Rs 1.05 lakh crore.',
+    context: 'SSC CGL 2026-27', examProb: 'Hot',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: NEW SCHEMES & MISSIONS
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 193, category: 'New Schemes & Missions', budgetYear: '2026-27', topic: 'Disinvestment Targets',
+    question: 'What is the disinvestment receipt target for FY 2026-27?',
+    answer: 'Rs 47,000 crore',
+    options: ['Rs 25,000 crore', 'Rs 47,000 crore', 'Rs 65,000 crore', 'Rs 1 lakh crore'],
+    shortcut: 'Disinvestment FY27 = Rs 47,000 cr | DIPAM manages | Strategic sales: BPCL, Concor pending',
+    detail: 'Disinvestment target FY 2026-27: Rs 47,000 crore. Managed by DIPAM (Department of Investment and Public Asset Management). Recent completions: Air India to Tata (2022). Pending: BPCL, Concor, IDBI Bank. Government focuses on strategic disinvestment over minority stake sales. NaBFID bond market route also being explored.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+  {
+    id: 194, category: 'New Schemes & Missions', budgetYear: '2026-27', topic: 'NaBFID',
+    question: 'NaBFID (National Bank for Financing Infrastructure and Development) was established in which year?',
+    answer: '2021',
+    options: ['2019', '2020', '2021', '2022'],
+    shortcut: 'NaBFID = 2021 | DFI for infra | Rs 1 lakh crore lending target | KV Kamath first chair',
+    detail: 'NaBFID established 2021 under NaBFID Act 2021 as Development Financial Institution (DFI) for infrastructure financing. Initial capital: Rs 20,000 crore from govt. K.V. Kamath was first chairperson. Lending target: Rs 1 lakh crore within 3 years. Focus: roads, ports, energy, telecom, social infra. Tax benefits on bonds.',
+    context: 'SSC CGL 2026-27', examProb: 'High',
+  },
+
+  // ═══════════════════════════════════════════════════════════════════
+  //  NEW ENTRIES: BUDGET TERMINOLOGY
+  // ═══════════════════════════════════════════════════════════════════
+  {
+    id: 195, category: 'Budget Terminology', budgetYear: 'General', topic: 'Zero-Based Budgeting',
+    question: 'Zero-Based Budgeting (ZBB) requires?',
+    answer: 'Every expenditure to be justified from scratch each year',
+    options: ['Automatic 10% increase in previous year allocation', 'Every expenditure to be justified from scratch each year', 'Only new schemes to be budgeted', 'Zero allocation for non-priority sectors'],
+    shortcut: 'ZBB = Justify EVERY rupee from ZERO base (not incremental) | Used by TN, Andhra',
+    detail: 'Zero-Based Budgeting requires all expenditure to be justified from scratch every year, starting from zero base. No automatic carry-forward of previous allocations. Introduced by Peter Phyrr (1970s). India experimented in 1986-87. Different from traditional incremental budgeting. Some states like Tamil Nadu and AP have adopted ZBB elements.',
+    context: 'SSC CGL 2024, 2022 PYQ', examProb: 'Confirmed',
+  },
+  {
+    id: 196, category: 'Budget Terminology', budgetYear: 'General', topic: 'Outcome-Based Budgeting',
+    question: 'Outcome-Based Budgeting in India focuses on?',
+    answer: 'Linking budget allocations to measurable outcomes and results',
+    options: ['Only controlling expenditure amounts', 'Linking budget allocations to measurable outcomes and results', 'Reducing fiscal deficit only', 'Allocating based on population share'],
+    shortcut: 'Outcome Budget = Results/impact focused (started 2006-07 in India) | Performance indicators for each ministry',
+    detail: 'Outcome-Based Budgeting links financial allocations to measurable deliverables and outcomes. India started Outcome Budget from FY 2006-07. Each ministry prepares an Outcome Budget with physical and financial targets. Enhances accountability and transparency. NITI Aayog\'s Output-Outcome Monitoring Framework tracks implementation.',
+    context: 'SSC CGL 2024, 2023 PYQ', examProb: 'High',
+  },
 ]
 
 export const budgetPYQHistory: BudgetPYQEntry[] = [
@@ -1757,4 +2059,11 @@ export const budgetPYQHistory: BudgetPYQEntry[] = [
   { date: 'Current 2026', shift: 'CA', question: 'What is PMAY-Urban allocation in Budget 2026-27?', answer: 'Rs 18,625 crore + Rs 3,000 crore for PMAY-U 2.0', category: 'Infrastructure' },
   { date: 'Current 2026', shift: 'CA', question: 'What is the debt-to-GDP ratio target by 2031?', answer: '50 plus/minus 1% of GDP (currently 55.6% in BE 2026-27)', category: 'Fiscal Numbers' },
   { date: 'Current 2026', shift: 'CA', question: 'What is NIMHANS-2 announced in Budget 2026-27?', answer: 'A second NIMHANS to be set up; Ranchi & Tezpur institutes upgraded to Regional Apex Mental Health institutions', category: 'Education & Health' },
+  // NEW PYQs 2024-2025
+  { date: '2025-03-06', shift: 'Shift 1', question: 'What is Zero-Based Budgeting?', answer: 'Every expenditure must be justified from scratch each year, starting from zero base', category: 'Budget Terminology' },
+  { date: '2025-03-05', shift: 'Shift 2', question: 'NaBFID was established as a DFI in which year?', answer: '2021', category: 'New Schemes & Missions' },
+  { date: '2025-02-27', shift: 'Shift 1', question: 'What is the Agnipath scheme for military recruitment?', answer: 'Short-term 4-year military recruitment scheme launched in 2022', category: 'Defence' },
+  { date: '2024-09-14', shift: 'Shift 1', question: 'NEP 2020 proposes which school structure?', answer: '5+3+3+4 structure replacing 10+2', category: 'Education & Health' },
+  { date: '2024-09-13', shift: 'Shift 2', question: 'Primary Deficit equals?', answer: 'Fiscal Deficit minus Interest Payments', category: 'Fiscal Numbers' },
+  { date: '2024-03-16', shift: 'Shift 1', question: 'India AI Mission outlay announced in Budget 2024-25 is?', answer: 'Rs 10,372 crore over 5 years', category: 'Digital & Technology' },
 ]

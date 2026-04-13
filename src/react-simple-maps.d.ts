@@ -60,4 +60,11 @@ declare module 'react-simple-maps' {
   export const ComposableMap: ComponentType<ComposableMapProps>
   export const Geographies: ComponentType<GeographiesProps>
   export const Geography: ComponentType<GeographyProps>
+
+  // MapContext — used for projecting lat/lng to SVG coordinates
+  import { Context } from 'react'
+  interface MapContextValue {
+    projection: (coords: [number, number]) => [number, number] | null
+  }
+  export const MapContext: Context<MapContextValue>
 }

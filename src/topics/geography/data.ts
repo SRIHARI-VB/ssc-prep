@@ -1849,6 +1849,353 @@ export const geoData: GeoQuestion[] = [
     context: 'SSC CGL 2022–24 Recurring', examProb: 'Hot',
     tamilNote: 'பாக்=இந்தியா-இலங்கை | ஹார்முஸ்=ஈரான்-ஓமான்(20% எண்ணெய்) | பாப்-எல்-மண்டெப்=யேமன்-ஜிபூட்டி | மலாக்கா=மலேசியா-சுமத்ரா.',
   },
+
+  // =====================================================================
+  // TRANSPORT & INDUSTRY (expanded)
+  // =====================================================================
+  {
+    id: 154, category: 'Transport & Industry', topic: 'Chennai-Bengaluru Industrial Corridor (CBIC)',
+    question: 'What is the Chennai-Bengaluru Industrial Corridor (CBIC)?',
+    answer: 'CBIC: 560 km industrial corridor between Chennai and Bengaluru — funded by JICA (Japan), part of India\'s industrial corridor programme',
+    options: ['CBIC: 560 km industrial corridor between Chennai and Bengaluru — funded by JICA (Japan), part of India\'s industrial corridor programme', 'CBIC: 800 km corridor connecting Chennai to Mumbai — funded by World Bank', 'CBIC: 350 km corridor connecting Bengaluru to Hyderabad — funded by ADB', 'CBIC: 1,200 km corridor connecting Chennai to Kolkata — funded by AIIB'],
+    shortcut: 'CBIC = Chennai-Bengaluru | 560 km | JICA funded | Tumkur, Ponneri, Krishnapatnam nodes | Part of industrial corridor programme',
+    detail: 'CBIC spans 560 km between Chennai and Bengaluru, covering Tamil Nadu, Andhra Pradesh, and Karnataka. Key nodes include Tumkur, Ponneri, and Krishnapatnam. Funded by JICA (Japan). Part of the broader National Industrial Corridor Development Programme (NICDP) which plans 11 industrial corridors across India. CBIC aims to leverage the IT, manufacturing, and automotive strengths of both cities.',
+    context: 'SSC CGL 2024-2025', examProb: 'High',
+  },
+  {
+    id: 155, category: 'Transport & Industry', topic: 'Sagarmala Project',
+    question: 'What is the Sagarmala Project and its primary objective?',
+    answer: 'Port-led development programme launched in 2015 — targets port modernization, coastal connectivity, and port-linked industrialization',
+    options: ['Port-led development programme launched in 2015 — targets port modernization, coastal connectivity, and port-linked industrialization', 'Inland waterway development project launched in 2017 — targets river navigation across India', 'Highway development programme launched in 2014 — targets connecting all state capitals by expressway', 'Railway electrification project launched in 2016 — targets 100% rail electrification by 2024'],
+    shortcut: 'Sagarmala = Port-led development | 2015 | MoSP&W | 12 major + 200 non-major ports | Reduce logistics cost | Coastal Economic Zones',
+    detail: 'Sagarmala ("String of the Ocean") was launched in 2015 under the Ministry of Shipping (now Ministry of Ports, Shipping & Waterways). It aims to reduce logistics cost by port modernization (12 major + ~200 non-major ports), enhance port connectivity by road/rail, develop coastal economic zones, and promote coastal shipping and inland waterways. Target: reduce logistics cost from 14% to 9% of GDP. India\'s coastline: 7,516 km.',
+    context: 'SSC CGL 2023-2025', examProb: 'Hot',
+  },
+  {
+    id: 156, category: 'Transport & Industry', topic: 'Bharatmala Pariyojana',
+    question: 'What is the Bharatmala Pariyojana and its target?',
+    answer: 'National highway development programme (2017) — Phase I targets 34,800 km of highways including economic corridors, border roads, and coastal roads',
+    options: ['National highway development programme (2017) — Phase I targets 34,800 km of highways including economic corridors, border roads, and coastal roads', 'Railway development programme (2018) — targets 50,000 km of new rail lines by 2030', 'Port development programme (2016) — targets modernizing all 12 major ports of India', 'Airport development programme (2019) — targets building 100 new airports by 2030'],
+    shortcut: 'Bharatmala = Highway umbrella | 2017 | Phase I = 34,800 km | Economic corridors + feeder routes + border roads + coastal roads | MoRTH | ₹5.35 lakh crore',
+    detail: 'Bharatmala Pariyojana (2017) is an umbrella programme for national highway development under MoRTH. Phase I (34,800 km) covers: Economic Corridors (9,000 km), Inter-Corridor and Feeder Routes (6,000 km), National Corridor Efficiency Improvement (5,000 km), Border and International Connectivity Roads (2,000 km), Coastal and Port Connectivity Roads (2,000 km), and Expressways (800 km). Estimated cost: ₹5.35 lakh crore.',
+    context: 'SSC CGL 2023-2025', examProb: 'Hot',
+  },
+  {
+    id: 157, category: 'Transport & Industry', topic: 'National Waterways — NW-1 to NW-6',
+    question: 'Match the first six National Waterways of India with their river systems:',
+    answer: 'NW-1: Ganga (Prayagraj–Haldia) | NW-2: Brahmaputra | NW-3: West Coast Canal (Kerala) | NW-4: Krishna-Godavari | NW-5: Brahmani-Mahanadi | NW-6: Barak River',
+    options: ['NW-1: Ganga (Prayagraj–Haldia) | NW-2: Brahmaputra | NW-3: West Coast Canal (Kerala) | NW-4: Krishna-Godavari | NW-5: Brahmani-Mahanadi | NW-6: Barak River', 'NW-1: Brahmaputra | NW-2: Ganga | NW-3: Mahanadi | NW-4: Krishna | NW-5: West Coast Canal | NW-6: Narmada', 'NW-1: Ganga | NW-2: Yamuna | NW-3: Godavari | NW-4: Brahmaputra | NW-5: Barak | NW-6: Sabarmati', 'NW-1: Ganga | NW-2: Brahmaputra | NW-3: Krishna | NW-4: West Coast Canal | NW-5: Narmada | NW-6: Tapi'],
+    shortcut: 'NW-1=Ganga(1,620km) | NW-2=Brahmaputra(891km) | NW-3=WestCoastCanal(205km,Kerala) | NW-4=Krishna-Godavari(1,078km) | NW-5=Brahmani-Mahanadi | NW-6=Barak(121km,Assam)',
+    detail: 'India has 111 declared National Waterways. NW-1: Ganga (Prayagraj to Haldia, 1,620 km) — longest, most used. NW-2: Brahmaputra (Sadiya to Dhubri, 891 km). NW-3: West Coast Canal, Kerala (Kottapuram to Kollam, 205 km). NW-4: Krishna-Godavari rivers, AP (1,078 km). NW-5: Brahmani + Mahanadi delta, Odisha. NW-6: Barak River, Assam (121 km, Lakhipur to Bhanga). National Waterways Act 2016 expanded from 5 to 111.',
+    context: 'SSC CGL 2023-2025', examProb: 'High',
+  },
+  {
+    id: 158, category: 'Transport & Industry', topic: 'New Aviation Hubs — Jewar & Navi Mumbai',
+    question: 'Which upcoming greenfield airports are India\'s largest aviation projects?',
+    answer: 'Noida International Airport (Jewar, UP) and Navi Mumbai International Airport (Navi Mumbai, Maharashtra)',
+    options: ['Noida International Airport (Jewar, UP) and Navi Mumbai International Airport (Navi Mumbai, Maharashtra)', 'Bhogapuram Airport (Vizag, AP) and Goa Manohar International Airport (Mopa, Goa)', 'Rajkot Hirasar Airport (Gujarat) and Arunachal Hollongi Airport (Itanagar)', 'Dholera Airport (Gujarat) and Kushinagar Airport (UP)'],
+    shortcut: 'Jewar/Noida = UP, near Delhi NCR, Yamuna Expressway, Zurich AG | Navi Mumbai = Cidco, near JNPT, ₹16,700 crore | Both greenfield',
+    detail: 'Noida International Airport (Jewar, UP): India\'s largest upcoming airport near Delhi NCR along Yamuna Expressway. Built by Zurich AG (Yamuna International Airport Pvt Ltd). Phase I capacity: 12 million passengers/year. Navi Mumbai International Airport (NMIA): Built by CIDCO and Adani Group. Located near JNPT port. Estimated cost ₹16,700 crore. These complement existing capacity at IGI Delhi and CSIA Mumbai respectively.',
+    context: 'SSC CGL 2024-2026 Current', examProb: 'Hot',
+  },
+  {
+    id: 159, category: 'Transport & Industry', topic: 'Sagarmala & UDAN Schemes',
+    question: 'What is the UDAN scheme in Indian aviation?',
+    answer: 'Ude Desh ka Aam Naagrik (UDAN) — regional connectivity scheme launched in 2016 to make flying affordable to underserved airports',
+    options: ['Ude Desh ka Aam Naagrik (UDAN) — regional connectivity scheme launched in 2016 to make flying affordable to underserved airports', 'Udaan India — national airline expansion plan launched in 2019 to increase fleet size', 'Urban Domestic Air Network — scheme to build airports in all state capitals by 2025', 'Unified Digital Air Navigation — modernization of air traffic control systems'],
+    shortcut: 'UDAN = Ude Desh ka Aam Naagrik | 2016 | Regional connectivity | Fare cap ₹2,500/hr | MoCA | Revival of unserved/underserved airports',
+    detail: 'UDAN (Ude Desh ka Aam Naagrik) is a regional connectivity scheme launched in 2016 under the Ministry of Civil Aviation. Key features: capped airfare (₹2,500 per hour of flight), viability gap funding to airlines, revival of unserved/underserved airports. India has 150+ operational airports (2025). UDAN has connected 80+ airports, heliports, and water aerodromes. India is the world\'s 3rd largest domestic aviation market.',
+    context: 'SSC CGL 2022-2024', examProb: 'High',
+  },
+  {
+    id: 160, category: 'Transport & Industry', topic: 'PM Gati Shakti Master Plan',
+    question: 'What is the PM Gati Shakti National Master Plan?',
+    answer: 'Digital platform for integrated multimodal connectivity planning — launched in 2021, covers 16 ministries for infrastructure coordination',
+    options: ['Digital platform for integrated multimodal connectivity planning — launched in 2021, covers 16 ministries for infrastructure coordination', 'Highway construction scheme launched in 2020 — targets building 10,000 km of expressways', 'Railway electrification programme launched in 2022 — targets 100% electrification', 'Smart city connectivity plan launched in 2023 — connects 100 smart cities by metro rail'],
+    shortcut: 'Gati Shakti = 2021 | Digital platform | 16 ministries | GIS-based | Multimodal connectivity | Reduce logistics cost | NLP = National Logistics Policy 2022',
+    detail: 'PM Gati Shakti National Master Plan was launched on October 13, 2021. It is a GIS-based digital platform integrating 16 ministries for planning and coordinating infrastructure projects. Aims to reduce logistics cost, eliminate project delays and duplication. Complemented by National Logistics Policy (NLP, September 2022) which targets reducing logistics cost from 14-18% to single digits of GDP. Key pillars: LEADS index, Unified Logistics Interface Platform (ULIP).',
+    context: 'SSC CGL 2023-2026', examProb: 'Hot',
+  },
+
+  // =====================================================================
+  // POPULATION & CENSUS (expanded)
+  // =====================================================================
+  {
+    id: 161, category: 'Population & Census', topic: 'Census 2021 Postponement & Census 2026',
+    question: 'Why was Census 2021 postponed and what is the current status?',
+    answer: 'Census 2021 was postponed due to COVID-19 pandemic — now planned as Census 2026, India\'s first digital census with ₹1,309 crore allocation in Budget 2026-27',
+    options: ['Census 2021 was postponed due to COVID-19 pandemic — now planned as Census 2026, India\'s first digital census with ₹1,309 crore allocation in Budget 2026-27', 'Census 2021 was conducted on schedule using online forms — results released in 2023', 'Census 2021 was cancelled permanently — replaced by Aadhaar-based population register', 'Census 2021 was merged with National Population Register — completed in 2024'],
+    shortcut: 'Census 2021 postponed (COVID) | Now Census 2026 | First digital census | Budget 2026-27: ₹1,309 crore (+128%) | Census Act 1948 | Registrar General = oversees',
+    detail: 'India\'s decennial Census 2021 was indefinitely postponed due to the COVID-19 pandemic. The last census was conducted in 2011. Union Budget 2026-27 allocated ₹1,309 crore (128% increase) for Census 2026 — India\'s first digital census. Census is conducted under Census Act 1948 by the Office of the Registrar General and Census Commissioner (under Ministry of Home Affairs). The gap (2011-2026) is the longest since India\'s first regular census in 1881.',
+    context: 'SSC CGL 2024-2026 Current', examProb: 'Hot',
+  },
+  {
+    id: 162, category: 'Population & Census', topic: 'Demographic Dividend',
+    question: 'What is India\'s demographic dividend window?',
+    answer: 'India\'s working-age population (15-64) is ~68% of total — demographic dividend window estimated from 2018 to 2055, peaking around 2035-2040',
+    options: ['India\'s working-age population (15-64) is ~68% of total — demographic dividend window estimated from 2018 to 2055, peaking around 2035-2040', 'India\'s working-age population is ~45% of total — demographic window from 2000 to 2025', 'India\'s working-age population is ~75% of total — demographic window from 2030 to 2080', 'India\'s working-age population is ~55% of total — demographic window has already ended in 2020'],
+    shortcut: 'Demographic dividend = working-age (15-64) > dependents | India: 2018-2055 | Peak 2035-40 | Median age ~28 (vs China 38, Japan 48) | Need: skill development',
+    detail: 'Demographic dividend occurs when a country\'s working-age population (15-64) exceeds the dependent population (children + elderly). India\'s window: approximately 2018-2055, peaking around 2035-2040. India\'s median age is ~28 years (vs China ~38, Japan ~48). To harness this, India needs investment in education, skill development (Skill India Mission), healthcare, and job creation. Southern states are aging faster than northern states.',
+    context: 'SSC CGL 2024-2025', examProb: 'High',
+  },
+  {
+    id: 163, category: 'Population & Census', topic: 'Urbanization Rate in India',
+    question: 'What is India\'s urbanization rate as per Census 2011 and projected trends?',
+    answer: '31.16% urban (Census 2011) — projected to reach 40% by 2030 and 50% by 2047; largest urban population after China',
+    options: ['31.16% urban (Census 2011) — projected to reach 40% by 2030 and 50% by 2047; largest urban population after China', '45% urban (Census 2011) — projected to reach 60% by 2030', '25% urban (Census 2011) — projected to reach 30% by 2030', '55% urban (Census 2011) — India is already majority urban'],
+    shortcut: 'Urban: 31.16% (2011) | Rural: 68.84% | Projected 40% by 2030 | Mega cities: Mumbai, Delhi, Kolkata | Census towns growing fast | Smart Cities Mission = 100 cities',
+    detail: 'Census 2011: 31.16% urban (377 million), 68.84% rural (833 million). India has 3 mega cities (>10 million): Mumbai, Delhi, Kolkata. Top 10 states by urbanization: Goa (62.2%), Mizoram (52%), Tamil Nadu (48.4%). Lowest: Himachal Pradesh (10%). Census towns (meeting urban criteria but governed as rural) are growing rapidly. UN projects India adding 416 million urban dwellers by 2050.',
+    context: 'SSC CGL 2023-2025', examProb: 'High',
+  },
+  {
+    id: 164, category: 'Population & Census', topic: 'Smart Cities Mission',
+    question: 'What is the Smart Cities Mission and how many cities are covered?',
+    answer: 'Smart Cities Mission (2015): 100 cities selected for smart urban development — focus on infrastructure, technology, and sustainable living',
+    options: ['Smart Cities Mission (2015): 100 cities selected for smart urban development — focus on infrastructure, technology, and sustainable living', 'Smart Cities Mission (2018): 50 cities selected for digital governance only', 'Smart Cities Mission (2020): 200 cities selected for metro rail connectivity', 'Smart Cities Mission (2012): 75 cities selected for industrial corridor development'],
+    shortcut: 'Smart Cities = 2015 | MoHUA | 100 cities | SPVs for implementation | AMRUT = complementary urban scheme | SBM = Swachh Bharat | First batch: Bhubaneswar, Pune, Jaipur',
+    detail: 'Smart Cities Mission was launched on June 25, 2015, under the Ministry of Housing and Urban Affairs (MoHUA). It covers 100 cities selected through a competitive challenge. Each city has a Special Purpose Vehicle (SPV) for implementation. Focus: adequate water supply, assured electricity, sanitation, IT connectivity, e-governance, sustainable environment, safety, and health/education. Complementary schemes: AMRUT (500 cities, water supply & sewerage), Swachh Bharat Mission. Deadline extended to 2025.',
+    context: 'SSC CGL 2022-2025', examProb: 'High',
+  },
+  {
+    id: 165, category: 'Population & Census', topic: 'Sex Ratio Trends — State-wise',
+    question: 'Which states have the best and worst sex ratios, and how is the trend changing?',
+    answer: 'Best: Kerala (1,084) > Puducherry (1,037) | Worst: Haryana (879) — but Haryana has shown improvement through Beti Bachao scheme',
+    options: ['Best: Kerala (1,084) > Puducherry (1,037) | Worst: Haryana (879) — but Haryana has shown improvement through Beti Bachao scheme', 'Best: Tamil Nadu (1,050) > Goa (1,030) | Worst: Bihar (865)', 'Best: Mizoram (1,090) > Meghalaya (1,060) | Worst: Punjab (870)', 'Best: Chhattisgarh (1,070) > Kerala (1,050) | Worst: Rajasthan (880)'],
+    shortcut: 'Sex ratio = females per 1000 males | Kerala = 1,084 (best) | Haryana = 879 (worst) | Child sex ratio worst: Haryana (834) | Beti Bachao Beti Padhao = 2015 | India overall = 943',
+    detail: 'Census 2011 sex ratio: India overall 943. Best: Kerala (1,084), Puducherry (1,037). Worst: Haryana (879), followed by Jammu & Kashmir (883). Child sex ratio (0-6 years): worst is Haryana (834), Jharkhand (948 — improved). Beti Bachao Beti Padhao scheme (2015) launched from Panipat, Haryana specifically targeting poor sex ratio. Haryana\'s sex ratio at birth has improved from 871 (2014) to 927 (2024). National average = 943 (2011), improving trend.',
+    context: 'SSC CGL 2022-2024', examProb: 'Hot',
+  },
+  {
+    id: 166, category: 'Population & Census', topic: 'Literacy Rate — State Leaders',
+    question: 'Which states lead and lag in literacy rates in India?',
+    answer: 'Highest: Kerala (93.91%) > Mizoram (91.33%) > Tripura (87.75%) | Lowest: Bihar (63.82%) > Arunachal Pradesh (65.38%)',
+    options: ['Highest: Kerala (93.91%) > Mizoram (91.33%) > Tripura (87.75%) | Lowest: Bihar (63.82%) > Arunachal Pradesh (65.38%)', 'Highest: Tamil Nadu (95%) > Kerala (93%) > Goa (90%) | Lowest: UP (60%) > Rajasthan (62%)', 'Highest: Goa (94%) > Kerala (92%) > Mizoram (90%) | Lowest: Jharkhand (61%) > MP (63%)', 'Highest: Mizoram (95%) > Kerala (93%) > Himachal (90%) | Lowest: Rajasthan (58%) > Bihar (60%)'],
+    shortcut: 'Literacy top: Kerala (93.91%) > Mizoram (91.33%) > Tripura | Bottom: Bihar (63.82%) | India = 74.04% | Male = 82.14% | Female = 65.46% | Gender gap: 16.68%',
+    detail: 'Census 2011 literacy rate: India 74.04% (male 82.14%, female 65.46%). Top states: Kerala (93.91%), Mizoram (91.33%), Tripura (87.75%), Goa (88.70%). Lowest: Bihar (63.82%), Arunachal Pradesh (65.38%), Rajasthan (66.11%). Highest female literacy: Kerala (91.98%). Lowest female literacy: Rajasthan (52.12%). Saakshar Bharat (Adult Education Programme) and New Education Policy 2020 aim to improve literacy.',
+    context: 'SSC CGL 2022-2024', examProb: 'High',
+  },
+  {
+    id: 167, category: 'Population & Census', topic: 'Migration Patterns in India',
+    question: 'What are the major migration patterns in India?',
+    answer: 'Largest flows: Rural → Urban (economic), Bihar/UP → Delhi/Mumbai/Gujarat, NE states out-migration | Female migration primarily for marriage',
+    options: ['Largest flows: Rural → Urban (economic), Bihar/UP → Delhi/Mumbai/Gujarat, NE states out-migration | Female migration primarily for marriage', 'Largest flows: Urban → Rural (reverse migration), all states to IT hubs only', 'Largest flows: Inter-state migration is negligible in India, most migration is international', 'Largest flows: South → North states, coastal → inland areas, only seasonal migration matters'],
+    shortcut: 'Migration: Rural→Urban dominant | Bihar/UP→Delhi/Maharashtra/Gujarat | Female = marriage (49%) | Male = employment | COVID reverse migration 2020 | One Nation One Ration Card',
+    detail: 'Internal migration in India (Census 2011): ~450 million migrants. Major flows: rural-urban for employment. Top source states: Bihar, UP, Rajasthan, MP. Top destination states: Maharashtra, Delhi, Gujarat, Haryana. Female migration is predominantly for marriage (49%). COVID-19 triggered massive reverse migration in 2020. Government response: One Nation One Ration Card (ONORC) for portability of PDS benefits. Inter-state migration to grow with economic development.',
+    context: 'SSC CGL 2023-2025', examProb: 'High',
+  },
+
+  // =====================================================================
+  // CURRENT AFFAIRS (GEO) (expanded)
+  // =====================================================================
+  {
+    id: 168, category: 'Current Affairs (Geo)', topic: 'UNESCO World Heritage Sites — Recent Additions',
+    question: 'Which Indian site was inscribed as a UNESCO World Heritage Site in 2023?',
+    answer: 'Santiniketan (West Bengal) — cultural site associated with Rabindranath Tagore, inscribed at 45th WHC session in Riyadh',
+    options: ['Santiniketan (West Bengal) — cultural site associated with Rabindranath Tagore, inscribed at 45th WHC session in Riyadh', 'Hoysala Temples (Karnataka) — inscribed at 44th WHC session in Fuzhou', 'Dholavira (Gujarat) — Harappan city inscribed at 44th session', 'Kakatiya Rudreshwara Temple (Telangana) — inscribed at 44th session'],
+    shortcut: 'Santiniketan = 2023 | 42nd Indian WHS | Tagore\'s Visva-Bharati | Hoysala Temples (Belur, Halebid, Somanathapura) also 2023 | India total: 42 WHSs (2024)',
+    detail: 'Santiniketan was inscribed in 2023 at the 45th World Heritage Committee session in Riyadh, Saudi Arabia. It is associated with Rabindranath Tagore and the Visva-Bharati University founded in 1921. The Sacred Ensembles of the Hoysala (Belur, Halebid, Somanathapura in Karnataka) were also inscribed in 2023. India now has 42 World Heritage Sites (34 cultural, 7 natural, 1 mixed). Recent additions: Dholavira (2021), Kakatiya Rudreshwara Temple (2021).',
+    context: 'SSC CGL 2024-2026 Current', examProb: 'Hot',
+  },
+  {
+    id: 169, category: 'Current Affairs (Geo)', topic: 'Joshimath Subsidence Crisis',
+    question: 'What caused the Joshimath subsidence crisis in 2023?',
+    answer: 'Land subsidence in Joshimath (Uttarakhand) due to unplanned construction, hydropower projects, and seismically fragile Himalayan geology',
+    options: ['Land subsidence in Joshimath (Uttarakhand) due to unplanned construction, hydropower projects, and seismically fragile Himalayan geology', 'Flooding in Joshimath due to glacial lake outburst from Nanda Devi glacier', 'Earthquake of magnitude 7.0 in Joshimath causing building collapses', 'Volcanic activity under Joshimath town leading to ground subsidence'],
+    shortcut: 'Joshimath = Uttarakhand | Land subsidence 2023 | Seismic Zone V | NTPC Tapovan-Vishnugad project | Mishra Committee 1976 warned | Gateway to Badrinath + Valley of Flowers',
+    detail: 'Joshimath (Chamoli district, Uttarakhand) experienced severe land subsidence in January 2023. Causes: unplanned construction on fragile morainic soil, hydropower projects (NTPC Tapovan-Vishnugad), seismically active Zone V, construction of Char Dham Highway. Mishra Committee (1976) had warned against heavy construction. Joshimath is the gateway to Badrinath Temple, Valley of Flowers, and Hemkund Sahib. Over 800 buildings developed cracks; many families displaced.',
+    context: 'SSC CGL 2024-2025 Current', examProb: 'Hot',
+  },
+  {
+    id: 170, category: 'Current Affairs (Geo)', topic: 'New Tiger Reserves Declared',
+    question: 'How many tiger reserves does India have and which were recently added?',
+    answer: 'India has 55+ tiger reserves (as of 2025) — recent additions include Guru Ghasidas (Chhattisgarh), Ramgarh Vishdhari (Rajasthan), Durgavati (MP)',
+    options: ['India has 55+ tiger reserves (as of 2025) — recent additions include Guru Ghasidas (Chhattisgarh), Ramgarh Vishdhari (Rajasthan), Durgavati (MP)', 'India has 30 tiger reserves — recent additions include Kanha and Ranthambore', 'India has 75 tiger reserves — all added between 2020 and 2025', 'India has 45 tiger reserves — most recent was Panna in 2020'],
+    shortcut: 'Tiger reserves: 55+ (2025) | Project Tiger = 1973 | NTCA monitors | Latest: Guru Ghasidas, Ramgarh Vishdhari, Durgavati | Tiger Census 2022: 3,682 tigers | MP = max tigers',
+    detail: 'India has 55+ tiger reserves (2025) under Project Tiger (launched 1973 by PM Indira Gandhi). NTCA (National Tiger Conservation Authority) oversees them. Tiger Census 2022 (5th cycle): India has 3,682 tigers — 75% of world\'s wild tigers. MP has the most tigers, followed by Karnataka. Recent additions: Guru Ghasidas-Tamor Pingla (CG, 2022), Ramgarh Vishdhari (Rajasthan, 2022), Durgavati (MP, 2024). Jim Corbett (Uttarakhand) was the first tiger reserve (1973).',
+    context: 'SSC CGL 2024-2026 Current', examProb: 'Hot',
+  },
+  {
+    id: 171, category: 'Current Affairs (Geo)', topic: 'Ramsar Sites in India',
+    question: 'How many Ramsar sites does India have and which state has the most?',
+    answer: 'India has 82+ Ramsar wetland sites (2025) — Tamil Nadu has the most Ramsar sites, followed by UP',
+    options: ['India has 82+ Ramsar wetland sites (2025) — Tamil Nadu has the most Ramsar sites, followed by UP', 'India has 50 Ramsar sites — Kerala has the most, followed by West Bengal', 'India has 100 Ramsar sites — Rajasthan has the most, followed by Gujarat', 'India has 35 Ramsar sites — Assam has the most, followed by Manipur'],
+    shortcut: 'Ramsar = wetlands of international importance | Convention 1971 (Ramsar, Iran) | India: 82+ sites (2025) | TN = most | Chilika Lake (Odisha) = first designated (1981) | Keoladeo (Rajasthan)',
+    detail: 'The Ramsar Convention on Wetlands was signed in 1971 at Ramsar, Iran. India has 82+ Ramsar sites (as of 2025). Tamil Nadu has the most (16+), followed by UP (10+). First two Indian Ramsar sites (1981): Chilika Lake (Odisha) and Keoladeo National Park (Rajasthan). Largest Ramsar site: Sundarbans (WB). Recent additions: Ankasamudra Bird Conservation Reserve (Karnataka), Aghanashini Estuary (Karnataka), Karaivetti Bird Sanctuary (TN).',
+    context: 'SSC CGL 2024-2026 Current', examProb: 'Hot',
+  },
+  {
+    id: 172, category: 'Current Affairs (Geo)', topic: 'Glacial Lake Outburst Flood (GLOF) Concerns',
+    question: 'What are Glacial Lake Outburst Floods (GLOFs) and why are they a growing concern in India?',
+    answer: 'GLOFs occur when glacier-dammed lakes burst due to warming — India\'s Himalayan region has 2,000+ glacial lakes, with Sikkim GLOF (Oct 2023) being a major recent event',
+    options: ['GLOFs occur when glacier-dammed lakes burst due to warming — India\'s Himalayan region has 2,000+ glacial lakes, with Sikkim GLOF (Oct 2023) being a major recent event', 'GLOFs are caused by volcanic eruptions near glaciers — India faces no such risk', 'GLOFs only affect Arctic regions — India\'s Himalayas have stable glacial lakes', 'GLOFs are slow seasonal floods from glacier meltwater — they pose minimal threat'],
+    shortcut: 'GLOF = Glacial Lake Outburst Flood | Climate change → glacier retreat → lake formation → dam burst | Sikkim GLOF Oct 2023 (South Lhonak Lake) | Teesta River flooded | NDMA monitoring',
+    detail: 'GLOFs occur when natural dams (moraine/ice) holding glacial lakes breach suddenly. Climate change accelerates glacier melting, forming new lakes and expanding existing ones. India\'s Himalayan region has 2,000+ glacial lakes. Sikkim GLOF (October 2023): South Lhonak Lake burst, flooding the Teesta River, destroying Chungthang Dam, killing 40+ people. NDMA and ISRO monitor glacial lakes. Uttarakhand, Sikkim, HP, and Ladakh are most vulnerable. 2013 Kedarnath disaster was also linked to glacial processes.',
+    context: 'SSC CGL 2024-2026 Current', examProb: 'Hot',
+  },
+
+  // =====================================================================
+  // NATIONAL PARKS & WILDLIFE (expanded)
+  // =====================================================================
+  {
+    id: 173, category: 'National Parks & Wildlife', topic: 'Project Cheetah — Kuno National Park',
+    question: 'What is Project Cheetah and where were the cheetahs reintroduced?',
+    answer: 'Project Cheetah: reintroduction of African cheetahs at Kuno National Park, Madhya Pradesh — first batch of 8 cheetahs from Namibia in September 2022',
+    options: ['Project Cheetah: reintroduction of African cheetahs at Kuno National Park, Madhya Pradesh — first batch of 8 cheetahs from Namibia in September 2022', 'Project Cheetah: reintroduction of Asiatic cheetahs at Ranthambore, Rajasthan — from Iran in 2021', 'Project Cheetah: breeding programme at Gir National Park, Gujarat — cheetahs from South Africa in 2023', 'Project Cheetah: reintroduction of snow leopards at Jim Corbett, Uttarakhand — from Mongolia in 2022'],
+    shortcut: 'Project Cheetah = 2022 | Kuno NP, MP | 8 Namibian cheetahs (Sep 2022) + 12 South African (Feb 2023) | Cheetah = only large carnivore extinct in India (1952) | PM Modi released',
+    detail: 'Project Cheetah is the world\'s first intercontinental translocation of large wild cats. Cheetah was declared extinct in India in 1952 (last seen in Chhattisgarh). 8 Namibian cheetahs were released at Kuno NP, MP on September 17, 2022 (PM Modi\'s birthday). 12 more from South Africa arrived in February 2023. Kuno was selected due to suitable habitat, prey base, and contiguous forest. Several cheetahs and cubs have died, raising concerns. Gandhi Sagar WLS (MP) identified as second site.',
+    context: 'SSC CGL 2023-2026 Hot', examProb: 'Hot',
+  },
+  {
+    id: 174, category: 'National Parks & Wildlife', topic: 'Elephant Reserves of India',
+    question: 'How many elephant reserves does India have and in which regions?',
+    answer: '33 elephant reserves across India (2025) — major ones in Kerala, Karnataka, Assam, TN, and NE India; Project Elephant launched in 1992',
+    options: ['33 elephant reserves across India (2025) — major ones in Kerala, Karnataka, Assam, TN, and NE India; Project Elephant launched in 1992', '15 elephant reserves only in South India — Project Elephant launched in 2005', '50 elephant reserves across India — Project Elephant launched in 1975 with Project Tiger', '10 elephant reserves only in NE India — Project Elephant launched in 2000'],
+    shortcut: 'Elephant reserves: 33 (2025) | Project Elephant = 1992 | MoEFCC | India = 60% of Asian elephants | Karnataka = most elephants | Nilgiri = largest elephant reserve | Periyar (Kerala)',
+    detail: 'India has 33 elephant reserves (2025) covering approximately 80,000 sq km. Project Elephant was launched in 1992 (centrally sponsored scheme) under MoEFCC. India has ~27,000+ elephants, hosting about 60% of the world\'s Asian elephants. Karnataka has the most elephants (~6,000), followed by Kerala and Assam. Nilgiri Elephant Reserve (Karnataka-Kerala-TN) is the largest. Elephant corridors (101 identified) are critical for connectivity. Indian elephant is the state animal of Kerala, Karnataka, and Jharkhand.',
+    context: 'SSC CGL 2023-2025', examProb: 'High',
+  },
+  {
+    id: 175, category: 'National Parks & Wildlife', topic: 'Biosphere Reserves of India',
+    question: 'How many biosphere reserves does India have and which are on the UNESCO MAB list?',
+    answer: '18 biosphere reserves — 12 are on the UNESCO MAB (Man and Biosphere) World Network, including Nilgiri, Nanda Devi, and Sundarbans',
+    options: ['18 biosphere reserves — 12 are on the UNESCO MAB (Man and Biosphere) World Network, including Nilgiri, Nanda Devi, and Sundarbans', '10 biosphere reserves — all are on the UNESCO MAB World Network', '25 biosphere reserves — 5 are on the UNESCO MAB World Network', '18 biosphere reserves — none are on the UNESCO MAB World Network'],
+    shortcut: '18 biosphere reserves | 12 in UNESCO MAB | Nilgiri = first (1986) + largest | Nanda Devi, Sundarbans, Gulf of Mannar, Pachmarhi, Achanakmar-Amarkantak in MAB | Core-Buffer-Transition zones',
+    detail: 'India has 18 biosphere reserves. 12 are included in UNESCO\'s Man and Biosphere (MAB) World Network. Nilgiri Biosphere Reserve (1986): first and largest in India, covers parts of Karnataka, Kerala, and TN. Others on MAB: Nanda Devi (Uttarakhand), Sundarbans (WB), Gulf of Mannar (TN), Nokrek (Meghalaya), Pachmarhi (MP), Simlipal (Odisha), Achanakmar-Amarkantak (CG-MP), Great Nicobar, Agasthyamala, Khangchendzonga (Sikkim), Panna (MP — latest, 2020). Each has: Core (no human activity), Buffer, and Transition zones.',
+    context: 'SSC CGL 2022-2025', examProb: 'Hot',
+  },
+  {
+    id: 176, category: 'National Parks & Wildlife', topic: 'Wildlife Protection Act & Conservation Bodies',
+    question: 'What is the main wildlife protection law in India and key conservation bodies?',
+    answer: 'Wildlife Protection Act, 1972 — key bodies: NBWL (National Board for Wildlife), NTCA (tigers), and Wildlife Institute of India (WII, Dehradun)',
+    options: ['Wildlife Protection Act, 1972 — key bodies: NBWL (National Board for Wildlife), NTCA (tigers), and Wildlife Institute of India (WII, Dehradun)', 'Forest Conservation Act, 1980 — key bodies: Forest Survey of India and IUCN India', 'Biological Diversity Act, 2002 — key bodies: NBA (National Biodiversity Authority) only', 'Environment Protection Act, 1986 — key bodies: CPCB and SPCB only'],
+    shortcut: 'WPA 1972 | NBWL chaired by PM | NTCA = tiger conservation | WII Dehradun = research | Schedule I = highest protection | CITES = international wildlife trade | CMS = migratory species',
+    detail: 'Wildlife Protection Act 1972 provides framework for wildlife protection in India. NBWL (National Board for Wildlife): chaired by PM, approves projects in and near protected areas. NTCA: statutory body under WPA (amended 2006) for tiger conservation. WII (Wildlife Institute of India): Dehradun, autonomous under MoEFCC. Schedules: Schedule I (highest protection — tiger, elephant, rhinoceros), Schedule II-IV (varying protection). India is signatory to CITES, Convention on Migratory Species (CMS), and CBD.',
+    context: 'SSC CGL 2022-2025', examProb: 'High',
+  },
+
+  // =====================================================================
+  // WORLD GEOGRAPHY (expanded)
+  // =====================================================================
+  {
+    id: 177, category: 'World Geography', topic: 'Maritime Zones under UNCLOS',
+    question: 'What are the maritime zones under UNCLOS (UN Convention on the Law of the Sea)?',
+    answer: 'Territorial Sea: 12 nm | Contiguous Zone: 24 nm | Exclusive Economic Zone (EEZ): 200 nm | Continental Shelf: up to 350 nm',
+    options: ['Territorial Sea: 12 nm | Contiguous Zone: 24 nm | Exclusive Economic Zone (EEZ): 200 nm | Continental Shelf: up to 350 nm', 'Territorial Sea: 6 nm | Contiguous Zone: 12 nm | EEZ: 100 nm | Continental Shelf: up to 200 nm', 'Territorial Sea: 24 nm | Contiguous Zone: 48 nm | EEZ: 350 nm | Continental Shelf: up to 500 nm', 'Territorial Sea: 3 nm | Contiguous Zone: 6 nm | EEZ: 50 nm | Continental Shelf: up to 100 nm'],
+    shortcut: 'UNCLOS 1982 | Territorial = 12 nm (full sovereignty) | Contiguous = 24 nm (customs/immigration) | EEZ = 200 nm (economic rights) | Continental Shelf = 350 nm max | nm = nautical mile',
+    detail: 'UNCLOS (UN Convention on the Law of the Sea, 1982, effective 1994) defines maritime zones measured from the baseline. Territorial Sea (12 nm): full sovereignty including airspace, seabed. Contiguous Zone (24 nm): state can enforce customs, fiscal, immigration, sanitary laws. EEZ (200 nm): sovereign rights over natural resources (fish, oil, minerals). Continental Shelf: natural prolongation of land territory, up to 350 nm from baseline. High Seas: beyond EEZ, governed by international law. "The Area" (deep seabed): common heritage of mankind.',
+    context: 'SSC CGL 2022-2025', examProb: 'Hot',
+  },
+  {
+    id: 178, category: 'World Geography', topic: 'Major Ocean Currents',
+    question: 'What are the major warm and cold ocean currents of the world?',
+    answer: 'Warm: Gulf Stream, Kuroshio, Brazil Current, N. Equatorial | Cold: Labrador, Benguela, Humboldt (Peru), Canary Current',
+    options: ['Warm: Gulf Stream, Kuroshio, Brazil Current, N. Equatorial | Cold: Labrador, Benguela, Humboldt (Peru), Canary Current', 'Warm: Labrador, Humboldt, Canary, Oyashio | Cold: Gulf Stream, Kuroshio, Brazil, Agulhas', 'Warm: Benguela, Falkland, West Wind Drift | Cold: Mozambique, East Australian, Gulf Stream', 'Warm: California, Humboldt, Labrador | Cold: Brazil, Kuroshio, Agulhas'],
+    shortcut: 'Warm currents: from equator→poles | Gulf Stream (N. Atlantic), Kuroshio (Japan), Brazil | Cold: from poles→equator | Labrador, Benguela (W. Africa), Humboldt/Peru, Canary | Meeting = rich fishing',
+    detail: 'Warm currents flow from equator towards poles; cold currents flow from poles towards equator. Major warm: Gulf Stream (N. Atlantic, warms W. Europe), Kuroshio (Japan Current, N. Pacific), Brazil Current (S. Atlantic), N. Equatorial Current. Major cold: Labrador (N. Atlantic, icebergs), Benguela (W. coast of S. Africa), Humboldt/Peru Current (W. coast of S. America, richest fishing), Canary Current (NW Africa), Oyashio (N. Pacific). Where warm and cold currents meet: rich fishing grounds (e.g., Grand Banks of Newfoundland).',
+    context: 'SSC CGL 2022-2024', examProb: 'Hot',
+  },
+  {
+    id: 179, category: 'World Geography', topic: 'Important Straits of the World',
+    question: 'Which strait connects the Mediterranean Sea to the Atlantic Ocean?',
+    answer: 'Strait of Gibraltar — between Spain and Morocco, 14 km wide at narrowest',
+    options: ['Strait of Gibraltar — between Spain and Morocco, 14 km wide at narrowest', 'Strait of Hormuz — between Iran and Oman, 54 km wide', 'Strait of Bosporus — between European and Asian Turkey, 700 m wide at narrowest', 'Suez Canal — between Egypt, connecting Mediterranean to Red Sea'],
+    shortcut: 'Gibraltar = Atlantic↔Mediterranean | Spain-Morocco | 14 km | Bosporus = Black Sea↔Sea of Marmara | Dardanelles = Sea of Marmara↔Aegean | Dover = English Channel narrowest',
+    detail: 'Strait of Gibraltar: connects Atlantic Ocean to Mediterranean Sea, between Spain (Europe) and Morocco (Africa). Width: 14 km at narrowest. Strategic for trade between Atlantic and Mediterranean. Other important straits: Bosporus (Istanbul, Turkey — Black Sea to Sea of Marmara), Dardanelles (Sea of Marmara to Aegean Sea), Strait of Dover (English Channel, 34 km), Strait of Messina (Italy mainland to Sicily), Strait of Taiwan (Taiwan to China).',
+    context: 'SSC CGL 2022-2024', examProb: 'High',
+  },
+  {
+    id: 180, category: 'World Geography', topic: 'Major Deserts and Grasslands',
+    question: 'Which is the largest hot desert and the largest cold desert in the world?',
+    answer: 'Largest hot desert: Sahara (N. Africa, 9.2 million sq km) | Largest cold desert: Antarctic Desert (14 million sq km)',
+    options: ['Largest hot desert: Sahara (N. Africa, 9.2 million sq km) | Largest cold desert: Antarctic Desert (14 million sq km)', 'Largest hot desert: Arabian Desert (2.3 million sq km) | Largest cold desert: Gobi Desert (1.3 million sq km)', 'Largest hot desert: Thar Desert (2 million sq km) | Largest cold desert: Arctic (5.4 million sq km)', 'Largest hot desert: Kalahari (0.9 million sq km) | Largest cold desert: Patagonian (0.7 million sq km)'],
+    shortcut: 'Hot: Sahara (9.2M sq km, N. Africa) > Arabian > Thar | Cold: Antarctic (14M sq km) > Arctic (5.4M) > Gobi | Technically Antarctica = largest desert overall',
+    detail: 'A desert is defined by low precipitation (<250 mm/year), not just temperature. Largest desert overall: Antarctic Desert (14 million sq km — cold desert). Largest hot desert: Sahara (N. Africa, 9.2 million sq km, spans 11 countries). Largest cold desert in Asia: Gobi (Mongolia-China, 1.3 million sq km). India\'s desert: Thar (Great Indian Desert, Rajasthan, ~200,000 sq km). Major grasslands: Pampas (S. America), Prairies (N. America), Steppes (Central Asia), Savanna (Africa), Downs (Australia).',
+    context: 'SSC CGL 2022-2024', examProb: 'High',
+  },
+
+  // =====================================================================
+  // STRAITS & WATERWAYS (expanded)
+  // =====================================================================
+  {
+    id: 181, category: 'Straits & Waterways', topic: 'Palk Strait & Adam\'s Bridge',
+    question: 'What is Palk Strait and what is its significance?',
+    answer: 'Palk Strait separates India (Tamil Nadu) from Sri Lanka — Adam\'s Bridge (Ram Setu) is a chain of limestone shoals connecting Rameswaram to Talaimannar',
+    options: ['Palk Strait separates India (Tamil Nadu) from Sri Lanka — Adam\'s Bridge (Ram Setu) is a chain of limestone shoals connecting Rameswaram to Talaimannar', 'Palk Strait separates India from Maldives — Adam\'s Bridge connects Kochi to Male', 'Palk Strait separates India from Myanmar — Adam\'s Bridge connects Andaman to Myanmar coast', 'Palk Strait separates India from Bangladesh — Adam\'s Bridge connects Sundarbans to Chittagong'],
+    shortcut: 'Palk Strait = India (TN) ↔ Sri Lanka | 53-80 km wide | Palk Bay + Gulf of Mannar on either side | Adam\'s Bridge/Ram Setu = Rameswaram→Talaimannar | Sethusamudram Channel Project',
+    detail: 'Palk Strait: between Tamil Nadu (India) and Northern Province (Sri Lanka). Width: 53-80 km. Named after Thomas Palk (Governor of Madras). Palk Bay lies to its north, Gulf of Mannar to its south. Adam\'s Bridge (Ram Setu) is a chain of limestone shoals (48 km) connecting Pamban Island (Rameswaram) to Mannar Island (Talaimannar, Sri Lanka). Sethusamudram Ship Canal Project (SSCP) proposed a navigation channel through this but was controversial due to environmental and religious concerns.',
+    context: 'SSC CGL 2022-2024', examProb: 'Hot',
+  },
+  {
+    id: 182, category: 'Straits & Waterways', topic: 'Ten Degree Channel',
+    question: 'Which channel separates the Andaman Islands from the Nicobar Islands?',
+    answer: 'Ten Degree Channel (150 km wide) — lies along 10°N latitude, separating Andaman (Little Andaman) from Nicobar (Car Nicobar)',
+    options: ['Ten Degree Channel (150 km wide) — lies along 10°N latitude, separating Andaman (Little Andaman) from Nicobar (Car Nicobar)', 'Eight Degree Channel (120 km wide) — separates Andaman from Nicobar along 8°N', 'Duncan Passage (50 km wide) — separates Andaman from Nicobar', 'Coco Channel (170 km wide) — separates Andaman from Myanmar'],
+    shortcut: '10° Channel = Andaman↔Nicobar | 150 km | 10°N latitude | Little Andaman ↔ Car Nicobar | 8° Channel = Minicoy↔Maldives | Duncan Passage = S. Andaman↔Little Andaman | Coco Channel = N. Andaman↔Myanmar',
+    detail: 'Ten Degree Channel: 150 km wide, lies along 10°N latitude, separates Little Andaman (southernmost of Andaman group) from Car Nicobar (northernmost of Nicobar group). Other important channels: Duncan Passage: between South Andaman and Little Andaman. Eight Degree Channel: between Minicoy Island (southernmost of Lakshadweep) and Maldives (8°N latitude). Coco Channel: between North Andaman and Coco Islands (Myanmar). These are frequently asked in SSC CGL geography sections.',
+    context: 'SSC CGL 2022-2024 Recurring', examProb: 'Hot',
+  },
+  {
+    id: 183, category: 'Straits & Waterways', topic: 'Nine Degree Channel',
+    question: 'Which channel separates Lakshadweep\'s Aminidivi Islands from Minicoy Island?',
+    answer: 'Nine Degree Channel — lies along 9°N latitude, separates Aminidivi Islands (northern Lakshadweep) from Minicoy Island (southernmost)',
+    options: ['Nine Degree Channel — lies along 9°N latitude, separates Aminidivi Islands (northern Lakshadweep) from Minicoy Island (southernmost)', 'Eight Degree Channel — lies along 8°N latitude, separates Aminidivi from Minicoy', 'Ten Degree Channel — lies along 10°N latitude, separates Aminidivi from Minicoy', 'Palk Strait — separates Aminidivi from Minicoy in the Arabian Sea'],
+    shortcut: '9° Channel = Aminidivi↔Minicoy (Lakshadweep) | 9°N latitude | 8° Channel = Minicoy↔Maldives | Lakshadweep = 36 islands, 10 inhabited | Kavaratti = capital',
+    detail: 'Nine Degree Channel lies along 9°N latitude in the Arabian Sea. It separates the Aminidivi Islands (Amini, Kadmat, Chetlat — northern group of Lakshadweep) from Minicoy Island (southernmost inhabited island of Lakshadweep). Width: approximately 200 km. Eight Degree Channel (8°N) separates Minicoy from the Maldives. Lakshadweep comprises 36 islands (10 inhabited), with Kavaratti as its capital. The islands are coral atolls formed on the Laccadive-Chagos submarine ridge.',
+    context: 'SSC CGL 2022-2024', examProb: 'High',
+  },
+
+  // =====================================================================
+  // INDIAN RIVERS (expanded)
+  // =====================================================================
+  {
+    id: 184, category: 'Indian Rivers', topic: 'River Interlinking Project',
+    question: 'What is the National River Interlinking Project of India?',
+    answer: 'Plan to connect 30 rivers through 30 link canals to transfer water from surplus to deficit basins — proposed by National Water Development Agency (NWDA)',
+    options: ['Plan to connect 30 rivers through 30 link canals to transfer water from surplus to deficit basins — proposed by National Water Development Agency (NWDA)', 'Plan to connect 10 major rivers by a single canal running across India — proposed by ISRO', 'Plan to divert Brahmaputra water to Thar Desert through underground tunnels — proposed by CGWB', 'Plan to clean all rivers under Namami Gange programme — proposed by Ministry of Jal Shakti'],
+    shortcut: 'River Interlinking = 30 rivers + 30 canals | NWDA | 2 components: Himalayan (14 links) + Peninsular (16 links) | Ken-Betwa = first approved | National Perspective Plan 1980',
+    detail: 'The National River Interlinking Project aims to connect 30 rivers through 30 link canals: Himalayan Component (14 links, transfer Ganga-Brahmaputra surplus) and Peninsular Component (16 links, connect west-flowing rivers to east). Proposed under National Perspective Plan (1980). National Water Development Agency (NWDA) under Ministry of Jal Shakti is the implementing body. Total estimated cost: ₹5.6 lakh crore. Aims to irrigate 35 million hectares and generate 34,000 MW hydropower. Environmental and inter-state disputes are major challenges.',
+    context: 'SSC CGL 2023-2025', examProb: 'High',
+  },
+  {
+    id: 185, category: 'Indian Rivers', topic: 'Ken-Betwa River Interlinking Project',
+    question: 'What is the Ken-Betwa Link Project and why is it significant?',
+    answer: 'India\'s first river interlinking project — links Ken River (MP) to Betwa River (UP/MP) via Daudhan Dam; approved in 2021',
+    options: ['India\'s first river interlinking project — links Ken River (MP) to Betwa River (UP/MP) via Daudhan Dam; approved in 2021', 'India\'s first river cleaning project — links Ken to Ganga via Yamuna; approved in 2019', 'India\'s first hydropower project on Ken River — generates 5,000 MW; approved in 2023', 'India\'s first interstate dam project — links Ken to Son River; approved in 2020'],
+    shortcut: 'Ken-Betwa = FIRST interlinking project | Ken (surplus, MP) → Betwa (deficit, UP/MP) | Daudhan Dam (77 m) on Ken | Bundelkhand region | ₹44,605 crore | Panna Tiger Reserve controversy',
+    detail: 'Ken-Betwa Link Project: India\'s first river interlinking project approved by Union Cabinet in December 2021. Links Ken River (Panna, MP — surplus basin) to Betwa River (Jhansi, UP — deficit basin) via Daudhan Dam (77 m high) on the Ken River. Cost: ₹44,605 crore. Benefits: irrigate 10.62 lakh hectares, drinking water for 62 lakh people in drought-prone Bundelkhand region, generate 103 MW hydropower. Controversy: submerges part of Panna Tiger Reserve (Ken flows through it). Both rivers are Yamuna tributaries.',
+    context: 'SSC CGL 2023-2025', examProb: 'Hot',
+  },
+  {
+    id: 186, category: 'Indian Rivers', topic: 'Peninsular vs Himalayan Rivers',
+    question: 'What are the key differences between Himalayan and Peninsular rivers?',
+    answer: 'Himalayan rivers: perennial (snow-fed + rain), young, meandering, form large deltas | Peninsular rivers: seasonal (rain-fed), mature, straighter courses, smaller deltas',
+    options: ['Himalayan rivers: perennial (snow-fed + rain), young, meandering, form large deltas | Peninsular rivers: seasonal (rain-fed), mature, straighter courses, smaller deltas', 'Himalayan rivers: seasonal only, old | Peninsular rivers: perennial, always snow-fed, young', 'Both types are identical in characteristics — only location differs', 'Himalayan rivers: flow westward | Peninsular rivers: flow northward into Himalayas'],
+    shortcut: 'Himalayan = perennial, snow+rain, young, meandering, large deltas (Ganga, Brahmaputra) | Peninsular = seasonal, rain-fed, old/mature, rocky beds, smaller deltas (Godavari, Krishna) | Exception: Narmada & Tapi flow west (rift valleys)',
+    detail: 'Himalayan rivers: perennial (snow-melt + rain), geologically young, form V-shaped valleys, have large basins and deltas, carry enormous sediment, prone to flooding, examples — Ganga, Brahmaputra, Indus. Peninsular rivers: seasonal (rain-fed), geologically old and mature, flow on hard crystalline rocks, have smaller basins, form estuaries more than deltas, examples — Godavari, Krishna, Mahanadi, Kaveri. Notable exceptions: Narmada and Tapi flow westward through rift valleys (not on plateau surface). Chambal is the only notable peninsular river in the Ganga system.',
+    context: 'SSC CGL 2022-2025', examProb: 'Hot',
+  },
+
+  // =====================================================================
+  // MOUNTAINS & PASSES (expanded)
+  // =====================================================================
+  {
+    id: 187, category: 'Mountains & Passes', topic: 'Important Mountain Passes — PYQ Hot',
+    question: 'Match the mountain passes with their states:',
+    answer: 'Nathu La — Sikkim | Shipki La — Himachal Pradesh | Bomdi La — Arunachal Pradesh | Rohtang Pass — Himachal Pradesh',
+    options: ['Nathu La — Sikkim | Shipki La — Himachal Pradesh | Bomdi La — Arunachal Pradesh | Rohtang Pass — Himachal Pradesh', 'Nathu La — Arunachal Pradesh | Shipki La — Sikkim | Bomdi La — HP | Rohtang — J&K', 'Nathu La — HP | Shipki La — Uttarakhand | Bomdi La — Sikkim | Rohtang — Arunachal Pradesh', 'Nathu La — Sikkim | Shipki La — Uttarakhand | Bomdi La — HP | Rohtang — J&K'],
+    shortcut: 'Nathu La = Sikkim (India-China trade) | Shipki La = HP (Sutlej enters India) | Bomdi La = Arunachal (Tawang route) | Rohtang = HP (Manali-Leh, Atal Tunnel) | Zoji La = J&K→Ladakh',
+    detail: 'Nathu La (4,310 m, Sikkim): on Indo-China border, reopened for trade in 2006. Shipki La (HP): where Sutlej River enters India from Tibet, on Indo-China border. Bomdi La (2,217 m, Arunachal Pradesh): route to Tawang, scene of 1962 India-China war. Rohtang Pass (3,978 m, HP): on Manali-Leh highway, Atal Tunnel (9.02 km, world\'s longest at that altitude) bypasses it. Other important: Zoji La (J&K, gateway to Ladakh), Khyber Pass (Pakistan-Afghanistan, historically significant), Banihal Pass (J&K, Jawahar Tunnel).',
+    context: 'SSC CGL 2022-2025 Recurring', examProb: 'Hot',
+  },
+  {
+    id: 188, category: 'Mountains & Passes', topic: 'Atal Tunnel & Strategic Passes',
+    question: 'What is the Atal Tunnel and which pass does it bypass?',
+    answer: 'Atal Tunnel: 9.02 km highway tunnel under Rohtang Pass (HP) — world\'s longest tunnel above 10,000 ft, connects Manali to Lahaul-Spiti valley year-round',
+    options: ['Atal Tunnel: 9.02 km highway tunnel under Rohtang Pass (HP) — world\'s longest tunnel above 10,000 ft, connects Manali to Lahaul-Spiti valley year-round', 'Atal Tunnel: 15 km tunnel under Zoji La Pass (J&K) — connects Srinagar to Leh', 'Atal Tunnel: 5 km tunnel under Bomdi La (Arunachal) — connects Tezpur to Tawang', 'Atal Tunnel: 12 km tunnel under Nathu La (Sikkim) — connects Gangtok to China border'],
+    shortcut: 'Atal Tunnel = Rohtang, HP | 9.02 km | World\'s longest > 10,000 ft | Manali↔Lahaul-Spiti | Inaugurated Oct 2020 | BRO built | Sela Tunnel = Arunachal (Tawang route) | Zoji La Tunnel under construction',
+    detail: 'Atal Tunnel (formerly Rohtang Tunnel): 9.02 km horseshoe-shaped highway tunnel under Rohtang Pass at an altitude of ~10,000 ft (3,000 m). Inaugurated by PM Modi on October 3, 2020. Built by BRO (Border Roads Organisation). Connects Manali to Lahaul-Spiti valley year-round (previously cut off for 6 months due to snow). Named after former PM Atal Bihari Vajpayee. Other strategic tunnels: Sela Tunnel (Arunachal, 13 km, Tawang route, opened 2024), Zoji La Tunnel (J&K, 14.15 km, under construction, will connect Srinagar to Leh year-round).',
+    context: 'SSC CGL 2022-2025', examProb: 'Hot',
+  },
 ]
 
 export const geoPYQHistory: GeoPYQEntry[] = [
@@ -1886,4 +2233,15 @@ export const geoPYQHistory: GeoPYQEntry[] = [
   { date: 'Current 2026', shift: 'CA', question: 'How many High-Speed Rail Corridors were announced in Budget 2026-27?', answer: '7 corridors covering 4,000 km', category: 'Transport & Industry' },
   { date: 'Current 2026', shift: 'CA', question: 'What is Census 2026?', answer: 'India\'s first digital census — Home Affairs +128% budget', category: 'Population & Census' },
   { date: 'Current 2026', shift: 'CA', question: 'Which waterway was disrupted by Houthi attacks (2024)?', answer: 'Red Sea / Bab-el-Mandeb Strait', category: 'Straits & Waterways' },
+  // PYQs — 2019-2020 gap + 2024-2026
+  { date: '2020 CGL', shift: 'Shift 1', question: 'Which channel separates Andaman from Nicobar Islands?', answer: 'Ten Degree Channel', category: 'Straits & Waterways' },
+  { date: '2020 CGL', shift: 'Shift 2', question: 'The Ganga-Brahmaputra Delta is known as:', answer: 'Sundarbans — largest delta in the world', category: 'Indian Rivers' },
+  { date: '2020 CGL', shift: 'Shift 1', question: 'Which pass connects Manali to Leh?', answer: 'Rohtang Pass (now bypassed by Atal Tunnel)', category: 'Mountains & Passes' },
+  { date: '2019 CGL', shift: 'Shift 2', question: 'What is the capital of Lakshadweep?', answer: 'Kavaratti', category: 'Straits & Waterways' },
+  { date: '2019 CGL', shift: 'Shift 1', question: 'Golden Quadrilateral connects which four cities?', answer: 'Delhi-Mumbai-Chennai-Kolkata', category: 'Transport & Industry' },
+  { date: '2024 CGL', shift: 'Shift 3', question: 'Where were African cheetahs reintroduced in India (2022)?', answer: 'Kuno National Park, Madhya Pradesh', category: 'National Parks & Wildlife' },
+  { date: '2025 CGL', shift: 'Expected', question: 'Which is India\'s first approved river interlinking project?', answer: 'Ken-Betwa Link Project', category: 'Indian Rivers' },
+  { date: 'Current 2025', shift: 'CA', question: 'Sela Tunnel connects which region in Arunachal Pradesh?', answer: 'Tawang — strategic tunnel opened in 2024', category: 'Mountains & Passes' },
+  { date: 'Current 2025', shift: 'CA', question: 'What is PM Gati Shakti National Master Plan?', answer: 'GIS-based digital platform for multimodal connectivity planning across 16 ministries', category: 'Transport & Industry' },
+  { date: 'Current 2024', shift: 'CA', question: 'Sikkim GLOF (Oct 2023) was caused by the burst of which glacial lake?', answer: 'South Lhonak Lake — flooded Teesta River', category: 'Current Affairs (Geo)' },
 ]
